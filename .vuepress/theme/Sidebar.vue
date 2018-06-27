@@ -85,6 +85,10 @@ function resolveOpenGroupIndex (route, items) {
 .sidebar.home-sidebar .sidebar-internal
   position relative
 
+  &.shorten
+    position relative
+    bottom auto
+
 .sidebar
   display inline-block
   height auto
