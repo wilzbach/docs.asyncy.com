@@ -125,5 +125,18 @@ div[class~="language-ruby"]:before
 div[class~="language-python"]:before
   content "py"
 
-div[class~="language-bash"]:before
-  content "sh"
+div[class~="language-bash"]
+  &:before
+    content "sh"
+
+div[class~="language-coffeescript"]
+  &:before
+    content "storyscript"
+
+div[class~="language-shell"]
+  &:before
+    content "sh"
+  code
+    &:before
+      content '$ '
+      color #c351f9
