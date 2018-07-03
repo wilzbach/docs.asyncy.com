@@ -222,6 +222,10 @@ function updateMetaTags (meta, current) {
 @import "../../node_modules/bulma-stylus/stylus/utilities/_all";
 @import "../../node_modules/bulma-stylus/stylus/base/helpers"
 @import "../../node_modules/bulma-stylus/stylus/grid/columns";
+
+*:target
+  margin-top -70px
+  padding-top 70px
 </style>
 <style src="./styles/theme.styl" lang="stylus"></style>
 <style scoped lang="styl">
