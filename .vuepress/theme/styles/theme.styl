@@ -102,10 +102,14 @@ strong
 h1, h2, h3, h4, h5, h6
   font-weight 400
   line-height 1.25
-  .home .content > &
-    &:first-child
-      margin-top 0rem
-  .home:not(.custom):not(.home) .content > &
+  .home .content > &:first-child
+    margin-top 0 !important
+    margin-bottom 0 !important
+    padding-top 0
+    padding-bottom 0
+    &:first-child + p
+      margin-top 1em
+  .content:not(.custom) > &
     margin-top (0.5rem - $navbarHeight)
     padding-top ($navbarHeight + 1rem)
     margin-bottom 0
