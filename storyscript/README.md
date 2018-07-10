@@ -113,7 +113,7 @@ while foobar
 output = service cmd key:value
 
 # Functions
-function walk distance:number -> string
+function walk distance:number returns string
     # more stuff here
     return "Ok, walked {{distance}}km!"
 
@@ -195,7 +195,7 @@ Functions do not have access to local variables. All variables must be provided 
 ```coffeescript
 n = 1
 
-function incr ->
+function incr
   n increment
 ```
 
@@ -545,7 +545,7 @@ Loops have reserved keywords for ending and continuing loops.
 ## Functions
 
 ```coffeescript
-function getUser id:int -> object
+function getUser id:int returns object
     someone = (sql query:'select * from users where id={{id}} limit 1;')[0]
     someone.contact = fullcontact person email:someone.email
     return someone
@@ -561,17 +561,17 @@ Function must define their inputs and outputs which help with transparency, auto
 Functions **MAY** declare one output and identify it's type. If an output type is used the function **MUST** use `return` and return that type.
 
 ```coffeescript
-function add this:int that:int -> int
+function add this:int that:int returns int
    return this + that
 ```
 
 Functions that do not have an output may not use `return`. An error is thrown if a return is used.
 
 ```coffeescript
-function doThis ->
+function doThis
     # ...
 
-function doThat ->
+function doThat
     return 1
 >>> ERROR: Function must set type of return or not return anything.
 ```
@@ -794,10 +794,10 @@ null type
 /^foobar/ type
 # regexp
 
-function foobar -> int
+function foobar returns int
     return 1
 
-function foobar ->
+function foobar
     # ... no return allowed
 
 foobar type
