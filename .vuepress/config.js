@@ -1,6 +1,6 @@
 module.exports = {
-  title: 'Λ S Y N C Y',
-  description: 'Write smarter code.',
+  title: 'Λsyncy',
+  description: 'Build smarter applications.',
   ga: 'UA-111475156-5',
   themeConfig: {
     algolia: {
