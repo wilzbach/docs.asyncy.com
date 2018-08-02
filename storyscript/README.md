@@ -606,23 +606,26 @@ twitter tweet message:tweet
 
 Containers, commands and argument names are **static grammar** and **interpreted literally**.
 
-## Streaming Service
+## Event-Based Services
 
-Services may stream data and the output is submitted back to Storyscript.
+Services may publish events which run a new block of logic.
 
 ```coffeescript
-service cmd key:value as data
-    # iter service output
+service cmd foo:bar as client
+    when client event foo:bar as data
+        # ...
 ```
 
 A good example of this is streaming Tweets by hashtag.
 
 ```coffeescript
-twitter stream hashtag:'asyncy' as tweet
-    res = machinebox/language data:tweet.message
-    if res.tone == 'good'
-        twitter retweet id:tweet.id
-        twitter like id:tweet.id
+twitter stream as client
+    when client tweet hashtag:'asyncy' as tweet
+        res = machinebox/language data:tweet.message
+        if res.tone == 'good'
+            tweet reply message:'Thank you!'
+            tweet retweet
+            tweet like
 ```
 
 Every new tweet will be passed into the block below in the variable `tweet`.
