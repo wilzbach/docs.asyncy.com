@@ -84,7 +84,7 @@ Storyscripts are stateless. An application may use stateful services but the Sto
 
 ### Is Storyscript compiled or interpreted?
 
-Storyscript is compiled to an logic-tree which is stored in the deployment slug and help in memory in the Asyncy Engine unique to the applications deployment.
+Storyscript is compiled to an logic-tree which is stored in the deployment slug and held in memory in the Asyncy Engine unique to the applications deployment.
 
 This is the current strategy through Beta and may change.
 
