@@ -13,9 +13,9 @@ Let's build a quick application for example. Our goals are to upload, analyse, c
 
 ```coffeescript
 # Registers with Asyncy Server as an endpoint
-when http server hears method:'post' path:'/upload' as clienbt
-    client write 'Success! Processing asynchronously.'
-    client set_status 201
+when http server listen method:'post' path:'/upload' as client
+    client write content:'Success! Processing asynchronously.'
+    client set_status code:201
     client finish
 
     # At this we are running asynchronously
