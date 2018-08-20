@@ -100,7 +100,7 @@ function resolveOpenGroupIndex (route, items) {
     position fixed
     height "calc(100vh - %s)" % $navbarHeight
     width $sidebarWidth
-    overflow scroll
+    overflow auto
   ul
     padding 0
     margin 0

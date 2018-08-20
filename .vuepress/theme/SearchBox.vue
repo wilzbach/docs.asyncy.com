@@ -149,10 +149,10 @@ export default {
     border-radius 0.4em;
     font-size 0.9rem
     line-height 2.5rem
-    padding 0 0.5rem 0 2rem
+    padding 0 1rem
     outline none
     transition all .2s ease
-    background #363636 url(./search.svg) 0.6rem 0.5rem no-repeat
+    background $headerGray
     background-position 0.6rem 49%
     background-size 1rem
     &:focus

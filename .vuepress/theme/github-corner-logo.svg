@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="130mm"
+   height="130mm"
+   viewBox="0 0 130 130"
+   version="1.1"
+   id="svg4494"
+   inkscape:version="0.92.1 r15371"
+   sodipodi:docname="github-corner-logo.svg">
+  <defs
+     id="defs4488" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1"
+     inkscape:cx="75.16592"
+     inkscape:cy="286.52338"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="mm"
+     inkscape:window-width="1920"
+     inkscape:window-height="1027"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     scale-x="1" />
+  <metadata
+     id="metadata4491">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#363636;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-opacity:1"
+       inkscape:transform-center-x="8.1799412"
+       inkscape:transform-center-y="3.980093"
+       d="M 130,0 H 0 l 130,130 z"
+       id="path5054"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc" />
+    <g
+       id="g5041"
+       transform="matrix(0.0334743,0.0334743,-0.0334743,0.0334743,83.667808,15.055312)"
+       style="stroke:none">
+      <path
+         id="path5039"
+         d="m 667.575,684.036 c 29.498,42.729 31.01,91.438 30.54,140.826 -0.57,59.8 -0.111,119.604 -0.05,179.408 0.022,19.207 -0.445,19.731 -19.1,19.729 -78.256,-0.012 -156.512,0 -234.769,-0.01 -17.454,0 -19.02,-1.667 -18.996,-19.188 0.055,-38.141 0.018,-76.282 0.018,-116.467 -13.499,1.382 -27.038,2.831 -40.589,4.143 -66.12,6.401 -123.748,-10.497 -168.359,-62.186 -6.244,-7.236 -11.229,-15.609 -16.383,-23.721 -22.712,-35.758 -44.708,-71.988 -68.222,-107.205 -7.278,-10.897 -18.543,-19.128 -27.959,-28.601 -4.959,-4.988 -9.87,-10.026 -15.707,-15.965 16.315,-10.603 31.94,-7.718 46.736,-5.44 36.94,5.688 61.914,28.566 81.694,58.915 9.845,15.105 20.032,30.51 32.675,43.164 40.49,40.528 89.668,53.605 145.37,40.97 35.929,-8.152 28.961,-4.369 34.328,-37.189 3.585,-21.921 9.63,-42.799 21.561,-61.729 1.978,-3.141 3.617,-6.494 6.054,-10.913 -15.766,-3.111 -30.49,-5.605 -45.016,-8.956 C 353.765,660.331 300.619,637.863 258.56,594.661 213.987,548.872 189.862,494.035 188.184,429.679 186.773,375.6 187.105,321.682 199.351,268.56 c 7.859,-34.098 22.069,-64.649 47.012,-89.985 3.865,-3.928 6.128,-13.232 4.327,-18.359 -17.77,-50.603 -15.334,-100.626 1.086,-150.939 2.823,-8.653 5.798,-10.738 14.439,-8.377 31.695,8.664 58.827,25.018 81.457,48.459 15.443,15.996 29.577,33.263 44.914,50.663 39.151,-28.285 85.473,-29.278 131.177,-31.946 50.531,-2.949 101.104,-2.15 150.76,8.614 19.284,4.182 37.626,12.71 54.768,18.69 20.14,-19.135 40.941,-38.615 61.418,-58.433 C 809.202,19.049 831.105,7.9 855.814,1.3 c 9.458,-2.526 14.257,-0.28 17.46,8.951 16.997,48.973 19.867,97.926 0.771,147.019 -2.784,7.161 -4.695,13.899 1.884,20.188 33.405,31.945 50.024,72.171 53.556,117.249 3.73,47.601 8.206,95.606 5.865,143.117 -4.347,88.167 -48.115,154.374 -124.163,198.896 -40.771,23.87 -85.285,36.961 -131.779,43.855 -2.664,0.394 -5.354,0.662 -7.979,1.232 -1.061,0.234 -1.983,1.116 -3.854,2.226 z"
+         inkscape:connector-curvature="0"
+         style="clip-rule:evenodd;fill:#b7b8c1;fill-opacity:1;fill-rule:evenodd;stroke:none" />
+    </g>
+  </g>
+</svg>

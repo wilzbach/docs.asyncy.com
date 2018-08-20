@@ -1,6 +1,6 @@
 <template>
   <form id="search-form" class="algolia-search-wrapper search-box">
-    <input id="algolia-search-input" class="search-query">
+    <input id="algolia-search-input" class="search-query" placeholder="Search documentation">
   </form>
 </template>
 
