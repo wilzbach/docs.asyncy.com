@@ -232,10 +232,10 @@ function updateMetaTags (meta, current) {
   text-align left
   flex-basis 100%
   flex-grow 1
-  background #111
+  background $headerColor
   color white
-  width 100vw
   padding 40px 30px
+  box-sizing border-box
   h1
     font-size 2.7rem
     margin 0

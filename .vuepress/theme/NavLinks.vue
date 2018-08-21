@@ -13,9 +13,8 @@
       :href="repoLink"
       class="repo-link"
       target="_blank"
-      rel="noopener noreferrer">
+      rel="noopener">
       {{ repoLabel }}
-      <OutboundLink/>
     </a>
   </nav>
 </template>
@@ -117,7 +116,17 @@ export default {
     margin-left 4rem
     line-height 2rem
   .repo-link
-    margin-left 4rem
+    position absolute
+    top 0
+    right 0
+    height 100%
+    color transparent
+    background-image url(./github-corner-logo.svg)
+    background-repeat no-repeat
+    background-size cover
+    width $navbarHeight
+    &:hover
+      color transparent
 
 @media (max-width: $MQMobile)
   .nav-links

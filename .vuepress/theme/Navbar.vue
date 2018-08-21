@@ -55,8 +55,12 @@ export default {
   .links
     font-size 0.9rem
     position absolute
-    right 1.5rem
-    top 0.7rem
+    padding-right 5.5rem
+    padding-top 0.7rem
+    top 0
+    right 0
+    height 100%
+    box-sizing border-box
 
 @media (max-width: $MQMobile)
   .navbar
