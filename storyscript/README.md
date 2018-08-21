@@ -1,31 +1,29 @@
 # Storyscript
 
-Storyscript is a syntax-light high-level programming language that **orchestrates microservices**.
-Application logic is expressive and transparent by requiring **named arguments** in all functions and microservices.
-Built-in **service discovery** provides a powerful environment for finding services and autocomplete to assist with inputs and outputs.
+> A **Goal-oriented Cloud Native Programming Language** that choreographs microservices. By removing unnecessary complexity applications can be written with pure business logic that is intuitive, transparent and syntax-light.
 
 # Table of Contents
 [[toc]]
 
 ## About Storyscript
 
-Storyscript (or Stories for short) focuses on the **application logic** rather than all the *tape and glue* that bind applications together. The underlining services have a standard for **logs, metrics, fail-over, rate-limiting, tracebacks and scaling** which eliminates the need to write it within the application. This cultivates a development environment primed for rapid application development in a production-ready platform.
+Storyscript focuses on the **application logic** rather than all the *tape and glue* that bind applications together. The underlining services have a standard for **logs, metrics, fail-over, rate-limiting, tracebacks and scaling** which eliminates the need to write it within the application. This cultivates a development environment primed for rapid application development in a production-ready platform.
 
 Let's build a quick application for example. Our goals are to upload, analyse, compress and archive a video. A non-trivial application but in a **couple lines of Storyscript** we made it.
 
 ```coffeescript
 # Registers with Asyncy Server as an endpoint
-http-endpoint method:'post' path:'/upload' as request, response
-    response write 'Success! Processing asynchronously.'
-    response set_status 201
-    response finish
+when http server listen method:'post' path:'/upload' as client
+    client write content:'Success! Processing asynchronously.'
+    client set_status code:201
+    client finish
 
     # At this we are running asynchronously
 
     # generate a unique id for this upload
     id = uuid uuid4
 
-    video = request.files.myUploadedVideo
+    video = client.files['myUploadedVideo']
 
     # using https://machinebox.io find the video topics
     topics = machinebox/videobox content:video
@@ -72,8 +70,6 @@ letters[0]
 
 # Object
 fruit = {'apple': 'red', 'banana': 'yellow'}
-fruit.apple
-# red
 fruit['banana']
 # yellow
 
@@ -111,6 +107,11 @@ while foobar
 
 # Services
 output = service cmd key:value
+
+# Event-based service
+slack bot as sb
+    when sb hears pattern:/hello/ as msg
+        msg reply message:'world'
 
 # Functions
 function walk distance:number returns string
@@ -152,6 +153,22 @@ Parentheses MUST be used to produce inline procedures. The innermost Parentheses
 Same level parentheses MAY be called at the same time which done by parallel processing in new threads.
 
 First set of parentheses when assigning variables is optional. E.g., `a = myList length` is the same as `a = (myList length)`.
+
+### Attributes, methods and entries
+
+Objects may have attributes and methods. A Map can *only* have entries.
+
+1. `Object` attributes can **only** be accessed using a period character (`.`) as in `user.name`.
+1. `Object` methods can **only** be accessed using a space character (` `) as in `cart add item:...`.
+1. `Map` entries can **only** be accessed using brackets and strings (`['key']`) as in `some_map['key']`
+
+The example below illustrates how the object `tweet` has attributes and methods.
+
+```coffee
+tweet = twitter tweet text:'Hello world'
+id = tweet.id  # returns the tweet id 123456 of type int.
+tweet like     # calls "like", a method of tweet
+```
 
 ### Mutations
 
@@ -462,6 +479,11 @@ object_multiline = {
 ### Object Methods
 
 ```python
+# access properies
+foobar = {'key': 'value'}
+foobar['key']
+# value
+
 {'a': 1, 'b': 2} length
 # 2
 
@@ -580,11 +602,8 @@ function doThat
 ## Services
 
 ```coffeescript
-# Service with command and arguments Service
+# Call a service with a command and all arguments named
 service cmd key:value foo:bar
-
-# Service without command
-service key:value foo:bar
 
 # Service output assigned to variable
 foobar = service cmd key:value
@@ -637,7 +656,7 @@ Then machine learning will determine if the tone of the tweet's message is good 
 ```coffeescript{1}
 import 'utils/users' as Users
 # Call the function "get" which is defined in the Storyscript
-res = Users.get key:value
+res = Users get key:value
 ```
 
 Import other Storyscripts by using the `import method from file` syntax.
