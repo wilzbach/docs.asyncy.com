@@ -23,7 +23,7 @@ when http server listen method:'post' path:'/upload' as client
     # generate a unique id for this upload
     id = uuid uuid4
 
-    video = client.files.myUploadedVideo
+    video = client.files['myUploadedVideo']
 
     # using https://machinebox.io find the video topics
     topics = machinebox/videobox content:video
@@ -70,8 +70,6 @@ letters[0]
 
 # Object
 fruit = {'apple': 'red', 'banana': 'yellow'}
-fruit.apple
-# red
 fruit['banana']
 # yellow
 
@@ -156,14 +154,15 @@ Same level parentheses MAY be called at the same time which done by parallel pro
 
 First set of parentheses when assigning variables is optional. E.g., `a = myList length` is the same as `a = (myList length)`.
 
-### Accessing object properties and methods
+### Attributes, methods and entries
 
-Objects may have properties and methods that are accessable in the Story. 
+Objects may have attributes and methods. A Map can *only* have entries.
 
-1. Properties can **only** be accessed using a period character (`.`) as in `user.name`.
-1. Methods can **only** be accessed using a space character (` `) as in `cart add item:...`.
+1. `Object` attributes can **only** be accessed using a period character (`.`) as in `user.name`.
+1. `Object` methods can **only** be accessed using a space character (` `) as in `cart add item:...`.
+1. `Map` entries can **only** be accessed using brackets and strings (`['key']`) as in `some_map['key']`
 
-The example below illustrates how the object `tweet` has properites and methods.
+The example below illustrates how the object `tweet` has attributes and methods.
 
 ```coffee
 tweet = twitter tweet text:'Hello world'
@@ -480,6 +479,11 @@ object_multiline = {
 ### Object Methods
 
 ```python
+# access properies
+foobar = {'key': 'value'}
+foobar['key']
+# value
+
 {'a': 1, 'b': 2} length
 # 2
 
