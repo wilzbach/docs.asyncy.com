@@ -13,29 +13,30 @@ Let's build a quick application for example. Our goals are to upload, analyse, c
 
 ```coffeescript
 # Registers with Asyncy Server as an endpoint
-when http server listen method:'post' path:'/upload' as client
-    client write content:'Success! Processing asynchronously.'
-    client set_status code:201
-    client finish
+http server as client
+  when client listen method:'post' path:'/upload' as client
+      client write content:'Success! Processing asynchronously.'
+      client set_status code:201
+      client finish
 
-    # At this we are running asynchronously
+      # At this we are running asynchronously
 
-    # generate a unique id for this upload
-    id = uuid uuid4
+      # generate a unique id for this upload
+      id = uuid uuid4
 
-    video = client.files['myUploadedVideo']
+      video = client.files['myUploadedVideo']
 
-    # using https://machinebox.io find the video topics
-    topics = machinebox/videobox content:video
+      # using https://machinebox.io find the video topics
+      topics = machinebox/videobox find_topics content:video
 
-    # save record in mongodb
-    mongodb insert db:'uploads' data:{'id': id, 'topics': topics}
+      # save record in mongodb
+      mongodb insert db:'uploads' data:{'id': id, 'topics': topics}
 
-    # using https://github.com/xiph/daala let's compress it to h264
-    video = xiph/daala video:video codex:'h264'
+      # using https://github.com/xiph/daala let's compress it to h264
+      video = xiph/daala compress video:video codex:'h264'
 
-    # upload to AWS S3
-    s3 put target:'/video/{{id}}.mp4' data:video
+      # upload to AWS S3
+      aws/s3 put target:'/video/{{id}}.mp4' data:video
 ```
 
 In comparison, the same application would likely take **hundreds of lines of code**, not to mention that each service above includes metrics, logging and scaling out-of-the-box.
@@ -236,6 +237,31 @@ The type-checking includes the following checks:
 1. Type mutation method exists.
 2. Arguments are of the expected type.
 
+
+### Environment Variables
+
+Environment variables are stored in a restricted keyword `app.environment`.
+
+```yaml
+# asyncy.yml
+environment:
+  food: cake
+  FOO: bar
+```
+
+```coffeescript
+if app.environment.food == 'cake':
+    ...
+
+if app.environment.foo == 'bar':
+    ...
+```
+
+::: tip Note
+
+Variables are **ALWAYS** exposed as lower-case attributes.
+
+:::
 
 ### Execution Model
 
