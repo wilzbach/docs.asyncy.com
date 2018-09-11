@@ -550,33 +550,26 @@ if (foo > 0 or cat is not dog) or foobar like /regexp/
 
 ## Looping
 
+Looping through index and/or object keys.
+
 ```coffeescript
 foreach myList as item
-    # more stuff here
+    # ...
 
 foreach myList as index, item
-    # more stuff here
+    # ...
 
 foreach myObject as key
-    # more stuff here
+    # ...
 
 foreach myObject as key, value
-    # more stuff here
+    # ...
 
-while (foobar is true)
-    # more stuff here
+while foobar
+    # ...
 ```
 
-Accessing list index or object keys is handled automatically.
-
-```coffeescript
-n = 5
-res = while (n decrement) as i
-  yield i
-# res = [4, 3, 2, 1]
-```
-
-Data can be collected during loops and passed to an output list.
+Loops have reserved keywords for ending and continuing loops.
 
 ```coffeescript
 foreach myList as item
@@ -584,18 +577,17 @@ foreach myList as item
     if do_end_loop
         end
     if do_skip_to_next_item
-        continue
-    # more stuff here
+        next
+    # ...
 ```
 
-Loops have reserved keywords for ending and continuing loops.
 
 ## Functions
 
 ```coffeescript
-function getUser id:int returns object
-    someone = (sql query:'select * from users where id={{id}} limit 1;')[0]
-    someone.contact = fullcontact person email:someone.email
+function getUser id:int returns map
+    someone = (psql exec query:'select * from users where id={{id}} limit 1;')[0]
+    someone['contact'] = fullcontact person email:someone['email']
     return someone
 
 userA = getUser id:7
@@ -621,7 +613,7 @@ function doThis
 
 function doThat
     return 1
->>> ERROR: Function must set type of return or not return anything.
+>>> ERROR: Function must set type of return.
 ```
 
 
@@ -680,9 +672,13 @@ Then machine learning will determine if the tone of the tweet's message is good 
 ## Importing
 
 ```coffeescript{1}
-import 'utils/users' as Users
+import 'utils/users' as users
 # Call the function "get" which is defined in the Storyscript
-res = Users get key:value
+res = users get key:value
+
+# Or
+import 'utils' as utils
+res = utils/users get key:value
 ```
 
 Import other Storyscripts by using the `import method from file` syntax.
@@ -713,16 +709,6 @@ if something_went_wrong
 
 Use `end story` to stop the story and exit now.
 
-```coffeescript{2}
-if this_data == ''
-    pause story
-```
-
-Pause the Story which will allow user-intervention to inspect and adjust accordingly.
-
-::: warning
-Pausing a Story will close any open thread (http connections, streaming services, etc.).
-:::
 
 ## Exception Handling
 
@@ -755,7 +741,7 @@ Use the `raise` keyword to raise the exception, bubbling up to the next try bloc
 ## Regular Expressions
 
 ```coffeescript
-pattern = /^foo/
+pattern = /^foo/i
 ```
 
 Regular expressions are supported without any special characters of escaping necessary.
@@ -781,19 +767,19 @@ pattern find in:myString
 
 ## Wait and Cron
 
-The [`wait`](https://hub.asyncy.com/service/wait), [`every`](https://hub.asyncy.com/service/every) and [`cron`](https://hub.asyncy.com/service/wait) are services in the Asyncy Hub.
+The [`queue`](https://hub.asyncy.com/service/queue) comes complete with crons and delays.
 
 ```coffeescript
-wait days:5 hours:2
+queue wait days:5 hours:2
     # do this in 5 days and 2 hours
 
-wait date:((date now) + (interval day:1))
+queue wait date:((date now) + (interval day:1))
     # Hello, Tomorrow!
 
-every hour:9
+queue every hour:9
     # daily at 9am do this...
 
-cron tab:'* * * * 9'
+queue cron tab:'* * * * 9'
     # daily at 9am do this...
 ```
 
@@ -869,20 +855,3 @@ Use the method `type` to get the type of a variable as a string.
 ```
 
 Type checking can be applied to any type.
-
-## Async
-::: warning Coming Soon!
-This behavior is not yet developed. Feedback welcome!
-:::
-
-Asynchronous commands provide a way to scale out processes and apply multithreading to data flow.
-
-```coffeescript
-res = async some_long_process cmd
-# more stuff here
-log data:res.data  # will wait until res is complete until data is resolved
-
-# run through all users at the same time, spawning users(N) processes
-async foreach users as user
-  user.profile = fullcontact person email:user.email
-```
