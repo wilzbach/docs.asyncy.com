@@ -5,24 +5,12 @@ next: /storyscript/
 
 # Quick Start
 
-Welcome to Asyncy :tada: We are very excited to have share our product in early Alpha with you.
+Welcome to **Λsyncy Beta** :tada: We are very excited to share our product and receive your feedback.
 
-::: warning Invite Only
-The steps below are for users that have requested access to Asyncy Alpha.
-:::
 
-## Dependencies
+## Gettting started
 
-In order to start Asyncy Alpha you will need the following services installed.
-
-1. :whale: [Docker >=18.02](https://docs.docker.com/install/)
-1. :whale: [Docker Compose >=1.21](https://docs.docker.com/compose/install/)
-1. :smile: Happiness
-
-Now that you have the dependencies installed, let's install Asyncy.
-
-## Install the CLI
-To get started install the Asyncy CLI
+To get started, install our CLI.
 
 ```shell
 brew install asyncy/brew/asyncy
@@ -32,27 +20,50 @@ brew install asyncy/brew/asyncy
 | --- | --- | --- | --- | --- |
 
 
-Then create a new folder for your project.
-
-```shell
-cd ~/my-story
-```
-
-Now, login to Asyncy Alpha.
+Login with GitHub Oauth.
 
 ```shell
 asyncy login
 ```
 
-The login will then bootstrap the Alpha environment by pulling the stack and running it. See all commands by running `asyncy`.
+Next, let's bootstrap from an example project.
 
-:sparkles::cake::sparkles:
+```shell
+git clone https://github.com/asyncy/bootstrap.git && cd bootstrap
+```
 
-## Your first Story
+Now, we can create our first application.
+
+```shell
+asyncy apps:create
+```
+
+Let's deploy!
+
+```shell
+git push asyncy master
+```
+
+:sparkles::cake::sparkles: Congratulation! You have deployed your first Asyncy application!
+
+::: tip See it live!
+
+Checkout the deploy output from your deployment.
+Should something like `https://happy-gilmore-523.asyncyapp.com`
+
+:::
+
+Ready to create your own application? Head over to our []
+
+
+<!-- TODO Feedback and question on how your experience was doing this. -->
+
+
+## Writing your first Story
 
 Storyscript is a new programming language, but do not worry, it's built for developers taking favourite features of many languages. You'll see familiar syntax to Python, Ruby, Clojure and Node.
 
-Let's start with some templates. Run the following command to list all story templates.
+We have created a couple examples that can help you bootstrap your project.
 
 ```shell
 asyncy bootstrap
@@ -61,41 +72,37 @@ asyncy bootstrap
 Let's choose the http endpoint.
 
 ```shell
-asyncy bootstrap http > hello.story
+asyncy bootstrap http > http.story && cat http.story
 ```
-
-This will template out a story that registers with Asyncy Gateway.
-The story looks like this:
 
 ```coffeescript
-when http listen method:'get' path:'/' as client
-    client write message:'Hello world!'
+http server as client
+    when client listen method:'get' path:'/' as request
+        request write content:'Hello world!'
 ```
 
-Next, commit the changes. Anytime you change your stories you need to commit the changes in `git`.
+::: tip Learn more about Storyscript
+
+Checkout our extensive documentation about [Storyscript](/storyscript/)
+
+Read [How to write Stories](https://medium.com/asyncy/how-to-write-stories-a7cffd270225) on Medium (2 minutes)
+
+:::
+
+## Deploy changes
+
+Ready to redeploy your application? We made that easy and intuitive.
+
+Check your changes into `git`.
 
 ```shell
-git add . && git commit -m 'initial commit :tada:'
+git add . && git commit -m 'wrote cool stories :tada:'
 ```
 
 Ship it! :rocket:
 
 ```shell
-asyncy deploy
-```
-> <small>or `git push asyncy master`</small>
-
-You just deployed your first Story on Asyncy. Nice job! :tada:
-
-```shell
-curl http://asyncy.net
-Hello world!
+git push asyncy master
 ```
 
-> <small>The DNS [asyncy.net](http://asyncy.net) points to `localhost` :thumbsup:</small>
-
-Next, checkout our blog post on writing stories.
-
-::: tip Blog
-Read [How to write Stories](https://medium.com/asyncy/how-to-write-stories-a7cffd270225) on Medium (2 minutes)
-:::
+:sparkles::cake::sparkles: Your application is now live!

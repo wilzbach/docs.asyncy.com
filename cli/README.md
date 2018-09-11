@@ -1,11 +1,6 @@
 # CLI
 
-Asyncy CLI is designed to be the core toolkit to interact with Asyncy.
-
-::: warning Alpha
-Asyncy CLI is currently in Alpha stage. We value your feedback and patience.
-To join Alpha please fill out [this form](https://asyncy.click/beta).
-:::
+Asyncy CLI is designed to be the core toolkit to interact with Asyncy. Create applications, update environment and manage application state.
 
 ## Install
 To get started install the Asyncy CLI ([Contribute](https://github.com/asyncy/cli))
@@ -35,9 +30,6 @@ Download the appropriate installer:
 
 </td>
 </tr>
-</table>
-
-<table width="100%">
 <tr>
 <td style="text-align:center" valign="top">
 <h1><img src="../assets/ubuntu-logo.svg" width="40"> Ubuntu 16+</h1>
@@ -49,65 +41,29 @@ sudo snap install asyncy --classic
 <small><a href="https://snapcraft.io/">Snap is available on other Linux OS.</a></small>
 
 </td>
-</tr>
-</table>
-
-<table width="100%">
-<tr>
 <td style="text-align:center" valign="top">
-<h3>Direct from Python</h3>
-
-We strongly recommend using the other installation techniques.
-The CLI is also available via `python-pip`.
+<h1>Direct from Python</h1>
 
 ```shell
-pip install asyncy
+pip install --user asyncy
 ```
+
+We **strongly recommend** using the other installation techniques.
 
 </td>
 </tr>
 </table>
 
-## Getting Started
-
-Then login to your Asyncy account.
-
-```shell
-asyncy login
-Email:
-Password:
-```
-
-Now you are authenticated to use the Asyncy Platform
-
-:sparkles::cake::sparkles:
-
-## Updating
-
-```shell
-asyncy update
-```
-
-Updates the Asyncy Stack with new components.
-
 ## Usage
+
+Get a fill list of CLI commands by calling `asyncy`.
+
 ```shell
-asyncy --help
-Usage: asyncy [OPTIONS] COMMAND [ARGS]...
-
-Options:
-  --help  Show this message and exit.
-
-Commands:
-  ... many commands here ...
+asyncy
 ```
 
 Get more details on each command by applying `--help` to the command.
 
 ## Troubleshooting
 
-```shell
-asyncy support
-```
-
-This command will upload a support bundle to our team to help fix any issues.
+Head over to our [Support](/support/) page or click on the message icon in the bottom right to **chat now**.

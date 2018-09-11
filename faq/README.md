@@ -155,13 +155,13 @@ We plan to offer **highly transparent** pricing for our Asyncy Cloud offering. D
 
 ### Does Asyncy offer support?
 
-> During Alpha/Beta we offer [support](/support/) for **free**. :heart:
+> During Beta we offer [support](/support/) for **free**. :heart:
 
 Asyncy offers a variety of support options ranging from community support to premium support. More details will arrive during Beta.
 
 ### Does Asyncy have a Service Level Agreement (SLA)?
 
-We offer SLA contracts with our premium support license. More details will arrive after Beta.
+After Beta. For sure!
 
 ### What are the vendor lock-in risks?
 
