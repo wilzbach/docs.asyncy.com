@@ -127,7 +127,7 @@ When the Application is deployed all containers are pulled, started and scaled i
 
 ### Does the Asyncy Platform come with a persistent database?
 
-**No**, databases are unfortunately not on-size-fits-all. Yet, it's quite simple to create persistent database or user a database backed by the cloud provider.
+**No**, databases are unfortunately not one-size-fits-all. Yet, it's quite simple to create persistent database or user a database backed by the cloud provider.
 
 ### Can I bring my own database?
 
