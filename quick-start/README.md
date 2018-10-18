@@ -8,9 +8,9 @@ next: /storyscript/
 Welcome to **Λsyncy Beta** :tada: We are very excited to share our product and receive your feedback.
 
 
-## Gettting started
+## Get started
 
-To get started, install our CLI.
+To get started, install our CLI:
 
 ```shell
 brew install asyncy/brew/asyncy
@@ -19,57 +19,41 @@ brew install asyncy/brew/asyncy
 | [More install options](/cli/#install) | <img src="../assets/apple-logo.svg" width="15"> macOS | <img src="../assets/windows-logo.svg" width="15"> Windows | <img src="../assets/ubuntu-logo.svg" width="15"> Ubuntu 16+ | :snake: Python
 | --- | --- | --- | --- | --- |
 
-
-Login with GitHub Oauth.
+Next, login using your GitHub account:
 
 ```shell
 asyncy login
 ```
 
-Next, let's bootstrap from an example project.
+All done! You're all set to create and deploy apps written in Storyscript.
 
-```shell
-git clone https://github.com/asyncy/bootstrap.git && cd bootstrap
-```
-
-Now, we can create our first application.
-
-```shell
-asyncy apps:create
-```
-
-Let's deploy!
-
-```shell
-git push asyncy master
-```
-
-:sparkles::cake::sparkles: Congratulation! You have deployed your first Asyncy application!
-
-::: tip See it live!
-
-Checkout the deploy output from your deployment.
-Should something like `https://happy-gilmore-523.asyncyapp.com`
-
-:::
-
-Ready to create your own application? Head over to our []
-
+If you're having trouble logging in via GitHub, please contact us. 
+<!--todo: update contact us link above--> 
 
 <!-- TODO Feedback and question on how your experience was doing this. -->
 
 
-## Writing your first Story
+## Write your first Story
 
-Storyscript is a new programming language, but do not worry, it's built for developers taking favourite features of many languages. You'll see familiar syntax to Python, Ruby, Clojure and Node.
+Storyscript is a new programming language, but don't worry, it's built for developers taking favourite features of many languages. You'll see familiar syntax to Python, Ruby, Clojure and Node.
 
-We have created a couple examples that can help you bootstrap your project.
+Let's create your first application, to be able to check out the samples which are bundled.
+```shell
+mkdir first_app && cd first_app
+```
+```shell
+asyncy apps:create
+```
+
+Doing so will create `asyncy.yml` in the current directory. This file contains metadata about your new app.
+
+We have created a few examples that can help you bootstrap your project:
 
 ```shell
 asyncy bootstrap
 ```
 
-Let's choose the http endpoint.
+Let's choose the HTTP endpoint:
 
 ```shell
 asyncy bootstrap http > http.story && cat http.story
@@ -77,9 +61,31 @@ asyncy bootstrap http > http.story && cat http.story
 
 ```coffeescript
 http server as client
-    when client listen method:'get' path:'/' as request
-        request write content:'Hello world!'
+    when client listen method: 'get' path: '/' as request
+        request write content: 'Hello world!'
 ```
+
+Let's deploy this story:
+
+```shell
+asyncy deploy
+```
+```text
+Deploying app competent-nash-82...
+√ Done!
+If your story listens to HTTP requests, visit https://competent-nash-82.asyncyapp.com
+```
+
+:sparkles::cake::sparkles: Congratulations! You have just deployed your first Asyncy application!
+
+**Note:** `asyncy deploy` will deploy all the stories in your project at once.
+
+::: tip See it live!
+
+Check the deployment output.
+It will indicate where your story was deployed.
+
+:::
 
 ::: tip Learn more about Storyscript
 
@@ -91,18 +97,11 @@ Read [How to write Stories](https://medium.com/asyncy/how-to-write-stories-a7cf
 
 ## Deploy changes
 
-Ready to redeploy your application? We made that easy and intuitive.
+Ready to redeploy your application? We made it easy and intuitive.
 
-Check your changes into `git`.
-
+Just run the same `deploy` command again:
 ```shell
-git add . && git commit -m 'wrote cool stories :tada:'
-```
-
-Ship it! :rocket:
-
-```shell
-git push asyncy master
-```
+asyncy deploy
+``` 
 
 :sparkles::cake::sparkles: Your application is now live!
