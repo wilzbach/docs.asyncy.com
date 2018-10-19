@@ -27,8 +27,7 @@ asyncy login
 
 All done! You're all set to create and deploy apps written in Storyscript.
 
-If you're having trouble logging in via GitHub, please contact us. 
-<!--todo: update contact us link above--> 
+If you're having trouble logging in via GitHub, please [reach out to us](http://asyncy.click/slack). 
 
 <!-- TODO Feedback and question on how your experience was doing this. -->
 
