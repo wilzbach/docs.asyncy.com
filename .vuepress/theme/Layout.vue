@@ -21,16 +21,13 @@
         <slot name="page-bottom" slot="bottom"/>
       </Page>
     </div>
-    <app-footer class="app-footer" />
+    <a-footer dark class="app-footer" />
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
 import nprogress from 'nprogress'
-
-import AppFooter from '../../node_modules/asyncy-ui-components/dist/AppFooter'
-
 import Navbar from './Navbar.vue'
 import Page from './Page.vue'
 import Sidebar from './Sidebar.vue'
@@ -39,7 +36,7 @@ import { resolveSidebarItems } from './util'
 import throttle from 'lodash.throttle'
 
 export default {
-  components: { Page, Sidebar, Navbar, AppFooter },
+  components: { Page, Sidebar, Navbar },
   data () {
     return {
       isSidebarOpen: false
@@ -217,22 +214,37 @@ function updateMetaTags (meta, current) {
 </script>
 
 <style src="prismjs/themes/prism-tomorrow.css"></style>
-<style src="../../node_modules/asyncy-ui-components/dist/AppFooter.css"></style>
-<style lang="styl">
-@import "../../node_modules/bulma-stylus/stylus/utilities/_all";
-@import "../../node_modules/bulma-stylus/stylus/base/helpers"
-@import "../../node_modules/bulma-stylus/stylus/grid/columns";
-</style>
+<style src="@asyncy/vue/dist/asyncy-vue.css"></style>
 <style src="./styles/theme.styl" lang="stylus"></style>
+<style lang="scss">
+@import "~@asyncy/vue/dist/sass/index.scss";
+
+.app-footer {
+  background-color: color(dark);
+  .signature {
+    margin-bottom: 0;
+  }
+}
+
+.hero {
+  background-color: color(dark);
+}
+
+.navbar {
+  background-color: color(dark);
+  color: color(light);
+}
+
+</style>
+
 <style scoped lang="styl">
-@import './styles/config.styl'
+@import './styles/config.styl';
 
 .hero
   margin-top $navbarHeight
   text-align left
   flex-basis 100%
   flex-grow 1
-  background $headerColor
   color white
   padding 40px 30px
   box-sizing border-box

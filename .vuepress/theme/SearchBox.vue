@@ -143,21 +143,21 @@ export default {
   input
     cursor text
     width 14rem
-    color lighten($textColor, 25%)
+    color #8d90a5
     display inline-block
-    border 1px solid darken($borderColor, 10%)
+    border 1px solid #4f5264
     border-radius 0.4em;
     font-size 0.9rem
     line-height 2.5rem
     padding 0 1rem
     outline none
     transition all .2s ease
-    background $headerGray
+    background #22232b
     background-position 0.6rem 49%
     background-size 1rem
     &:focus
       cursor auto
-      border-color $accentColor
+      border-color #8d90a5
   .suggestions
     background #fff
     width 20rem
