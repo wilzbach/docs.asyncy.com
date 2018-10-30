@@ -1,9 +1,12 @@
 <template>
   <div>
     <div class="hero" v-if="$page.frontmatter.home">
+      <a-stars absolute class="hero-stars" />
       <h1>Documentation</h1>
+      <a-asset class="hero-book" variant="book" />
     </div>
     <div class="theme-container"
+      v-waves
       :class="pageClasses"
       @touchstart="onTouchStart"
       @touchend="onTouchEnd">
@@ -228,6 +231,12 @@ function updateMetaTags (meta, current) {
 
 .hero {
   background-color: color(dark);
+  z-index: 0;
+  .hero-book {
+    @include breakpoint(max m) {
+      display: none !important;
+    }
+  }
 }
 
 .navbar {
@@ -246,21 +255,46 @@ function updateMetaTags (meta, current) {
   flex-basis 100%
   flex-grow 1
   color white
-  padding 40px 30px
+  padding 100px 30px 140px
   box-sizing border-box
+  position relative
   h1
-    font-size 2.7rem
+    font-size 2.2rem
     margin 0
+  .hero-stars
+    z-index 1
+    height 400px
+    max-height 400px !important
+    min-height auto !important
+  .hero-book
+    display block
+    position absolute
+    height 100%
+    width 22rem
+    right 7rem
+    top 0
+    z-index 2
+
 
 .theme-container
   display flex
   position relative
+  background #fff
+  z-index 5
+
+  &.sidebar-open
+    .sidebar.home-sidebar
+      min-width $sidebarWidth
 
   .sidebar.home-sidebar
     margin-top 0
-
+    border-top 1px solid #efefef
+    position sticky
+    top 4rem
   .page
     display inline-block
+    &.home
+      padding-left 0 !important
 
 .app-footer
   z-index 20
