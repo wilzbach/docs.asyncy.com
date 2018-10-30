@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'Github Icon',
+  name: 'GithubIcon',
   props: {
     black: {
       type: Boolean,
