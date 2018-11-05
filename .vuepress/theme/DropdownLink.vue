@@ -54,8 +54,14 @@ export default {
 @import './styles/config.styl'
 
 .dropdown-wrapper
+    height 100%
+    display inline-flex
+    align-items center
+    flex-direction row
+    justify-content flex-start
   .dropdown-title
-    display block
+    display flex
+    align-items center
     &:hover
       border-color transparent
     .arrow
@@ -104,6 +110,8 @@ export default {
 
 @media (max-width: $MQMobile)
   .dropdown-wrapper
+    align-items start
+    flex-direction column
     &.open .dropdown-title
       margin-bottom 0.5rem
     .nav-dropdown
@@ -123,7 +131,6 @@ export default {
 
 @media (min-width: $MQMobile)
   .dropdown-wrapper
-    height 1.8rem
     &:hover .nav-dropdown
       // override the inline style.
       display block !important
@@ -141,13 +148,19 @@ export default {
       max-height calc(100vh - 2.7rem)
       overflow-y auto
       position absolute
-      top 100%
+      top 90%
       right 0
-      background-color #363636
+      background-color #434656
       padding 0.6rem 0
-      border 1px solid #363636
+      border 1px solid #434656
       text-align left
       border-radius 0.25rem
       white-space nowrap
       margin 0
+@media (max-width: $MQMobile)
+  .dropdown-wrapper
+    .nav-dropdown
+      a
+        &:hover
+          color $accentColor
 </style>

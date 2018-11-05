@@ -9,13 +9,16 @@
       <NavLink v-else :item="item"/>
     </div>
     <!-- repo link -->
-    <a v-if="repoLink"
-      :href="repoLink"
-      class="repo-link"
-      target="_blank"
-      rel="noopener">
-      {{ repoLabel }}
-    </a>
+    <div class="nav-item nav-repo">
+      <a v-if="repoLink"
+        :href="repoLink"
+        class="repo-link"
+        target="_blank"
+        rel="noopener">
+        <github-icon class="github" />
+        <github-icon black class="github s" />
+      </a>
+    </div>
   </nav>
 </template>
 
@@ -24,9 +27,10 @@ import OutboundLink from './OutboundLink.vue'
 import DropdownLink from './DropdownLink.vue'
 import { resolveNavLinkItem } from './util'
 import NavLink from './NavLink.vue'
+import GithubIcon from './github.vue'
 
 export default {
-  components: { OutboundLink, NavLink, DropdownLink },
+  components: { OutboundLink, NavLink, DropdownLink, GithubIcon },
   computed: {
     userNav () {
       return this.$themeLocaleConfig.nav || this.$site.themeConfig.nav || []
@@ -101,7 +105,8 @@ export default {
 @import './styles/config.styl'
 
 .nav-links
-  display inline-block
+  display inline-flex
+  height 100%
   a
     font-weight normal
     font-size 1.05em
@@ -112,26 +117,36 @@ export default {
   .nav-item
     cursor pointer
     position relative
-    display inline-block
+    display inline-flex
+    align-items center
     margin-left 4rem
-    line-height 2rem
-  .repo-link
-    position absolute
-    top 0
-    right 0
     height 100%
+  .repo-link
+    position relative
+    margin 0
+    padding 0
     color transparent
-    background-image url(./github-corner-logo.svg)
-    background-repeat no-repeat
-    background-size cover
-    width $navbarHeight
+    width 30px
+    .github
+      // background-image url(./github.svg?color=black)
+      &.s
+        display none
+      background-repeat no-repeat
+      background-size contain
+      display inline-block
+      min-width 24px
+      min-height 24px
     &:hover
       color transparent
 
 @media (max-width: $MQMobile)
   .nav-links
+    height auto
     .nav-item, .repo-link
       margin-left 0
+      height auto
+    .nav-repo
+      display none !important
 
 @media (min-width: $MQMobile)
   .nav-links a

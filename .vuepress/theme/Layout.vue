@@ -1,9 +1,12 @@
 <template>
   <div>
     <div class="hero" v-if="$page.frontmatter.home">
+      <a-stars absolute class="hero-stars" />
       <h1>Documentation</h1>
+      <a-asset class="hero-book" variant="book" />
     </div>
     <div class="theme-container"
+      v-waves
       :class="pageClasses"
       @touchstart="onTouchStart"
       @touchend="onTouchEnd">
@@ -21,16 +24,13 @@
         <slot name="page-bottom" slot="bottom"/>
       </Page>
     </div>
-    <app-footer class="app-footer" />
+    <a-footer dark class="app-footer" />
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
 import nprogress from 'nprogress'
-
-import AppFooter from '../../node_modules/asyncy-ui-components/dist/AppFooter'
-
 import Navbar from './Navbar.vue'
 import Page from './Page.vue'
 import Sidebar from './Sidebar.vue'
@@ -39,7 +39,7 @@ import { resolveSidebarItems } from './util'
 import throttle from 'lodash.throttle'
 
 export default {
-  components: { Page, Sidebar, Navbar, AppFooter },
+  components: { Page, Sidebar, Navbar },
   data () {
     return {
       isSidebarOpen: false
@@ -217,38 +217,83 @@ function updateMetaTags (meta, current) {
 </script>
 
 <style src="prismjs/themes/prism-tomorrow.css"></style>
-<style src="../../node_modules/asyncy-ui-components/dist/AppFooter.css"></style>
-<style lang="styl">
-@import "../../node_modules/bulma-stylus/stylus/utilities/_all";
-@import "../../node_modules/bulma-stylus/stylus/base/helpers"
-@import "../../node_modules/bulma-stylus/stylus/grid/columns";
-</style>
+<style src="@asyncy/vue/dist/asyncy-vue.css"></style>
 <style src="./styles/theme.styl" lang="stylus"></style>
+<style lang="scss">
+@import "~@asyncy/vue/dist/sass/index.scss";
+
+.app-footer {
+  background-color: color(dark);
+  .signature {
+    margin-bottom: 0;
+  }
+}
+
+.hero {
+  background-color: color(dark);
+  z-index: 0;
+  .hero-book {
+    @include breakpoint(max m) {
+      display: none !important;
+    }
+  }
+}
+
+.navbar {
+  background-color: color(dark);
+  color: color(light);
+}
+
+</style>
 <style scoped lang="styl">
-@import './styles/config.styl'
+@import './styles/config.styl';
 
 .hero
   margin-top $navbarHeight
   text-align left
   flex-basis 100%
   flex-grow 1
-  background $headerColor
   color white
-  padding 40px 30px
+  padding 100px 30px 140px
   box-sizing border-box
+  position relative
   h1
-    font-size 2.7rem
+    font-size 2.2rem
     margin 0
+  .hero-stars
+    z-index 1
+    height 400px
+    max-height 400px !important
+    min-height auto !important
+  .hero-book
+    display block
+    position absolute
+    height 100%
+    width 22rem
+    right 7rem
+    top 0
+    z-index 2
+
 
 .theme-container
   display flex
   position relative
+  background #fff
+  z-index 5
+
+  &.sidebar-open
+    .sidebar.home-sidebar
+      min-width $sidebarWidth
 
   .sidebar.home-sidebar
     margin-top 0
-
+    border-top 1px solid #efefef
+    position sticky
+    top 4rem
   .page
     display inline-block
+    &.home
+      padding-left 0 !important
 
 .app-footer
   z-index 20

@@ -23,10 +23,7 @@ body
   left 0
   right 0
   height $navbarHeight
-  background-color $headerColor
-  color #FFF
   box-sizing border-box
-  border-bottom 1px solid $borderColor
 
 .sidebar-mask
   position fixed
@@ -92,17 +89,17 @@ blockquote
   color #999
   border-left .25rem solid #dfe2e5
   margin-left 0
-  padding-left 1rem
+  padding-left 1rem !important
 
 ul, ol
-  padding-left 1.2em
+  padding-left 1.2em !important
 
 strong
   font-weight 600
 
 h1, h2, h3, h4, h5, h6
-  font-weight 400
-  line-height 1.25
+//   font-weight 400
+//   line-height 1.25
   .home .content > &:first-child
     margin-top 0 !important
     margin-bottom 0 !important
@@ -111,11 +108,9 @@ h1, h2, h3, h4, h5, h6
     &:first-child + p
       margin-top 1em
   .content:not(.custom) > &
-    margin-top (0.5rem - $navbarHeight)
     padding-top ($navbarHeight + 1rem)
     margin-bottom 0
     &:first-child
-      margin-top -1.5rem
       margin-bottom 1rem
       + p, + pre, + .custom-block
         margin-top 2rem

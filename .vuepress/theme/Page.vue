@@ -27,8 +27,12 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import Asyncy from '@asyncy/vue'
 import OutboundLink from './OutboundLink.vue'
 import { resolvePage, normalize, outboundRE, endingSlashRE } from './util'
+
+Vue.use(Asyncy)
 
 export default {
   components: { OutboundLink },

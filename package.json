@@ -1,6 +1,6 @@
 {
   "name": "docs.asyncy.com",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Docs for Asyncy",
   "license": "AGPL v3",
   "main": "index.js",
@@ -21,7 +21,8 @@
     "vuepress": "^0.14.4"
   },
   "dependencies": {
-    "asyncy-ui-components": "0.0.14",
-    "bulma-stylus": "^0.4.0"
+    "@asyncy/vue": "^0.1.12",
+    "node-sass": "^4.9.4",
+    "sass-loader": "^7.1.0"
   }
 }
