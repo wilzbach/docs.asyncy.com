@@ -14,7 +14,7 @@ Welcome :wave: Have a look at our Platform below then proceed to Quick Start.
 
 The Asyncy Platform is made up of various components that provide a production-ready, scalable microservice environment out-of-the-box.
 
-[Asyncy Platform →](https://asyncy.com/platform)
+[Asyncy Platform →](https://asyncy.com)
 
 ## Alpha
 

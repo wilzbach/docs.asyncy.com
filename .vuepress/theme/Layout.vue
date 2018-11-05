@@ -245,7 +245,6 @@ function updateMetaTags (meta, current) {
 }
 
 </style>
-
 <style scoped lang="styl">
 @import './styles/config.styl';
 

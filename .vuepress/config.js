@@ -13,14 +13,14 @@ module.exports = {
     editLinks: true,
     sidebarDepth: 1,
     nav: [
-      { text: 'Platform', link: 'https://asyncy.com/platform' },
-      {
-        text: 'More',
-        items: [
-          { text: 'Blog', link: 'https://medium.com/asyncy' },
-          { text: 'Asyncy Hub', link: 'https://hub.asyncy.com' }
-        ]
-      }
+      { text: 'Platform', link: 'https://asyncy.com' },
+      // {
+      //   text: 'More',
+      //   items: [
+      //     { text: 'Blog', link: '//medium.com/asyncy' },
+      //     { text: 'Asyncy Hub', link: '//hub.asyncy.com' }
+      //   ]
+      // }
     ],
     sidebar: [
       '/quick-start/',
