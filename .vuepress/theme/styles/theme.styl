@@ -54,7 +54,7 @@ body
   margin 0 auto
   padding 2rem 2.5rem
   > *:first-child
-    margin-top $navbarHeight
+    // margin-top $navbarHeight
   a:hover
     text-decoration underline
   p.demo
@@ -108,7 +108,7 @@ h1, h2, h3, h4, h5, h6
     &:first-child + p
       margin-top 1em
   .content:not(.custom) > &
-    padding-top ($navbarHeight + 1rem)
+    padding-top ($navbarHeight + 1rem) !important
     margin-bottom 0
     &:first-child
       margin-bottom 1rem
