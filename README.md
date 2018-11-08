@@ -16,9 +16,9 @@ The Asyncy Platform is made up of various components that provide a production-r
 
 [Asyncy Platform →](https://asyncy.com)
 
-## Alpha
+## Beta
 
-We’re currently in private alpha. If you’re interested in joining you can request an invite by filling out a form.
+We’re currently in private beta. If you’re interested in joining you can request an invite by filling out a form.
 
 [Request an invite →](https://asyncy.click/beta-invite)
 
