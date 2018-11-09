@@ -42,7 +42,8 @@ export default {
   components: { Page, Sidebar, Navbar },
   data () {
     return {
-      isSidebarOpen: false
+      isSidebarOpen: false,
+      os: 'unknown'
     }
   },
 
@@ -93,6 +94,7 @@ export default {
   },
 
   created () {
+    this.fetchOperatingSystem()
     if (this.$ssrContext) {
       this.$ssrContext.title = this.$title
       this.$ssrContext.lang = this.$lang
@@ -143,6 +145,19 @@ export default {
   },
 
   methods: {
+    fetchOperatingSystem: function () {
+      if (navigator.appVersion.indexOf("Win") !== -1) {
+        this.$page.os = 'windows'
+      } else if (navigator.appVersion.indexOf("Mac") !== -1) {
+        this.$page.os = 'macos'
+      } else if (navigator.appVersion.indexOf("X11") !== -1) {
+        this.$page.os = 'unix'
+      } else if (navigator.appVersion.indexOf("Linux") !== -1) {
+        this.$page.os = 'linux'
+      } else {
+        this.$page.os = 'unknown'
+      }
+    },
     toggleSidebar (to) {
       this.isSidebarOpen = typeof to === 'boolean' ? to : !this.isSidebarOpen
     },
