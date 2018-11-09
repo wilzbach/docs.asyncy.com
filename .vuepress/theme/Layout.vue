@@ -42,7 +42,8 @@ export default {
   components: { Page, Sidebar, Navbar },
   data () {
     return {
-      isSidebarOpen: false
+      isSidebarOpen: false,
+      os: 'unkown'
     }
   },
 
@@ -92,8 +93,11 @@ export default {
     }
   },
 
-  created () {
+  beforeMount () {
     this.fetchOperatingSystem()
+  },
+
+  created () {
     if (this.$ssrContext) {
       this.$ssrContext.title = this.$title
       this.$ssrContext.lang = this.$lang
@@ -132,6 +136,7 @@ export default {
     })
 
     this.$router.afterEach(() => {
+      this.fetchOperatingSystem()
       nprogress.done()
       this.isSidebarOpen = false
     })
@@ -145,17 +150,7 @@ export default {
 
   methods: {
     fetchOperatingSystem: function () {
-      if (navigator.appVersion.indexOf("Win") !== -1) {
-        this.$page.os = 'windows'
-      } else if (navigator.appVersion.indexOf("Mac") !== -1) {
-        this.$page.os = 'macos'
-      } else if (navigator.appVersion.indexOf("X11") !== -1) {
-        this.$page.os = 'unix'
-      } else if (navigator.appVersion.indexOf("Linux") !== -1) {
-        this.$page.os = 'linux'
-      } else {
-        this.$page.os = 'unknown'
-      }
+      this.$page.os = getOperatingSystem()
     },
     toggleSidebar (to) {
       this.isSidebarOpen = typeof to === 'boolean' ? to : !this.isSidebarOpen
@@ -226,6 +221,20 @@ function updateMetaTags (meta, current) {
       document.head.appendChild(tag)
       return tag
     })
+  }
+}
+
+function getOperatingSystem () {
+  if (navigator.appVersion.indexOf("Win") !== -1) {
+    return 'windows'
+  } else if (navigator.appVersion.indexOf("Mac") !== -1) {
+    return 'macos'
+  } else if (navigator.appVersion.indexOf("X11") !== -1) {
+    return 'unix'
+  } else if (navigator.appVersion.indexOf("Linux") !== -1) {
+    return 'linux'
+  } else {
+    return 'unknown'
   }
 }
 </script>
