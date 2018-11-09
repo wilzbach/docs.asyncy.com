@@ -42,8 +42,7 @@ export default {
   components: { Page, Sidebar, Navbar },
   data () {
     return {
-      isSidebarOpen: false,
-      os: 'unknown'
+      isSidebarOpen: false
     }
   },
 
