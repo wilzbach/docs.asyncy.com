@@ -52,13 +52,13 @@ body
 .content:not(.custom)
   max-width $contentWidth
   margin 0 auto
-  padding 2rem 2.5rem
+  padding 2rem 2.5rem !important
   > *:first-child
     // margin-top $navbarHeight
   a:hover
     text-decoration underline
   p.demo
-    padding 1rem 1.5rem
+    padding 1rem 1.5rem !important
     border 1px solid #ddd
     border-radius 4px
   img
@@ -67,6 +67,33 @@ body
 .content.custom
   padding 0
   margin 0
+
+details summary::-webkit-details-marker,
+details[open] summary::-webkit-details-marker
+  display none
+
+details[open] summary:after
+  transform rotate(90deg)
+
+details summary:after
+  content ''
+  position absolute
+  right 0
+  top calc(50% - .4rem)
+  bottom 0
+  display block
+  height 0
+  width 0
+  border-left .5rem solid #000
+  border-top .3rem solid transparent
+  border-bottom .3rem solid transparent
+  transition all 0.125s ease-out
+details summary
+  list-style none
+  position relative
+  cursor pointer
+  outline none
+  white-space normal
 
 a
   font-weight 500
@@ -82,7 +109,7 @@ kbd
   border solid 0.15rem #ddd
   border-bottom solid 0.25rem #ddd
   border-radius 0.15rem
-  padding 0 0.15em
+  padding 0 0.15em !important
 
 blockquote
   font-size 1.2rem
@@ -150,7 +177,7 @@ hr
 
 table
   border-collapse collapse
-  margin 1rem 0
+  margin 1rem 0 !important
 
 tr
   border-top 1px solid #dfe2e5
@@ -159,7 +186,7 @@ tr
 
 th, td
   border 1px solid #dfe2e5
-  padding .6em 1em
+  padding .6em 1em !important
 
 .custom-layout
   padding-top $navbarHeight
@@ -174,9 +201,9 @@ th, td
         margin-top 1.5rem
         padding-top 0
     .sidebar
-      top 0
+      top 0 !important
     .custom-layout
-      padding-top 0
+      padding-top 0 !important
 
 
 @media (min-width: ($MQMobile + 1px))
