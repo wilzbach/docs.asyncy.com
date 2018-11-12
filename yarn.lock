@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@asyncy/vue@^0.1.12":
-  version "0.1.12"
-  resolved "https://registry.yarnpkg.com/@asyncy/vue/-/vue-0.1.12.tgz#075c5dac9e0894f1bf2b8feb1af908c853e72c59"
-  integrity sha512-bqBcKka8Zrn0HQ6lWyvDDn/HCldLnrOjQY81EdyMP/g2Kf9LKjitIKkmHayTfgdSha6pR0hYW8q5QLOqMMX0EA==
+"@asyncy/vue@^0.1.14":
+  version "0.1.14"
+  resolved "https://registry.yarnpkg.com/@asyncy/vue/-/vue-0.1.14.tgz#3d87a8ebfd07d582f68422b7bebf5fe7711f0de2"
+  integrity sha512-iDZKAbL/Cagrt8XQOu3uqt0m5uEyxsQH1nZeipUnk9kwK+d072hOU+J8D7guA/XIsfbT5uOd6GQK5pkK9okR+g==
   dependencies:
     asyncy-player "^0.0.1"
     nouislider "^12.0.0"
