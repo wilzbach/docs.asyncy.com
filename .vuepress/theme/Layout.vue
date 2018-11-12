@@ -294,7 +294,7 @@ function getOperatingSystem () {
     height 100%
     width 22rem
     right 7rem
-    top 0
+    top 2rem
     z-index 2
 
 
