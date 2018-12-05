@@ -24,7 +24,7 @@ http server as client
       # generate a unique id for this upload
       id = uuid uuid4
 
-      video = client.files['myUploadedVideo']
+      video = client.files['my_uploaded_video']
 
       # using https://machinebox.io find the video topics
       topics = machinebox/videobox find_topics content:video
@@ -52,8 +52,8 @@ Meet Storyscript
 ###
 
 # Strings
-myString = "Hello"
-"Say {{string}}!"  # string formatting
+my_string = "Hello"
+"Say {{my_string}}!"  # string formatting
 # Say Hello!
 
 # Numbers
@@ -100,7 +100,7 @@ else
     # do this
 
 # Loops
-foreach myList as item
+foreach my_list as item
     # more stuff here
 
 while foobar
@@ -123,13 +123,13 @@ walk distance:10
 # Ok, walked 10km!
 
 # Chaining calls
-myService cmd foo:(myString split by:',')
-              bar:(myObject find key:(myList random))
+my_service action foo:(my_string split by:',')
+                  bar:(my_object find key:(my_list random))
 
 # import another story
-import 'folder/file' as MyFunction
+import 'folder/file' as my_function
 # Call a method in that story
-res = MyFunction key:value
+res = my_function key:value
 
 # try and catch
 try
@@ -146,14 +146,14 @@ catch as error
 ### Procedure
 
 ```coffeescript
-output = doThird foo:(doSecond (doFirst ...)) bar:(doSecond ...)
+output = do_third foo:(do_second (do_first ...)) bar:(do_second ...)
 ```
 
 Parentheses MUST be used to produce inline procedures. The innermost Parentheses will be executed first moving out to the outermost.
 
 Same level parentheses MAY be called at the same time which done by parallel processing in new threads.
 
-First set of parentheses when assigning variables is optional. E.g., `a = myList length` is the same as `a = (myList length)`.
+First set of parentheses when assigning variables is optional. E.g., `a = my_list length` is the same as `a = (my_list length)`.
 
 ### Attributes, methods and entries
 
@@ -174,15 +174,15 @@ tweet like     # calls "like", a method of tweet
 ### Mutations
 
 ```coffeescript
-myList = []
-myLlist append item:1  # mutates myList by appending the new item
-(myList == [1])
+my_list = []
+my_list append item:1  # mutates my_list by appending the new item
+(my_list == [1])
 # true
 
-myString = 'abc'
-myString adjust replace:'a' with:'Z'  # does not mutate the original string
+my_string = 'abc'
+my_string adjust replace:'a' with:'Z'  # does not mutate the original string
 # Zbc
-myString
+my_string
 # abc
 ```
 
@@ -283,19 +283,16 @@ A story may [execute in many ways](/faq/#how-are-storyscripts-started).
 1. Asynchronous commands may generate new threads and execute in the same pattern above.
 
 ```coffeescript
-foo = serviceA
-parts = foo split ','
-bar = serviceB name:parts[0]
+translated = service_a translate:my_string to:'spanish'
+parts = translated split ' '
+first_word = service_b name:parts[0]
 ```
 
 The Story above is would perform the following operations:
 
-1. Interface with `serviceA`.
-1. Set `foo` to the results of `serviceA`.
-1. Perform `split` on `foo`.
-1. Set `parts` to the results of the mutation above.
-1. Interface with `serviceB` providing the argument `name` equal to the first item in `parts`.
-1. Set `bar` to the results of `serviceB`.
+1. Translate a string to Spanish
+1. Split the translated string by whitespace
+1. Assign `first_word` to the first word in the `parts` array
 
 
 ## Strings
@@ -456,8 +453,8 @@ list_multiline = [
 ['a', 'c', 'b'] sort dir:'asc'
 # ['a', 'b', 'c']
 
-myList = [1, 2, 3]
-[(myList min), (myList max), (myList sum), (myList reduce)]
+my_list = [1, 2, 3]
+[(my_list min), (my_list max), (my_list sum), (my_list reduce)]
 # [1, 3, 6, -4]
 # also try: average, mean, mode
 ```
@@ -470,7 +467,7 @@ Join a couple method in one line. `((('123' split) apply int) sum) == 6`
 birthday = date year:2018 month:1 day:2
 tomorrow = (date now) + (interval days:1)
 
-range = Range from:(date now) to:tomorrow
+r = range from:(date now) to:tomorrow
 ```
 
 ### Date Methods
@@ -553,16 +550,16 @@ if (foo > 0 or cat is not dog) or foobar like /regexp/
 Looping through index and/or object keys.
 
 ```coffeescript
-foreach myList as item
+foreach my_list as item
     # ...
 
-foreach myList as index, item
+foreach my_list as index, item
     # ...
 
-foreach myObject as key
+foreach my_object as key
     # ...
 
-foreach myObject as key, value
+foreach my_object as key, value
     # ...
 
 while foobar
@@ -572,7 +569,7 @@ while foobar
 Loops have reserved keywords for ending and continuing loops.
 
 ```coffeescript
-foreach myList as item
+foreach my_list as item
     # more stuff here
     if do_end_loop
         end
@@ -585,13 +582,13 @@ foreach myList as item
 ## Functions
 
 ```coffeescript
-function getUser id:int returns map
+function get_user id:int returns map
     someone = (psql exec query:'select * from users where id={{id}} limit 1;')[0]
     someone['contact'] = fullcontact person email:someone['email']
     return someone
 
-userA = getUser id:7
-userB = getUser id:10
+user_a = get_user id:7
+user_b = get_user id:10
 ```
 
 The example above is a function what queries the database and also downloads their FullContact profile.
@@ -608,10 +605,10 @@ function add this:int that:int returns int
 Functions that do not have an output may not use `return`. An error is thrown if a return is used.
 
 ```coffeescript
-function doThis
+function do_this
     # ...
 
-function doThat
+function do_that
     return 1
 >>> ERROR: Function must set type of return.
 ```
