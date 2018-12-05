@@ -285,7 +285,7 @@ A story may [execute in many ways](/faq/#how-are-storyscripts-started).
 ```coffeescript
 translated = service_a translate:my_string to:'spanish'
 parts = translated split ' '
-first_word = service_b name: parts[0]
+first_word = service_b name:parts[0]
 ```
 
 The Story above is would perform the following operations:
