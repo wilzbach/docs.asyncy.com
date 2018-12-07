@@ -28,6 +28,6 @@ We look forward to your contributions to our Open Source platform. :heart:
 
 Open source contributors and developers may use GitHub Issues for bug tracking and reporting.
 
-## Paid support
+## Support
 
-Customers with paid support may contact [support@asyncy.com](mailto:support@asyncy.com) with their work email.
+For prompt response and support, users may contact us directly using the Intercom app at the bottom right corner of the page. For other inquiries around support, please email us at [support@asyncy.com](mailto:support@asyncy.com) with your GitHub username and concern.
