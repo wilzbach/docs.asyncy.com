@@ -36,7 +36,7 @@ http server as client
       video = xiph/daala compress video:video codex:'h264'
 
       # upload to AWS S3
-      aws/s3 put target:'/video/{{id}}.mp4' data:video
+      aws/s3 put target:'/video/{id}.mp4' data:video
 ```
 
 In comparison, the same application would likely take **hundreds of lines of code**, not to mention that each service above includes metrics, logging and scaling out-of-the-box.
@@ -53,7 +53,7 @@ Meet Storyscript
 
 # Strings
 my_string = "Hello"
-"Say {{my_string}}!"  # string formatting
+"Say {my_string}!"  # string formatting
 # Say Hello!
 
 # Numbers
@@ -117,7 +117,7 @@ slack bot as sb
 # Functions
 function walk distance:number returns string
     # more stuff here
-    return "Ok, walked {{distance}}km!"
+    return "Ok, walked {distance}km!"
 
 walk distance:10
 # Ok, walked 10km!
@@ -312,13 +312,13 @@ more_data = """
 # The quick brown fox\njumps over the lazy dog.
 
 where = "Earth"
-data_formatted = "Hello, {{where}}"
+data_formatted = "Hello, {where}"
 # Hello, Earth
 ```
 
 ::: v-pre
 Like many traditional programming languages, Storyscript supports strings as delimited by the `"` or `'` characters.
-Storyscript also supports string interpolation within "-quoted strings, using `{{ variable }}`.
+Storyscript also supports string interpolation within "-quoted strings, using `{ variable }`.
 Single-quoted strings are literal. You may even use interpolation in object keys.
 :::
 
@@ -583,7 +583,7 @@ foreach my_list as item
 
 ```coffeescript
 function get_user id:int returns map
-    someone = (psql exec query:'select * from users where id={{id}} limit 1;')[0]
+    someone = (psql exec query:'select * from users where id={id} limit 1;')[0]
     someone['contact'] = fullcontact person email:someone['email']
     return someone
 
