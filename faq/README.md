@@ -4,39 +4,42 @@
 
 ## General
 
-### What are microservices?
+### What are services?
 
-Microservices are service-oriented self-contained applications that are highly specialized and reusable services.
+Services are service-oriented self-contained applications that are highly specialized and reusable services.
 These services can be algorithms, APIs or specialized functions. In Asyncy world, it's anything you can wrap in a Docker container. Services are independently deployable, scalable and manage their own metrics, logs and other operations.
 
 > <small>Next: [Open Microservice Guide](http://microservice.guide/) &mdash; the open guide and standard for implementation and design of microservices.</small>
 
-### Who maintains the microservices?
+### Who maintains the services?
 
 The project contributors maintain the service. This may be open-source projects, vendor built projects, or private projects.
 
 For example, a Twitter library written in Python can be built in a Docker container and deployed on Asyncy in minutes. The Twitter library is already maintained by the contributors, there is very little extra work to make the service compatible in Asyncy.
 
-### How difficult is it to build my own microservices?
+### How difficult is it to build my own services?
 
-Use any programming language necessary to build your service just like you would a library, package, or application. Learn more about [Building Services](/services/#containers-via-docker).
+Use any programming language necessary to build your service just like you would a library, package, or application.
+
+> <small>Blog: [Building Smarter Microservices](https://blog.asyncy.com/designing-smarter-microservices/) &mdash; A guide for building your first microservice.</small>
 
 ## Storyscript
 
-### Why use a DSL (domain-specific language)?
+### Why did Asyncy design a new programming language?
 
-The top reasons are identity, knowledge, control, and data flow design.
-For a full description, continue to our blog post below.
+In short: programming languages solve problems; there was no language to solve the problem we were tackling. Storyscript's design was about transparency and readability. We designed Storyscript to be familiar by using some of the most loved features in popular programming languages. For a full description, continue to our blog post below.
 
-> <small>Next: [Meet Storyscript](https://medium.com/asyncy)</small>
+> <small>Blog: [Why Storyscript](https://blog.asyncy.com/why-storyscript/)</small>
 
 ### What is Storyscript used for?
 
-Storyscript has many use cases. Below are a couple high-level topics.
+Storyscript is a language for communication between services. It's designed to be feature-focused and goal-oriented. Storyscript is devops+architecture as code (no more configuring Kubernetes or infrastructure).
 
-1. Application Backend (not frontend i.e, replacing HTML, CSS and JavaScript)
+1. Application Backend
 1. BPM (Business Process Management)
+1. Asynchronous long-running logic
 1. Workflows
+1. CI/CD pipelines
 1. Automation (event reactions, monitoring, alerting, etc.)
 
 ### How are Storyscripts started?
@@ -56,18 +59,24 @@ Storyscripts can start in many ways, here are just a couple examples:
 1. Another 3rd party application
 
 
-### How are short container names (aka aliases) handled?
+### What are service aliases?
 
-Services must be registered with the Asyncy Hub to operate on Asyncy. A service may specify aliases which are short title of the service (`twitter/asyncy-twitter-service` can choose `twitter` as an alias). Aliases are **not unique** to a service.
+Services must be registered with the [Asyncy Hub](https://hub.asyncy.com) to be used in Storyscript. A service may specify aliases which are short title of the service (`myteam/asyncy-foobar-service` can choose `foobar` as an alias).
 
 During the service discovery phase developers will select certain services which end up getting tracked in the `asyncy.yml` file.
 
 ```yaml{3,4}
 # asyncy.yml
 services:
-  twitter:
-    image: twitter/asyncy-twitter-service
+  foobar:
+    image: myteam/asyncy-foobar-service
     tag: v1.123
+```
+
+In Storyscript you can call upon this service like this:
+
+```coffeescript
+result = foobar do_this fruit:'apple' animal:'cat'
 ```
 
 ### Can Storyscript run asynchronously?
@@ -84,13 +93,10 @@ Storyscripts are stateless. An application may use stateful services but the Sto
 
 ### Is Storyscript compiled or interpreted?
 
-Storyscript is compiled to an logic-tree which is stored in the deployment slug and held in memory in the Asyncy Engine unique to the applications deployment.
-
-This is the current strategy through Beta and may change.
+Storyscript is interpreted into architecture, it is not compiled into a lower-level language.
 
 ## Asyncy
 
-Questions pertaining to the Asyncy Platform.
 
 ### Is Asyncy a serverless environment?
 
@@ -106,7 +112,7 @@ Asyncy is a **Platform as a Service** (aka PaaS) which has functionality of Back
 
 ### How much Kubernetes or devops experience is required?
 
-Little to none. Asyncy interacts with Kubernetes so you don't need to. It manages scaling, security, routing, networks and much more.
+**None.** Asyncy interacts with Kubernetes so you don't need to. It manages scaling, security, routing, networks and much more.
 
 ### Where are Storyscript's and other code stored?
 
@@ -143,7 +149,7 @@ When the Application is deployed all containers are pulled, started and scaled i
 
 ### Is there a managed Asyncy?
 
-**Yes**, we call this the **Asyncy Cloud**. *Coming soon.*
+**Yes**, we call this the **Asyncy Cloud**. Currently in Private Beta, please contact us for an invitation.
 
 ### What is the pricing for Asyncy Cloud?
 
