@@ -15,19 +15,20 @@ To get started, install our CLI:
 <!-- ```shell
 brew install asyncy/brew/asyncy
 ``` -->
-<!-- 
+<!--
 | <img src="../assets/apple-logo.svg" width="15"> macOS | <img src="../assets/windows-logo.svg" width="15"> Windows | <img src="../assets/ubuntu-logo.svg" width="15"> Ubuntu 16+ | :snake: Python
 | --- | --- | --- | --- | -->
 
 <table width="100%">
 <tr>
-<td style="text-align:center" width="50%" valign="top">
+<td style="text-align:center" width="50%" valign="top" colspan="2">
 <details :open="$page.os === 'macos'">
 <summary><h4><img src="../assets/apple-logo.svg" width="15"> macOS</h4></summary>
 
+<!--
 <a href="https://github.com/asyncy/cli/releases/download/0.0.6/asyncy-0.0.6.pkg" class="button">Download the installer</a>
-
 <small>Also available via Homebrew:</small>
+-->
 
 ```shell
 brew install asyncy/brew/asyncy
@@ -35,6 +36,7 @@ brew install asyncy/brew/asyncy
 
 </details>
 </td>
+<!--
 <td style="text-align:center" width="50%" valign="top">
 <details :open="$page.os === 'windows'">
 <summary><h4><img src="../assets/windows-logo.svg" width="15"> Windows</h4></summary>
@@ -46,6 +48,7 @@ Download the appropriate installer:
 
 </details>
 </td>
+-->
 </tr>
 <tr>
 <td style="text-align:center" width="50%" valign="top">
@@ -83,7 +86,7 @@ asyncy login
 
 All done! You're all set to create and deploy apps written in Storyscript.
 
-If you're having trouble logging in via GitHub, please [reach out to us](http://asyncy.click/slack). 
+If you're having trouble logging in via GitHub, please [reach out to us](http://asyncy.click/slack).
 
 <!-- TODO Feedback and question on how your experience was doing this. -->
 
@@ -157,6 +160,6 @@ Ready to redeploy your application? We made it easy and intuitive.
 Just run the same `deploy` command again:
 ```shell
 asyncy deploy
-``` 
+```
 
 :sparkles::cake::sparkles: Your application is now live!
