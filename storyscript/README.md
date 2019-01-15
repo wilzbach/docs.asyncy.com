@@ -13,35 +13,37 @@ Let's build a quick application for example. Our goals are to upload, analyse, c
 
 ```coffeescript
 # Registers with Asyncy Server as an endpoint
-http server as client
-  when client listen method:'post' path:'/upload' as client
-      client write content:'Success! Processing asynchronously.'
-      client set_status code:201
-      client finish
+when http server listen method:'post' path:'/upload' as client
+    client write content:'Success! Processing asynchronously.'
+    client set_status code:201
+    client finish
 
-      # At this we are running asynchronously
+    # At this we are running asynchronously
 
-      # generate a unique id for this upload
-      id = uuid uuid4
+    # generate a unique id for this upload
+    id = uuid uuid4
 
-      video = client.files['my_uploaded_video']
+    video = client.files['my_uploaded_video']
 
-      # using https://machinebox.io find the video topics
-      topics = machinebox/videobox find_topics content:video
+    # using https://machinebox.io find the video topics
+    topics = machinebox/videobox find_topics content:video
 
-      # save record in mongodb
-      mongodb insert db:'uploads' data:{'id': id, 'topics': topics}
+    # save record in mongodb
+    mongodb insert db:'uploads' data:{'id': id, 'topics': topics}
 
-      # using https://github.com/xiph/daala let's compress it to h264
-      video = xiph/daala compress video:video codex:'h264'
+    # using https://github.com/xiph/daala let's compress it to h264
+    video = xiph/daala compress video:video codex:'h264'
 
-      # upload to AWS S3
-      aws/s3 put target:'/video/{id}.mp4' data:video
+    # upload to AWS S3
+    aws/s3 put target:'/video/{id}.mp4' data:video
 ```
 
 In comparison, the same application would likely take **hundreds of lines of code**, not to mention that each service above includes metrics, logging and scaling out-of-the-box.
 
-<!-- > Blog: [Why Asyncy built a DSL called Storyscript](/) -->
+::: tip Blog
+[Storytelling your first application](https://asyncy.com/blog/story-telling/)
+&mdash; Build a file.io or WeTransfer clone in 10 minutes.
+:::
 
 
 ## Syntax Overview
@@ -54,7 +56,7 @@ Meet Storyscript
 # Strings
 my_string = "Hello"
 "Say {my_string}!"  # string formatting
-# Say Hello!
+# >>> Say Hello!
 
 # Numbers
 one = 1
@@ -67,26 +69,17 @@ bar = false
 # List
 letters = ['a', 'b', 'c']
 letters[0]
-# 1
+# >>> 1
 
 # Object
 fruit = {'apple': 'red', 'banana': 'yellow'}
 fruit['banana']
-# yellow
+# >>> yellow
 
 # Regexp
 pattern = /^foobar/
-('foobar' like pattern)
-# true
-
-# Files (provided by the service File)
-file write path:'/folder/hello.txt' content:'hello world'
-file read path:'/folder/hello.txt'
-# hello world
-
-# Date
-birthday = date year:2018 month:1 day:1
-tomorrow = (date now) + (interval days:1)
+'foobar' like pattern
+# >>> true
 
 # Null
 empty = null
@@ -107,29 +100,25 @@ while foobar
     # more stuff here
 
 # Services
-output = service cmd key:value
+val = service action key:value
+val = owner/repo action key:value
 
 # Event-based service
-slack bot as sb
-    when sb hears pattern:/hello/ as msg
-        msg reply message:'world'
+when slack bot hears pattern:/hello/ as msg
+    msg reply message:'world'
 
 # Functions
 function walk distance:number returns string
     # more stuff here
     return "Ok, walked {distance}km!"
-
 walk distance:10
-# Ok, walked 10km!
+# >>> Ok, walked 10km!
 
 # Chaining calls
 my_service action foo:(my_string split by:',')
                   bar:(my_object find key:(my_list random))
-
-# import another story
-import 'folder/file' as my_function
-# Call a method in that story
-res = my_function key:value
+'abc' uppercase split
+# >>> ['A', 'B', 'C']
 
 # try and catch
 try
@@ -186,9 +175,9 @@ my_string
 # abc
 ```
 
-A variable MAY be mutated by it's type methods.
-
-The comment, `Mutating Methods`, is added to examples below that identify methods as mutating the variable. This indicates a method that will mutate the variable and not requires reassignment.
+::: tip Learn more
+For a full list of type mutations see the [Asyncy Hub](https://hub.asyncy.com)
+:::
 
 #### Chaining Mutations
 
@@ -196,11 +185,11 @@ Mutations can be chained to help reduce compleixty.
 
 ```coffeescript
 'abc' uppercase split
->>> ['A', 'B', 'C']
+# >>> ['A', 'B', 'C']
 
 'abc' uppercase
       then split
->>> ['A', 'B', 'C']
+# >>> ['A', 'B', 'C']
 ```
 
 ### Variable Scope
@@ -344,60 +333,12 @@ The indentation level that begins the block is maintained throughout, so you can
 
 Double-quoted block strings, like other double-quoted strings, allow interpolation.
 
-### String Methods
-
-```coffeescript
-"abc" length
-# 3
-
-"abc" adjust replace:'b' with:'Z'
-# aZc
-
-"foo bar" capitalize
-# Foo Bar
-
-"foo bar" capitalize words:1
-# Foo bar
-
-"a,b,c" split by:','
-# ['a', 'b', 'c']
-
-"abc" uppercase
-# ABC
-
-"ABC" lowercase
-# abc
-```
-
 ## Numbers
 
 ```coffeescript
 int = 1
 number = 1.2
 ```
-
-### Number Methods
-
-```coffeescript
-1 is_odd
-# true
-
-2 is_even
-# true
-
--1 absolute
-# 1
-
-# Mutating Methods
-
-n = 1
-n decrement
-# 0
-
-n increment
-# 1
-```
-
 
 ## Comments
 
@@ -436,72 +377,6 @@ list_multiline = [
 ]
 ```
 
-### List Methods
-
-```python
-['a', 'b', 'c'] length
-# 3
-
-['a', 'b', 'c'] join by:':'
-# a:b:c
-
-['a', 'b', 'c'] index of:'b'
-# 1
-
-['a', 'b', 'c'] random
-# c
-
-# Mutating Methods
-
-['a', 'b', 'c'] reverse
-# ['c', 'b', 'a']
-
-['a', 'b', 'c'] shift from:'left'
-# a
-# the list becomes ['b', 'c']
-
-['1', '2', '3'] apply method:int
-# [1, 2, 3]
-
-['a', 'c', 'b'] sort dir:'asc'
-# ['a', 'b', 'c']
-
-my_list = [1, 2, 3]
-[(my_list min), (my_list max), (my_list sum), (my_list reduce)]
-# [1, 3, 6, -4]
-# also try: average, mean, mode
-```
-
-Join a couple method in one line. `((('123' split) apply int) sum) == 6`
-
-## Date, Internals and Ranges
-
-```coffeescript
-birthday = date year:2018 month:1 day:2
-tomorrow = (date now) + (interval days:1)
-
-r = range from:(date now) to:tomorrow
-```
-
-### Date Methods
-
-```coffeescript
-[bday year, bday month, bday day, bday hour, bday minute, bday second]
-# [2018, 1, 2, 17, 32, 18]
-
-bday format to:'YYYY-mm-dd'
-# 2018-01-02
-```
-
-### Range Methods
-
-```coffeescript
-range days round:'down' # number of days within the range
-# also try: year, months, days, hours, minutes, seconds
-# round: down, nearest, up
-```
-
-
 ## Objects
 
 ```coffeescript
@@ -511,36 +386,6 @@ object_multiline = {
   'apples': 'oranges'
 }
 ```
-
-### Object Methods
-
-```python
-# access properies
-foobar = {'key': 'value'}
-foobar['key']
-# value
-
-{'a': 1, 'b': 2} length
-# 2
-
-{'a': 1, 'b': 2} keys
-# ['a', 'b']
-
-{'a': 1, 'b': 2} values
-# [1, 2]
-
-{'a': 1, 'b': 2} items
-# [['a', 1], ['b', 2]]
-
-# Mutating Methods
-
-obj = {'a': 1, 'b': 2}
-obj pop key:'a'
-# 1
-obj
-# {'b': 2}
-```
-
 
 ## Conditions
 
@@ -629,9 +474,12 @@ function do_that
 
 ## Services
 
+A service is a containerize microservice that is registered in the [Asyncy Hub](https://hub.asyncy.com). Discover hundreds of services in the Hub or build your own in any language, submit to the Asyncy Hub and call it in your Storyscript like this:
+
 ```coffeescript
 # Call a service with a command and all arguments named
 service cmd key:value foo:bar
+org/repo cmd key:value foo:bar
 
 # Service output assigned to variable
 foobar = service cmd key:value
@@ -642,8 +490,6 @@ service cmd key:value
 ```
 
 In Storyscript, the syntax to run a service appears natural and arguments are named for transparency.
-
-These services may be Docker containers that expose commands and define their interface. More details in [Services](/services/)
 
 ```coffeescript
 tweet = "hello"
@@ -678,37 +524,12 @@ twitter stream as client
 Every new tweet will be passed into the block below in the variable `tweet`.
 Then machine learning will determine if the tone of the tweet's message is good or bad. The streaming service will wait for new tweets until the story is ended.
 
-
-## Importing
-
-```coffeescript{1}
-import 'utils/users' as users
-# Call the function "get" which is defined in the Storyscript
-res = users get key:value
-
-# Or
-import 'utils' as utils
-res = utils/users get key:value
-```
-
-Import other Storyscripts by using the `import method from file` syntax.
-
-The file path is **relative** to the Storyscript where the `import`. Use `/folder/...` for importing from the project root or `../folder` to import from the parent folder.
-
-::: tip
-The `.story` is optional. `/stories/users.story` is equivalent to `/stories/users`.
-:::
+You can also use a shorthand syntax for single event streaming.
 
 ```coffeescript
-# foo.story
-import 'bar' as Bar
-
-# bar.story
-import 'foo' as Foo
+when slack bot hears pattern:/hello/ as message
+    message reply content:'world'
 ```
-
-Stories MAY recursively import other stories, as seen above.
-
 
 ## Operations
 
@@ -760,50 +581,11 @@ Regular expressions are supported without any special characters of escaping nec
 
 ```coffeescript
 pattern = /(?P<key>\w):(?P<value>\w)/
-myString = 'foo:bar'
-
-pattern matches str:myString
-# true
-
-pattern find in:myString
-# {"key": "foo", "value": "bar"}
-
-/(\w+)/ find in:'foo bar' many:true
-# ['foo', 'bar']
-
-/(?P<name>\w+)/ find in:'foo bar' many:true
-# [{'name': 'foo'}, {'name': 'bar'}]
 ```
 
-## Wait and Cron
-
-The [`queue`](https://hub.asyncy.com/service/queue) comes complete with crons and delays.
-
-```coffeescript
-queue wait days:5 hours:2
-    # do this in 5 days and 2 hours
-
-queue wait date:((date now) + (interval day:1))
-    # Hello, Tomorrow!
-
-queue every hour:9
-    # daily at 9am do this...
-
-queue cron tab:'* * * * 9'
-    # daily at 9am do this...
-```
-
-## Files
-
-Asyncy provides access to a shared volume, unique to the Application. This volume should be treated as an ephemeral file storage, where contents are deleted at the end of the Story.
-
-[`file`](https://hub.asyncy.com/service/file) is a service in the Asyncy Hub.
-
-```coffeescript
-file write path:'/folder/hello.txt' content:'hello world'
-file read path:'/folder/hello.txt'
-# hello world
-```
+::: tip Info
+Learn the methods you can call with regular expression in the [Asyncy Hub](https://hub.asyncy.com)
+:::
 
 ## Types
 
