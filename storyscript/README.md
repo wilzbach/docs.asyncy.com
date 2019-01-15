@@ -190,6 +190,19 @@ A variable MAY be mutated by it's type methods.
 
 The comment, `Mutating Methods`, is added to examples below that identify methods as mutating the variable. This indicates a method that will mutate the variable and not requires reassignment.
 
+#### Chaining Mutations
+
+Mutations can be chained to help reduce compleixty.
+
+```coffeescript
+'abc' uppercase split
+>>> ['A', 'B', 'C']
+
+'abc' uppercase
+      then split
+>>> ['A', 'B', 'C']
+```
+
 ### Variable Scope
 
 Variables are not global.
