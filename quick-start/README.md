@@ -149,8 +149,6 @@ It will indicate where your story was deployed.
 
 Checkout our extensive documentation about [Storyscript](/storyscript/)
 
-Read [How to write Stories](https://medium.com/asyncy/how-to-write-stories-a7cffd270225) on Medium (2 minutes)
-
 :::
 
 ## Deploy changes
@@ -163,3 +161,10 @@ asyncy deploy
 ```
 
 :sparkles::cake::sparkles: Your application is now live!
+
+
+::: tip Next
+
+Deploy a simple [file upload and download story](https://asyncy.com/blog/story-telling/).
+
+:::
