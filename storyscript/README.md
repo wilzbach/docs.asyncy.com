@@ -186,8 +186,8 @@ num decrement  # returns 9. Note that num is not changed
 arr = [1, 2, 3, 4, 5]
 arr index of: 5  # returns the index of an element, 4 in this case
 arr length  # returns the length of the array, 5 in this case
-arr append element: 6  # adds 6 to the end of the array
-arr prepend element: 1  # adds 1 to the start of the array
+arr append item: 6  # adds 6 to the end of the array
+arr prepend item: 1  # adds 1 to the start of the array
 arr random  # returns a random element from this array
 arr reverse  # reverses the array in-place
 arr sort  # sorts the array in an ascending fashion
