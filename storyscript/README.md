@@ -172,7 +172,7 @@ str replace pattern: /ab/ by: 'AB'  # same as above
 str split by: '.'  # returns an array by splitting the string with the delimiter
 str uppercase  # returns a string where all characters are upper cased
 str lowercase  # returns a string where all characters are lower cased
-str capitalize  # return a string where each word is capitalized 'foo bar' becomes 'Foo Bar'
+str capitalize  # returns a string where the first letter of each word is capitalized (eg: 'jane smith' becomes 'Jane Smith')
 
 # Numbers
 num = 10
@@ -194,7 +194,7 @@ arr sort  # sorts the array in an ascending fashion
 arr min  # returns the lowest of the elements in this array (if it contains numbers)
 arr max  # returns the largest of the elements in this array (if it contains numbers)
 arr sum  # returns the sum of all the elements in this array (if it contains numbers)
-arr unique  # reduces the array to only unique items
+arr unique  # reduces the array to contain only unique items
 arr contains item: 3  # returns true if 3 is present, false otherwise
 arr remove item: 3  # removes the item specified from the array
 
@@ -203,7 +203,7 @@ m = {'a': 1, 'b': 2}
 m size  # returns the size of the map, 2 in this case
 m keys  # returns an array of all keys
 m values  # returns an array of all values
-m flatten  # return a list of key, value pairs, e.g., [ ['a', 1], ['b', 2] ]
+m flatten  # returns a list of key/value pairs (eg: [['a', 1], ['b', 2]])
 m pop key: 'a'  # removes and returns the value for key 'a'
 m get key: 'b'  # returns the value for the key 'b'
 m contains key: 'c'  # returns true if the key 'c' exists in the map, false otherwise
