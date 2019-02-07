@@ -161,23 +161,53 @@ tweet like     # calls "like", a method of tweet
 ```
 
 ### Mutations
-
+Mutations refer to running operations on the built in data types, such as strings, arrays, maps, and numbers.
 ```coffeescript
-my_list = []
-my_list append item:1  # mutates my_list by appending the new item
-(my_list == [1])
-# true
+# Strings
+# Note: None of the string operations below change the original string in any form
+str = ''
+str length  # returns the number of UTF-8 characters
+str replace pattern: 'ab' by: 'AB'  # returns a string by replacing 'ab' with 'AB'
+str replace pattern: /ab/ by: 'AB'  # same as above
+str split by: '.'  # returns an array by splitting the string with the delimiter
+str uppercase  # returns a string where all characters are upper cased
+str lowercase  # returns a string where all characters are lower cased
+str capitalize  # returns a string where the first letter of each word is capitalized (eg: 'jane smith' becomes 'Jane Smith')
 
-my_string = 'abc'
-my_string adjust replace:'a' with:'Z'  # does not mutate the original string
-# Zbc
-my_string
-# abc
+# Numbers
+num = 10
+num is_odd  # returns false
+num is_even  # returns true
+num absolute  # returns the absolute value (if num was -1, this would return 1)
+num increment  # returns 11. Note that num is not changed
+num decrement  # returns 9. Note that num is not changed
+
+# Arrays
+arr = [1, 2, 3, 4, 5]
+arr index of: 5  # returns the index of an element, 4 in this case
+arr length  # returns the length of the array, 5 in this case
+arr append item: 6  # adds 6 to the end of the array
+arr prepend item: 1  # adds 1 to the start of the array
+arr random  # returns a random element from this array
+arr reverse  # reverses the array in-place
+arr sort  # sorts the array in an ascending fashion
+arr min  # returns the lowest of the elements in this array (if it contains numbers)
+arr max  # returns the largest of the elements in this array (if it contains numbers)
+arr sum  # returns the sum of all the elements in this array (if it contains numbers)
+arr unique  # reduces the array to contain only unique items
+arr contains item: 3  # returns true if 3 is present, false otherwise
+arr remove item: 3  # removes the item specified from the array
+
+# Maps
+m = {'a': 1, 'b': 2}
+m size  # returns the size of the map, 2 in this case
+m keys  # returns an array of all keys
+m values  # returns an array of all values
+m flatten  # returns a list of key/value pairs (eg: [['a', 1], ['b', 2]])
+m pop key: 'a'  # removes and returns the value for key 'a'
+m get key: 'b'  # returns the value for the key 'b'
+m contains key: 'c'  # returns true if the key 'c' exists in the map, false otherwise
 ```
-
-::: tip Learn more
-For a full list of type mutations see the [Asyncy Hub](https://hub.asyncy.com)
-:::
 
 #### Chaining Mutations
 
