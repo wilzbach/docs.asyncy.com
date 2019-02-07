@@ -206,10 +206,6 @@ m get key: 'b'  # returns the value for the key 'b'
 m contains key: 'c'  # returns true if the key 'c' exists in the map, false otherwise
 ```
 
-::: tip Learn more
-For a full list of type mutations see the [Asyncy Hub](https://hub.asyncy.com)
-:::
-
 #### Chaining Mutations
 
 Mutations can be chained to help reduce compleixty.
