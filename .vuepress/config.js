@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'Λsyncy',
+  title: 'Asyncy',
   description: 'Build smarter applications.',
   ga: 'UA-111475156-5',
   themeConfig: {

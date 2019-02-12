@@ -5,7 +5,7 @@ next: /storyscript/
 
 # Quick Start
 
-Welcome to **Λsyncy Beta** :tada: We are very excited to share our product and receive your feedback.
+Welcome to **Asyncy Beta** :tada: We are very excited to share our product and receive your feedback.
 
 
 ## Get started
