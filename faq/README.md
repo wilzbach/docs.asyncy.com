@@ -169,6 +169,18 @@ Asyncy offers a variety of support options ranging from community support to pre
 
 After Beta. For sure!
 
+### What are the limitations?
+During Beta, we have the following limitations:
+1. You may create and run 5 apps on the Asyncy Cloud for free
+2. Each app may make use of a maximum of 15 services
+3. Each service is allocated a maximum of 100 MiB of memory
+4. Each app may make use of a maximum of 15 persistent volumes
+5. Each volume is automatically sized to 100 MiB of data
+
+> If any of these parameters are violated during runtime or deployment,
+> your app will be terminated. If your app is terminated, run `$ asyncy logs`
+> to know the cause of termination. Please contact our team to increase limits during Beta.
+
 ### What are the vendor lock-in risks?
 
 All technology has a level of vendor lock-in, it's unavoidable. Asyncy is focused at building an open platform to reduce vendor lock-in concerns as much as possible. Our core mission depends on our ability to reduce vendor lock-in.
