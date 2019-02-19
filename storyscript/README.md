@@ -677,3 +677,72 @@ Use the method `type` to get the type of a variable as a string.
 ```
 
 Type checking can be applied to any type.
+
+## Application Information
+
+Storyscript has access to application level information under the keyword `app`, containing the following details:
+
+```coffeescript
+app.secrets   # map of environment variables set via the CLI (more below)
+app.hostname  # the full http dns hostname where your application is located
+              # e.g, "smart-einstein-1235.asyncyapp.com"
+app.version   # the release number of the application (see "asyncy releases list" for releases)
+              # e.g, "v1"
+```
+
+### Secrets (aka environment variables, configuration)
+
+There are two types of secrets **Storyscript Secrets**, which may be used in your Storyscript only, and **Service Secrets**, which are provided to the specific service during runtime.
+Use the Asyncy CLI to set, list, update, and delete secrets.
+
+#### Storyscript Secrets
+
+1. Create a secret
+```shell
+asyncy config set foo=bar
+```
+
+2. Access the secret in your Storyscript
+```coffeescript
+# Your Storyscript
+if app.secrets.foo == 'bar'
+   ...
+```
+
+::: tip Note
+Storyscript Secrets are `read-only`.
+:::
+
+#### Service Secrets
+
+To set secrets for services, prepend the varible name with the service name, like this example:
+
+```shell
+asyncy config set github.client_secret=some-secret-value
+```
+
+The value `client_secret` will be set to `some-secret-value` **only** for the service `github`.
+
+::: tip Note
+Service Secrets are `read-only` and **only** readable by the service they belong to. They cannot be accessed in your Storyscript or by any other service.
+When the service is started by Asyncy it will be assigned the secrets as environment varibles at runtime.
+:::
+
+#### Listing Secrets
+
+Retrieve a list of secrets in your application call the following command:
+
+```shell
+asyncy config list
+```
+
+The result will organize the secrets in the following way:
+
+```coffeescript
+# Storyscript variables:
+FOO: bar
+
+# Service variables:
+github
+  CLIENT_SECRET: some-secret-value
+```
