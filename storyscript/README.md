@@ -695,6 +695,10 @@ app.version   # the release number of the application (see "asyncy releases list
 There are two types of secrets **Storyscript Secrets**, which may be used in your Storyscript only, and **Service Secrets**, which are provided to the specific service during runtime.
 Use the Asyncy CLI to set, list, update, and delete secrets.
 
+::: tip Note
+Secrets are `read-only` and **case-insensative**. The secrets `foobar`, `FOOBAR` and `FooBar` all return the same value.
+:::
+
 #### Storyscript Secrets
 
 1. Create a secret
@@ -709,10 +713,6 @@ if app.secrets.foo == 'bar'
    ...
 ```
 
-::: tip Note
-Storyscript Secrets are `read-only`.
-:::
-
 #### Service Secrets
 
 To set secrets for services, prepend the varible name with the service name, like this example:
@@ -724,7 +724,7 @@ asyncy config set github.client_secret=some-secret-value
 The value `client_secret` will be set to `some-secret-value` **only** for the service `github`.
 
 ::: tip Note
-Service Secrets are `read-only` and **only** readable by the service they belong to. They cannot be accessed in your Storyscript or by any other service.
+Service Secrets are **only** readable by the service they belong to. They cannot be accessed in your Storyscript or by any other service.
 When the service is started by Asyncy it will be assigned the secrets as environment varibles at runtime.
 :::
 
