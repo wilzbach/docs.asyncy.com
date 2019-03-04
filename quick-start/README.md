@@ -100,7 +100,7 @@ Let's create your first application, to be able to check out the samples which a
 mkdir first_app && cd first_app
 ```
 ```shell
-asyncy apps:create
+asyncy apps create
 ```
 
 Doing so will create `asyncy.yml` in the current directory. This file contains metadata about your new app.
@@ -129,8 +129,12 @@ Let's deploy this story:
 asyncy deploy
 ```
 ```text
-Deploying app competent-nash-82...
-√ Done!
+Compiling Stories...
+Deploying app competent-nash-82.asyncyapp.com... |
+√ Version 1 of your app has been queued for deployment
+
+Waiting for deployment to complete... |
+√ Deployed successfully!
 If your story listens to HTTP requests, visit https://competent-nash-82.asyncyapp.com
 ```
 
