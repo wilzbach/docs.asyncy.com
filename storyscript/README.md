@@ -111,7 +111,7 @@ when slack bot hears pattern:/hello/ as msg
 function walk distance:number returns string
     # more stuff here
     return "Ok, walked {distance}km!"
-walk distance:10
+walk(distance:10)
 # >>> Ok, walked 10km!
 
 # Chaining calls
@@ -211,7 +211,7 @@ m contains key: 'c'  # returns true if the key 'c' exists in the map, false othe
 
 #### Chaining Mutations
 
-Mutations can be chained to help reduce compleixty.
+Mutations can be chained to help reduce complexity.
 
 ```coffeescript
 'abc' uppercase split
@@ -301,7 +301,7 @@ Storyscripts are executed by an interpretation engine (not compiled to C or Java
 
 #### Deployment
 
-1. All dependancies are gathered and prepared for execution.
+1. All dependencies are gathered and prepared for execution.
 1. The Asyncy Engine is prepared with the Stories as first-class assets for swift execution.
 1. Every Storyscript is executed allowing them to register with the gateway, cron, etc.
 
@@ -385,9 +385,7 @@ foo = "bar"  # end of line comment
 ```
 
 In Storyscript, comments are denoted by the `#` character to the end of a line,
-or from `###` to the next appearance of `###`.
-Comments are ignored by the compiler, though the compiler makes its best effort at reinserting your comments into the output JavaScript after compilation.
-
+or from `###` to the end of the line of the next appearance of `###`.
 
 ## Boolean
 
@@ -427,7 +425,7 @@ else if foo > bar
 else
   # more stuff here
 
-if (foo > 0 or cat is not dog) or foobar like /regexp/
+if (foo > 0 and cat == dog) or foobar contains item: /regexp/
   # more stuff here
 ```
 
@@ -475,8 +473,8 @@ function get_user id:int returns map
     someone['contact'] = fullcontact person email:someone['email']
     return someone
 
-user_a = get_user id:7
-user_b = get_user id:10
+user_a = get_user(id:7)
+user_b = get_user(id:10)
 ```
 
 The example above is a function what queries the database and also downloads their FullContact profile.
@@ -554,12 +552,23 @@ twitter stream as client
 Every new tweet will be passed into the block below in the variable `tweet`.
 Then machine learning will determine if the tone of the tweet's message is good or bad. The streaming service will wait for new tweets until the story is ended.
 
-You can also use a shorthand syntax for single event streaming.
+If no output is defined, it will be implicitly default to the name of the command. Furthermore, if only a command name is used in `when` blocks, it will use the `output` of its parent as subscribing service.
+This allows this to shorten the example from above:
 
 ```coffeescript
-when slack bot hears pattern:/hello/ as message
-    message reply content:'world'
+twitter stream
+    when tweet hashtag:'asyncy'
+        res = machinebox/language data:tweet.message
+        if res.tone == 'good'
+            tweet reply message:'Thank you!'
+            tweet retweet
+            tweet like
 ```
+
+Note that the service call `twitter stream` has an implicit output of `stream`.
+In the `when` block this output gets automatically inferred to `when <stream> tweet hashtag: 'asyncy'`.
+As this a service call as well, it has an implicit output too (`tweet`) and
+thus `tweet.message` gets correctly resolved.
 
 ## Operations
 
@@ -593,10 +602,10 @@ try
   # more stuff here
 catch as error
   # more stuff here
-  raise
+  throw
 ```
 
-Use the `raise` keyword to raise the exception, bubbling up to the next try block or stopping the story.
+Use the `throw` keyword to raise the exception, bubbling up to the next try block or stopping the story.
 
 
 ## Regular Expressions
