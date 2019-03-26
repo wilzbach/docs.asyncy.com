@@ -1,141 +1,94 @@
 # Storyscript
 
-> A **Goal-oriented Cloud Native Programming Language** that choreographs microservices. By removing unnecessary complexity applications can be written with pure business logic that is intuitive, transparent and syntax-light.
+The language for Application Storytelling that strings together microservices and functions in a serverless way. It significantly reduces unnecessary complexities and amplifys the developer to build applications in a fraction of the time by focusing on the story of data.
+
+*Applications are stories of data.* What makes your application unique is how you move data from point A to Z. This flow we call Storytelling and we designed Storyscript to describe this flow in a descriptive, service-oriented programming language.
 
 # Table of Contents
 [[toc]]
 
 ## About Storyscript
 
-Storyscript focuses on the **application logic** rather than all the *tape and glue* that bind applications together. The underlining services have a standard for **logs, metrics, fail-over, rate-limiting, tracebacks and scaling** which eliminates the need to write it within the application. This cultivates a development environment primed for rapid application development in a production-ready platform.
+The developer industry, and world as a whole, is becoming more and more integrated. Businesses may rely on hundreds of SaaS tools to power their business; their business technology as well. Yet, there is no simple way to hook service A to service B programmically. There are many products that aim to solve this yet they all run on propriatary software, expose graphical interfaces, and aim for a different audience than developers.
 
-Let's build a quick application for example. Our goals are to upload, analyse, compress and archive a video. A non-trivial application but in a **couple lines of Storyscript** we made it.
+Storyscript is a programming language. An open source developer-first tool to build powerful cloud native applications. It runs on Asyncy Runtime, another open source developer-first tool that generates a robust cloud archecture out-of-the-box.
 
-```coffeescript
-# Registers with Asyncy Server as an endpoint
-when http server listen method:'post' path:'/upload' as client
-    client write content:'Success! Processing asynchronously.'
-    client set_status code:201
-    client finish
-
-    # At this we are running asynchronously
-
-    # generate a unique id for this upload
-    id = uuid uuid4
-
-    video = client.files['my_uploaded_video']
-
-    # using https://machinebox.io find the video topics
-    topics = machinebox/videobox find_topics content:video
-
-    # save record in mongodb
-    mongodb insert db:'uploads' data:{'id': id, 'topics': topics}
-
-    # using https://github.com/xiph/daala let's compress it to h264
-    video = xiph/daala compress video:video codex:'h264'
-
-    # upload to AWS S3
-    aws/s3 put target:'/video/{id}.mp4' data:video
-```
-
-In comparison, the same application would likely take **hundreds of lines of code**, not to mention that each service above includes metrics, logging and scaling out-of-the-box.
-
-::: tip Blog
-[Storytelling your first application](https://asyncy.com/blog/story-telling/)
-&mdash; Build a file.io or WeTransfer clone in 10 minutes.
-:::
+Developers want to focus on what matters most: business-logic. Everything else is noise.
 
 
-## Syntax Overview
+## Syntax Cheatsheet
+
+The foundation of design is around a consistant pattern that is service-oriented, where microservices and functions are first-class.
 
 ```coffeescript
 ###
 Meet Storyscript
 ###
 
-# Strings
-my_string = "Hello"
-"Say {my_string}!"  # string formatting
-# >>> Say Hello!
+# Pull data from a microservice
+output = service action key:value
+output = team/service action key:value
 
-# Numbers
-one = 1
-onethree = 1.3
+# Call a function
+output = function_name(key:value)
 
-# Boolean
-foo = true
-bar = false
+# Call type methods
+output = variable mutation key:value
 
-# List
-letters = ['a', 'b', 'c']
-letters[0]
-# >>> 1
+# Event streaming microservice
+when service action event key:value as output
+    # run this block for every event
 
-# Object
-fruit = {'apple': 'red', 'banana': 'yellow'}
-fruit['banana']
-# >>> yellow
-
-# Regexp
-pattern = /^foobar/
-'foobar' like pattern
-# >>> true
-
-# Null
+# Types
+string = "Hello"
+integar = 1
+number = 1.3
+bool = true
+list = ['a', 'b', 'c']
+map = {'apple': 'red', 'banana': 'yellow'}
+regexp = /^foobar/
 empty = null
 
 # Conditions
 if one > 1
-    # then do this
+    # ...
 else if one == 1
-    # then do this
+    # ...
 else
-    # do this
+    # ...
 
 # Loops
-foreach my_list as item
-    # more stuff here
-
-while foobar
-    # more stuff here
-
-# Services
-val = service action key:value
-val = owner/repo action key:value
-
-# Event-based service
-when slack bot hears pattern:/hello/ as msg
-    msg reply message:'world'
+foreach list as item
+    # ...
+while true
+    # ...
 
 # Functions
-function walk distance:number returns string
-    # more stuff here
-    return "Ok, walked {distance}km!"
-walk(distance:10)
-# >>> Ok, walked 10km!
-
-# Chaining calls
-my_service action foo:(my_string split by:',')
-                  bar:(my_object find key:(my_list random))
-'abc' uppercase split
-# >>> ['A', 'B', 'C']
+function name input:int returns int
+    # ...
+    return input
+name(input:1)
+# >>> 1
 
 # try and catch
 try
-  # more stuff here
+  # ...
 catch as error
-  # more stuff here
+  # ...
   retry  # try the block again
-  # -or-
-  raise  # bubble it up
+  throw  # bubble it up
 ```
+
+::: tip Inspiration behind Storyscript
+Storyscript was inspired by Python, Ruby, Swift and other popular programming languages to feel familiar but also intuitive and declarative.
+:::
 
 ## Semantics
 
 ### Procedure
 
 ```coffeescript
-output = do_third foo:(do_second (do_first ...)) bar:(do_second ...)
+output = functionA(key:(functionB(key:(functionC(...)))))
 ```
 
 Parentheses MUST be used to produce inline procedures. The innermost Parentheses will be executed first moving out to the outermost.
@@ -154,7 +107,7 @@ Objects may have attributes and methods. A Map can *only* have entries.
 
 The example below illustrates how the object `tweet` has attributes and methods.
 
-```coffee
+```coffeescript
 tweet = twitter tweet text:'Hello world'
 id = tweet.id  # returns the tweet id 123456 of type int.
 tweet like     # calls "like", a method of tweet
@@ -220,6 +173,9 @@ Mutations can be chained to help reduce complexity.
 'abc' uppercase
       then split
 # >>> ['A', 'B', 'C']
+
+('abc' uppercase) split
+# >>> ['A', 'B', 'C']
 ```
 
 ### Variable Scope
@@ -229,29 +185,17 @@ Variables are not global.
 ```coffeescript
 n = 1
 
-every minutes:3
-  n increment
-  log n
-```
+when cron schedule every minute:3
+  n = n + 1
+    # ^ Error: variable `n` is undefined.
 
-```
-+0  INFO 2
-+3m INFO 3
-+6m INFO 4
+function incr
+  n = n + 1
+    # ^ Error: variable `n` is undefined.
 ```
 
 Functions do not have access to local variables. All variables must be provided as arguments.
 
-```coffeescript
-n = 1
-
-function incr
-  n increment
-```
-
-```
-Syntax error. Variable "n" is not defined at line 4.
-```
 
 ### Compiling
 
@@ -270,30 +214,60 @@ The type-checking includes the following checks:
 2. Arguments are of the expected type.
 
 
-### Environment Variables
+### Environment Variables (aka Secrets)
 
-Environment variables are stored in a restricted keyword `app.environment`.
+Environment variables are stored in a restricted keyword `app.secrets`.
 
+Set variables in the `asyncy.yml`
 ```yaml
 # asyncy.yml
 environment:
   food: cake
   FOO: bar
 ```
+Or set them with the Asyncy CLI
+```shell
+asyncy config set foo=bar
+```
 
+Then you may access them via `app.secrets` map, like this:
 ```coffeescript
-if app.environment.food == 'cake':
+if app.secrets.food == 'cake'
     ...
 
-if app.environment.foo == 'bar':
+if app.secrets.foo == 'bar'
     ...
 ```
 
-::: tip Note
-
-Variables are **ALWAYS** exposed as lower-case attributes.
-
+::: tip 💡Hint
+Secrets are case insensative. `app.secrets.FOO` is the same as `app.secrets.foo`.
 :::
+
+### Service Variables
+
+May services require environment variables, such as oauth tokens and client id/secret pairs.
+
+Service variables are ALWAYS unique to that service and cannot be accessed by any other service or within Storyscript secrets.
+
+Set variables in the `asyncy.yml`
+```yaml
+# asyncy.yml
+environment:
+  twitter:
+    client_id: abc123
+```
+Or set them with the Asyncy CLI
+```shell
+asyncy config set twitter.client_id=abc123
+```
+
+These variables ARE NOT accessible in Storyscript because they are for a service only.
+```coffeescript
+token = app.secrets.client_id  # Error. Secret `client_id` not set.
+token = app.secrets.twitter.client_id  # Error. Accessing service environment variables is prohitted.
+```
+
+However, when the service `twitter` is started by Asyncy it will be assigned `client_id=abc123` accoring to it's `microservice.yml` as an environment variable.
 
 ### Execution Model
 
@@ -303,7 +277,7 @@ Storyscripts are executed by an interpretation engine (not compiled to C or Java
 
 1. All dependencies are gathered and prepared for execution.
 1. The Asyncy Engine is prepared with the Stories as first-class assets for swift execution.
-1. Every Storyscript is executed allowing them to register with the gateway, cron, etc.
+1. Every Storyscript is executed allowing them to register with event-based services.
 
 #### Execution
 
@@ -315,9 +289,9 @@ A story may [execute in many ways](/faq/#how-are-storyscripts-started).
 1. Asynchronous commands may generate new threads and execute in the same pattern above.
 
 ```coffeescript
-translated = service_a translate:my_string to:'spanish'
-parts = translated split ' '
-first_word = service_b name:parts[0]
+translated = service action translate:my_string to:'spanish'
+parts = translated split by:' '
+service_b action name:parts[0]
 ```
 
 The Story above is would perform the following operations:
@@ -370,23 +344,6 @@ int = 1
 number = 1.2
 ```
 
-## Comments
-
-```coffeescript
-###
-Large
-  Comment
-Block
-###
-
-# Inline comment
-
-foo = "bar"  # end of line comment
-```
-
-In Storyscript, comments are denoted by the `#` character to the end of a line,
-or from `###` to the end of the line of the next appearance of `###`.
-
 ## Boolean
 
 ```coffeescript
@@ -405,11 +362,11 @@ list_multiline = [
 ]
 ```
 
-## Objects
+## Maps
 
 ```coffeescript
-object_inline = {'foo': 'bar', 'apples': 'oranges'}
-object_multiline = {
+map_inline = {'foo': 'bar', 'apples': 'oranges'}
+map_multiline = {
   'foo': 'bar',
   'apples': 'oranges'
 }
@@ -507,7 +464,7 @@ A service is a containerize microservice that is registered in the [Asyncy Hub](
 ```coffeescript
 # Call a service with a command and all arguments named
 service cmd key:value foo:bar
-org/repo cmd key:value foo:bar
+tean/service cmd key:value foo:bar
 
 # Service output assigned to variable
 foobar = service cmd key:value
@@ -518,35 +475,45 @@ service cmd key:value
 ```
 
 In Storyscript, the syntax to run a service appears natural and arguments are named for transparency.
+Variable shorthands can be used to reduce repeating terms, ie `data:data` or `name:name`.
 
 ```coffeescript
-tweet = "hello"
-twitter tweet message:tweet
+message = "hello"
+twitter tweet :message
 # would result in ```twitter tweet message:"hello"```
 ```
 
-Containers, commands and argument names are **static grammar** and **interpreted literally**.
+Service, actions and argument names are **static grammar** and **interpreted literally**.
 
 ## Event-Based Services
 
 Services may publish events which run a new block of logic.
 
 ```coffeescript
-service cmd foo:bar as client
-    when client event foo:bar as data
-        # ...
+# All three patterns below are equivelent
+when service action event key:value as output
+    ...
+
+service action as client
+    when client event key:value as output
+        ...
+    # more events ...
+
+service action
+    when event key:value as output
+        ...
+    # more events ...
 ```
 
 A good example of this is streaming Tweets by hashtag.
 
 ```coffeescript
-twitter stream as client
-    when client tweet hashtag:'asyncy' as tweet
-        res = machinebox/language data:tweet.message
-        if res.tone == 'good'
-            tweet reply message:'Thank you!'
-            tweet retweet
-            tweet like
+when twitter stream tweets track:'programming' as tweet
+    res = machinebox/textbox analyze input:tweet.message
+    if res.sentiment == 'positive'
+        tweet reply message:'Thank you!'
+        tweet retweet
+        tweet like
 ```
 
 Every new tweet will be passed into the block below in the variable `tweet`.
@@ -555,20 +522,6 @@ Then machine learning will determine if the tone of the tweet's message is good 
 If no output is defined, it will be implicitly default to the name of the command. Furthermore, if only a command name is used in `when` blocks, it will use the `output` of its parent as subscribing service.
 This allows this to shorten the example from above:
 
-```coffeescript
-twitter stream
-    when tweet hashtag:'asyncy'
-        res = machinebox/language data:tweet.message
-        if res.tone == 'good'
-            tweet reply message:'Thank you!'
-            tweet retweet
-            tweet like
-```
-
-Note that the service call `twitter stream` has an implicit output of `stream`.
-In the `when` block this output gets automatically inferred to `when <stream> tweet hashtag: 'asyncy'`.
-As this a service call as well, it has an implicit output too (`tweet`) and
-thus `tweet.message` gets correctly resolved.
 
 ## Operations
 
@@ -662,9 +615,6 @@ null type
 function foobar returns int
     return 1
 
-function foobar
-    # ... no return allowed
-
 foobar type
 # function
 ```
@@ -687,6 +637,25 @@ Use the method `type` to get the type of a variable as a string.
 
 Type checking can be applied to any type.
 
+
+## Comments
+
+```coffeescript
+###
+Large
+  Comment
+Block
+###
+
+# Inline comment
+
+foo = "bar"  # end of line comment
+```
+
+In Storyscript, comments are denoted by the `#` character to the end of a line,
+or from `###` to the end of the line of the next appearance of `###`.
+
+
 ## Application Information
 
 Storyscript has access to application level information under the keyword `app`, containing the following details:
@@ -697,61 +666,4 @@ app.hostname  # the full http dns hostname where your application is located
               # e.g, "smart-einstein-1235.asyncyapp.com"
 app.version   # the release number of the application (see "asyncy releases list" for releases)
               # e.g, "v1"
-```
-
-### Secrets (aka environment variables, configuration)
-
-There are two types of secrets **Storyscript Secrets**, which may be used in your Storyscript only, and **Service Secrets**, which are provided to the specific service during runtime.
-Use the Asyncy CLI to set, list, update, and delete secrets.
-
-::: tip Note
-Secrets are `read-only` and **case-insensative**. The secrets `foobar`, `FOOBAR` and `FooBar` all return the same value.
-:::
-
-#### Storyscript Secrets
-
-1. Create a secret
-```shell
-asyncy config set foo=bar
-```
-
-2. Access the secret in your Storyscript
-```coffeescript
-# Your Storyscript
-if app.secrets.foo == 'bar'
-   ...
-```
-
-#### Service Secrets
-
-To set secrets for services, prepend the varible name with the service name, like this example:
-
-```shell
-asyncy config set github.client_secret=some-secret-value
-```
-
-The value `client_secret` will be set to `some-secret-value` **only** for the service `github`.
-
-::: tip Note
-Service Secrets are **only** readable by the service they belong to. They cannot be accessed in your Storyscript or by any other service.
-When the service is started by Asyncy it will be assigned the secrets as environment varibles at runtime.
-:::
-
-#### Listing Secrets
-
-Retrieve a list of secrets in your application call the following command:
-
-```shell
-asyncy config list
-```
-
-The result will organize the secrets in the following way:
-
-```coffeescript
-# Storyscript variables:
-FOO: bar
-
-# Service variables:
-github
-  CLIENT_SECRET: some-secret-value
 ```
