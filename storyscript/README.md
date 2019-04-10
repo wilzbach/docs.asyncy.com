@@ -1,20 +1,56 @@
 # Storyscript
 
-The language for Application Storytelling that strings together microservices and functions in a serverless way. It significantly reduces unnecessary complexities and amplifys the developer to build applications in a fraction of the time by focusing on the story of data.
+Strings together microservices and functions in a serverless way with Storyscript, the top-level programming language for **Application Storytelling**™ on Asyncy.
 
-*Applications are stories of data.* What makes your application unique is how you move data from point A to Z. This flow we call Storytelling and we designed Storyscript to describe this flow in a descriptive, service-oriented programming language.
+The foundation of Storyscript is **moving data by pull or push**. In the diagram below we have two lines of code: one that represents data being pushed into a Story (e.g., streams and events) and the next line representing data being pulled from a service (e.g., http get).
+
+![design of a story](./design-of-a-story.png)
+
+::: tip The Syntax
+**Natural, familiar and intuitive**; Storyscript is inspired by the Zen of Python, the beauty of Ruby, the declarative nature of Swift and some flavors from other popular languages.
+:::
+
+Many think of Storyscript as glue code for microservices, flow code, low-code, or pure business-logic programming. We call this **top-level programming**. The diagram shows how the language focuses on the most important aspect of application development: the business-logic.
+
+![abstraction](./abstraction.png)
+
+**Key value propositions**
+1. **Transparency**; It looks like a monolith but is a full microservice/function serverless architecure.
+1. **Readability**; The truth is in the code. Not only is Storyscript easy to read it's also easy to refactor, add features and traceback errors.
+1. **Polyglot**; Storyscript connects all languages together in one cohesive story of data. Choose the right language for the job.
+1. **Zero-devops Deployments**; No Kubernetes configuration, port bindings, ingress controllers, central message queue, no container coupling, no infra configuration or custom scaling.
+
+![stackup](./stackup.png)
+
+> Storyscript **amplifys the developer** to program robust, scalable backend applications in a fraction of the time by focusing on what matters most: the story of data, *everything else is noise*.
 
 # Table of Contents
 [[toc]]
 
-## About Storyscript
+## Why Storysctipt?
 
-The developer industry, and world as a whole, is becoming more and more integrated. Businesses may rely on hundreds of SaaS tools to power their business; their business technology as well. Yet, there is no simple way to hook service A to service B programmically. There are many products that aim to solve this yet they all run on propriatary software, expose graphical interfaces, and aim for a different audience than developers.
+The world is becoming more and more integrated. Businesses rely on hundreds of interconneted software to power their business and create their own products. In fact, all business today are software focused, internally and externally. Yet, here in lays a problem that many tools have sought to solve over the decade, simply put: connect service A to service B. Sounds trivial, but this is what software is all about. Connect database to http server to cron jobs to queue systems to a machine learning module. It's all a service at the end of the day and the data movement, specificallly the unique way you move the data is your secret sauce.
 
-Storyscript is a programming language. An open source developer-first tool to build powerful cloud native applications. It runs on Asyncy Runtime, another open source developer-first tool that generates a robust cloud archecture out-of-the-box.
+Storyscript is pure business-logic. Our intentions with the langauge is to be the go-to programming langauge to design all things cloud native and deliver your product with greater transparency of data flow in a fraction of the time to market.
 
-Developers want to focus on what matters most: business-logic. Everything else is noise.
+## Use Cases
 
+All things backend can be created in one line of code. No devops, no boilerplate code, no management or custom scaling.
+
+1. **HTTP Requests and API's** -- `when http server listen ...`
+2. **Websockets** -- `when websocket server connects ...`
+3. **Cron** -- `when schedule cron daily ...`
+4. **Event-driven** -- `when slack bot responds ...`
+5. **IoT Events** -- `when iotDevice stream doorBellRang ...`
+6. **Social Media** -- `when twitter stream tweets ...`
+7. **Machine Learning** -- `result = machinebox/textbox analyze text:'...'`
+8. **Microservices Orchestration** -- `output = serviceName action key:value` any langauge in a Docker container
+9. **Functions Orchestration** -- `output = myFunction(key:value)` powered by OpenFaaS
+10. **CI/CD Pipelines** -- `ci_result = jenkins run ...`
+11. **Video Manipulation** -- `video = ffmpeg compress video:... codec:'h265'`\
+12. **Image Manipulation** -- `image = imagemagic scale input:... size:'150x150'`
+13. **Fully-Asynchronous Programming** -- Network-bound, io-bound, time-bound, and event-bound.
+14. **Multi-Cloud Deployments** -- Thanks to products like [Upbound](https://upbound.io)
 
 ## Syntax Cheatsheet
 
@@ -28,6 +64,7 @@ Meet Storyscript
 # Pull data from a microservice
 output = service action key:value
 output = team/service action key:value
+# Discover and create services in the Asyncy Hub
 
 # Call a function
 output = function_name(key:value)
@@ -69,14 +106,6 @@ function name input:int returns int
     return input
 name(input:1)
 # >>> 1
-
-# try and catch
-try
-  # ...
-catch as error
-  # ...
-  retry  # try the block again
-  throw  # bubble it up
 ```
 
 ::: tip Inspiration behind Storyscript
@@ -218,14 +247,7 @@ The type-checking includes the following checks:
 
 Environment variables are stored in a restricted keyword `app.secrets`.
 
-Set variables in the `asyncy.yml`
-```yaml
-# asyncy.yml
-environment:
-  food: cake
-  FOO: bar
-```
-Or set them with the Asyncy CLI
+Set secrets with the Asyncy CLI
 ```shell
 asyncy config set foo=bar
 ```
@@ -249,14 +271,7 @@ May services require environment variables, such as oauth tokens and client id/s
 
 Service variables are ALWAYS unique to that service and cannot be accessed by any other service or within Storyscript secrets.
 
-Set variables in the `asyncy.yml`
-```yaml
-# asyncy.yml
-environment:
-  twitter:
-    client_id: abc123
-```
-Or set them with the Asyncy CLI
+Set secrets with the Asyncy CLI
 ```shell
 asyncy config set twitter.client_id=abc123
 ```
