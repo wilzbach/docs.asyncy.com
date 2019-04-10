@@ -6,7 +6,7 @@ it's own configuration web console on a certain path. We refer to this as
 an "expose" - something that is exposed directly to the internet.
 
 **Note:** For this to work, the service you're trying to expose, must have
-declared an `expose` already. Read more about it [here](https://microservice.guide/schema/expose).
+declared an `expose` in its `microservice.yaml`. Read more about it [here](https://microservice.guide/schema/expose).
 
 To expose a service's expose to the internet, add an `expose` entry to your
 project's `asyncy.yml` file:
