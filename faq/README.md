@@ -25,26 +25,13 @@ Use any programming language necessary to build your service just like you would
 
 ## Storyscript
 
-### Why did Asyncy design a new programming language?
-
-In short: programming languages solve problems; there was no language to solve the problem we were tackling. Storyscript's design was about transparency and readability. We designed Storyscript to be familiar by using some of the most loved features in popular programming languages. For a full description, continue to our blog post below.
-
-> <small>Blog: [Why Storyscript](https://blog.asyncy.com/why-storyscript/)</small>
-
 ### What is Storyscript used for?
 
-Storyscript is a language for communication between services. It's designed to be feature-focused and goal-oriented. Storyscript is devops+architecture as code (no more configuring Kubernetes or infrastructure).
-
-1. Application Backend
-1. BPM (Business Process Management)
-1. Asynchronous long-running logic
-1. Workflows
-1. CI/CD pipelines
-1. Automation (event reactions, monitoring, alerting, etc.)
+[Read more here](/storyscript/#why-storysctipt).
 
 ### How are Storyscripts started?
 
-Storyscripts can start in many ways, here are just a couple examples:
+Storyscripts can start in many ways, here are just a **couple examples**:
 
 1. HTTP request
 1. Cron
@@ -69,54 +56,59 @@ During the service discovery phase developers will select certain services which
 # asyncy.yml
 services:
   foobar:
-    image: myteam/asyncy-foobar-service
+    image: myTeam/myService
     tag: v1.123
 ```
 
 In Storyscript you can call upon this service like this:
 
 ```coffeescript
-result = foobar do_this fruit:'apple' animal:'cat'
+result = foobar action key:value
 ```
 
 ### Can Storyscript run asynchronously?
 
-**Yes**. For example, during an HTTP request once the response if finished the remaining script is inherently asynchronous. When a Storyscript runs it is asynchronous from another Storyscript execution. Specific line(s) in the Storyscript may be executed asynchronously.
+**Yes**. Asyncy is fully asynchronous. Not just IO-bound or network-bound but also time-bound and event-bound.
 
-### What happens with a Storyscript crashes?
+For example, during an HTTP request once the response if finished the remaining script is inherently asynchronous. When a Storyscript runs it is asynchronous from another Storyscript execution. Specific line(s) in the Storyscript may be executed asynchronously.
 
-Things don't always go according to plan. When a Storyscript exits because of an error it's captured, detailed and recorded in the [Asyncy App](https://app.asyncy.com). The Storyscript data can be altered and the Storyscript restarted from any line the user desires to complete the process.
+### How do I debug Storyscript?
+
+Things don't always go according to plan. Checkout our [Debugging](/debugging/) docs for more details.
 
 ### Are Storyscripts stateless or stateful?
 
-Storyscripts are stateless. An application may use stateful services but the Storyscript itself, by design, is stateless.
+**Storyscripts are stateless.** An application may use stateful services but the Storyscript itself, by design, is stateless.
 
 ### Is Storyscript compiled or interpreted?
 
-Storyscript is interpreted into architecture, it is not compiled into a lower-level language.
+Storyscript is compiled in a cloud native runtime. It is not compiled to any other language, by design.
+
+### What is Storyscript's type system?
+
+**Strong and static.** This make it easy to debug before compile time and assist with auto-complete.
 
 ## Asyncy
 
+### Is Asyncy serverless?
 
-### Is Asyncy a serverless environment?
-
-**Yes**, Asyncy is a serverless execution environment. The Asyncy Platform provides an HTTP gateway which executes Storyscript in a serverless design.
+**Yes**, Asyncy is a serverless execution environment. The Asyncy Runtime provides an HTTP gateway which executes Storyscript in a serverless design.
 
 ### Is Asyncy a Paas, Baas, or Faas?
 
-Asyncy is a **Platform as a Service** (aka PaaS) which has functionality of Backend as a Service (BaaS) and Functions as a Service (FaaS). Hard to put one label on it.
+Asyncy is a **Platform as a Service** (aka PaaS) which has functionality of Backend as a Service (BaaS), Functions as a Service (FaaS) and some SaaS too...but it's mostly PaaS.
 
 ### Does Asyncy use Kubernetes under-the-hood?
 
-**Yes**, Kubernetes is used to orchestrate containers. See the full [Asyncy Stack](https://asyncy.com/platform#stack).
+**It can**. Kubernetes is our first supported container scheduler and we plan to support others like Nomad and Docker Swarm.
 
 ### How much Kubernetes or devops experience is required?
 
-**None.** Asyncy interacts with Kubernetes so you don't need to. It manages scaling, security, routing, networks and much more.
+**Zero.** Asyncy's mission is to be a zero-devops deployment runtime.
 
 ### Where are Storyscript's and other code stored?
 
-Deployments to Asyncy **must** be git-backed. When deploying source code to Asyncy it will clone the repository and generate a release slug which is used in the platform for deployments.
+Deployments to Asyncy **must** be git-backed. Code is compiled during deployment and changes the runtime environment to match your execution patterns.
 
 ### How are services managed?
 
@@ -124,16 +116,19 @@ When the Application is deployed all containers are pulled, started and scaled i
 
 ### Is Asyncy used for prototypes only?
 
-**No**, the Asyncy Platform is a dynamically-scalable, robust, production-grade platform. It can also be used for on-premise deployments.
-
+**No**, our mission is to make the Asyncy Platform a dynamically-scalable, robust, production-grade platform. It can also be used for on-premise deployments.
 
 ### Does Asyncy provide file storage?
 
-**Yes**. Applications have a temporary volume that contains the applications repository source code and can be a temporary file storage. Applications may optionally have persistent storage which is flexible based on the application or service needs.
+**Yes**. There are services that provide this functionality. You can create your own too.
 
 ### Does the Asyncy Platform come with a persistent database?
 
-**No**, databases are unfortunately not one-size-fits-all. Yet, it's quite simple to create persistent database or user a database backed by the cloud provider.
+**No**, databases are unfortunately not one-size-fits-all (yet). We do have plans to help here too, but you can bring your own database or we can manage and create one for you.
+
+### Is Asyncy multi-cloud?
+
+**Soon**. This is something we label "unnecessary complexity" every application should be multi-cloud by default and not the developers job to manage it.
 
 ### Can I bring my own database?
 
@@ -141,11 +136,18 @@ When the Application is deployed all containers are pulled, started and scaled i
 
 ### Can I run Asyncy on my own cloud?
 
-**Yes**. Details coming soon.
+**Soon**. We plan to have `helm install asyncy` at your convenience.
 
 ### Is Asyncy open source?
 
-*Every bit and byte*. The entire Asyncy Platform is open source on [GitHub](https://github.com/asyncy).
+**Yes**. Asyncy Platform is open source on [GitHub](https://github.com/asyncy).
+In the future, there may be power-user tools that are not open source, but the language and runtime will remain open source. 
+
+This is very important for developer trust. We believe it is far too much risk to develop applications on non-open source platforms as it handcuffs your product success to a 3rd party company (a big no-no in business). Futhermore, as a product and company, we made numerous decisions to reduce our vendor-lockin: prime example is the Open Microservice Guide, all the microservices are platform-agnostic by design.
+
+### What if I want to migrate off of Asyncy?
+
+Sorry to hear that, we hope you leave us feedback why. But, not to worry. You can go back to the "old ways" of orchestrating and managing microservices. All the microservices and functions you use in Asyncy are portable to another runtime. Our secret sauce is the glue...now you have to make your own glue (which is the hard part, hence the product value).
 
 ### Is there a managed Asyncy?
 
@@ -153,7 +155,12 @@ When the Application is deployed all containers are pulled, started and scaled i
 
 ### What is the pricing for Asyncy Cloud?
 
-We plan to offer **highly transparent** pricing for our Asyncy Cloud offering. Details coming soon.
+We plan to offer **highly transparent** pricing for our Asyncy Cloud offering. Our mission is to amplify developers to be 10-100x more effective. We hope our pricing reflects this amplification upside.
+
+Pricing is shaping up to be a per-user license to utilize our tooling and connecting to our data.
+Server costs are marked-up transparently at a rate around 10-20%.
+
+A few services in the Asyncy Hub will be premium, at the developer/company discretion. We will **not** charge extra to utilize these services. In other words, there is 0% cut from our marketplace to Asyncy. The developer/company keeps 100% of the revenue. We believe this will encourage usage and strengthen the ecosystem while keeping the value-add in the right place. 
 
 ### Does Asyncy offer training?
 

@@ -26,6 +26,7 @@ module.exports = {
       '/quick-start/',
       '/storyscript/',
       '/services/',
+      '/functions/',
       '/cli/',
       // {
       //   title: 'API',
@@ -36,8 +37,7 @@ module.exports = {
       //   ]
       // },
       '/faq/',
-      '/support/',
-      '/diagrams/'
+      '/support/'
     ]
   }
 }

@@ -47,14 +47,12 @@ All things backend can be created in one line of code. No devops, no boilerplate
 8. **Microservices Orchestration** -- `output = serviceName action key:value` any langauge in a Docker container
 9. **Functions Orchestration** -- `output = myFunction(key:value)` powered by OpenFaaS
 10. **CI/CD Pipelines** -- `ci_result = jenkins run ...`
-11. **Video Manipulation** -- `video = ffmpeg compress video:... codec:'h265'`\
+11. **Video Manipulation** -- `video = ffmpeg compress video:... codec:'h265'`
 12. **Image Manipulation** -- `image = imagemagic scale input:... size:'150x150'`
 13. **Fully-Asynchronous Programming** -- Network-bound, io-bound, time-bound, and event-bound.
 14. **Multi-Cloud Deployments** -- Thanks to products like [Upbound](https://upbound.io)
 
 ## Syntax Cheatsheet
-
-The foundation of design is around a consistant pattern that is service-oriented, where microservices and functions are first-class.
 
 ```coffeescript
 ###
@@ -68,13 +66,15 @@ output = team/service action key:value
 
 # Call a function
 output = function_name(key:value)
+# A Storyscript function
+# or another programming langauge
 
 # Call type methods
 output = variable mutation key:value
 
 # Event streaming microservice
 when service action event key:value as output
-    # run this block for every event
+    ... # run this block for every event
 
 # Types
 string = "Hello"
@@ -85,6 +85,7 @@ list = ['a', 'b', 'c']
 map = {'apple': 'red', 'banana': 'yellow'}
 regexp = /^foobar/
 empty = null
+time = 1d35m
 
 # Conditions
 if one > 1
@@ -107,10 +108,6 @@ function name input:int returns int
 name(input:1)
 # >>> 1
 ```
-
-::: tip Inspiration behind Storyscript
-Storyscript was inspired by Python, Ruby, Swift and other popular programming languages to feel familiar but also intuitive and declarative.
-:::
 
 ## Semantics
 
@@ -225,7 +222,6 @@ function incr
 
 Functions do not have access to local variables. All variables must be provided as arguments.
 
-
 ### Compiling
 
 Storyscript is a dynamically compiled language. Type checking is performed at compile time, but not in a traditional way. From the perspective of the developer the following steps are performed during compile time.
@@ -240,7 +236,7 @@ Compile time consists of four primary processes:
 The type-checking includes the following checks:
 
 1. Type mutation method exists.
-2. Arguments are of the expected type.
+1. Arguments are of the expected type.
 
 
 ### Environment Variables (aka Secrets)
@@ -254,9 +250,6 @@ asyncy config set foo=bar
 
 Then you may access them via `app.secrets` map, like this:
 ```coffeescript
-if app.secrets.food == 'cake'
-    ...
-
 if app.secrets.foo == 'bar'
     ...
 ```
@@ -278,29 +271,29 @@ asyncy config set twitter.client_id=abc123
 
 These variables ARE NOT accessible in Storyscript because they are for a service only.
 ```coffeescript
-token = app.secrets.client_id  # Error. Secret `client_id` not set.
 token = app.secrets.twitter.client_id  # Error. Accessing service environment variables is prohitted.
 ```
 
-However, when the service `twitter` is started by Asyncy it will be assigned `client_id=abc123` accoring to it's `microservice.yml` as an environment variable.
+When the service `twitter` is started by Asyncy it will be assigned `client_id=abc123` accoring to it's `microservice.yml` as an environment variable.
 
 ### Execution Model
 
-Storyscripts are executed by an interpretation engine (not compiled to C or Java).
+Storyscripts are executed by the Asyncy Runtime (not compiled to C or Java or any other langauge).
+This gives Storyscript distinct advantages over General Purpose Programming Languages (GPPL) with little to no performance overhead since you can use any other GPPL for data processing (low and high-level programming).
 
 #### Deployment
 
 1. All dependencies are gathered and prepared for execution.
-1. The Asyncy Engine is prepared with the Stories as first-class assets for swift execution.
+1. The Asyncy Runtime is prepared with the Stories as first-class assets for swift execution.
 1. Every Storyscript is executed allowing them to register with event-based services.
 
 #### Execution
 
 A story may [execute in many ways](/faq/#how-are-storyscripts-started).
 
-1. The Engine received notice to start a Story with or without starting arguments.
+1. The Runtime received notice to start a Story with or without starting arguments.
 1. The Story is executed in a single thread.
-1. When a service is called the Engine will communicate with the service passing necessary data to and from the service back into the primary thread.
+1. When a service is called the Runtime will communicate with the service passing necessary data to and from the service back into the primary thread.
 1. Asynchronous commands may generate new threads and execute in the same pattern above.
 
 ```coffeescript
@@ -428,11 +421,10 @@ Loops have reserved keywords for ending and continuing loops.
 
 ```coffeescript
 foreach my_list as item
-    # more stuff here
     if do_end_loop
-        end
+        break
     if do_skip_to_next_item
-        next
+        continue
     # ...
 ```
 
