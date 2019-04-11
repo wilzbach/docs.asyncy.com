@@ -424,7 +424,7 @@ while foobar
     # ...
 ```
 
-Loops have reserved keywords for ending and continuing loops.
+Loops have reserved keywords for ending (`break`) and continuing loops (`continue`).
 
 ```coffeescript
 foreach my_list as item
