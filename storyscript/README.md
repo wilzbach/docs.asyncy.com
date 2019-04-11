@@ -211,16 +211,22 @@ Variables are not global.
 ```coffeescript
 n = 1
 
-when cron schedule every minute:3
-  n = n + 1
-    # ^ Error: variable `n` is undefined.
-
 function incr
   n = n + 1
     # ^ Error: variable `n` is undefined.
 ```
 
-Functions do not have access to local variables. All variables must be provided as arguments.
+Functions do not have access to variables outside their scope.
+All variables must be provided as arguments.
+
+```
+Error: syntax error in story at line 4, column 7
+
+4|      a = n + 1
+            ^
+
+E0101: Variable `n` has not been defined.
+```
 
 ### Compiling
 
