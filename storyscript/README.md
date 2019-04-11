@@ -459,7 +459,8 @@ function add this:int that:int returns int
    return this + that
 ```
 
-Functions that do not have an output may not use `return`. An error is thrown if a return is used.
+Functions that do not have an output may not use `return` with an entity.
+An error is thrown if a return is used. An sole `return` statement is allowed.
 
 ```coffeescript
 function do_this
