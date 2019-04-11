@@ -670,7 +670,17 @@ Use the method `type` to get the type of a variable as a string.
 # false
 ```
 
-Type checking can be applied to any type.
+## Type checking
+
+Storyscript allows a few implicit type conversions:
+
+- boolean types are implicitly convertible to `int`
+- integer types are implicitly convertible to `float`
+- all types are implicitly convertible to `any`
+- all types are implicitly convertible to `string` in a string addition
+
+If a type is unknown, the Storyscript compiler will infer it to `any`.
+All operations of an `any` type with any other type result in an `any` type.
 
 
 ## Comments
