@@ -580,6 +580,18 @@ catch as error
 
 Use the `throw` keyword to raise the exception, bubbling up to the next try block or stopping the story.
 
+## Time durations
+
+Time durations can be expressed natively.
+
+```coffeescript
+timeout  = 30s
+duration = 5d10m
+```
+
+Supported time units are `w` (weeks)`, `d` (days), `h` (hours)`, `m` (minutes), `s` (seconds) and `ms` (milliseconds).
+
+Time units must be used in this order and can't be repeated.
 
 ## Regular Expressions
 
@@ -619,6 +631,9 @@ true type
 
 null type
 # null
+
+30s type
+# time
 
 (date now) type
 # date
