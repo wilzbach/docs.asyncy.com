@@ -338,7 +338,7 @@ data_formatted = "Hello, {where}"
 
 ::: v-pre
 Like many traditional programming languages, Storyscript supports strings as delimited by the `"` or `'` characters.
-Storyscript also supports string interpolation within "-quoted strings, using `{ variable }`.
+Storyscript also supports string interpolation within "-quoted strings, using `{ expression }`.
 Single-quoted strings are literal. You may even use interpolation in object keys.
 :::
 
