@@ -384,6 +384,7 @@ map_multiline = {
   'foo': 'bar',
   'apples': 'oranges'
 }
+object_int = {1: 11, 2: 22}
 ```
 
 ## Conditions
