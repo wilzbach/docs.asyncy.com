@@ -71,7 +71,8 @@ export default {
   computed: {
     getTitle: function () {
       if (this.$route.path === '/') return 'Home'
-      return this.items.find(i => i.path === this.$route.path).title
+      const item = this.items.find(i => i.path === this.$route.path)
+      return item ? item.title : ''
     }
   },
   data () {

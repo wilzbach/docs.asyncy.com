@@ -164,7 +164,8 @@ export default {
   computed: {
     getTitle () {
       if (this.$route.path === '/') return 'Source Guides'
-      return this.sidebarItems.find(i => i.path === this.$route.path).title
+      const item = this.sidebarItems.find(i => i.path === this.$route.path)
+      return item ? item.title : ''
     },
     shouldShowNavbar () {
       const { themeConfig } = this.$site
