@@ -14,17 +14,8 @@ body
   font-size 16px
   color $textColor
 
-.navbar
-  position fixed
-  z-index 20
-  top 0
-  left 0
-  right 0
-  height $navbarHeight
-  box-sizing border-box
-
 .sidebar-mask
-  position fixed
+  position sticky
   z-index 9
   top 0
   left 0
@@ -34,19 +25,17 @@ body
 
 .sidebar
   font-size 15px
-  background-color #fcfcfc
-  width $sidebarWidth
+  // background-color #fcfcfc
+  width calc(100% + 1rem)
   z-index 10
   margin 0
-  top $navbarHeight
+  // top $navbarHeight
   left 0
-  bottom 0
   box-sizing border-box
   border-right: 1px solid #F1F1F1;
   overflow-y auto
   overflow-x hidden
-  margin-top $navbarHeight
-
+  margin-top 0
 .content:not(.custom)
   max-width $contentWidth
   margin 0 auto
@@ -133,7 +122,7 @@ h1, h2, h3, h4, h5, h6
     &:first-child + p
       margin-top 1em
   .content:not(.custom) > &
-    padding-top ($navbarHeight + 1rem) !important
+    // padding-top ($navbarHeight + 1rem) !important
     margin-bottom 0
     &:first-child
       margin-bottom 1rem
@@ -149,6 +138,20 @@ h2
   font-size 1.65rem
   padding-bottom .3rem
   border-bottom 1px solid $borderColor
+  &.is-title-small-jumbo
+    margin-top -2.5rem
+    margin-bottom 5.5rem
+
+.has-height-auto
+  height auto !important
+
+p .is-small-small-jumbo
+  margin-bottom -5rem
+  margin-top 4rem
+
+.container.is-fluid
+  padding-left 1.17188rem
+  padding-right 1.17188rem
 
 h3
   font-size 1.35rem
@@ -189,10 +192,17 @@ th, td
 .custom-layout
   padding-top $navbarHeight
 
-.theme-container
+.columns
   &.sidebar-open
+    .page
+      display: none
     .sidebar-mask
       display: block
+    .sidebar
+      .sidebar-selector-inactive
+        display: none
+      .sidebar-selector-active
+        display: block
   &.no-navbar
     .content:not(.custom) >
       h1, h2, h3, h4, h5, h6
