@@ -1,30 +1,144 @@
 <template>
-  <div>
-    <div class="hero" v-if="$page.frontmatter.home">
-      <a-stars absolute class="hero-stars" />
-      <h1>Documentation</h1>
-      <a-asset class="hero-book" variant="book" />
-    </div>
-    <div class="theme-container"
-      v-waves
-      :class="pageClasses"
-      @touchstart="onTouchStart"
-      @touchend="onTouchEnd">
-      <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar"/>
-      <div class="sidebar-mask" @click="toggleSidebar(false)"></div>
-      <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar" :class="{ 'home-sidebar': $page.frontmatter.home }">
-        <slot name="sidebar-top" slot="top"/>
-        <slot name="sidebar-bottom" slot="bottom"/>
-      </Sidebar>
-      <div class="custom-layout" v-if="$page.frontmatter.layout">
-        <component :is="$page.frontmatter.layout"/>
-      </div>
-      <Page v-else :sidebar-items="sidebarItems" :class="{ home: $page.frontmatter.home }">
-        <slot name="page-top" slot="top"/>
-        <slot name="page-bottom" slot="bottom"/>
-      </Page>
-    </div>
-    <a-footer dark class="app-footer" />
+  <div class="docs">
+    <a-jumbo
+      :size="$route.path === '/' ? 'medium' : undefined"
+      :small="$route.path === '/' ? 'Documentation' : ''"
+      :title="getTitle"
+    >
+      <a-navbar
+        slot="header"
+        :items="[{ name: 'blog', link: '//asyncy.com/blog' }, { name: 'Hub', link: '//hub.asyncy.com' }, { name: 'About', link: '//asyncy.com/about' }, { name: 'Contact', link: '//asyncy.com/contact' }]"
+        dark
+        @logo="$router.push('/')"
+      />
+      <h2
+        slot="title"
+        class="is-size-2 is-hidden-mobile is-title-small-jumbo has-text-weight-bold has-text-white"
+        v-if="$route.path !== '/'"
+        v-text="getTitle"
+      />
+      <!-- <p
+        slot="small"
+        v-if="$route.path !== '/'"
+        class="is-small-small-jumbo is-size-8 has-text-uppercase has-text-centered has-text-weight-bold has-letter-spacing-xlarge"
+      >
+        Documentation
+      </p> -->
+    </a-jumbo>
+    <a-layout
+      margin="medium"
+      background="light"
+      foreground="white"
+      rounded
+      shadow
+      outside
+      narrow
+    >
+      <a-container
+        :class="pageClasses"
+        @touchstart="onTouchStart"
+        @touchend="onTouchEnd"
+      >
+        <!-- <Navbar
+          v-if="shouldShowNavbar"
+          @toggle-sidebar="toggleSidebar"
+        /> -->
+        <a-div
+          size="full"
+          padding="min"
+          class="bordered-bottom-light"
+        >
+          <a-level class="is-mobile">
+            <template slot="left">
+              <a-icon
+                icon="home"
+                height="14"
+                width="24"
+                fill="gray-2"
+              />
+              <span class="is-size-8 has-line-height-5 has-text-gray-2 has-text-weight-semibold has-text-uppercase">Documentation</span>
+            </template>
+            <a-button
+              link
+              class="has-height-auto"
+              slot="right"
+            >
+              Edit this page
+              <svg
+                width="24px"
+                height="16px"
+                style="vertical-align:sub"
+                viewBox="0 0 16 16"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+              >
+                <g
+                  fill="#5805fc"
+                  fill-rule="evenodd"
+                >
+                  <path d="M9.5894518,3.16666667 L11.8333333,5.4105482 L12.6989884,4.54489315 C12.947369,4.29651258 12.947369,3.89396361 12.6989884,3.64558304 L11.354417,2.30101162 C11.1060364,2.05263105 10.7034874,2.05263105 10.4551069,2.30101162 L9.5894518,3.16666667 Z M10.9819768,6.26190476 L8.73809524,4.01802323 L2.18114091,10.5749776 L1.73236461,13.2676354 L4.42502245,12.8188591 L10.9819768,6.26190476 Z M4.8132539,13.9747615 L1.09896819,14.5938091 C0.691521776,14.6617169 0.338283122,14.3084782 0.406190858,13.9010318 L1.02523848,10.1867461 C1.04586572,10.0629826 1.1046482,9.94875714 1.19336934,9.860036 L9.60375029,1.44965505 C10.3223221,0.731083237 11.4872017,0.731083237 12.2057735,1.44965505 L13.5503449,2.79422648 C14.2689168,3.51279829 14.2689168,4.6776779 13.5503449,5.39624971 L5.139964,13.8066307 C5.05124286,13.8953518 4.93701737,13.9541343 4.8132539,13.9747615 Z" />
+                </g>
+              </svg>
+            </a-button>
+          </a-level>
+        </a-div>
+        <!-- <a-div
+          class="sidebar-mask"
+          size="full"
+          @click="toggleSidebar(false)"
+        /> -->
+        <a-div
+          size="one-quarter"
+          class="sidebar-sticky"
+        >
+          <Sidebar
+            :items="sidebarItems"
+            @toggle-sidebar="toggleSidebar"
+            :class="{ 'home-sidebar': $page.frontmatter.home }"
+          >
+            <slot
+              name="sidebar-top"
+              slot="top"
+            />
+            <slot
+              name="sidebar-bottom"
+              slot="bottom"
+            />
+          </Sidebar>
+        </a-div>
+        <a-div
+          size="three-quarters"
+          class="custom-layout"
+          v-if="$page.frontmatter.layout"
+        >
+          <component :is="$page.frontmatter.layout" />
+        </a-div>
+        <a-div
+          v-else
+          size="three-quarters"
+        >
+          <Page
+            :sidebar-items="sidebarItems"
+            :class="{ home: $page.frontmatter.home }"
+          >
+            <slot
+              name="page-top"
+              slot="top"
+            />
+            <slot
+              name="page-bottom"
+              slot="bottom"
+            />
+          </Page>
+        </a-div>
+      </a-container>
+    </a-layout>
+    <a-join
+      footer
+      is-paddingless
+    />
+    <a-footer dark />
   </div>
 </template>
 
@@ -48,6 +162,10 @@ export default {
   },
 
   computed: {
+    getTitle () {
+      if (this.$route.path === '/') return 'Source Guides'
+      return this.sidebarItems.find(i => i.path === this.$route.path).title
+    },
     shouldShowNavbar () {
       const { themeConfig } = this.$site
       const { frontmatter } = this.$page
@@ -106,23 +224,6 @@ export default {
   },
 
   mounted () {
-    // update title / meta tags
-    this.currentMetaTags = []
-    const updateMeta = () => {
-      document.title = this.$title
-      document.documentElement.lang = this.$lang
-      const meta = [
-        {
-          name: 'description',
-          content: this.$description
-        },
-        ...(this.$page.frontmatter.meta || [])
-      ]
-      this.currentMetaTags = updateMetaTags(meta, this.currentMetaTags)
-    }
-    this.$watch('$page', updateMeta)
-    updateMeta()
-
     window.addEventListener('scroll', this.onScroll)
 
     // configure progress bar
@@ -143,8 +244,6 @@ export default {
   },
 
   beforeDestroy () {
-    updateMetaTags(null, this.currentMetaTags)
-
     window.removeEventListener('scroll', this.onScroll)
   },
 
@@ -190,37 +289,21 @@ export default {
         const isActive = i === 0 && scrollTop === 0 ||
           (scrollTop >= anchor.parentElement.offsetTop + 10 &&
             (!nextAnchor || scrollTop < nextAnchor.parentElement.offsetTop - 10))
-
+        
         if (isActive && this.$route.hash !== anchor.hash) {
           store.disableScrollBehavior = true
-          this.$router.replace(anchor.hash, () => {
-            // execute after scrollBehavior handler.
-            this.$nextTick(() => {
-              store.disableScrollBehavior = false
+          if (!this.isSidebarOpen) {
+            this.$router.replace(anchor.hash, () => {
+              // execute after scrollBehavior handler.
+              this.$nextTick(() => {
+                store.disableScrollBehavior = false
+              })
             })
-          })
+          }
           return
         }
       }
     }
-  }
-}
-
-function updateMetaTags (meta, current) {
-  if (current) {
-    current.forEach(c => {
-      document.head.removeChild(c)
-    })
-  }
-  if (meta) {
-    return meta.map(m => {
-      const tag = document.createElement('meta')
-      Object.keys(m).forEach(key => {
-        tag.setAttribute(key, m[key])
-      })
-      document.head.appendChild(tag)
-      return tag
-    })
   }
 }
 
@@ -243,81 +326,64 @@ function getOperatingSystem () {
 <style src="@asyncy/vue/dist/asyncy-vue.css"></style>
 <style src="./styles/theme.styl" lang="stylus"></style>
 <style lang="scss">
-@import "~@asyncy/vue/dist/sass/index.scss";
+@import "~@asyncy/vue/src/scss/variables/index";
+@import "~bulma/sass/utilities/mixins";
 
-.app-footer {
-  background-color: color(dark);
-  .signature {
-    margin-bottom: 0;
+.docs {
+  background-color: $light;
+  .page {
+    background-color: $white;
   }
 }
 
-.hero {
-  background-color: color(dark);
-  z-index: 0;
-  .hero-book {
-    @include breakpoint(max m) {
-      display: none !important;
+.hero-body {
+  @include mobile {
+    padding: 0;
+  }
+}
+
+.bordered-bottom-light {
+  border-bottom: 1px solid $light;
+}
+
+.sidebar-sticky {
+  // margin-top: 1rem;
+  padding-left: 0;
+  padding-right: 0;
+  // background-color: lighten($light, 1.5%);
+
+  > div {
+    position: sticky;
+    top: 0;
+
+    .sidebar {
+      @include mobile {
+        border-right: 0;
+        width: 100%;
+        padding: 2rem;
+      }
     }
   }
 }
-
-.navbar {
-  background-color: color(dark);
-  color: color(light);
-}
-
 </style>
-<style scoped lang="styl">
+<style scoped lang="stylus">
 @import './styles/config.styl';
 
-.hero
-  margin-top $navbarHeight
-  text-align left
-  flex-basis 100%
-  flex-grow 1
-  color white
-  padding 100px 30px 140px
-  box-sizing border-box
-  position relative
-  h1
-    font-size 2.2rem
-    margin 0
-  .hero-stars
-    z-index 1
-    height 400px
-    max-height 400px !important
-    min-height auto !important
-  .hero-book
-    display block
-    position absolute
-    height 100%
-    width 22rem
-    right 7rem
-    top 2rem
-    z-index 2
+.theme-container {
+  &.sidebar-open .sidebar.home-sidebar {
+    min-width: $sidebarWidth;
+  }
 
+  .page {
+    display: inline-block;
 
-.theme-container
-  display flex
-  position relative
-  background #fff
-  z-index 5
+    &.home {
+      padding-left: 0;
+    }
+  }
 
-  &.sidebar-open
-    .sidebar.home-sidebar
-      min-width $sidebarWidth
-
-  .sidebar.home-sidebar
-    margin-top 0
-    border-top 1px solid #efefef
-    position sticky
-    top 4rem
-  .page
-    display inline-block
-    &.home
-      padding-left 0 !important
-
-.app-footer
-  z-index 20
+  .app-footer {
+    z-index: 20 !important;
+  }
+}
 </style>

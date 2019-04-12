@@ -34,8 +34,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@asyncy/vue/dist/sass/utils/_breakpoint.scss";
-
 .search-query {
   vertical-align: baseline !important;
 }
