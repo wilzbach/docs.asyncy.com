@@ -55,6 +55,3 @@ function renderChildren (h, children, path, route, maxDepth, depth = 1) {
 }
 </script>
 
-<style lang="stylus">
-@import './styles/config.styl';
-</style>

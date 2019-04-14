@@ -1,15 +1,31 @@
 <template>
-  <div class="sidebar-group" :class="{ first, collapsable }">
-    <p class="sidebar-heading" :class="{ open }" @click="$emit('toggle')">
+  <div
+    class="sidebar-group"
+    :class="{ first, collapsable }"
+  >
+    <p
+      class="sidebar-heading"
+      :class="{ open }"
+      @click="$emit('toggle')"
+    >
       <span>{{ item.title }}</span>
-      <span class="arrow"
+      <span
+        class="arrow"
         v-if="collapsable"
-        :class="open ? 'down' : 'right'"></span>
+        :class="open ? 'down' : 'right'"
+      ></span>
     </p>
     <DropdownTransition>
-      <ul class="sidebar-group-items" ref="items" v-if="open || !collapsable">
-        <li v-for="child in item.children" class="sub-link">
-          <SidebarLink :item="child"/>
+      <ul
+        class="sidebar-group-items"
+        ref="items"
+        v-if="open || !collapsable"
+      >
+        <li
+          v-for="child in item.children"
+          class="sub-link"
+        >
+          <SidebarLink :item="child" />
         </li>
       </ul>
     </DropdownTransition>
@@ -26,46 +42,3 @@ export default {
   components: { SidebarLink, DropdownTransition }
 }
 </script>
-
-<style lang="stylus">
-@import './styles/config.styl'
-
-.sidebar-group
-  &:not(.first)
-    margin-top 1em
-  .sidebar-group
-    padding-left 0.5em
-  &:not(.collapsable)
-    .sidebar-heading
-      cursor auto
-      color inherit
-
-.sidebar-heading
-  color $textColor
-  transition color .15s ease
-  cursor pointer
-  font-weight 500
-  // text-transform uppercase
-  padding-left 1.5rem
-  margin-top 0
-  margin-bottom 0.5rem
-  &.open, &:hover
-    color $accentColor
-  .arrow
-    position relative
-    top -0.12em
-    left 0.5em
-  &:.open .arrow
-    top -0.18em
-
-.sidebar-group-items
-  transition height .1s ease-out
-  overflow hidden
-
-  .sub-link a
-    font-weight normal
-    color #747474
-
-    &:hover
-      color $accentColor
-</style>

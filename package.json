@@ -18,10 +18,11 @@
   },
   "homepage": "https://asyncy.com",
   "devDependencies": {
-    "vuepress": "^0.14.10"
+    "vue-perfect-scrollbar": "^0.1.0",
+    "vuepress": "^0.14.11"
   },
   "dependencies": {
-    "@asyncy/vue": "^1.7.4",
+    "@asyncy/vue": "^1.8.1",
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0"
   }

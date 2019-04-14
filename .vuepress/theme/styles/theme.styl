@@ -14,34 +14,15 @@ body
   font-size 16px
   color $textColor
 
-.sidebar-mask
-  position sticky
-  z-index 9
-  top 0
-  left 0
-  width 100vw
-  height 100vh
-  display none
-
 .sidebar
   font-size 15px
-  // background-color #fcfcfc
-  width calc(100% + 1rem)
   z-index 10
   margin 0
-  // top $navbarHeight
-  left 0
-  box-sizing border-box
-  border-right: 1px solid #F1F1F1;
-  overflow-y auto
-  overflow-x hidden
   margin-top 0
 .content:not(.custom)
   max-width $contentWidth
   margin 0 auto
   padding 2rem 2.5rem !important
-  > *:first-child
-    // margin-top $navbarHeight
   a:hover
     text-decoration underline
   p.demo

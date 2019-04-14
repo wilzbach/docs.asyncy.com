@@ -32,7 +32,7 @@
         </a-select>
       </div>
     </div>
-    <div :class="{ 'is-hidden-mobile': true, 'sidebar-internal': true, 'shorten': shortenSidebar }">
+    <div :class="{ 'is-hidden-mobile': true, 'shorten': shortenSidebar }">
       <NavLinks />
       <slot name="top" />
       <ul
@@ -166,20 +166,6 @@ function resolveOpenGroupIndex (route, items) {
     display: none;
   }
 
-  .sidebar-internal.shorten {
-    // position: absolute;
-    bottom: 0;
-  }
-
-  .sidebar-internal {
-    // position: fixed;
-    // height: 'calc(100vh - %s)' % $navbarHeight;
-    height: 100vh;
-    // width: $sidebarWidth;
-    width: 100%;
-    overflow: auto;
-  }
-
   ul {
     padding: 0;
     margin: 0;
@@ -216,14 +202,6 @@ function resolveOpenGroupIndex (route, items) {
     position: relative;
 
     li {
-      font-size: nth($sizes, 7);
-      color: nth($grays, 2);
-
-      a {
-        color: nth($grays, 2);
-      }
-
-      font-weight: 600;
       padding: 0.25rem;
       margin-top: 0.75rem;
 
