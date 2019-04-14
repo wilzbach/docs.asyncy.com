@@ -39,10 +39,6 @@
         @touchstart="onTouchStart"
         @touchend="onTouchEnd"
       >
-        <!-- <Navbar
-          v-if="shouldShowNavbar"
-          @toggle-sidebar="toggleSidebar"
-        /> -->
         <a-div
           size="full"
           padding="min"
@@ -83,40 +79,37 @@
             </a-button>
           </a-level>
         </a-div>
-        <!-- <a-div
-          class="sidebar-mask"
-          size="full"
-          @click="toggleSidebar(false)"
-        /> -->
         <a-div
           size="one-quarter"
-          class="sidebar-sticky"
+          class="sidebar-sticky is-font-graphik"
         >
-          <Sidebar
-            :items="sidebarItems"
-            @toggle-sidebar="toggleSidebar"
-            :class="{ 'home-sidebar': $page.frontmatter.home }"
-          >
-            <slot
-              name="sidebar-top"
-              slot="top"
-            />
-            <slot
-              name="sidebar-bottom"
-              slot="bottom"
-            />
-          </Sidebar>
+          <PerfectScrollbar>
+            <Sidebar
+              :items="sidebarItems"
+              @toggle-sidebar="toggleSidebar"
+              :class="{ 'home-sidebar': $page.frontmatter.home }"
+            >
+              <slot
+                name="sidebar-top"
+                slot="top"
+              />
+              <slot
+                name="sidebar-bottom"
+                slot="bottom"
+              />
+            </Sidebar>
+          </PerfectScrollbar>
         </a-div>
         <a-div
           size="three-quarters"
-          class="custom-layout"
+          class="custom-layout is-font-graphik"
           v-if="$page.frontmatter.layout"
         >
           <component :is="$page.frontmatter.layout" />
         </a-div>
         <a-div
           v-else
-          size="three-quarters"
+          size="three-quarters is-font-graphik"
         >
           <Page
             :sidebar-items="sidebarItems"
@@ -145,15 +138,15 @@
 <script>
 import Vue from 'vue'
 import nprogress from 'nprogress'
-import Navbar from './Navbar.vue'
 import Page from './Page.vue'
 import Sidebar from './Sidebar.vue'
 import store from '@app/store'
 import { resolveSidebarItems } from './util'
 import throttle from 'lodash.throttle'
+import PerfectScrollbar from 'vue-perfect-scrollbar'
 
 export default {
-  components: { Page, Sidebar, Navbar },
+  components: { Page, Sidebar, PerfectScrollbar },
   data () {
     return {
       isSidebarOpen: false,
@@ -351,17 +344,24 @@ function getOperatingSystem () {
   // margin-top: 1rem;
   padding-left: 0;
   padding-right: 0;
-  // background-color: lighten($light, 1.5%);
+  @include tablet {
+    border-bottom-left-radius: 0.625rem;
+  }
+  background-color: lighten($light, 0.6%);
 
   > div {
     position: sticky;
     top: 0;
 
+    > .ps-container {
+      max-height: 100vh;
+    }
+
     .sidebar {
       @include mobile {
         border-right: 0;
         width: 100%;
-        padding: 2rem;
+        padding: 0 2rem;
       }
     }
   }
