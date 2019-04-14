@@ -1,8 +1,8 @@
 # Services
 
-Services are containerized software or API specs to interact with the API of a 3rd party service, database or another piece of software. 
+Services are containerized software or API specifications. Written in any programming language, services are designed to preform a variety of actions or event-driven behaviors.
 
-**Services *should* encompass the full domain of it's scope.** For example, the Twitter microservices should be the entire Twitter API, the GitHub microservices should have the REST API, GraphQL, webhook server and login server.
+**Services should encompass the full domain of it's scope.** For example, the Twitter microservice should be the entire Twitter API, the GitHub microservice includes the REST API, GraphQL, webhook server and login server.
 
 [[toc]]
 
@@ -29,6 +29,10 @@ output = myTeam/myFirstMicroservice foobar key:value
 
 ### OpenAPI
 
+::: warning Coming soon
+Looking forward to this feature? [Click here](https://asyncy.nolt.io/6) to share your feedback.
+:::
+
 The [OpenAPI](https://swagger.io/docs/specification/about/) spec (aka SwaggerAPI) is an API description format for REST APIs. 
 
 Soon Asyncy Hub will support uploading your OpenAPI spec enabling developers to rapidly communicate with the service.
@@ -41,6 +45,11 @@ output = myTeam/myOpenAPI endpoint arg:value
 ```
 
 ### AsyncAPI
+
+::: warning Coming soon
+Looking forward to this feature? [Click here](https://asyncy.nolt.io/7) to share your feedback.
+:::
+
 
 The [AsyncAPI](https://asyncapi.com) spec is an API description format for event-driven services.
 
@@ -56,7 +65,17 @@ when myTeam/myOpenAPI action eventName arg:value as event
 
 ## Discover
 
-Much like a traditional library of software, the [Asyncy Hub](https://hub.asyncy.com) is your registry of services and functions to share between applications and developers.
+Much like a traditional software library, the [Asyncy Hub](https://hub.asyncy.com) is your registry of services and functions to share between applications and developers.
+
+> **Next**, discover services and functions on the [Asyncy Hub](https://hub.asyncy.com)
+
+### Using services
+
+Sharing and reusing services is easy. Discover services in the [Asyncy Hub](https://hub.asyncy.com) and follow the directions in the Hub to use public or your private collection of services cross application.
+
+### Submitting services
+
+Head over to [Asyncy Hub](https://hub.asyncy.com) to publish your services privately or publicly.
 
 ## Deploy
 
@@ -64,17 +83,19 @@ Much like a traditional library of software, the [Asyncy Hub](https://hub.asyncy
 
 Asyncy abstracts away the unnecessary complexities in orchestrating, communicating and managing microservices, including:
 
-1. Deployment
+1. Container deployment
 1. Version management
 1. AB Testing
 1. Scaling
 1. Monitoring
-1. Health Checks
+1. Health checks
 1. Protocols
 1. Error handling
 1. Retry-logic
 1. Fail-over
+1. Event-throttling
+1. Rate-limiting
 
-:sparkles::cake::sparkles: All the above are **no longer** the responsibility of the developer.
+:sparkles::cake::sparkles: Our mission is to make all the above **no longer** the responsibility of a human, so they can focus exclusively on business-logic.
 
-Simply deploy your Storyscript application and Asyncy takes care of the rest.
+> **Blog**, [deploying your first Story on Asyncy](https://asyncy.com/blog/story-telling/)

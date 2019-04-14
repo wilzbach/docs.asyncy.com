@@ -8,13 +8,14 @@ Functions are single methods written in any programming language that are fully 
 
 Creating your own functions is intuitive and powerful. Choose Storyscript for workflow and procedural functions. Choose another language for low and high-level logic and algorithms. 
 
+
 ### Storyscript Functions
 
 Storyscript functions are useful for common procedures that you want to reuse in your application **or** share between other applications by submitting Storyscript functions to the [Asyncy Hub](https://hub.asyncy.com).
 
 ####  Create your first Storyscript function
 
-```coffee
+```coffeescript
 function spam_me text:string
     twitter tweet status:'@me {text}'
     twilio sms text:text to:'+310601010101'
@@ -23,11 +24,15 @@ function spam_me text:string
 
 Now, we can call our function like this:
 
-```coffee
+```coffeescript
 spam_me('doorbell rang!')
 ```
 
 ### GPPL Functions
+
+::: warning Coming soon
+Looking forward to this feature? [Click here](https://asyncy.nolt.io/8) to share your feedback.
+:::
 
 Creating a function in a GPPL (like Python, Node, Go, Ruby, etc.) is very simple in Asyncy.
 These functions, like Storyscript functions, can be used anywhere in your Storyscript and shared to other applications when submitted to the [Asyncy Hub](https://hub.asyncy.com).
