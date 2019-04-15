@@ -13,12 +13,6 @@
   padding-bottom: 2rem;
 }
 
-table {
-  display: block;
-  overflow-x: auto;
-  overflow-y: hidden;
-}
-
 .navbar .container {
   @include touch {
     padding-left: 0;

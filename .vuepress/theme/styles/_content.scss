@@ -143,6 +143,30 @@
     font-size: 1.35rem;
   }
 
+  table {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    flex: 1 1 100%;
+
+    tr {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      width: 100%;
+
+      @include touch {
+        flex-wrap: wrap;
+      }
+
+
+      td {
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+
   a.header-anchor {
     float: left;
     margin-left: -1.5rem;
@@ -178,16 +202,21 @@
   }
 
   tr {
-    border-top: 1px solid #dfe2e5;
-  }
+    &:nth-child(2n) {
+      @include desktop {
+        background-color: #f6f8fa;
+      }
+    }
 
-  tr:nth-child(2n) {
-    background-color: #f6f8fa;
+    @include touch {
+      td:nth-child(2n) {
+        background-color: #f6f8fa;
+      }
+    }
   }
 
   th,
   td {
-    border: 1px solid #dfe2e5;
     padding: 0.625rem .5rem !important;
 
     @include mobile {

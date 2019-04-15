@@ -8,9 +8,9 @@ To get started install the Asyncy CLI ([Contribute](https://github.com/asyncy/cl
 <table width="100%">
 <tr>
 <td style="text-align:center" width="50%" valign="top">
-<h1><img src="../assets/apple-logo.svg" width="40"> macOS</h1>
+<h1><img src="../assets/apple-logo.svg" width="24"> macOS</h1>
 
-<a href="https://github.com/asyncy/cli/releases/download/0.0.6/asyncy-0.0.6.pkg" class="button">Download the installer</a>
+<div><a href="https://github.com/asyncy/cli/releases/download/0.0.6/asyncy-0.0.6.pkg" class="button is-primary is-small">Download the installer</a></div>
 
 <small>Also available via Homebrew:</small>
 
@@ -20,19 +20,17 @@ brew install asyncy/brew/asyncy
 
 </td>
 <td style="text-align:center" width="50%" valign="top">
-<h1><img src="../assets/windows-logo.svg" width="40"> Windows</h1>
+<h1><img src="../assets/windows-logo.svg" width="24"> Windows</h1>
 
 Download the appropriate installer:
 
-<div><a href="https://github.com/asyncy/cli/releases/download/0.0.6/asyncy-x64.exe" class="button">64-bit installer</a></div>
-
-<div><a href="#" class="button">32-bit installer</a></div>
+<div><a href="https://github.com/asyncy/cli/releases/download/0.0.6/asyncy-x64.exe" class="button is-primary is-small">64-bit installer</a></div>
 
 </td>
 </tr>
 <tr>
 <td style="text-align:center" valign="top">
-<h1><img src="../assets/ubuntu-logo.svg" width="40"> Ubuntu 16+</h1>
+<h1><img src="../assets/ubuntu-logo.svg" width="24"> Ubuntu 16+</h1>
 
 ```shell
 sudo snap install asyncy --classic
