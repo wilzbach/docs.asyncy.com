@@ -49,5 +49,8 @@ export default {
     width: 100%;
     max-width: 100%;
   }
+  .ds-dropdown-menu {
+    min-width: auto !important;
+  }
 }
 </style>
