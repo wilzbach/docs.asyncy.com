@@ -1,0 +1,48 @@
+.custom-block {
+  p:not(:last-child) {
+    margin-bottom: 0;
+  }
+
+  .custom-block-title {
+    font-weight: 600;
+  }
+
+  &.tip,
+  &.warning,
+  &.danger {
+    color: #464769;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    border-radius: 10px;
+  }
+
+  &.tip {
+    background-color: #eeefff;
+  }
+
+  &.warning {
+    background-color: rgba(255, 229, 100, 0.3);
+    color: #6b5900;
+
+    .custom-block-title {
+      color: #b29400;
+    }
+
+    a {
+      color: $dark;
+    }
+  }
+
+  &.danger {
+    background-color: #ffe6e6;
+    color: #4d0000;
+
+    .custom-block-title {
+      color: #900;
+    }
+
+    a {
+      color: $dark;
+    }
+  }
+}

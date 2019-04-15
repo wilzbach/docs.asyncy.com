@@ -33,7 +33,6 @@
       </div>
     </div>
     <div :class="{ 'is-hidden-mobile': true, 'shorten': shortenSidebar }">
-      <NavLinks />
       <slot name="top" />
       <ul
         class="sidebar-links"
@@ -62,11 +61,10 @@
 <script>
 import SidebarGroup from './SidebarGroup.vue'
 import SidebarLink from './SidebarLink.vue'
-import NavLinks from './NavLinks.vue'
 import { isActive } from './util'
 
 export default {
-  components: { SidebarGroup, SidebarLink, NavLinks },
+  components: { SidebarGroup, SidebarLink },
   props: ['items'],
   computed: {
     getTitle: function () {
@@ -142,115 +140,3 @@ function resolveOpenGroupIndex (route, items) {
   return -1
 }
 </script>
-
-<style lang="stylus">
-@import './styles/config.styl';
-
-.sidebar.home-sidebar .sidebar-internal {
-  position: relative;
-
-  &.shorten {
-    position: relative;
-    bottom: auto;
-  }
-}
-
-.sidebar {
-  height: auto;
-
-  .sidebar-selector-inactive {
-    display: block;
-  }
-
-  .sidebar-selector-active {
-    display: none;
-  }
-
-  ul {
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-  }
-
-  a {
-    display: inline-block;
-  }
-
-  .nav-links {
-    display: none;
-    border-bottom: 1px solid $borderColor;
-    padding: 0.5rem 0 0.75rem 0;
-
-    a {
-      font-weight: 600;
-    }
-
-    .nav-item, .repo-link {
-      display: block;
-      line-height: 1.25rem;
-      font-size: 1.1em;
-      padding: 0.5rem 0 0.5rem 1.5rem;
-    }
-  }
-
-  .sidebar-links {
-    // padding: 1.5rem 0;
-  }
-
-  .sidebar-links {
-    padding-left: 2rem;
-    position: relative;
-
-    li {
-      padding: 0.25rem;
-      margin-top: 0.75rem;
-
-      &:last-child {
-        padding-bottom: 0.75rem;
-      }
-
-      cursor: pointer;
-
-      .sidebar-sub-headers {
-        border-left: 2px solid #c6c7dc;
-        margin-left: 1rem;
-      }
-
-      &.sidebar-sub-header {
-        a {
-          color: #7b7b8f;
-
-          &.active {
-            color: #000;
-            font-weight: bold;
-          }
-        }
-      }
-
-      .tags {
-        margin-top: 0.5rem;
-      }
-
-      &:not(.sidebar-sub-header) > a.active {
-        position: relative;
-        color: $accentColor;
-        font-weight: bold;
-
-        &:before {
-          content: '';
-          display: block;
-          width: 0.25rem;
-          height: 2rem;
-          position: absolute;
-          top: -0.2rem;
-          left: 0;
-          margin-left: -1.375rem;
-          bottom: 0;
-          border-radius: 0.25rem;
-          background-color: $accentColor;
-        }
-      }
-    }
-  }
-}
-</style>
