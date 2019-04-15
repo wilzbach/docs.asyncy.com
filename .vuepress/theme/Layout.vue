@@ -104,7 +104,6 @@
         <a-div
           size="three-quarters"
           class="custom-layout is-font-graphik"
-          :padding="['none', '2x']"
         >
           <AlgoliaSearchBox
             v-if="isAlgoliaSearch"
@@ -112,11 +111,12 @@
           />
           <component
             v-if="$page.frontmatter.layout"
+            class="page"
             :is="$page.frontmatter.layout"
           />
           <Page
+            v-else
             :sidebar-items="sidebarItems"
-            :class="{ home: $page.frontmatter.home }"
           >
             <slot
               name="page-top"
