@@ -1,41 +1,45 @@
 <template>
   <div class="page">
-    <slot name="top"/>
-    <Content :custom="false"/>
-    <div class="content edit-link" v-if="editLink">
-      <span class="link-container">
-        <a :href="editLink" target="_blank" rel="noopener noreferrer">{{ editLinkText }}</a>
-        <OutboundLink/>
-      </span>
-    </div>
-    <div class="content page-nav" v-if="prev || next">
+    <slot name="top" />
+    <Content :custom="false" />
+    <div
+      class="content page-nav"
+      v-if="prev || next"
+    >
       <p class="inner">
-        <span v-if="prev" class="prev">
-          ← <router-link v-if="prev" class="prev" :to="prev.path">
+        <span
+          v-if="prev"
+          class="prev"
+        >
+          ← <router-link
+            v-if="prev"
+            class="prev"
+            :to="prev.path"
+          >
             {{ prev.title || prev.path }}
           </router-link>
         </span>
-        <span v-if="next" class="next">
-          <router-link v-if="next" :to="next.path">
+        <span
+          v-if="next"
+          class="next"
+        >
+          <router-link
+            v-if="next"
+            :to="next.path"
+          >
             {{ next.title || next.path }}
           </router-link> →
         </span>
       </p>
     </div>
-    <slot name="bottom"/>
+    <slot name="bottom" />
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
-import Asyncy from '@asyncy/vue'
-import OutboundLink from './OutboundLink.vue'
 import { resolvePage, normalize, outboundRE, endingSlashRE } from './util'
 
-Vue.use(Asyncy)
-
 export default {
-  components: { OutboundLink },
   props: ['sidebarItems'],
   computed: {
     prev () {
@@ -124,30 +128,3 @@ function find (page, items, offset) {
   }
 }
 </script>
-
-<style lang="stylus">
-@import './styles/config.styl'
-
-.page
-  padding-bottom 2rem
-
-.edit-link.content
-  padding-top 0 !important
-  a
-    color lighten($textColor, 25%)
-    margin-right 0.25rem
-
-.link-container
-  margin-right 1.8rem
-
-.page-nav.content
-  padding-top 1rem !important
-  padding-bottom 0 !important
-  .inner
-    min-height 2rem
-    margin-top 0 !important
-    border-top 1px solid $borderColor
-    padding-top 1rem
-  .next
-    float right
-</style>

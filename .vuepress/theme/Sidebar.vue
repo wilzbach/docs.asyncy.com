@@ -1,20 +1,59 @@
 <template>
-  <div class="sidebar" v-scroll="handleScroll">
-    <div :class="{ 'sidebar-internal': true, 'shorten': shortenSidebar }">
-    <NavLinks/>
-    <slot name="top"/>
-    <ul class="sidebar-links" v-if="items.length">
-      <li v-for="(item, i) in items">
-        <SidebarGroup v-if="item.type === 'group'"
-          :item="item"
-          :first="i === 0"
-          :open="i === openGroupIndex"
-          :collapsable="item.collapsable"
-          @toggle="toggleGroup(i)"/>
-        <SidebarLink v-else :item="item"/>
-      </li>
-    </ul>
-    <slot name="bottom"/>
+  <div
+    class="sidebar"
+    v-scroll="handleScroll"
+  >
+    <div class="is-hidden-tablet">
+      <div class="sidebar-selector-inactive">
+        <a-select
+          :value="getTitle"
+          fold-icon
+          @open="openSidebarAndCurrentItem"
+        />
+      </div>
+      <div class="sidebar-selector-active">
+        <a-select
+          v-for="(item, i) of items"
+          ref="sidebarItems"
+          @close="closeSidebarOnAllSelectClosed"
+          :value="item.title"
+          :path="item.path"
+          :key="`mobile-sidebar-${_uid}-${i}`"
+        >
+          <li
+            v-for="(child, cid) in item.headers"
+            :key="`mobile-sidebar-${_uid}-${i}-${cid}`"
+          >
+            <router-link
+              @click.native="closeSidebar"
+              :to="`${item.path}#${child.slug}`"
+            >{{ child.title }}</router-link>
+          </li>
+        </a-select>
+      </div>
+    </div>
+    <div :class="{ 'is-hidden-mobile': true, 'shorten': shortenSidebar }">
+      <slot name="top" />
+      <ul
+        class="sidebar-links"
+        v-if="items.length"
+      >
+        <li v-for="(item, i) in items">
+          <SidebarGroup
+            v-if="item.type === 'group'"
+            :item="item"
+            :first="i === 0"
+            :open="i === openGroupIndex"
+            :collapsable="item.collapsable"
+            @toggle="toggleGroup(i)"
+          />
+          <SidebarLink
+            v-else
+            :item="item"
+          />
+        </li>
+      </ul>
+      <slot name="bottom" />
     </div>
   </div>
 </template>
@@ -22,12 +61,18 @@
 <script>
 import SidebarGroup from './SidebarGroup.vue'
 import SidebarLink from './SidebarLink.vue'
-import NavLinks from './NavLinks.vue'
 import { isActive } from './util'
 
 export default {
-  components: { SidebarGroup, SidebarLink, NavLinks },
+  components: { SidebarGroup, SidebarLink },
   props: ['items'],
+  computed: {
+    getTitle: function () {
+      if (this.$route.path === '/') return 'Home'
+      const item = this.items.find(i => i.path === this.$route.path)
+      return item ? item.title : ''
+    }
+  },
   data () {
     return {
       openGroupIndex: 0,
@@ -43,6 +88,23 @@ export default {
     }
   },
   methods: {
+    closeSidebarOnAllSelectClosed: function () {
+      if (this.$refs.sidebarItems.findIndex(item => item.open === true) === -1) {
+        this.closeSidebar()
+      }
+    },
+    closeSidebar: function () {
+      this.$emit('toggle-sidebar', false)
+    },
+    openSidebarAndCurrentItem: function () {
+      const current = this.$refs.sidebarItems.find(i => i.$attrs.path === this.$route.path)
+      if (current) {
+        // current.open = false
+        current.invalidate = true
+        current.open = true
+      }
+      this.$emit('toggle-sidebar', true)
+    },
     refreshIndex () {
       const index = resolveOpenGroupIndex(
         this.$route,
@@ -78,53 +140,3 @@ function resolveOpenGroupIndex (route, items) {
   return -1
 }
 </script>
-
-<style lang="stylus">
-@import './styles/config.styl'
-
-.sidebar.home-sidebar .sidebar-internal
-  position relative
-
-  &.shorten
-    position relative
-    bottom auto
-
-.sidebar
-  display inline-block
-  height auto
-  .sidebar-internal.shorten
-    position absolute
-    bottom 10px
-
-  .sidebar-internal
-    position fixed
-    height "calc(100vh - %s)" % $navbarHeight
-    width $sidebarWidth
-    overflow auto
-  ul
-    padding 0
-    margin 0
-    list-style-type none
-  a
-    display inline-block
-  .nav-links
-    display none
-    border-bottom 1px solid $borderColor
-    padding 0.5rem 0 0.75rem 0
-    a
-      font-weight 600
-    .nav-item, .repo-link
-      display block
-      line-height 1.25rem
-      font-size 1.1em
-      padding 0.5rem 0 0.5rem 1.5rem
-  .sidebar-links
-    padding 1.5rem 0
-
-@media (max-width: $MQMobile)
-  .sidebar
-    .nav-links
-      display block
-    .sidebar-links
-      padding 1rem 0
-</style>

@@ -1,0 +1,43 @@
+@import "~@asyncy/vue/src/scss/variables/index";
+@import "~bulma/sass/utilities/mixins";
+@import "~@asyncy/vue/dist/asyncy-vue.css";
+
+@import "_code";
+@import "_sidebar";
+@import "_nprogress";
+@import "_custom-blocks";
+@import "_content";
+@import "_feature";
+
+.page {
+  padding-bottom: 2rem;
+}
+
+.navbar .container {
+  @include touch {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.page-nav.content {
+  .inner {
+    min-height: 2rem;
+    border-top: 1px solid $light;
+    padding-top: 1rem;
+  }
+
+  .next {
+    float: right;
+  }
+}
+
+.hero-body {
+  @include mobile {
+    padding: 0;
+  }
+}
+
+.bordered-bottom-light {
+  border-bottom: 1px solid $light;
+}

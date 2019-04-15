@@ -1,6 +1,11 @@
 <template>
-  <form id="search-form" class="search-box">
-    <input id="algolia-search-input" class="search-query" placeholder="Search documentation">
+  <form class="search-form">
+    <a-input
+      placeholder="Search documentation"
+      id="algolia-search-input"
+      background="light"
+      :icon-right="['a-icon', { icon: 'search'}]"
+    />
   </form>
 </template>
 
@@ -19,14 +24,14 @@ export default {
         docsearch = docsearch.default
         docsearch(Object.assign(this.options, {
           debug: true,
-          inputSelector: '#algolia-search-input'
+          inputSelector: '#algolia-search-input input'
         }))
       })
     }
   },
   watch: {
     options (newValue) {
-      this.$el.innerHTML = '<input: id="algolia-search-input" class="search-query">';
+      this.$el.innerHTML = '<input: id="algolia-search-input" class="search-query input">';
       this.initialize(newValue)
     }
   }
@@ -34,13 +39,22 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@asyncy/vue/dist/sass/utils/_breakpoint.scss";
-
-.search-query {
-  vertical-align: baseline !important;
+.search-form {
+  padding: 2rem 1rem !important;
 }
 
-.ds-dropdown-menu {
-  min-width: 350px !important;
+.algolia-autocomplete {
+  .input {
+    padding-right: 2.25rem !important;
+  }
+
+  &,
+  &.algolia-autocomplete-right .ds-dropdown-menu {
+    width: 100%;
+    max-width: 100%;
+  }
+  .ds-dropdown-menu {
+    min-width: auto !important;
+  }
 }
 </style>

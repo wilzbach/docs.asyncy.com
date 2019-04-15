@@ -21,7 +21,7 @@ brew install asyncy/brew/asyncy
 
 <table width="100%">
 <tr>
-<td style="text-align:center" width="50%" valign="top" colspan="2">
+<td style="text-align:center" width="100%" valign="top" colspan="2">
 <details :open="$page.os === 'macos'">
 <summary><h4><img src="../assets/apple-logo.svg" width="15"> macOS</h4></summary>
 
