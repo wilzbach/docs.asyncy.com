@@ -17,12 +17,6 @@
         v-if="$route.path !== '/'"
         v-text="getTitle"
       />
-      <AlgoliaSearchBox
-        v-if="isAlgoliaSearch"
-        :options="algolia"
-      />
-      <SearchBox v-else-if="$site.themeConfig.search !== false" />
-
       <!-- <p
         slot="small"
         v-if="$route.path !== '/'"
@@ -110,14 +104,15 @@
         <a-div
           size="three-quarters"
           class="custom-layout is-font-graphik"
-          v-if="$page.frontmatter.layout"
         >
-          <component :is="$page.frontmatter.layout" />
-        </a-div>
-        <a-div
-          v-else
-          size="three-quarters custom-layout is-font-graphik"
-        >
+          <AlgoliaSearchBox
+            v-if="isAlgoliaSearch"
+            :options="algolia"
+          />
+          <component
+            v-if="$page.frontmatter.layout"
+            :is="$page.frontmatter.layout"
+          />
           <Page
             :sidebar-items="sidebarItems"
             :class="{ home: $page.frontmatter.home }"
@@ -149,7 +144,6 @@ import nprogress from 'nprogress'
 import Page from './Page.vue'
 import Sidebar from './Sidebar.vue'
 import AlgoliaSearchBox from './AlgoliaSearchBox'
-import SearchBox from './SearchBox.vue'
 import store from '@app/store'
 import { resolveSidebarItems, normalize, outboundRE, endingSlashRE } from './util'
 import throttle from 'lodash.throttle'
@@ -158,7 +152,7 @@ import PerfectScrollbar from 'vue-perfect-scrollbar'
 Vue.use(Asyncy)
 
 export default {
-  components: { Page, Sidebar, PerfectScrollbar, AlgoliaSearchBox, SearchBox },
+  components: { Page, Sidebar, PerfectScrollbar, AlgoliaSearchBox },
   data () {
     return {
       isSidebarOpen: false,
