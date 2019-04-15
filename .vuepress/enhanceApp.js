@@ -1,3 +1,6 @@
+import Vue from 'vue'
+import Asyncy from '@asyncy/vue'
+
 export default ({
   Vue,
   options,
@@ -14,4 +17,5 @@ export default ({
       window.addEventListener('scroll', f);
     }
   });
+  Vue.use(Asyncy);
 };

@@ -85,7 +85,7 @@
           size="one-quarter"
           class="sidebar-sticky is-font-graphik"
         >
-          <PerfectScrollbar>
+          <perfect-scrollbar>
             <Sidebar
               :items="sidebarItems"
               @toggle-sidebar="toggleSidebar"
@@ -100,7 +100,7 @@
                 slot="bottom"
               />
             </Sidebar>
-          </PerfectScrollbar>
+          </perfect-scrollbar>
         </a-div>
         <a-div
           size="three-quarters"
@@ -141,7 +141,6 @@
 
 <script>
 import Vue from 'vue'
-import Asyncy from '@asyncy/vue'
 import nprogress from 'nprogress'
 import Page from './Page.vue'
 import Sidebar from './Sidebar.vue'
@@ -149,16 +148,13 @@ import AlgoliaSearchBox from './AlgoliaSearchBox'
 import store from '@app/store'
 import { resolveSidebarItems, normalize, outboundRE, endingSlashRE } from './util'
 import throttle from 'lodash.throttle'
-import PerfectScrollbar from 'vue-perfect-scrollbar'
-
-Vue.use(Asyncy)
 
 export default {
-  components: { Page, Sidebar, PerfectScrollbar, AlgoliaSearchBox },
+  components: { Page, Sidebar, AlgoliaSearchBox },
   data () {
     return {
       isSidebarOpen: false,
-      os: 'unkown'
+      os: 'unknown'
     }
   },
 
