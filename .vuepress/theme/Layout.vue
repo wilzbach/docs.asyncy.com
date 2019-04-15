@@ -47,6 +47,7 @@
           <a-level class="is-mobile">
             <template slot="left">
               <a-icon
+                class="is-hidden-mobile"
                 icon="home"
                 height="14"
                 width="24"

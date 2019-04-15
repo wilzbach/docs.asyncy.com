@@ -44,6 +44,10 @@ export default {
 }
 
 .algolia-autocomplete {
+  .input {
+    padding-right: 2.25rem !important;
+  }
+
   &,
   &.algolia-autocomplete-right .ds-dropdown-menu {
     width: 100%;

@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div
-      class="features"
+      class="features has-padding-bottom-medium"
       v-if="data.features && data.features.length"
     >
       <Feature
