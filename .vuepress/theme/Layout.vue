@@ -7,7 +7,7 @@
     >
       <a-navbar
         slot="header"
-        :items="[{ name: 'blog', link: '//asyncy.com/blog' }, { name: 'Hub', link: '//hub.asyncy.com' }, { name: 'About', link: '//asyncy.com/about' }, { name: 'Contact', link: '//asyncy.com/contact' }]"
+        :items="menuItems"
         dark
         @logo="$router.push('/')"
       />
@@ -17,6 +17,12 @@
         v-if="$route.path !== '/'"
         v-text="getTitle"
       />
+      <AlgoliaSearchBox
+        v-if="isAlgoliaSearch"
+        :options="algolia"
+      />
+      <SearchBox v-else-if="$site.themeConfig.search !== false" />
+
       <!-- <p
         slot="small"
         v-if="$route.path !== '/'"
@@ -58,6 +64,7 @@
               link
               class="has-height-auto"
               slot="right"
+              :url="{ href: editPageLink, target: '' }"
             >
               Edit this page
               <svg
@@ -109,7 +116,7 @@
         </a-div>
         <a-div
           v-else
-          size="three-quarters is-font-graphik"
+          size="three-quarters custom-layout is-font-graphik"
         >
           <Page
             :sidebar-items="sidebarItems"
@@ -137,16 +144,21 @@
 
 <script>
 import Vue from 'vue'
+import Asyncy from '@asyncy/vue'
 import nprogress from 'nprogress'
 import Page from './Page.vue'
 import Sidebar from './Sidebar.vue'
+import AlgoliaSearchBox from './AlgoliaSearchBox'
+import SearchBox from './SearchBox.vue'
 import store from '@app/store'
-import { resolveSidebarItems } from './util'
+import { resolveSidebarItems, normalize, outboundRE, endingSlashRE } from './util'
 import throttle from 'lodash.throttle'
 import PerfectScrollbar from 'vue-perfect-scrollbar'
 
+Vue.use(Asyncy)
+
 export default {
-  components: { Page, Sidebar, PerfectScrollbar },
+  components: { Page, Sidebar, PerfectScrollbar, AlgoliaSearchBox, SearchBox },
   data () {
     return {
       isSidebarOpen: false,
@@ -155,10 +167,51 @@ export default {
   },
 
   computed: {
+    editPageLink () {
+      if (this.$page.frontmatter.editLink === false) {
+        return
+      }
+      const {
+        repo,
+        editLinks,
+        docsDir = '',
+        docsBranch = 'master',
+        docsRepo = repo
+      } = this.$site.themeConfig
+
+      let path = normalize(this.$page.path)
+      if (endingSlashRE.test(path)) {
+        path += 'README.md'
+      } else {
+        path += '.md'
+      }
+
+      if (docsRepo && editLinks) {
+        const base = outboundRE.test(docsRepo)
+          ? docsRepo
+          : `https://github.com/${docsRepo}`
+        return (
+          base.replace(endingSlashRE, '') +
+          `/edit/${docsBranch}` +
+          (docsDir ? '/' + docsDir.replace(endingSlashRE, '') : '') +
+          path
+        )
+      }
+    },
     getTitle () {
       if (this.$route.path === '/') return 'Source Guides'
       const item = this.sidebarItems.find(i => i.path === this.$route.path)
       return item ? item.title : ''
+    },
+    algolia () {
+      return this.$themeLocaleConfig.algolia || this.$site.themeConfig.algolia || {}
+    },
+    isAlgoliaSearch () {
+      return this.algolia && this.algolia.apiKey && this.algolia.indexName
+    },
+    menuItems () {
+      const { themeConfig } = this.$site
+      return themeConfig.nav
     },
     shouldShowNavbar () {
       const { themeConfig } = this.$site
@@ -317,74 +370,4 @@ function getOperatingSystem () {
 </script>
 
 <style src="prismjs/themes/prism-tomorrow.css"></style>
-<style src="@asyncy/vue/dist/asyncy-vue.css"></style>
-<style src="./styles/theme.styl" lang="stylus"></style>
-<style lang="scss">
-@import "~@asyncy/vue/src/scss/variables/index";
-@import "~bulma/sass/utilities/mixins";
-
-.docs {
-  background-color: $light;
-  .page {
-    background-color: $white;
-  }
-}
-
-.hero-body {
-  @include mobile {
-    padding: 0;
-  }
-}
-
-.bordered-bottom-light {
-  border-bottom: 1px solid $light;
-}
-
-.sidebar-sticky {
-  // margin-top: 1rem;
-  padding-left: 0;
-  padding-right: 0;
-  @include tablet {
-    border-bottom-left-radius: 0.625rem;
-  }
-  background-color: lighten($light, 0.6%);
-
-  > div {
-    position: sticky;
-    top: 0;
-
-    > .ps-container {
-      max-height: 100vh;
-    }
-
-    .sidebar {
-      @include mobile {
-        border-right: 0;
-        width: 100%;
-        padding: 0 2rem;
-      }
-    }
-  }
-}
-</style>
-<style scoped lang="stylus">
-@import './styles/config.styl';
-
-.theme-container {
-  &.sidebar-open .sidebar.home-sidebar {
-    min-width: $sidebarWidth;
-  }
-
-  .page {
-    display: inline-block;
-
-    &.home {
-      padding-left: 0;
-    }
-  }
-
-  .app-footer {
-    z-index: 20 !important;
-  }
-}
-</style>
+<style src="./styles/theme.scss" lang="scss"></style>

@@ -15,30 +15,27 @@
         :class="open ? 'down' : 'right'"
       ></span>
     </p>
-    <DropdownTransition>
-      <ul
-        class="sidebar-group-items"
-        ref="items"
-        v-if="open || !collapsable"
+    <ul
+      class="sidebar-group-items"
+      ref="items"
+      v-if="open || !collapsable"
+    >
+      <li
+        v-for="child in item.children"
+        class="sub-link"
       >
-        <li
-          v-for="child in item.children"
-          class="sub-link"
-        >
-          <SidebarLink :item="child" />
-        </li>
-      </ul>
-    </DropdownTransition>
+        <SidebarLink :item="child" />
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
 import SidebarLink from './SidebarLink.vue'
-import DropdownTransition from './DropdownTransition.vue'
 
 export default {
   name: 'SidebarGroup',
   props: ['item', 'first', 'open', 'collapsable'],
-  components: { SidebarLink, DropdownTransition }
+  components: { SidebarLink }
 }
 </script>

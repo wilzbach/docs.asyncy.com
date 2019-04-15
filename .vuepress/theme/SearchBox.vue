@@ -11,18 +11,30 @@
       @blur="focused = false"
       @keyup.enter="go(focusIndex)"
       @keyup.up="onUp"
-      @keyup.down="onDown">
-    <ul class="suggestions"
+      @keyup.down="onDown"
+    >
+    <ul
+      class="suggestions"
       v-if="showSuggestions"
       :class="{ 'align-right': alignRight }"
-      @mouseleave="unfocus">
-      <li class="suggestion" v-for="(s, i) in suggestions"
+      @mouseleave="unfocus"
+    >
+      <li
+        class="suggestion"
+        v-for="(s, i) in suggestions"
         :class="{ focused: i === focusIndex }"
         @mousedown="go(i)"
-        @mouseenter="focus(i)">
-        <a :href="s.path" @click.prevent>
+        @mouseenter="focus(i)"
+      >
+        <a
+          :href="s.path"
+          @click.prevent
+        >
           <span class="page-title">{{ s.title || s.path }}</span>
-          <span v-if="s.header" class="header">&gt; {{ s.header.title }}</span>
+          <span
+            v-if="s.header"
+            class="header"
+          >&gt; {{ s.header.title }}</span>
         </a>
       </li>
     </ul>
@@ -134,86 +146,123 @@ export default {
 </script>
 
 <style lang="stylus">
-@import './styles/config.styl'
+// @import './styles/config.styl'
+.search-box {
+  display: inline-block;
+  position: relative;
+  margin-right: 0.5rem;
 
-.search-box
-  display inline-block
-  position relative
-  margin-right 0.5rem
-  input
-    cursor text
-    width 14rem
-    color #8d90a5
-    display inline-block
-    border 1px solid #4f5264
-    border-radius 0.4em;
-    font-size 0.9rem
-    line-height 2.5rem
-    padding 0 1rem
-    outline none
-    transition all .2s ease
-    background #22232b
-    background-position 0.6rem 49%
-    background-size 1rem
-    &:focus
-      cursor auto
-      border-color #8d90a5
-  .suggestions
-    background #fff
-    width 20rem
-    position absolute
-    top 1.5rem
-    border 1px solid darken($borderColor, 10%)
-    border-radius 6px
-    padding 0.4rem
-    list-style-type none
-    &.align-right
-      right 0
-  .suggestion
-    line-height 1.4
-    padding 0.4rem 0.6rem
-    border-radius 4px
-    cursor pointer
-    a
-      color lighten($textColor, 35%)
-      .page-title
-        font-weight 600
-      .header
-        font-size 0.9em
-        margin-left 0.25em
-    &.focused
-      background-color #f3f4f5
-      a
-        color $accentColor
+  input {
+    cursor: text;
+    width: 14rem;
+    color: #8d90a5;
+    display: inline-block;
+    border: 1px solid #4f5264;
+    border-radius: 0.4em;
+    font-size: 0.9rem;
+    line-height: 2.5rem;
+    padding: 0 1rem;
+    outline: none;
+    transition: all 0.2s ease;
+    background: #22232b;
+    background-position: 0.6rem 49%;
+    background-size: 1rem;
 
-@media (max-width: $MQNarrow)
-  .search-box
-    input
-      cursor pointer
-      width 0
-      border-color transparent
-      position relative
-      left 1rem
-      &:focus
-        cursor text
-        left 0
-        width 10rem
+    &:focus {
+      cursor: auto;
+      border-color: #8d90a5;
+    }
+  }
 
-@media (max-width: $MQNarrow) and (min-width: $MQMobile)
-  .search-box
-    .suggestions
-      left 0
+  .suggestions {
+    background: #fff;
+    width: 20rem;
+    position: absolute;
+    top: 1.5rem;
+    border: 1px solid darken(#efefef, 10%);
+    border-radius: 6px;
+    padding: 0.4rem;
+    list-style-type: none;
 
-@media (max-width: $MQMobile)
-  .search-box
-    margin-right 0
-    .suggestions
-      right 0
+    &.align-right {
+      right: 0;
+    }
+  }
 
-@media (max-width: $MQMobileNarrow)
-  .search-box
-    .suggestions
-      width calc(100vw - 4rem)
-    input:focus
-      width 8rem
+  .suggestion {
+    line-height: 1.4;
+    padding: 0.4rem 0.6rem;
+    border-radius: 4px;
+    cursor: pointer;
+
+    a {
+      color: lighten(#efefef, 35%);
+
+      .page-title {
+        font-weight: 600;
+      }
+
+      .header {
+        font-size: 0.9em;
+        margin-left: 0.25em;
+      }
+    }
+
+    &.focused {
+      background-color: #f3f4f5;
+
+      a {
+        color: #5805fc;
+      }
+    }
+  }
+}
+
+@media (max-width: $MQNarrow) {
+  .search-box {
+    input {
+      cursor: pointer;
+      width: 0;
+      border-color: transparent;
+      position: relative;
+      left: 1rem;
+
+      &:focus {
+        cursor: text;
+        left: 0;
+        width: 10rem;
+      }
+    }
+  }
+}
+
+@media (max-width: $MQNarrow) and (min-width: $MQMobile) {
+  .search-box {
+    .suggestions {
+      left: 0;
+    }
+  }
+}
+
+@media (max-width: $MQMobile) {
+  .search-box {
+    margin-right: 0;
+
+    .suggestions {
+      right: 0;
+    }
+  }
+}
+
+@media (max-width: $MQMobileNarrow) {
+  .search-box {
+    .suggestions {
+      width: calc(100vw - 4rem);
+    }
+
+    input:focus {
+      width: 8rem;
+    }
+  }
+}
 </style>
