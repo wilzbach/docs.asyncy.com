@@ -758,6 +758,22 @@ In Storyscript, comments are denoted by the `#` character to the end of a line,
 or from `###` to the end of the line of the next appearance of `###`.
 
 
+## Operator precedence
+
+Operators with a higher precedence will be evaluated first.
+Storyscript has the following operator precedence (from higher precedence down to lower precedence):
+
+- `or` (Or expression)
+- `and` (And expression
+- `<`, `<=`, `==`, `!=`, `>`, `>=` (Comparison expression)
+- `+`, `-` (Arithmetic expression)
+- `*`, `/`, `%` (Multiplicative expression)
+- `!` (Unary expression)
+- `^^` (Pow expression)
+- `.`, (Dot expression) `[...]` (Index expression)
+- Literals (`1`, `1.2`, `[1, 2, 3]`, `{a: b}`, …)
+- `(...)` (Nested expression)
+
 ## Application Information
 
 Storyscript has access to application level information under the keyword `app`, containing the following details:
