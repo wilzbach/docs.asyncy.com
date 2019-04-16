@@ -10,13 +10,14 @@ To get started install the Asyncy CLI ([Contribute](https://github.com/asyncy/cl
 <td style="text-align:center" width="50%" valign="top">
 <h1><img src="../assets/apple-logo.svg" width="24"> macOS</h1>
 
-<div><a href="https://github.com/asyncy/cli/releases/download/0.0.6/asyncy-0.0.6.pkg" class="button is-primary is-small">Download the installer</a></div>
-
-<small>Also available via Homebrew:</small>
-
 ```shell
 brew install asyncy/brew/asyncy
 ```
+
+<small>Also available via download:</small>
+
+<div><a href="https://github.com/asyncy/cli/releases/download/0.0.6/asyncy-0.0.6.pkg" class="button is-primary is-small">Download the installer</a></div>
+
 
 </td>
 <td style="text-align:center" width="50%" valign="top">
@@ -40,13 +41,13 @@ sudo snap install asyncy --classic
 
 </td>
 <td style="text-align:center" valign="top">
-<h1>Direct from Python</h1>
+<h1>Python</h1>
 
 ```shell
 pip install --user asyncy
 ```
 
-We **strongly recommend** using the other installation techniques.
+The other installation methods listed are recommended.
 
 </td>
 </tr>

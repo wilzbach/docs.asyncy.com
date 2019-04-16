@@ -118,9 +118,8 @@ asyncy bootstrap http > http.story && cat http.story
 ```
 
 ```coffeescript
-http server as client
-    when client listen method: 'get' path: '/' as request
-        request write content: 'Hello world!'
+when http server listen method: 'get' path: '/' as request
+    request write content: 'Hello world!'
 ```
 
 Let's deploy this story:
