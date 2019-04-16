@@ -374,6 +374,8 @@ f2 = -3.14
 
 ## Boolean
 
+Truth values can be represented with the `boolean` type that has two possible values (`true` and `false`):
+
 ```coffeescript
 happy = true
 sad = false
@@ -381,16 +383,22 @@ sad = false
 
 ## Lists
 
+Storyscript supports `List`s as a generic container type:
+
 ```coffeescript
 list_inline = ["string", 1, 2]
 list_multiline = [
-  "string",
   1,
-  2
+  2,
+  3
 ]
 ```
 
+In a list the same value may occur more than once.
+
 ## Maps
+
+Storyscript supports `Map`s as a generic container type:
 
 ```coffeescript
 map_inline = {'foo': 'bar', 'apples': 'oranges'}
@@ -400,6 +408,8 @@ map_multiline = {
 }
 object_int = {1: 11, 2: 22}
 ```
+
+In a map the same value may occur more than once, but the same key can only occur once.
 
 ## Conditions
 
