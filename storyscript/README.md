@@ -528,7 +528,7 @@ service cmd key:value
 ```
 
 In Storyscript, the syntax to run a service appears natural and arguments are named for transparency.
-Variable shorthands can be used to reduce repeating terms, ie `data:data` or `name:name`.
+Variable shorthands can be used to reduce repeating terms, i.e. `data:data` or `name:name`.
 
 ```coffeescript
 message = "hello"
