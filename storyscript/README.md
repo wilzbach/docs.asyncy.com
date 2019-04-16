@@ -723,14 +723,22 @@ Use the method `type` to get the type of a variable as a string.
 
 Storyscript allows a few implicit type conversions:
 
-- boolean types are implicitly convertible to `int`
-- integer types are implicitly convertible to `float`
+- `boolean` types are implicitly convertible to `int`
+- `int` types are implicitly convertible to `float`
 - all types are implicitly convertible to `any`
 - all types are implicitly convertible to `string` in a string addition
 
 If a type is unknown, the Storyscript compiler will infer it to `any`.
 All operations of an `any` type with any other type result in an `any` type.
 
+The generic container types `List` and `Map` can be constructed from base types or
+themselves.
+Examples:
+
+- `List[int]`
+- `List[List[int]]`
+- `Map[int, string]`
+- `Map[int, List[string]]`
 
 ## Comments
 
