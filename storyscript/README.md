@@ -411,6 +411,24 @@ object_int = {1: 11, 2: 22}
 
 In a map the same value may occur more than once, but the same key can only occur once.
 
+Maps can be destructured into its part with the destructuring assignments:
+
+```coffeescript
+map = {'foo': 'bar', 'apples': 'oranges'}
+{ foo } = map
+# foo = 'bar'
+```
+
+A destructoring assignment must contain one or more object keys.
+These keys **must** exist in the map and will be new variables names.
+Their value is the value of the respective key in the map (`map[key]`).
+
+```coffeescript
+map = {'foo': 'bar', 'apples': 'oranges'}
+{ foo, apples } = map
+# foo = 'bar', apples = 'oranges'
+```
+
 ## Conditions
 
 ```coffeescript
