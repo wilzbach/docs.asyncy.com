@@ -537,6 +537,22 @@ twitter tweet :message
 ```
 
 Service, actions and argument names are **static grammar** and **interpreted literally**.
+Hence, the following is allowed:
+
+```coffeescript
+tweet = "Hello world"
+twitter tweet:tweet
+```
+
+As naming variables like their arguments is a frequent,
+Storyscript provides a shortcut (`:name`) to avoid the redundant names:
+
+```coffeescript
+tweet = "Hello world"
+twitter :tweet
+```
+
+In this case `tweet` must be the argument name and the variable name to use for this argument.
 
 ## Event-Based Services
 
