@@ -6,8 +6,8 @@ The foundation of Storyscript is **moving data by pull or push**. In the diagram
 
 ![design of a story](./design-of-a-story.png)
 
-::: tip The Syntax
-**Natural, familiar and intuitive**; Storyscript is inspired by the Zen of Python, the beauty of Ruby, the declarative nature of Swift and some flavors from other popular languages.
+::: tip Inspiration behind Storyscript
+Natural, familiar and intuitive; Storyscript is inspired by the Zen of Python, the beauty of Ruby, the declarative nature of Swift and some flavors from other popular languages.
 :::
 
 Many think of Storyscript as glue code for microservices, flow code, low-code, or pure business-logic programming. We call this **top-level programming**. The diagram shows how the language focuses on the most important aspect of application development: the business-logic.
@@ -22,26 +22,26 @@ Many think of Storyscript as glue code for microservices, flow code, low-code, o
 
 ![stackup](./stackup.png)
 
-> Storyscript **amplifies the developer** to program robust, scalable backend applications in a fraction of the time by focusing on what matters most: the story of data, *everything else is noise*.
+> Storyscript amplifies the developer to program robust, scalable backend applications in a fraction of the time by focusing on what matters most: the story of data, *everything else is noise*.
 
 ## Why Storyscript?
 
-The world is becoming more and more integrated. Businesses rely on hundreds of interconneted software to power their business and create their own products. In fact, all business today are software focused, internally and externally. Yet, here in lays a problem that many tools have sought to solve over the decade, simply put: connect service A to service B. Sounds trivial, but this is what software is all about. Connect database to http server to cron jobs to queue systems to a machine learning module. It's all a service at the end of the day and the data movement, specifically the unique way you move the data is your secret sauce.
+The world is becoming more and more integrated. Businesses rely on hundreds of inter-connected software to power their business and create their own products. In fact, all business today are software focused, internally and externally. Yet, here in lays a problem that many tools have sought to solve over the decade, simply put: connect service A to service B. Sounds trivial, but this is what software is all about. Connect database to http server to cron jobs to queue systems to a machine learning module. It's all a service at the end of the day and the data movement, specifically the unique way you move the data is your secret sauce.
 
-Storyscript is pure business-logic. Our intentions with the langauge is to be the go-to programming langauge to design all things cloud native and deliver your product with greater transparency of data flow in a fraction of the time to market.
+Storyscript is pure business-logic. Our intentions with the language is to be the go-to programming language to design all things cloud native and deliver your product with greater transparency of data flow in a fraction of the time to market.
 
 ## Use Cases
 
-All things backend can be created in one line of code. No devops, no boilerplate code, no management or custom scaling.
+All things backend can be created in one line of code. No dev-ops, no boilerplate code, no management or custom scaling.
 
-1. **HTTP Requests and API's** -- `when http server listen ...`
-2. **Websockets** -- `when websocket server connects ...`
+1. **HTTP Requests and APIs** -- `when http server listen ...`
+2. **Web-sockets** -- `when websocket server connects ...`
 3. **Cron** -- `when schedule cron daily ...`
 4. **Event-driven** -- `when slack bot responds ...`
 5. **IoT Events** -- `when iotDevice stream doorBellRang ...`
 6. **Social Media** -- `when twitter stream tweets ...`
 7. **Machine Learning** -- `result = machinebox/textbox analyze text:'...'`
-8. **Microservices Orchestration** -- `output = serviceName action key:value` any langauge in a Docker container
+8. **Microservices Orchestration** -- `output = serviceName action key:value` any language in a Docker container
 9. **Functions Orchestration** -- `output = myFunction(key:value)` powered by OpenFaaS
 10. **CI/CD Pipelines** -- `ci_result = jenkins run ...`
 11. **Video Manipulation** -- `video = ffmpeg compress video:... codec:'h265'`
@@ -49,7 +49,7 @@ All things backend can be created in one line of code. No devops, no boilerplate
 13. **Fully-Asynchronous Programming** -- Network-bound, io-bound, time-bound, and event-bound.
 14. **Multi-Cloud Deployments** -- Thanks to products like [Upbound](https://upbound.io)
 
-## Syntax Cheatsheet
+## Syntax Overview
 
 ```coffeescript
 ###
@@ -64,7 +64,7 @@ output = team/service action key:value
 # Call a function
 output = function_name(key:value)
 # A Storyscript function
-# or another programming langauge
+# or another programming language
 
 # Call type methods
 output = variable mutation key:value
@@ -75,7 +75,7 @@ when service action event key:value as output
 
 # Types
 string = "Hello"
-integar = 1
+integer = 1
 number = 1.3
 bool = true
 list = ['a', 'b', 'c']
@@ -262,7 +262,7 @@ if app.secrets.foo == 'bar'
 ```
 
 ::: tip 💡Hint
-Secrets are case insensative. `app.secrets.FOO` is the same as `app.secrets.foo`.
+Secrets are case nsensitive. `app.secrets.FOO` is the same as `app.secrets.foo`.
 :::
 
 ### Service Variables
@@ -278,14 +278,14 @@ asyncy config set twitter.client_id=abc123
 
 These variables ARE NOT accessible in Storyscript because they are for a service only.
 ```coffeescript
-token = app.secrets.twitter.client_id  # Error. Accessing service environment variables is prohitted.
+token = app.secrets.twitter.client_id  # Error. Accessing service environment variables is prohibited.
 ```
 
-When the service `twitter` is started by Asyncy it will be assigned `client_id=abc123` accoring to it's `microservice.yml` as an environment variable.
+When the service `twitter` is started by Asyncy it will be assigned `client_id=abc123` according to it's `microservice.yml` as an environment variable.
 
 ### Execution Model
 
-Storyscripts are executed by the Asyncy Runtime (not compiled to C or Java or any other langauge).
+Storyscripts are executed by the Asyncy Runtime (not compiled to C or Java or any other language).
 This gives Storyscript distinct advantages over General Purpose Programming Languages (GPPL) with little to no performance overhead since you can use any other GPPL for data processing (low and high-level programming).
 
 #### Deployment
@@ -343,7 +343,7 @@ Storyscript also supports string interpolation within "-quoted strings, using `{
 Single-quoted strings are literal. You may even use interpolation in object keys.
 :::
 
-Multiline strings are allowed in Storyscript.
+Multi-line strings are allowed in Storyscript.
 Lines are joined by a single space unless they end with a backslash.
 Indentation is ignored.
 
@@ -463,7 +463,7 @@ while foobar
     # ...
 ```
 
-Similarly to conditions, loop blocks can use arbitray expressions:
+Similarly to conditions, loop blocks can use arbitrary expressions:
 
 ```
 foreach "a.b.c" split by: "." as item
@@ -574,7 +574,7 @@ In this case `tweet` must be the argument name and the variable name to use for 
 Services may publish events which run a new block of logic.
 
 ```coffeescript
-# All three patterns below are equivelent
+# All three patterns below are equivalent
 when service action event key:value as output
     ...
 
