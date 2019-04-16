@@ -240,7 +240,7 @@ Compile time consists of four primary processes:
 
 1. **Linting** is performed to check syntax and grammar.
 1. **Translation** is performed which translates the Storyscripts into event-logic tree.
-1. **Dependancy** checks are performed to ensure command and arguments exists.
+1. **Dependency** checks are performed to ensure command and arguments exists.
 1. **Type-Checking** is performed on the Stories the ensure data integrity.
 
 The type-checking includes the following checks:
