@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "vuepress dev",
-    "build": "vuepress build"
+    "build": "vuepress build",
+    "postbuild": "vuepress-sitemap -H https://docs.asyncy.com -d .vuepress/dist"
   },
   "repository": {
     "type": "git",
@@ -18,11 +19,13 @@
   },
   "homepage": "https://asyncy.com",
   "devDependencies": {
-    "perfect-scrollbar": "0.8.1",
-    "vuepress": "^0.14.11",
     "@asyncy/vue": "^1.8.1",
+    "esm": "^3.2.22",
     "node-sass": "^4.11.0",
-    "sass-loader": "^7.1.0"
+    "perfect-scrollbar": "0.8.1",
+    "sass-loader": "^7.1.0",
+    "vuepress": "^0.14.11",
+    "vuepress-plugin-sitemap": "^2.1.2"
   },
   "dependencies": {}
 }
