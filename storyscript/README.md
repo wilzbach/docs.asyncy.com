@@ -512,7 +512,7 @@ E0110: Function has no return output defined. Only `return` is allowed.
 
 ## Services
 
-A service is a containerize microservice that is registered in the [Asyncy Hub](https://hub.asyncy.com). Discover hundreds of services in the Hub or build your own in any language, submit to the Asyncy Hub and call it in your Storyscript like this:
+A service is a containerized microservice that is registered in the [Asyncy Hub](https://hub.asyncy.com). Discover hundreds of services in the Hub or build your own in any language, submit to the Asyncy Hub and call it in your Storyscript like this:
 
 ```coffeescript
 # Call a service with a command and all arguments named
