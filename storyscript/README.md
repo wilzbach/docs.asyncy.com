@@ -27,7 +27,7 @@ Many think of Storyscript as glue code for microservices, flow code, low-code, o
 # Table of Contents
 [[toc]]
 
-## Why Storysctipt?
+## Why Storyscript?
 
 The world is becoming more and more integrated. Businesses rely on hundreds of interconneted software to power their business and create their own products. In fact, all business today are software focused, internally and externally. Yet, here in lays a problem that many tools have sought to solve over the decade, simply put: connect service A to service B. Sounds trivial, but this is what software is all about. Connect database to http server to cron jobs to queue systems to a machine learning module. It's all a service at the end of the day and the data movement, specifically the unique way you move the data is your secret sauce.
 

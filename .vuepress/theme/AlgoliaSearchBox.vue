@@ -40,7 +40,7 @@ export default {
 
 <style lang="scss">
 .search-form {
-  padding: 2rem 1rem !important;
+  padding: 2rem 0 !important;
 }
 
 .algolia-autocomplete {

@@ -11,13 +11,14 @@
           @open="openSidebarAndCurrentItem"
         />
       </div>
-      <div class="sidebar-selector-active">
+      <div class="sidebar-selector-active sidebar-links">
         <a-select
           v-for="(item, i) of items"
           ref="sidebarItems"
           @close="closeSidebarOnAllSelectClosed"
           :value="item.title"
           :path="item.path"
+          :class="[{ active: isActive(item) }]"
           :key="`mobile-sidebar-${_uid}-${i}`"
         >
           <li
