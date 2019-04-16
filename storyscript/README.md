@@ -87,6 +87,10 @@ regexp = /^foobar/
 empty = null
 time = 1d35m
 
+# Destructuring
+{ apple, banana } = map
+# apple = 'red'
+
 # Conditions
 if one > 1
     # ...
