@@ -469,6 +469,8 @@ foreach my_list as item
 
 ## Functions
 
+Repeating code blocks can be grouped into functions for better reusability and modularity:
+
 ```coffeescript
 function get_user id:int returns map
     someone = (psql exec query:'select * from users where id={id} limit 1;')[0]
@@ -479,7 +481,7 @@ user_a = get_user(id:7)
 user_b = get_user(id:10)
 ```
 
-The example above is a function what queries the database and also downloads their FullContact profile.
+The example above is a function what queries the database and also downloads their `FullContact` profile.
 
 Function must define their inputs and outputs which help with transparency, autocomplete and type checking during the Asyncy CI process.
 
