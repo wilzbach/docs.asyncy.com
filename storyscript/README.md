@@ -448,6 +448,13 @@ while foobar
     # ...
 ```
 
+Similarly to conditions, loop blocks can use arbitray expressions:
+
+```
+foreach "a.b.c" split by: "." as item
+    # ...
+```
+
 Loops have reserved keywords for ending (`break`) and continuing loops (`continue`).
 
 ```coffeescript
