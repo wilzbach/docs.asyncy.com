@@ -211,16 +211,22 @@ Variables are not global.
 ```coffeescript
 n = 1
 
-when cron schedule every minute:3
-  n = n + 1
-    # ^ Error: variable `n` is undefined.
-
 function incr
   n = n + 1
     # ^ Error: variable `n` is undefined.
 ```
 
-Functions do not have access to local variables. All variables must be provided as arguments.
+Functions do not have access to variables outside their scope.
+All variables must be provided as arguments.
+
+```
+Error: syntax error in story at line 4, column 7
+
+4|      a = n + 1
+            ^
+
+E0101: Variable `n` has not been defined.
+```
 
 ### Compiling
 
@@ -332,7 +338,7 @@ data_formatted = "Hello, {where}"
 
 ::: v-pre
 Like many traditional programming languages, Storyscript supports strings as delimited by the `"` or `'` characters.
-Storyscript also supports string interpolation within "-quoted strings, using `{ variable }`.
+Storyscript also supports string interpolation within "-quoted strings, using `{ expression }`.
 Single-quoted strings are literal. You may even use interpolation in object keys.
 :::
 
@@ -378,6 +384,7 @@ map_multiline = {
   'foo': 'bar',
   'apples': 'oranges'
 }
+object_int = {1: 11, 2: 22}
 ```
 
 ## Conditions
@@ -417,7 +424,7 @@ while foobar
     # ...
 ```
 
-Loops have reserved keywords for ending and continuing loops.
+Loops have reserved keywords for ending (`break`) and continuing loops (`continue`).
 
 ```coffeescript
 foreach my_list as item
@@ -452,7 +459,8 @@ function add this:int that:int returns int
    return this + that
 ```
 
-Functions that do not have an output may not use `return`. An error is thrown if a return is used.
+Functions that do not have an output may not use `return` with an entity.
+An error is thrown if a return is used. An sole `return` statement is allowed.
 
 ```coffeescript
 function do_this
@@ -460,7 +468,12 @@ function do_this
 
 function do_that
     return 1
->>> ERROR: Function must set type of return.
+>>> Error: syntax error in story at line 5, column 12
+
+5|        return 1
+                 ^
+
+E0110: Function has no return output defined. Only `return` is allowed.
 ```
 
 
@@ -567,6 +580,18 @@ catch as error
 
 Use the `throw` keyword to raise the exception, bubbling up to the next try block or stopping the story.
 
+## Time durations
+
+Time durations can be expressed natively.
+
+```coffeescript
+timeout  = 30s
+duration = 5d10m
+```
+
+Supported time units are `w` (weeks)`, `d` (days), `h` (hours)`, `m` (minutes), `s` (seconds) and `ms` (milliseconds).
+
+Time units must be used in this order and can't be repeated.
 
 ## Regular Expressions
 
@@ -607,6 +632,9 @@ true type
 null type
 # null
 
+30s type
+# time
+
 (date now) type
 # date
 
@@ -642,7 +670,17 @@ Use the method `type` to get the type of a variable as a string.
 # false
 ```
 
-Type checking can be applied to any type.
+## Type checking
+
+Storyscript allows a few implicit type conversions:
+
+- boolean types are implicitly convertible to `int`
+- integer types are implicitly convertible to `float`
+- all types are implicitly convertible to `any`
+- all types are implicitly convertible to `string` in a string addition
+
+If a type is unknown, the Storyscript compiler will infer it to `any`.
+All operations of an `any` type with any other type result in an `any` type.
 
 
 ## Comments
