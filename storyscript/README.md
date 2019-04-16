@@ -29,7 +29,7 @@ Many think of Storyscript as glue code for microservices, flow code, low-code, o
 
 ## Why Storysctipt?
 
-The world is becoming more and more integrated. Businesses rely on hundreds of interconneted software to power their business and create their own products. In fact, all business today are software focused, internally and externally. Yet, here in lays a problem that many tools have sought to solve over the decade, simply put: connect service A to service B. Sounds trivial, but this is what software is all about. Connect database to http server to cron jobs to queue systems to a machine learning module. It's all a service at the end of the day and the data movement, specificallly the unique way you move the data is your secret sauce.
+The world is becoming more and more integrated. Businesses rely on hundreds of interconneted software to power their business and create their own products. In fact, all business today are software focused, internally and externally. Yet, here in lays a problem that many tools have sought to solve over the decade, simply put: connect service A to service B. Sounds trivial, but this is what software is all about. Connect database to http server to cron jobs to queue systems to a machine learning module. It's all a service at the end of the day and the data movement, specifically the unique way you move the data is your secret sauce.
 
 Storyscript is pure business-logic. Our intentions with the langauge is to be the go-to programming langauge to design all things cloud native and deliver your product with greater transparency of data flow in a fraction of the time to market.
 
@@ -86,6 +86,10 @@ map = {'apple': 'red', 'banana': 'yellow'}
 regexp = /^foobar/
 empty = null
 time = 1d35m
+
+# Destructuring
+{ apple, banana } = map
+# apple = 'red'
 
 # Conditions
 if one > 1
@@ -236,7 +240,7 @@ Compile time consists of four primary processes:
 
 1. **Linting** is performed to check syntax and grammar.
 1. **Translation** is performed which translates the Storyscripts into event-logic tree.
-1. **Dependancy** checks are performed to ensure command and arguments exists.
+1. **Dependency** checks are performed to ensure command and arguments exists.
 1. **Type-Checking** is performed on the Stories the ensure data integrity.
 
 The type-checking includes the following checks:
@@ -353,12 +357,24 @@ Double-quoted block strings, like other double-quoted strings, allow interpolati
 
 ## Numbers
 
+Numbers in Storyscript can be whole numbers (`int`s) that can be positive, negative or zero:
+
 ```coffeescript
-int = 1
-number = 1.2
+i  = 1
+i2 = -2
+i3 = 0
+```
+
+Additionally, Storyscript can represent numbers with decimals as floating-point numbers (`float`):
+
+```coffeescript
+f1 = 1.2
+f2 = -3.14
 ```
 
 ## Boolean
+
+Truth values can be represented with the `boolean` type that has two possible values (`true` and `false`):
 
 ```coffeescript
 happy = true
@@ -367,16 +383,22 @@ sad = false
 
 ## Lists
 
+Storyscript supports `List`s as a generic container type:
+
 ```coffeescript
 list_inline = ["string", 1, 2]
 list_multiline = [
-  "string",
   1,
-  2
+  2,
+  3
 ]
 ```
 
+In a list the same value may occur more than once.
+
 ## Maps
+
+Storyscript supports `Map`s as a generic container type:
 
 ```coffeescript
 map_inline = {'foo': 'bar', 'apples': 'oranges'}
@@ -385,6 +407,26 @@ map_multiline = {
   'apples': 'oranges'
 }
 object_int = {1: 11, 2: 22}
+```
+
+In a map the same value may occur more than once, but the same key can only occur once.
+
+Maps can be destructured into its part with the destructuring assignments:
+
+```coffeescript
+map = {'foo': 'bar', 'apples': 'oranges'}
+{ foo } = map
+# foo = 'bar'
+```
+
+A destructoring assignment must contain one or more object keys.
+These keys **must** exist in the map and will be new variables names.
+Their value is the value of the respective key in the map (`map[key]`).
+
+```coffeescript
+map = {'foo': 'bar', 'apples': 'oranges'}
+{ foo, apples } = map
+# foo = 'bar', apples = 'oranges'
 ```
 
 ## Conditions
@@ -424,6 +466,13 @@ while foobar
     # ...
 ```
 
+Similarly to conditions, loop blocks can use arbitray expressions:
+
+```
+foreach "a.b.c" split by: "." as item
+    # ...
+```
+
 Loops have reserved keywords for ending (`break`) and continuing loops (`continue`).
 
 ```coffeescript
@@ -438,6 +487,8 @@ foreach my_list as item
 
 ## Functions
 
+Repeating code blocks can be grouped into functions for better reusability and modularity:
+
 ```coffeescript
 function get_user id:int returns map
     someone = (psql exec query:'select * from users where id={id} limit 1;')[0]
@@ -448,7 +499,7 @@ user_a = get_user(id:7)
 user_b = get_user(id:10)
 ```
 
-The example above is a function what queries the database and also downloads their FullContact profile.
+The example above is a function what queries the database and also downloads their `FullContact` profile.
 
 Function must define their inputs and outputs which help with transparency, autocomplete and type checking during the Asyncy CI process.
 
@@ -479,7 +530,7 @@ E0110: Function has no return output defined. Only `return` is allowed.
 
 ## Services
 
-A service is a containerize microservice that is registered in the [Asyncy Hub](https://hub.asyncy.com). Discover hundreds of services in the Hub or build your own in any language, submit to the Asyncy Hub and call it in your Storyscript like this:
+A service is a containerized microservice that is registered in the [Asyncy Hub](https://hub.asyncy.com). Discover hundreds of services in the Hub or build your own in any language, submit to the Asyncy Hub and call it in your Storyscript like this:
 
 ```coffeescript
 # Call a service with a command and all arguments named
@@ -495,7 +546,7 @@ service cmd key:value
 ```
 
 In Storyscript, the syntax to run a service appears natural and arguments are named for transparency.
-Variable shorthands can be used to reduce repeating terms, ie `data:data` or `name:name`.
+Variable shorthands can be used to reduce repeating terms, i.e. `data:data` or `name:name`.
 
 ```coffeescript
 message = "hello"
@@ -504,6 +555,22 @@ twitter tweet :message
 ```
 
 Service, actions and argument names are **static grammar** and **interpreted literally**.
+Hence, the following is allowed:
+
+```coffeescript
+tweet = "Hello world"
+twitter tweet:tweet
+```
+
+As naming variables like their arguments is a frequent,
+Storyscript provides a shortcut (`:name`) to avoid the redundant names:
+
+```coffeescript
+tweet = "Hello world"
+twitter :tweet
+```
+
+In this case `tweet` must be the argument name and the variable name to use for this argument.
 
 ## Event-Based Services
 
@@ -674,14 +741,22 @@ Use the method `type` to get the type of a variable as a string.
 
 Storyscript allows a few implicit type conversions:
 
-- boolean types are implicitly convertible to `int`
-- integer types are implicitly convertible to `float`
+- `boolean` types are implicitly convertible to `int`
+- `int` types are implicitly convertible to `float`
 - all types are implicitly convertible to `any`
 - all types are implicitly convertible to `string` in a string addition
 
 If a type is unknown, the Storyscript compiler will infer it to `any`.
 All operations of an `any` type with any other type result in an `any` type.
 
+The generic container types `List` and `Map` can be constructed from base types or
+themselves.
+Examples:
+
+- `List[int]`
+- `List[List[int]]`
+- `Map[int, string]`
+- `Map[int, List[string]]`
 
 ## Comments
 
@@ -700,6 +775,22 @@ foo = "bar"  # end of line comment
 In Storyscript, comments are denoted by the `#` character to the end of a line,
 or from `###` to the end of the line of the next appearance of `###`.
 
+
+## Operator precedence
+
+Operators with a higher precedence will be evaluated first.
+Storyscript has the following operator precedence (from higher precedence down to lower precedence):
+
+- `or` (Or expression)
+- `and` (And expression
+- `<`, `<=`, `==`, `!=`, `>`, `>=` (Comparison expression)
+- `+`, `-` (Arithmetic expression)
+- `*`, `/`, `%` (Multiplicative expression)
+- `!` (Unary expression)
+- `^^` (Pow expression)
+- `.`, (Dot expression) `[...]` (Index expression)
+- Literals (`1`, `1.2`, `[1, 2, 3]`, `{a: b}`, …)
+- `(...)` (Nested expression)
 
 ## Application Information
 
