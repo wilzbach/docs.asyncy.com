@@ -82,7 +82,7 @@
           </a-level>
         </a-div>
         <a-div
-          size="one-quarter"
+          size="one-fifth-desktop is-one-quarter-tablet"
           class="sidebar-sticky is-font-graphik"
         >
           <perfect-scrollbar>
@@ -103,8 +103,8 @@
           </perfect-scrollbar>
         </a-div>
         <a-div
-          size="three-quarters"
-          class="custom-layout is-font-graphik"
+          size="8-desktop is-7-tablet"
+          class="is-offset-1 custom-layout is-font-graphik"
         >
           <AlgoliaSearchBox
             v-if="isAlgoliaSearch"

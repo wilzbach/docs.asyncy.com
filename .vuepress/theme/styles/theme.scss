@@ -13,6 +13,21 @@
   padding-bottom: 2rem;
 }
 
+.docs .container {
+  @include touch {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .columns {
+    @include touch {
+      margin-left: 0;
+      margin-right: 0;
+      border-radius: 0;
+    }
+  }
+}
+
 .navbar .container {
   @include touch {
     padding-left: 0;

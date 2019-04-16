@@ -1,7 +1,7 @@
 .sidebar-sticky {
   padding-left: 0;
   padding-right: 0;
-  background-color: lighten($light, 0.6%);
+  background-color: #fafbfd;
 
   @include tablet {
     border-bottom-left-radius: 0.625rem;
@@ -17,19 +17,19 @@
     top: 0;
 
     >.ps-container {
-      @include desktop {
+      @include tablet {
         max-height: 100vh;
       }
     }
 
     .sidebar {
-      font-size: .9rem;
+      font-size: .8rem;
       height: auto;
 
       @include mobile {
         border-right: 0;
         width: 100%;
-        padding: 0 2rem;
+        padding: 0 1.2rem;
       }
 
       .sidebar-selector-inactive {
