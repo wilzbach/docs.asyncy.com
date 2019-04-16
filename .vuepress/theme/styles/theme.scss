@@ -14,7 +14,7 @@
 }
 
 .has-top-outside-medium {
-  @include mobile {
+  @include touch {
     margin-bottom: -8.75rem;
   }
 }
