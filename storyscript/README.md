@@ -357,9 +357,19 @@ Double-quoted block strings, like other double-quoted strings, allow interpolati
 
 ## Numbers
 
+Numbers in Storyscript can be whole numbers (`int`s) that can be positive, negative or zero:
+
 ```coffeescript
-int = 1
-number = 1.2
+i  = 1
+i2 = -2
+i3 = 0
+```
+
+Additionally, Storyscript can represent numbers with decimals as floating-point numbers (`float`):
+
+```coffeescript
+f1 = 1.2
+f2 = -3.14
 ```
 
 ## Boolean
