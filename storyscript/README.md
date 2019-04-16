@@ -22,10 +22,7 @@ Many think of Storyscript as glue code for microservices, flow code, low-code, o
 
 ![stackup](./stackup.png)
 
-> Storyscript **amplifys the developer** to program robust, scalable backend applications in a fraction of the time by focusing on what matters most: the story of data, *everything else is noise*.
-
-# Table of Contents
-[[toc]]
+> Storyscript **amplifies the developer** to program robust, scalable backend applications in a fraction of the time by focusing on what matters most: the story of data, *everything else is noise*.
 
 ## Why Storyscript?
 
