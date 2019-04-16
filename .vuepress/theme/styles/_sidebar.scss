@@ -41,15 +41,48 @@
       }
 
       .sidebar-links {
-        padding-left: 1rem;
+        &:not(.sidebar-selector-active) {
+          padding-left: 1rem;
+        }
+
         position: relative;
+
+        .select-box {
+
+          &:not(.active) {
+
+            .input,
+            .input.open,
+            .icon {
+              color: nth($grays, 2);
+            }
+          }
+
+
+          .selectable {
+            .selectable-items {
+              li {
+                a {
+                  font-weight: normal;
+                  color: nth($grays, 3);
+
+                  &.router-link-active {
+                    color: $dark;
+                    font-weight: 500;
+                  }
+                }
+              }
+            }
+          }
+
+        }
 
         li {
           padding: 0.25rem;
           margin-top: 0.75rem;
 
           a {
-            color: #464769;
+            color: nth($grays, 2);
             font-weight: 500;
           }
 
