@@ -14,7 +14,7 @@
   pre,
   pre[class*="language-"] {
     line-height: 1.4;
-    padding: 1.25rem 1.5rem;
+    padding: 1rem 1rem;
     margin: 0.85rem 0;
     background-color: $dark;
     border-radius: 6px;
@@ -58,9 +58,9 @@ div[class*="language-"] {
   &:before {
     position: absolute;
     z-index: 3;
-    top: 0.8em;
-    right: 1em;
-    font-size: 0.75rem;
+    top: 0.25rem;
+    right: .5rem;
+    font-size: 0.625rem;
     color: rgba($white, 0.4);
   }
 
