@@ -2,15 +2,15 @@
 
 Strings together microservices and functions in a serverless way with Storyscript, the top-level programming language for **Application Storytelling**™ on Asyncy.
 
-The foundation of Storyscript is **moving data by pull or push**. In the diagram below we have two lines of code: one that represents data being pushed into a Story (e.g., streams and events) and the next line representing data being pulled from a service (e.g., http get).
+The foundation of Storyscript is to **move data** with no boilerplate code in a declarative way. In the diagram below we have two lines of code: one that represents data being pushed from a service (e.g., streams and events) and the next line data being pulled from a service (e.g., http get).
 
 ![design of a story](./design-of-a-story.png)
 
 ::: tip Inspiration behind Storyscript
-Natural, familiar and intuitive; Storyscript is inspired by the Zen of Python, the beauty of Ruby, the declarative nature of Swift and some flavors from other popular languages.
+Storyscript is inspired by many popular languages to be as natural and intuitive as possible. It is declarative, strong-typed, static-typed and focused on top-level data-flow.
 :::
 
-Many think of Storyscript as glue code for microservices, flow code, low-code, or pure business-logic programming. We call this **top-level programming**. The diagram shows how the language focuses on the most important aspect of application development: the business-logic.
+Many think of Storyscript as glue code for microservices, flow-code, low-code, or pure business-logic programming. We call this **top-level programming**. The diagram shows how the language focuses on the most important aspect of application development: the business-logic.
 
 ![abstraction](./abstraction.png)
 
@@ -26,9 +26,7 @@ Many think of Storyscript as glue code for microservices, flow code, low-code, o
 
 ## Why Storyscript?
 
-The world is becoming more and more integrated. Businesses rely on hundreds of inter-connected software to power their business and create their own products. In fact, all business today are software focused, internally and externally. Yet, here in lays a problem that many tools have sought to solve over the decade, simply put: connect service A to service B. Sounds trivial, but this is what software is all about. Connect database to http server to cron jobs to queue systems to a machine learning module. It's all a service at the end of the day and the data movement, specifically the unique way you move the data is your secret sauce.
-
-Storyscript is pure business-logic. Our intentions with the language is to be the go-to programming language to design all things cloud native and deliver your product with greater transparency of data flow in a fraction of the time to market.
+The developer dream is to build software like Legos; writing code as a story of data between well orchestrated services with the least amount of boilerplate and complexity. The goal of Storyscript is to be the thread that connects everything from a top-level design: API's, databases, functions, and microservices. We believe a language that connects polyglot services provides the most inclusive and unified platform opposed to focusing on extending one language which further fractures the many tribes of developers. Storyscript **does not replace other languages**, it connects them while freeing the developer to pick the right language for the task.
 
 ## Use Cases
 
@@ -47,7 +45,6 @@ All things backend can be created in one line of code. No dev-ops, no boilerplat
 11. **Video Manipulation** -- `video = ffmpeg compress video:... codec:'h265'`
 12. **Image Manipulation** -- `image = imagemagic scale input:... size:'150x150'`
 13. **Fully-Asynchronous Programming** -- Network-bound, io-bound, time-bound, and event-bound.
-14. **Multi-Cloud Deployments** -- Thanks to products like [Upbound](https://upbound.io)
 
 ## Syntax Overview
 
