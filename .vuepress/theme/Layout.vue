@@ -191,7 +191,7 @@ export default {
       }
     },
     getTitle () {
-      if (this.$route.path === '/') return 'Source Guides'
+      if (this.$route.path === '/') return 'Welcome home.'
       const item = this.sidebarItems.find(i => i.path === this.$route.path)
       return item ? item.title : ''
     },

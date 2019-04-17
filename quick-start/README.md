@@ -5,30 +5,17 @@ next: /storyscript/
 
 # Quick Start
 
-Welcome to **Asyncy Beta** :tada: We are very excited to share our product and receive your feedback.
-
+Our story begins with you, the developer. We believe in amplifying you to build and deploy applications at the speed of light. Our mission is to make development 10-100x easier by significantly reducing unnecessary complexity and focusing on what matters most: your story of data. Let's get started.
 
 ## Get started
 
-To get started, install our CLI:
-
-<!-- ```shell
-brew install asyncy/brew/asyncy
-``` -->
-<!--
-| <img src="../assets/apple-logo.svg" width="15"> macOS | <img src="../assets/windows-logo.svg" width="15"> Windows | <img src="../assets/ubuntu-logo.svg" width="15"> Ubuntu 16+ | :snake: Python
-| --- | --- | --- | --- | -->
+First, install our CLI:
 
 <table width="100%">
 <tr>
 <td style="text-align:center" width="100%" valign="top" colspan="2">
 <details :open="$page.os === 'macos'">
 <summary><h4><img src="../assets/apple-logo.svg" width="15"> macOS</h4></summary>
-
-<!--
-<a href="https://github.com/asyncy/cli/releases/download/0.0.6/asyncy-0.0.6.pkg" class="button">Download the installer</a>
-<small>Also available via Homebrew:</small>
--->
 
 ```shell
 brew install asyncy/brew/asyncy
@@ -78,7 +65,7 @@ We **strongly recommend** using the other installation techniques.
 </tr>
 </table>
 
-Next, login using your GitHub account:
+Next, login with your GitHub account:
 
 ```shell
 asyncy login
@@ -93,8 +80,6 @@ If you're having trouble logging in via GitHub, please [reach out to us](http://
 
 ## Write your first Story
 
-Storyscript is a new programming language, but don't worry, it's built for developers taking favourite features of many languages. You'll see familiar syntax to Python, Ruby, Clojure and Node.
-
 Let's create your first application, to be able to check out the samples which are bundled.
 ```shell
 mkdir first_app && cd first_app
@@ -103,15 +88,9 @@ mkdir first_app && cd first_app
 asyncy apps create
 ```
 
-Doing so will create `asyncy.yml` in the current directory. This file contains metadata about your new app.
+> <small>Doing so will create `asyncy.yml` in the current directory. This file contains metadata about your new app.</small>
 
-We have created a few examples that can help you bootstrap your project:
-
-```shell
-asyncy bootstrap
-```
-
-Let's choose the HTTP endpoint:
+We have created a few examples that can help you bootstrap your project: Let's start you off with a simple hello world serverless http endpoint:
 
 ```shell
 asyncy bootstrap http > http.story && cat http.story
@@ -137,9 +116,9 @@ Waiting for deployment to complete... |
 If your story listens to HTTP requests, visit https://competent-nash-82.asyncyapp.com
 ```
 
-:sparkles::cake::sparkles: Congratulations! You have just deployed your first Asyncy application!
+:sparkles::cake::sparkles: Congratulations! You have just deployed your first Story!
 
-**Note:** `asyncy deploy` will deploy all the stories in your project at once.
+`asyncy deploy` will deploy all the stories in your project at once.
 
 ::: tip See it live!
 
@@ -148,11 +127,7 @@ It will indicate where your story was deployed.
 
 :::
 
-::: tip Learn more about Storyscript
-
-Checkout our extensive documentation about [Storyscript](/storyscript/)
-
-:::
+> **Next** Checkout our extensive documentation about [Storyscript](/storyscript/) to build powerful applications.
 
 ## Deploy changes
 
@@ -164,10 +139,3 @@ asyncy deploy
 ```
 
 :sparkles::cake::sparkles: Your application is now live!
-
-
-::: tip Next
-
-Deploy a simple [file upload and download story](https://asyncy.com/blog/story-telling/).
-
-:::
