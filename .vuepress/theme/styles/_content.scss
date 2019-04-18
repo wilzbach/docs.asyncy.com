@@ -144,10 +144,10 @@
   }
 
   table {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    flex: 1 1 100%;
+    // display: flex;
+    // flex-direction: column;
+    // flex-wrap: nowrap;
+    // flex: 1 1 100%;
 
     tr {
       display: flex;
@@ -155,14 +155,12 @@
       flex-wrap: nowrap;
       width: 100%;
 
-      @include touch {
-        flex-wrap: wrap;
-      }
 
-
-      td {
+      td,
+      th {
         display: block;
         width: 100%;
+        min-width: 10%;
       }
     }
   }
