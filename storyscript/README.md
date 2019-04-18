@@ -349,6 +349,22 @@ The indentation level that begins the block is maintained throughout, so you can
 
 Double-quoted block strings, like other double-quoted strings, allow interpolation.
 
+### String indexing
+
+A string index is zero-based.
+A string index may be negative and will then start from the end. The absolute value
+of an index may not be equal or greater than the length of the string.
+
+```coffeescript
+s = "abcd"
+s[0]  # a
+s[3]  # d
+s[-1] # d
+s[-3] # a
+s[4]  # ERROR
+s[-4] # ERROR
+```
+
 ## Numbers
 
 Numbers in Storyscript can be whole numbers (`int`s) that can be positive, negative or zero:
@@ -393,6 +409,19 @@ list_multiline = [
 ```
 
 In a list the same value may occur more than once.
+A list index is zero-based.
+A list index may be negative and will then start from the end. The absolute value
+of an index may not be equal or greater than the length of the list.
+
+```coffeescript
+list = [1, 2, 3, 4]
+l[0]  # 1
+l[3]  # 4
+l[-1] # 4
+l[-3] # 1
+l[4]  # ERROR
+l[-4] # ERROR
+```
 
 ## Maps
 
