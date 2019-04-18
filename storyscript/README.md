@@ -349,6 +349,22 @@ The indentation level that begins the block is maintained throughout, so you can
 
 Double-quoted block strings, like other double-quoted strings, allow interpolation.
 
+### String indexing
+
+A string index is zero-based.
+A string index may be negative and will then start from the end. The absolute value
+of an index may not be equal or greater than the length of the string.
+
+```coffeescript
+s = "abcd"
+s[0]  # a
+s[3]  # d
+s[-1] # d
+s[-3] # a
+s[4]  # ERROR
+s[-4] # ERROR
+```
+
 ## Numbers
 
 Numbers in Storyscript can be whole numbers (`int`s) that can be positive, negative or zero:
@@ -359,12 +375,16 @@ i2 = -2
 i3 = 0
 ```
 
+Integers are unlimited in size and have no minimum or maximum value.
+
 Additionally, Storyscript can represent numbers with decimals as floating-point numbers (`float`):
 
 ```coffeescript
 f1 = 1.2
 f2 = -3.14
 ```
+
+The engine uses IEEE-754 double precision floating point arithmetic.
 
 ## Boolean
 
@@ -389,6 +409,19 @@ list_multiline = [
 ```
 
 In a list the same value may occur more than once.
+A list index is zero-based.
+A list index may be negative and will then start from the end. The absolute value
+of an index may not be equal or greater than the length of the list.
+
+```coffeescript
+list = [1, 2, 3, 4]
+l[0]  # 1
+l[3]  # 4
+l[-1] # 4
+l[-3] # 1
+l[4]  # ERROR
+l[-4] # ERROR
+```
 
 ## Maps
 
@@ -413,7 +446,7 @@ map = {'foo': 'bar', 'apples': 'oranges'}
 # foo = 'bar'
 ```
 
-A destructoring assignment must contain one or more object keys.
+A destructuring assignment must contain one or more object keys.
 These keys **must** exist in the map and will be new variables names.
 Their value is the value of the respective key in the map (`map[key]`).
 
