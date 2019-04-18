@@ -43,7 +43,7 @@ Download the appropriate installer:
 <summary><h4><img src="../assets/ubuntu-logo.svg" width="15"> Ubuntu 16+</h4></summary>
 
 ```shell
-sudo snap install asyncy --classic
+snap install asyncy --classic
 ```
 
 <small><a href="https://snapcraft.io/">Snap is available on other Linux OS.</a></small>
