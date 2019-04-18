@@ -144,15 +144,13 @@
   }
 
   table {
-    // display: flex;
-    // flex-direction: column;
-    // flex-wrap: nowrap;
-    // flex: 1 1 100%;
+    display: block;
 
     tr {
       display: flex;
       flex-direction: row;
       flex-wrap: nowrap;
+      flex: 1 1 100%;
       width: 100%;
 
 
