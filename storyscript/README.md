@@ -413,7 +413,7 @@ map = {'foo': 'bar', 'apples': 'oranges'}
 # foo = 'bar'
 ```
 
-A destructoring assignment must contain one or more object keys.
+A destructuring assignment must contain one or more object keys.
 These keys **must** exist in the map and will be new variables names.
 Their value is the value of the respective key in the map (`map[key]`).
 
