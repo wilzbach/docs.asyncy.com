@@ -359,12 +359,16 @@ i2 = -2
 i3 = 0
 ```
 
+Integers are unlimited in size and have no minimum or maximum value.
+
 Additionally, Storyscript can represent numbers with decimals as floating-point numbers (`float`):
 
 ```coffeescript
 f1 = 1.2
 f2 = -3.14
 ```
+
+The engine uses IEEE-754 double precision floating point arithmetic.
 
 ## Boolean
 
