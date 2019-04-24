@@ -786,7 +786,7 @@ Type       | Operations | Remarks
 `regexp`   | (none)     |
 `time`     | `+`, `-`   |
 `string`   | `+`        | Addition with any other type is possible, returns a `string`
-`list`     | `+`        |
+`List`     | `+`        |
 `map`      | (none)     |
 `none`     | (none)     |
 `any`      | varies     | The other type must support this operation, returns `any`
