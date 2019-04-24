@@ -787,7 +787,7 @@ Type       | Operations | Remarks
 `time`     | `+`, `-`   |
 `string`   | `+`        | Addition with any other type is possible, returns a `string`
 `List`     | `+`        |
-`map`      | (none)     |
+`Map`      | (none)     |
 `none`     | (none)     |
 `any`      | varies     | The other type must support this operation, returns `any`
 
