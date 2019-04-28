@@ -264,7 +264,7 @@ Secrets are case nsensitive. `app.secrets.FOO` is the same as `app.secrets.foo`.
 
 ### Service Variables
 
-May services require environment variables, such as oauth tokens and client id/secret pairs.
+Many services require environment variables, such as oauth tokens and client id/secret pairs.
 
 Service variables are ALWAYS unique to that service and cannot be accessed by any other service or within Storyscript secrets.
 
