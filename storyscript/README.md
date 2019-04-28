@@ -259,7 +259,7 @@ if app.secrets.foo == 'bar'
 ```
 
 ::: tip 💡Hint
-Secrets are case nsensitive. `app.secrets.FOO` is the same as `app.secrets.foo`.
+Secrets are case–insensitive. For example: `app.secrets.FOO` and `app.secrets.foo` reference the same variable.
 :::
 
 ### Service Variables
