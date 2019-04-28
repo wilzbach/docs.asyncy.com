@@ -15,10 +15,10 @@ Many think of Storyscript as glue code for microservices, flow-code, low-code, o
 ![abstraction](./abstraction.png)
 
 **Key value propositions**
-1. **Transparency**; It looks like a monolith but is a full microservice/function serverless architecure.
-1. **Readability**; The truth is in the code. Not only is Storyscript easy to read it's also easy to refactor, add features and traceback errors.
-1. **Polyglot**; Storyscript connects all languages together in one cohesive story of data. Choose the right language for the job.
-1. **Zero-devops Deployments**; No Kubernetes configuration, port bindings, ingress controllers, central message queue, no container coupling, no infra configuration or custom scaling.
+1. **Transparency**. It looks like a monolith but is a full microservice/function serverless architecure.
+1. **Readability**. The truth is in the code. Not only is Storyscript easy to read it's also easy to refactor, add features and traceback errors.
+1. **Polyglot**. Storyscript connects all languages together in one cohesive story of data. Choose the right language for the job.
+1. **Zero-devops Deployments**. No Kubernetes configuration, port bindings, ingress controllers, central message queue, no container coupling, no infra configuration or custom scaling.
 
 ![stackup](./stackup.png)
 
