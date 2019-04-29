@@ -7,9 +7,9 @@ features:
     link: "/quick-start/"
     icon: "rocket"
 
-  - title: "Asyncy Platform"
-    description: "The Asyncy Platform provides a production-ready, scalable microservice environment."
-    link: "https://asyncy.com"
+  - title: "Story Cloud"
+    description: "The Storyscript Platform provides a production-ready, scalable microservice environment."
+    link: "https://storyscript.io"
     icon: "landing"
 
   - title: "Private Beta"
@@ -18,7 +18,7 @@ features:
     icon: "mail"
 
   - title: "Contributing"
-    description: "Want to get involved with the Asyncy open source ecosystem? The entire platform is open source in GitHub."
-    link: "https://github.com/asyncy"
+    description: "Want to get involved with the Storyscript open source ecosystem? The entire platform is open source in GitHub."
+    link: "https://github.com/storyscript"
     icon: "github"
 ---

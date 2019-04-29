@@ -5,14 +5,14 @@
   >
     <div class="is-hidden-tablet">
       <div class="sidebar-selector-inactive">
-        <a-select
+        <s-select
           :value="getTitle"
           fold-icon
           @open="openSidebarAndCurrentItem"
         />
       </div>
       <div class="sidebar-selector-active sidebar-links">
-        <a-select
+        <s-select
           v-for="(item, i) of items"
           ref="sidebarItems"
           @close="closeSidebarOnAllSelectClosed"
@@ -30,7 +30,7 @@
               :to="`${item.path}#${child.slug}`"
             >{{ child.title }}</router-link>
           </li>
-        </a-select>
+        </s-select>
       </div>
     </div>
     <div :class="{ 'is-hidden-mobile': true, 'shorten': shortenSidebar }">

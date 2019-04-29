@@ -6,30 +6,30 @@
     :href="isExternal(link) ? link : undefined"
   >
     <div class="columns is-centered is-vcentered">
-      <a-div size="10">
-        <a-media class="feature-svg">
+      <s-div size="10">
+        <s-media class="feature-svg">
           <FeatureIcon
             :name="icon"
             slot="left"
           />
           <h2>{{ title }}</h2>
           <p>{{ description }}</p>
-        </a-media>
-      </a-div>
-      <a-div
+        </s-media>
+      </s-div>
+      <s-div
         size="2"
         class="is-hidden-mobile"
       >
         <component
           class="button is-primary is-link"
           link
-          :is="isExternal(link) ? 'a-button' : 'router-link'"
+          :is="isExternal(link) ? 's-button' : 'router-link'"
           :to="!isExternal(link) ? link : undefined"
           :url="isExternal(link) ? { href: link, target: '' } : undefined"
         >
-          <a-icon icon="arrow" />
+          <s-icon icon="arrow" />
         </component>
-      </a-div>
+      </s-div>
     </div>
   </component>
 </template>

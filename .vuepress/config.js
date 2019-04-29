@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'Asyncy',
+  title: 'Storyscript',
   description: 'Build smarter applications.',
   ga: 'UA-111475156-5',
   themeConfig: {
@@ -8,22 +8,23 @@ module.exports = {
       indexName: 'asyncy'
     },
     lastUpdated: 'Last Updated',
-    repo: 'asyncy/docs.asyncy.com',
+    repo: 'storyscript/docs.storyscript.io',
     repoLabel: 'Edit in GitHub',
     editLinks: true,
     sidebarDepth: 1,
     nav: [{
-      name: 'blog',
-      link: '//asyncy.com/blog'
+      name: 'Blog',
+      link: '//storyscript.io/blog'
     }, {
-      name: 'Hub',
-      link: '//hub.asyncy.com'
+      name: 'Docs',
+      link: '//docs.storyscript.io',
+      active: true
     }, {
       name: 'About',
-      link: '//asyncy.com/about'
+      link: '//storyscript.io/about'
     }, {
-      name: 'Contact',
-      link: '//asyncy.com/contact'
+      name: 'Hub',
+      link: '//hub.storyscript.io'
     }],
     sidebar: [
       '/quick-start/',
