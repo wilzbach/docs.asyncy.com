@@ -1,10 +1,10 @@
 <template>
   <form class="search-form">
-    <a-input
+    <s-input
       placeholder="Search documentation"
       id="algolia-search-input"
       background="light"
-      :icon-right="['a-icon', { icon: 'search'}]"
+      :icon-right="['s-icon', { icon: 'search'}]"
     />
   </form>
 </template>

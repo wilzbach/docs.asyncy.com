@@ -1,25 +1,25 @@
 {
-  "name": "docs.asyncy.com",
+  "name": "docs.storyscript.io",
   "version": "0.0.2",
-  "description": "Docs for Asyncy",
+  "description": "Docs for Storyscript",
   "license": "AGPL v3",
   "main": "index.js",
   "scripts": {
     "dev": "vuepress dev",
     "build": "vuepress build",
-    "postbuild": "vuepress-sitemap -H https://docs.asyncy.com -d .vuepress/dist"
+    "postbuild": "vuepress-sitemap -H https://docs.storyscript.io -d .vuepress/dist"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/asyncy/docs.asyncy.com.git"
+    "url": "git+https://github.com/storyscript/docs.storyscript.io.git"
   },
-  "author": "Asyncy",
+  "author": "Storyscript",
   "bugs": {
-    "url": "https://github.com/asyncy/docs.asyncy.com/issues"
+    "url": "https://github.com/storyscript/docs.storyscript.io/issues"
   },
-  "homepage": "https://asyncy.com",
+  "homepage": "https://storyscript.io",
   "devDependencies": {
-    "@asyncy/vue": "^1.8.1",
+    "@storyscript/vue": "^2.2.1",
     "esm": "^3.2.22",
     "node-sass": "^4.11.0",
     "perfect-scrollbar": "0.8.1",

@@ -1,11 +1,11 @@
 <template>
   <div class="docs">
-    <a-jumbo
+    <s-jumbo
       :size="$route.path === '/' ? 'medium' : undefined"
       :small="$route.path === '/' ? 'Documentation' : ''"
       :title="getTitle"
     >
-      <a-navbar
+      <s-navbar
         slot="header"
         :items="menuItems"
         dark
@@ -24,8 +24,8 @@
       >
         Documentation
       </p> -->
-    </a-jumbo>
-    <a-layout
+    </s-jumbo>
+    <s-layout
       margin="medium"
       background="light"
       foreground="white"
@@ -34,19 +34,19 @@
       outside
       narrow
     >
-      <a-container
+      <s-container
         :class="pageClasses"
         @touchstart="onTouchStart"
         @touchend="onTouchEnd"
       >
-        <a-div
+        <s-div
           size="full"
           padding="min"
           class="bordered-bottom-light"
         >
-          <a-level class="is-mobile">
+          <s-level class="is-mobile">
             <template slot="left">
-              <a-icon
+              <s-icon
                 class="is-hidden-mobile"
                 icon="home"
                 height="14"
@@ -55,7 +55,7 @@
               />
               <span class="is-size-8 has-line-height-5 has-text-gray-2 has-text-weight-semibold has-text-uppercase">Documentation</span>
             </template>
-            <a-button
+            <s-button
               link
               class="has-height-auto"
               slot="right"
@@ -78,10 +78,10 @@
                   <path d="M9.5894518,3.16666667 L11.8333333,5.4105482 L12.6989884,4.54489315 C12.947369,4.29651258 12.947369,3.89396361 12.6989884,3.64558304 L11.354417,2.30101162 C11.1060364,2.05263105 10.7034874,2.05263105 10.4551069,2.30101162 L9.5894518,3.16666667 Z M10.9819768,6.26190476 L8.73809524,4.01802323 L2.18114091,10.5749776 L1.73236461,13.2676354 L4.42502245,12.8188591 L10.9819768,6.26190476 Z M4.8132539,13.9747615 L1.09896819,14.5938091 C0.691521776,14.6617169 0.338283122,14.3084782 0.406190858,13.9010318 L1.02523848,10.1867461 C1.04586572,10.0629826 1.1046482,9.94875714 1.19336934,9.860036 L9.60375029,1.44965505 C10.3223221,0.731083237 11.4872017,0.731083237 12.2057735,1.44965505 L13.5503449,2.79422648 C14.2689168,3.51279829 14.2689168,4.6776779 13.5503449,5.39624971 L5.139964,13.8066307 C5.05124286,13.8953518 4.93701737,13.9541343 4.8132539,13.9747615 Z" />
                 </g>
               </svg>
-            </a-button>
-          </a-level>
-        </a-div>
-        <a-div
+            </s-button>
+          </s-level>
+        </s-div>
+        <s-div
           size="one-fifth-desktop is-one-quarter-tablet"
           class="sidebar-sticky is-font-graphik"
         >
@@ -101,8 +101,8 @@
               />
             </Sidebar>
           </perfect-scrollbar>
-        </a-div>
-        <a-div
+        </s-div>
+        <s-div
           size="8-desktop is-7-tablet"
           class="is-offset-1 custom-layout is-font-graphik"
         >
@@ -128,14 +128,14 @@
               slot="bottom"
             />
           </Page>
-        </a-div>
-      </a-container>
-    </a-layout>
-    <a-join
+        </s-div>
+      </s-container>
+    </s-layout>
+    <s-join
       footer
       is-paddingless
     />
-    <a-footer dark />
+    <s-footer dark />
   </div>
 </template>
 
