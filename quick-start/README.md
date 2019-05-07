@@ -18,7 +18,7 @@ First, install our CLI:
 <summary><h4><img src="../assets/apple-logo.svg" width="15"> macOS</h4></summary>
 
 ```shell
-brew install asyncy/brew/asyncy
+brew install asyncy/brew/story
 ```
 
 </details>
