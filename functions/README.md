@@ -25,7 +25,7 @@ function spam_me text:string
 Now, we can call our function like this:
 
 ```coffeescript
-spam_me('doorbell rang!')
+spam_me(text: 'doorbell rang!')
 ```
 
 ### GPPL Functions
