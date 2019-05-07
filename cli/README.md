@@ -1,9 +1,9 @@
 # CLI
 
-Asyncy CLI is designed to be the core toolkit to interact with Asyncy. Create applications, update environment and manage application state.
+The 'Story' CLI is designed to be the core toolkit to interact with Storyscript Cloud. Create applications, update environment and manage application state.
 
 ## Install
-To get started install the Asyncy CLI ([Contribute](https://github.com/asyncy/cli))
+To get started install the 'Story' CLI ([Contribute](https://github.com/storyscript/cli))
 
 <table width="100%">
 <tr>
@@ -11,12 +11,12 @@ To get started install the Asyncy CLI ([Contribute](https://github.com/asyncy/cl
 <h1><img src="../assets/apple-logo.svg" width="24"> macOS</h1>
 
 ```shell
-brew install asyncy/brew/asyncy
+brew install storyscript/brew/story
 ```
 
 <small>Also available via download:</small>
 
-<div><a href="https://github.com/asyncy/cli/releases/download/0.0.6/asyncy-0.0.6.pkg" class="button is-primary is-small">Download the installer</a></div>
+<div><a href="https://github.com/storyscript/cli/releases/download/0.0.6/asyncy-0.0.6.pkg" class="button is-primary is-small">Download the installer</a></div>
 
 
 </td>
@@ -25,7 +25,7 @@ brew install asyncy/brew/asyncy
 
 Download the appropriate installer:
 
-<div><a href="https://github.com/asyncy/cli/releases/download/0.0.6/asyncy-x64.exe" class="button is-primary is-small">64-bit installer</a></div>
+<div><a href="https://github.com/storyscript/cli/releases/download/0.0.6/asyncy-x64.exe" class="button is-primary is-small">64-bit installer</a></div>
 
 </td>
 </tr>
@@ -44,7 +44,7 @@ sudo snap install asyncy --classic
 <h1>Python</h1>
 
 ```shell
-pip install --user asyncy
+pip install --user story
 ```
 
 The other installation methods listed are recommended.
@@ -55,10 +55,10 @@ The other installation methods listed are recommended.
 
 ## Usage
 
-Get a fill list of CLI commands by calling `asyncy`.
+Get a fill list of CLI commands by calling `story`.
 
 ```shell
-asyncy
+story
 ```
 
 Get more details on each command by applying `--help` to the command.
