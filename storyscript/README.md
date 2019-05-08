@@ -1,6 +1,6 @@
 # Storyscript
 
-Strings together microservices and functions in a serverless way with Storyscript, the top-level programming language for **Application Storytelling**™ on Asyncy.
+Strings together microservices and functions in a serverless way with Storyscript, the top-level programming language for **Application Storytelling**™ on Storyscript Cloud.
 
 The foundation of Storyscript is to **move data** with no boilerplate code in a declarative way. In the diagram below we have two lines of code: one that represents data being pushed from a service (e.g., streams and events) and the next line data being pulled from a service (e.g., http get).
 
@@ -15,13 +15,13 @@ Many think of Storyscript as glue code for microservices, flow-code, low-code, o
 ![abstraction](./abstraction.png)
 
 **Key value propositions**
-1. **Transparency**. 
+1. **Transparency**.
   It looks like a monolith but is a full microservice/function serverless architecure.
-1. **Readability**. 
+1. **Readability**.
   The truth is in the code. Not only is Storyscript easy to read it's also easy to refactor, add features and traceback errors.
-1. **Polyglot**. 
+1. **Polyglot**.
   Storyscript connects all languages together in one cohesive story of data. Choose the right language for the job.
-1. **Zero-devops Deployments**. 
+1. **Zero-devops Deployments**.
   No Kubernetes configuration, port bindings, ingress controllers, central message queue, no container coupling, no infra configuration or custom scaling.
 
 ![stackup](./stackup.png)
@@ -60,7 +60,7 @@ Meet Storyscript
 # Pull data from a microservice
 output = service action key:value
 output = team/service action key:value
-# Discover and create services in the Asyncy Hub
+# Discover and create services in the Storyscript Hub
 
 # Call a function
 output = function_name(key:value)
@@ -251,9 +251,9 @@ The type-checking includes the following checks:
 
 Environment variables are stored in a restricted keyword `app.secrets`.
 
-Set secrets with the Asyncy CLI
+Set secrets with the Storyscript CLI
 ```shell
-asyncy config set foo=bar
+story config set foo=bar
 ```
 
 Then you may access them via `app.secrets` map, like this:
@@ -272,9 +272,9 @@ Many services require environment variables, such as oauth tokens and client id/
 
 Service variables are ALWAYS unique to that service and cannot be accessed by any other service or within Storyscript secrets.
 
-Set secrets with the Asyncy CLI
+Set secrets with the Storyscript CLI
 ```shell
-asyncy config set twitter.client_id=abc123
+story config set twitter.client_id=abc123
 ```
 
 These variables ARE NOT accessible in Storyscript because they are for a service only.
@@ -282,17 +282,17 @@ These variables ARE NOT accessible in Storyscript because they are for a service
 token = app.secrets.twitter.client_id  # Error. Accessing service environment variables is prohibited.
 ```
 
-When the service `twitter` is started by Asyncy it will be assigned `client_id=abc123` according to it's `microservice.yml` as an environment variable.
+When the service `twitter` is started by Storyscript Cloud it will be assigned `client_id=abc123` according to it's `microservice.yml` as an environment variable.
 
 ### Execution Model
 
-Storyscripts are executed by the Asyncy Runtime (not compiled to C or Java or any other language).
+Storyscripts are executed by the Storyscript Cloud Runtime (not compiled to C or Java or any other language).
 This gives Storyscript distinct advantages over General Purpose Programming Languages (GPPL) with little to no performance overhead since you can use any other GPPL for data processing (low and high-level programming).
 
 #### Deployment
 
 1. All dependencies are gathered and prepared for execution.
-1. The Asyncy Runtime is prepared with the Stories as first-class assets for swift execution.
+1. The Storyscript Cloud Runtime is prepared with the Stories as first-class assets for swift execution.
 1. Every Storyscript is executed allowing them to register with event-based services.
 
 #### Execution
@@ -532,7 +532,7 @@ user_b = get_user(id:10)
 
 The example above is a function what queries the database and also downloads their `FullContact` profile.
 
-Function must define their inputs and outputs which help with transparency, autocomplete and type checking during the Asyncy CI process.
+Function must define their inputs and outputs which help with transparency, autocomplete and type checking during the Storyscript Cloud CI process.
 
 Functions **MAY** declare one output and identify it's type. If an output type is used the function **MUST** use `return` and return that type.
 
@@ -561,7 +561,7 @@ E0110: Function has no return output defined. Only `return` is allowed.
 
 ## Services
 
-A service is a containerized microservice that is registered in the [Asyncy Hub](https://hub.asyncy.com). Discover hundreds of services in the Hub or build your own in any language, submit to the Asyncy Hub and call it in your Storyscript like this:
+A service is a containerized microservice that is registered in the[Storyscript Hub](https://hub.storyscript.io). Discover hundreds of services in the Hub or build your own in any language, submit to the Asyncy Hub and call it in your Storyscript like this:
 
 ```coffeescript
 # Call a service with a command and all arguments named
@@ -706,7 +706,7 @@ pattern = /(?P<key>\w):(?P<value>\w)/
 ```
 
 ::: tip Info
-Learn the methods you can call with regular expression in the [Asyncy Hub](https://hub.asyncy.com)
+Learn the methods you can call with regular expression in the [Storyscript Hub](https://hub.storyscript.io)
 :::
 
 ## Types
@@ -905,7 +905,7 @@ Storyscript has access to application level information under the keyword `app`,
 ```coffeescript
 app.secrets   # map of environment variables set via the CLI (more below)
 app.hostname  # the full http dns hostname where your application is located
-              # e.g, "smart-einstein-1235.asyncyapp.com"
-app.version   # the release number of the application (see "asyncy releases list" for releases)
+              # e.g, "smart-einstein-1235.storyscriptapp.com"
+app.version   # the release number of the application (see "story releases list" for releases)
               # e.g, "v1"
 ```
