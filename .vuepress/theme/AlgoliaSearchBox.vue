@@ -3,7 +3,6 @@
     <s-input
       placeholder="Search documentation"
       id="algolia-search-input"
-      background="light"
       :icon-right="['s-icon', { icon: 'search'}]"
     />
   </form>

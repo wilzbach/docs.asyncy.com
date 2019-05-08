@@ -46,10 +46,8 @@
     min-height: 2rem;
     border-top: 1px solid $light;
     padding-top: 1rem;
-  }
-
-  .next {
-    float: right;
+    display: flex;
+    justify-content: space-between;
   }
 }
 
