@@ -10,19 +10,13 @@
         :items="menuItems"
         @logo="$router.push('/')"
       />
-      <h2
+      <s-text
+        head="1"
         slot="title"
-        class="is-size-2 is-hidden-mobile is-title-small-jumbo has-text-weight-bold has-text-white"
+        class="is-hidden-mobile is-title-small-jumbo"
         v-if="$route.path !== '/'"
         v-text="getTitle"
       />
-      <!-- <p
-        slot="small"
-        v-if="$route.path !== '/'"
-        class="is-small-small-jumbo is-size-8 has-text-uppercase has-text-centered has-text-weight-bold has-letter-spacing-xlarge"
-      >
-        Documentation
-      </p> -->
     </s-jumbo>
     <s-layout
       :margin="['medium', 'none']"
