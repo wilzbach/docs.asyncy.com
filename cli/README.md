@@ -1,9 +1,9 @@
 # CLI
 
-The 'Story' CLI is designed to be the core toolkit to interact with Storyscript Cloud. Create applications, update environment and manage application state.
+The Storyscript CLI is designed to be the core toolkit to interact with Storyscript Cloud. Create applications, update environment and manage application state.
 
 ## Install
-To get started install the 'Story' CLI ([Contribute](https://github.com/storyscript/cli))
+To get started install the Storyscript CLI ([Contribute](https://github.com/storyscript/cli))
 
 <table width="100%">
 <tr>
