@@ -1,4 +1,4 @@
-# Asyncy Hub (Coming Soon)
+# Storyscript Hub (Coming Soon)
 
 
-The Asyncy Hub is the service discovery and anonymous cross-application metrics.
+The Storyscript Hub is the service discovery and anonymous cross-application metrics.

@@ -1,3 +1,3 @@
 # GraphQL (Coming Soon)
 
-A GraphQL interface for querying data within Asyncy.
+A GraphQL interface for querying data within Storyscript.

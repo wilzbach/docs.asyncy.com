@@ -1,4 +1,4 @@
-# Asyncy Cloud (Coming Soon)
+# Storyscript Cloud (Coming Soon)
 
 Our hosted PaaS offering of Asyncy. Available early 2019.
 

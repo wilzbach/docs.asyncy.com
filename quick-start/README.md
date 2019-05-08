@@ -55,7 +55,7 @@ sudo snap install asyncy --classic
 <summary><h4>Direct from Python</h4></summary>
 
 ```shell
-pip install --user asyncy
+pip install --user story
 ```
 
 We **strongly recommend** using the other installation techniques.
@@ -68,7 +68,7 @@ We **strongly recommend** using the other installation techniques.
 Next, login with your GitHub account:
 
 ```shell
-asyncy login
+story login
 ```
 
 All done! You're all set to create and deploy apps written in Storyscript.
@@ -85,15 +85,15 @@ Let's create your first application, to be able to check out the samples which a
 mkdir first_app && cd first_app
 ```
 ```shell
-asyncy apps create
+story apps create
 ```
 
-> <small>Doing so will create `asyncy.yml` in the current directory. This file contains metadata about your new app.</small>
+> <small>Doing so will create `story.yml` in the current directory. This file contains metadata about your new app.</small>
 
 We have created a few examples that can help you bootstrap your project: Let's start you off with a simple hello world serverless http endpoint:
 
 ```shell
-asyncy bootstrap http > http.story && cat http.story
+story write http > http.story && cat http.story
 ```
 
 ```coffeescript
@@ -104,21 +104,21 @@ when http server listen method: 'get' path: '/' as request
 Let's deploy this story:
 
 ```shell
-asyncy deploy
+story deploy
 ```
 ```text
 Compiling Stories...
-Deploying app competent-nash-82.asyncyapp.com... |
+Deploying app competent-nash-82.storyscriptapp.com... |
 √ Version 1 of your app has been queued for deployment
 
 Waiting for deployment to complete... |
 √ Deployed successfully!
-If your story listens to HTTP requests, visit https://competent-nash-82.asyncyapp.com
+If your story listens to HTTP requests, visit https://competent-nash-82.storyscriptapp.com
 ```
 
 :sparkles::cake::sparkles: Congratulations! You have just deployed your first Story!
 
-`asyncy deploy` will deploy all the stories in your project at once.
+`story deploy` will deploy all the stories in your project at once.
 
 ::: tip See it live!
 
@@ -135,7 +135,7 @@ Ready to redeploy your application? We made it easy and intuitive.
 
 Just run the same `deploy` command again:
 ```shell
-asyncy deploy
+story deploy
 ```
 
 :sparkles::cake::sparkles: Your application is now live!

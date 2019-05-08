@@ -8,7 +8,7 @@ Services are containerized software or API specifications. Written in any progra
 
 ## Create
 
-There are three ways to create services for Asyncy.
+There are three ways to create services for Storyscript Cloud.
 
 1. [Containerized Services](#containerized-services) (e.g., Docker containers)
 1. *Coming soon* [OpenAPI](#openapi)
@@ -20,7 +20,7 @@ There are three ways to create services for Asyncy.
 Containerized services is software wrapped in a Docker container. Commonly called microservices, but this could be your monolith codebase too.
 
 1. Follow the [Open Microservice Guide](https://microservice.guide) - Spec and tools for building microservices rapidly.
-2. Submit your service to the [Asyncy Hub](https://hub.asyncy.com).
+2. Submit your service to the [Storyscript Hub](https://hub.storyscript.io).
 3. Access your service via Storyscript, like this:
 
 ```coffeescript
@@ -33,11 +33,11 @@ output = myTeam/myFirstMicroservice foobar key:value
 Looking forward to this feature? [Click here](https://asyncy.nolt.io/6) to share your feedback.
 :::
 
-The [OpenAPI](https://swagger.io/docs/specification/about/) spec (aka SwaggerAPI) is an API description format for REST APIs. 
+The [OpenAPI](https://swagger.io/docs/specification/about/) spec (aka SwaggerAPI) is an API description format for REST APIs.
 
-Soon Asyncy Hub will support uploading your OpenAPI spec enabling developers to rapidly communicate with the service.
+Soon Storyscript Hub will support uploading your OpenAPI spec enabling developers to rapidly communicate with the service.
 
-1. Upload spec to Asyncy Hub.
+1. Upload spec to Storyscript Hub.
 2. Interact with your OpenAPI REST API in the following way:
 
 ```coffeescript
@@ -53,9 +53,9 @@ Looking forward to this feature? [Click here](https://asyncy.nolt.io/7) to share
 
 The [AsyncAPI](https://asyncapi.com) spec is an API description format for event-driven services.
 
-Soon Asyncy Hub will support uploading your AsyncAPI spec enabling developers to rapidly communicate with the service.
+Soon Storyscript Hub will support uploading your AsyncAPI spec enabling developers to rapidly communicate with the service.
 
-1. Upload spec to Asyncy Hub.
+1. Upload spec to Storyscript Hub.
 2. Interact with your AsyncAPI event-driven service in the following way:
 
 ```coffeescript
@@ -65,23 +65,23 @@ when myTeam/myOpenAPI action eventName arg:value as event
 
 ## Discover
 
-Much like a traditional software library, the [Asyncy Hub](https://hub.asyncy.com) is your registry of services and functions to share between applications and developers.
+Much like a traditional software library, the [Storyscript Hub](https://hub.storyscript.io) is your registry of services and functions to share between applications and developers.
 
-> **Next**, discover services and functions on the [Asyncy Hub](https://hub.asyncy.com)
+> **Next**, discover services and functions on the [Storyscript Hub](https://hub.storyscript.io)
 
 ### Using services
 
-Sharing and reusing services is easy. Discover services in the [Asyncy Hub](https://hub.asyncy.com) and follow the directions in the Hub to use public or your private collection of services cross application.
+Sharing and reusing services is easy. Discover services in the [Storyscript Hub](https://hub.storyscript.io) and follow the directions in the Hub to use public or your private collection of services cross application.
 
 ### Submitting services
 
-Head over to [Asyncy Hub](https://hub.asyncy.com) to publish your services privately or publicly.
+Head over to [Storyscript Hub](https://hub.storyscript.io) to publish your services privately or publicly.
 
 ## Deploy
 
-> Zero-devops deployments with Asyncy.
+> Zero-devops deployments with Storyscript.
 
-Asyncy abstracts away the unnecessary complexities in orchestrating, communicating and managing microservices, including:
+Storysript abstracts away the unnecessary complexities in orchestrating, communicating and managing microservices, including:
 
 1. Container deployment
 1. Version management

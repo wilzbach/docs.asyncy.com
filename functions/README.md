@@ -6,12 +6,12 @@ Functions are single methods written in any programming language that are fully 
 
 ## Create
 
-Creating your own functions is intuitive and powerful. Choose Storyscript for workflow and procedural functions. Choose another language for low and high-level logic and algorithms. 
+Creating your own functions is intuitive and powerful. Choose Storyscript for workflow and procedural functions. Choose another language for low and high-level logic and algorithms.
 
 
 ### Storyscript Functions
 
-Storyscript functions are useful for common procedures that you want to reuse in your application **or** share between other applications by submitting Storyscript functions to the [Asyncy Hub](https://hub.asyncy.com).
+Storyscript functions are useful for common procedures that you want to reuse in your application **or** share between other applications by submitting Storyscript functions to the [Storyscript Hub](https://hub.storyscript.io).
 
 ####  Create your first Storyscript function
 
@@ -34,8 +34,8 @@ spam_me(text: 'doorbell rang!')
 Looking forward to this feature? [Click here](https://asyncy.nolt.io/8) to share your feedback.
 :::
 
-Creating a function in a GPPL (like Python, Node, Go, Ruby, etc.) is very simple in Asyncy.
-These functions, like Storyscript functions, can be used anywhere in your Storyscript and shared to other applications when submitted to the [Asyncy Hub](https://hub.asyncy.com).
+Creating a function in a GPPL (like Python, Node, Go, Ruby, etc.) is very simple in Storyscript.
+These functions, like Storyscript functions, can be used anywhere in your Storyscript and shared to other applications when submitted to the [Storyscript Hub](https://hub.storyscript.io).
 
 #### Creating your first function
 
@@ -48,7 +48,7 @@ def main(principle: float, time: int, rate: float):
 
 :snake: Sssssweeet! We have a function, we called it `main` (common Python practice) and saved it to `calc_interest.py` in the root of your git repository.
 
-Now, let's add it to our repository of functions in your `asyncy.yml` manifest.
+Now, let's add it to our repository of functions in your `story.yml` manifest.
 
 ```yaml
 functions:
@@ -56,7 +56,7 @@ functions:
 #   ^^ function name followed by it's location in your git repository
 ```
 
-:thumbsup: Let's call our shinny new function in Storyscript. 
+:thumbsup: Let's call our shinny new function in Storyscript.
 
 ```coffee
 result = interest(principle:4000, time:120, rate:.03)
@@ -66,21 +66,21 @@ Nice work! You just created a serverless function and called it in our Storyscri
 
 ## Discover
 
-Much like a traditional library of software, the [Asyncy Hub](https://hub.asyncy.com) is your registry of services and functions to share between applications and developers.
+Much like a traditional library of software, the [Storyscript Hub](https://hub.storyscript.io) is your registry of services and functions to share between applications and developers.
 
 ### Using functions
 
-Sharing and reusing functions is also easy. Discover functions in the [Asyncy Hub](https://hub.asyncy.com) and follow the directions in the Hub to use public or your private collection of functions cross application.
+Sharing and reusing functions is also easy. Discover functions in the [Storyscript Hub](https://hub.storyscript.io) and follow the directions in the Hub to use public or your private collection of functions cross application.
 
 ### Submitting functions
 
-Head over to [Asyncy Hub](https://hub.asyncy.com) to publish your functions privately or publicly.
+Head over to [Storyscript Hub](https://hub.storyscript.io) to publish your functions privately or publicly.
 
 ## Deploy
 
-> Zero-devops deployments with Asyncy.
+> Zero-devops deployments with Storyscript Cloud.
 
-Asyncy abstracts away the unnecessary complexities in orchestrating, communicating and managing functions, including:
+Storyscript Cloud abstracts away the unnecessary complexities in orchestrating, communicating and managing functions, including:
 
 1. Deployment
 1. Version management
@@ -95,4 +95,4 @@ Asyncy abstracts away the unnecessary complexities in orchestrating, communicati
 
 :sparkles::cake::sparkles: All the above are **no longer** the responsibility of the developer.
 
-Simply deploy your Storyscript application and Asyncy takes care of the rest.
+Simply deploy your Storyscript application and Storyscript Cloud takes care of the rest.
