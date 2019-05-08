@@ -8,7 +8,6 @@
       <s-navbar
         slot="header"
         :items="menuItems"
-        dark
         @logo="$router.push('/')"
       />
       <h2
@@ -26,7 +25,7 @@
       </p> -->
     </s-jumbo>
     <s-layout
-      margin="medium"
+      :margin="['medium', 'none']"
       background="light"
       foreground="white"
       rounded
@@ -41,7 +40,7 @@
       >
         <s-div
           size="full"
-          padding="min"
+          padding="small"
           class="bordered-bottom-light"
         >
           <s-level class="is-mobile">
@@ -133,9 +132,10 @@
     </s-layout>
     <s-join
       footer
+      :dark="false"
       is-paddingless
     />
-    <s-footer dark />
+    <s-footer :dark="false" />
   </div>
 </template>
 
