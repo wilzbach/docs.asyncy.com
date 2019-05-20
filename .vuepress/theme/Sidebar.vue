@@ -17,7 +17,7 @@
           ref="sidebarItems"
           @close="closeSidebarOnAllSelectClosed"
           :value="item.title"
-          :path="item.path"
+          :path="item.path || item.children.reduce((arr, c) => [...arr, c.path], [])"
           :class="[{ active: isActive(item) }]"
           :key="`mobile-sidebar-${_uid}-${i}`"
         >
@@ -28,6 +28,15 @@
             <router-link
               @click.native="closeSidebar"
               :to="`${item.path}#${child.slug}`"
+            >{{ child.title }}</router-link>
+          </li>
+          <li
+            v-for="(child, cid) in item.children"
+            :key="`mobile-sidebar-${_uid}-${i}-${cid}`"
+          >
+            <router-link
+              @click.native="closeSidebar"
+              :to="`${child.path}`"
             >{{ child.title }}</router-link>
           </li>
         </s-select>
@@ -70,7 +79,7 @@ export default {
   computed: {
     getTitle: function () {
       if (this.$route.path === '/') return 'Home'
-      const item = this.items.find(i => i.path === this.$route.path)
+      const item = this.items.find(i => i.path === this.$route.path || (i.children && i.children.find(c => c.path === this.$route.path)))
       return item ? item.title : ''
     }
   },
@@ -98,9 +107,8 @@ export default {
       this.$emit('toggle-sidebar', false)
     },
     openSidebarAndCurrentItem: function () {
-      const current = this.$refs.sidebarItems.find(i => i.$attrs.path === this.$route.path)
+      const current = this.$refs.sidebarItems.find(i => i.$attrs.path === this.$route.path || i.$attrs.path.includes(this.$route.path))
       if (current) {
-        // current.open = false
         current.invalidate = true
         current.open = true
       }
@@ -119,7 +127,7 @@ export default {
       this.openGroupIndex = index === this.openGroupIndex ? -1 : index
     },
     isActive (page) {
-      return isActive(this.$route, page.path)
+      return !page.group && isActive(this.$route, page.path)
     },
     handleScroll (evt, el) {
       if (window.scrollY >= (window.document.body.clientHeight - window.innerHeight - 328)) {
