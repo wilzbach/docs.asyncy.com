@@ -27,7 +27,7 @@ Use any programming language necessary to build your service just like you would
 
 ### What is Storyscript used for?
 
-[Read more here](/storyscript/#why-storysctipt).
+[Read more here](/storyscript/intro/#why-storysctipt).
 
 ### How are Storyscripts started?
 
