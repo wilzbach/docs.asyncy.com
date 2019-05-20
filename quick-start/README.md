@@ -1,6 +1,6 @@
 ---
 prev: false
-next: /storyscript/
+next: /storyscript/intro/
 ---
 
 # Quick Start
@@ -127,7 +127,7 @@ It will indicate where your story was deployed.
 
 :::
 
-> **Next** Checkout our extensive documentation about [Storyscript](/storyscript/) to build powerful applications.
+> **Next** Checkout our extensive documentation about [Storyscript](/storyscript/intro/) to build powerful applications.
 
 ## Deploy changes
 

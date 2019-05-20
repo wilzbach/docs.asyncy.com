@@ -9,7 +9,7 @@ module.exports = {
     },
     lastUpdated: 'Last Updated',
     repo: 'storyscript/docs.storyscript.io',
-    repoLabel: 'Edit in GitHub',
+    repoLabel: 'Edit on GitHub',
     editLinks: true,
     sidebarDepth: 1,
     nav: [{
@@ -28,7 +28,14 @@ module.exports = {
     }],
     sidebar: [
       '/quick-start/',
-      '/storyscript/',
+      {
+         title: 'Storyscript',
+         collapsable: false,
+         children: [
+           '/storyscript/intro/',
+           '/storyscript/semantics/',
+         ]
+       },
       '/services/',
       '/functions/',
       '/cli/',

@@ -1,119 +1,11 @@
-# Storyscript
+---
+prev: /storyscript/intro/
+next: false
+---
 
-Strings together microservices and functions in a serverless way with Storyscript, the top-level programming language for **Application Storytelling**™ on Storyscript Cloud.
+# Semantics
 
-The foundation of Storyscript is to **move data** with no boilerplate code in a declarative way. In the diagram below we have two lines of code: one that represents data being pushed from a service (e.g., streams and events) and the next line data being pulled from a service (e.g., http get).
-
-![design of a story](./design-of-a-story.png)
-
-::: tip Inspiration behind Storyscript
-Storyscript is inspired by many popular languages to be as natural and intuitive as possible. It is declarative, strong-typed, static-typed and focused on top-level data-flow.
-:::
-
-Many think of Storyscript as glue code for microservices, flow-code, low-code, or pure business-logic programming. We call this **top-level programming**. The diagram shows how the language focuses on the most important aspect of application development: the business-logic.
-
-![abstraction](./abstraction.png)
-
-**Key value propositions**
-1. **Transparency**.
-  It looks like a monolith but is a full microservice/function serverless architecure.
-1. **Readability**.
-  The truth is in the code. Not only is Storyscript easy to read it's also easy to refactor, add features and traceback errors.
-1. **Polyglot**.
-  Storyscript connects all languages together in one cohesive story of data. Choose the right language for the job.
-1. **Zero-devops Deployments**.
-  No Kubernetes configuration, port bindings, ingress controllers, central message queue, no container coupling, no infra configuration or custom scaling.
-
-![stackup](./stackup.png)
-
-> Storyscript amplifies the developer to program robust, scalable backend applications in a fraction of the time by focusing on what matters most: the story of data, *everything else is noise*.
-
-## Why Storyscript?
-
-The developer dream is to build software like Legos; writing code as a story of data between well orchestrated services with the least amount of boilerplate and complexity. The goal of Storyscript is to be the thread that connects everything from a top-level design: API's, databases, functions, and microservices. We believe a language that connects polyglot services provides the most inclusive and unified platform opposed to focusing on extending one language which further fractures the many tribes of developers. Storyscript **does not replace other languages**, it connects them while freeing the developer to pick the right language for the task.
-
-## Use Cases
-
-All things backend can be created in one line of code. No dev-ops, no boilerplate code, no management or custom scaling.
-
-1. **HTTP Requests and APIs** -- `when http server listen ...`
-2. **Web-sockets** -- `when websocket server connects ...`
-3. **Cron** -- `when schedule cron daily ...`
-4. **Event-driven** -- `when slack bot responds ...`
-5. **IoT Events** -- `when iotDevice stream doorBellRang ...`
-6. **Social Media** -- `when twitter stream tweets ...`
-7. **Machine Learning** -- `result = machinebox/textbox analyze text:'...'`
-8. **Microservices Orchestration** -- `output = serviceName action key:value` any language in a Docker container
-9. **Functions Orchestration** -- `output = myFunction(key:value)` powered by OpenFaaS
-10. **CI/CD Pipelines** -- `ci_result = jenkins run ...`
-11. **Video Manipulation** -- `video = ffmpeg compress video:... codec:'h265'`
-12. **Image Manipulation** -- `image = imagemagic scale input:... size:'150x150'`
-13. **Fully-Asynchronous Programming** -- Network-bound, io-bound, time-bound, and event-bound.
-
-## Syntax Overview
-
-```coffeescript
-###
-Meet Storyscript
-###
-
-# Pull data from a microservice
-output = service action key:value
-output = team/service action key:value
-# Discover and create services in the Storyscript Hub
-
-# Call a function
-output = function_name(key:value)
-# A Storyscript function
-# or another programming language
-
-# Call type methods
-output = variable mutation key:value
-
-# Event streaming microservice
-when service action event key:value as output
-    ... # run this block for every event
-
-# Types
-string = "Hello"
-integer = 1
-number = 1.3
-bool = true
-list = ['a', 'b', 'c']
-map = {'apple': 'red', 'banana': 'yellow'}
-regexp = /^foobar/
-empty = null
-time = 1d35m
-
-# Destructuring
-{ apple, banana } = map
-# apple = 'red'
-
-# Conditions
-if one > 1
-    # ...
-else if one == 1
-    # ...
-else
-    # ...
-
-# Loops
-foreach list as item
-    # ...
-while true
-    # ...
-
-# Functions
-function name input:int returns int
-    # ...
-    return input
-name(input:1)
-# >>> 1
-```
-
-## Semantics
-
-### Procedure
+## Procedure
 
 ```coffeescript
 output = functionA(key:(functionB(key:(functionC(...)))))
@@ -125,7 +17,7 @@ Same level parentheses MAY be called at the same time which done by parallel pro
 
 First set of parentheses when assigning variables is optional. E.g., `a = my_list length` is the same as `a = (my_list length)`.
 
-### Attributes, methods and entries
+## Attributes, methods and entries
 
 Objects may have attributes and methods. A Map can *only* have entries.
 
@@ -190,7 +82,7 @@ m get key: 'b'  # returns the value for the key 'b'
 m contains key: 'c'  # returns true if the key 'c' exists in the map, false otherwise
 ```
 
-#### Chaining Mutations
+### Chaining Mutations
 
 Mutations can be chained to help reduce complexity.
 
@@ -206,7 +98,7 @@ Mutations can be chained to help reduce complexity.
 # >>> ['A', 'B', 'C']
 ```
 
-### Variable Scope
+## Variable Scope
 
 Variables are not global.
 
@@ -230,7 +122,7 @@ Error: syntax error in story at line 4, column 7
 E0101: Variable `n` has not been defined.
 ```
 
-### Compiling
+## Compiling
 
 Storyscript is a dynamically compiled language. Type checking is performed at compile time, but not in a traditional way. From the perspective of the developer the following steps are performed during compile time.
 
@@ -247,7 +139,7 @@ The type-checking includes the following checks:
 1. Arguments are of the expected type.
 
 
-### Environment Variables (aka Secrets)
+## Environment Variables (aka Secrets)
 
 Environment variables are stored in a restricted keyword `app.secrets`.
 
@@ -266,7 +158,7 @@ if app.secrets.foo == 'bar'
 Secrets are case–insensitive. For example: `app.secrets.FOO` and `app.secrets.foo` reference the same variable.
 :::
 
-### Service Variables
+## Service Variables
 
 Many services require environment variables, such as oauth tokens and client id/secret pairs.
 
@@ -284,7 +176,7 @@ token = app.secrets.twitter.client_id  # Error. Accessing service environment va
 
 When the service `twitter` is started by Storyscript Cloud it will be assigned `client_id=abc123` according to it's `microservice.yml` as an environment variable.
 
-### Execution Model
+## Execution Model
 
 Storyscripts are executed by the Storyscript Cloud Runtime (not compiled to C or Java or any other language).
 This gives Storyscript distinct advantages over General Purpose Programming Languages (GPPL) with little to no performance overhead since you can use any other GPPL for data processing (low and high-level programming).
@@ -295,7 +187,7 @@ This gives Storyscript distinct advantages over General Purpose Programming Lang
 1. The Storyscript Cloud Runtime is prepared with the Stories as first-class assets for swift execution.
 1. Every Storyscript is executed allowing them to register with event-based services.
 
-#### Execution
+## Execution
 
 A story may [execute in many ways](/faq/#how-are-storyscripts-started).
 
