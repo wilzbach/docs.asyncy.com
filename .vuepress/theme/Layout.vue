@@ -186,7 +186,7 @@ export default {
     },
     getTitle () {
       if (this.$route.path === '/') return 'Welcome home.'
-      const item = this.sidebarItems.find(i => i.path === this.$route.path)
+      const item = this.sidebarItems.find(i => i.path === this.$route.path || (i.children && i.children.find(c => c.path === this.$route.path)))
       return item ? item.title : ''
     },
     algolia () {
