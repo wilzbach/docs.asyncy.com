@@ -14,12 +14,8 @@ To get started install the Storyscript CLI ([Contribute](https://github.com/stor
 brew install storyscript/brew/story
 ```
 
-<small>Also available via download:</small>
-
-<div><a href="https://github.com/storyscript/cli/releases/download/0.0.6/asyncy-0.0.6.pkg" class="button is-primary is-small">Download the installer</a></div>
-
-
 </td>
+<!--
 <td style="text-align:center" width="50%" valign="top">
 <h1><img src="../assets/windows-logo.svg" width="24"> Windows</h1>
 
@@ -28,13 +24,14 @@ Download the appropriate installer:
 <div><a href="https://github.com/storyscript/cli/releases/download/0.0.6/asyncy-x64.exe" class="button is-primary is-small">64-bit installer</a></div>
 
 </td>
+-->
 </tr>
 <tr>
 <td style="text-align:center" valign="top">
 <h1><img src="../assets/ubuntu-logo.svg" width="24"> Ubuntu 16+</h1>
 
 ```shell
-sudo snap install asyncy --classic
+sudo snap install story
 ```
 
 <small><a href="https://snapcraft.io/">Snap is available on other Linux OS.</a></small>
@@ -47,6 +44,7 @@ sudo snap install asyncy --classic
 pip install --user story
 ```
 
+Python 3.6 or higher is required, thus on Debian/Ubuntu use `pip3`.
 The other installation methods listed are recommended.
 
 </td>

@@ -43,7 +43,7 @@ Download the appropriate installer:
 <summary><h4><img src="../assets/ubuntu-logo.svg" width="15"> Ubuntu 16+</h4></summary>
 
 ```shell
-sudo snap install asyncy --classic
+sudo snap install story
 ```
 
 <small><a href="https://snapcraft.io/">Snap is available on other Linux OS.</a></small>
@@ -58,7 +58,8 @@ sudo snap install asyncy --classic
 pip install --user story
 ```
 
-We **strongly recommend** using the other installation techniques.
+Python 3.6 or higher is required, thus on Debian/Ubuntu use `pip3`.
+The other installation methods listed are recommended.
 
 </details>
 </td>
