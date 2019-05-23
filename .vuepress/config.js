@@ -30,10 +30,16 @@ module.exports = {
       '/quick-start/',
       {
          title: 'Storyscript',
-         collapsable: false,
+         collapsable: true,
          children: [
            '/storyscript/intro/',
-           '/storyscript/semantics/',
+           '/storyscript/syntax/',
+           '/storyscript/execution/',
+           '/storyscript/services/',
+           '/storyscript/basic-types/',
+           '/storyscript/functions/',
+           '/storyscript/flow/',
+           '/storyscript/advanced/',
          ]
        },
       '/services/',
