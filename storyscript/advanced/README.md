@@ -7,7 +7,8 @@ next: false
 
 ## Variable Scope
 
-Variables are not global.
+Functions do not have access to variables outside their scope.
+All variables must be provided as arguments.
 
 ```coffeescript
 n = 1
@@ -17,26 +18,34 @@ function incr
     # ^ Error: variable `n` is undefined.
 ```
 
-Functions do not have access to variables outside their scope.
-All variables must be provided as arguments.
+Loops (`foreach` and `while`), `try/catch`, `when` blocks and service blocks create their own nested scope.
+Variables created in this scope CANNOT be accessed from the outside:
 
+```coffeescript
+foreach [1, 2, 3] as el
+  …
+a = el # ERROR
 ```
-Error: syntax error in story at line 4, column 7
 
-4|      a = n + 1
-            ^
+However, access to outside variables is allowed in nested scopes:
 
-E0101: Variable `n` has not been defined.
+```coffeescript
+last = 0
+foreach [1, 2, 3] as el
+  last = el # OK
 ```
 
 ## Operations
 
-```coffeescript{2}
+Storyscript provides a few special operations.
+One of the them is the `end` operation:
+
+```coffeescript
 if something_went_wrong
     end story
 ```
 
-Use `end story` to stop the story and exit now.
+This `end story` operation can be used to stop a story and exit immediately.
 
 
 ## Exception Handling
@@ -156,7 +165,7 @@ a = "foo" # E0100: Can't assign `string` to `int`
 ### Boolean operations
 
 Boolean operators are: `and`, `or`, `!`.
-The following types are convertible to a `boolean` and can thus perform
+The following types are evaluable to a `boolean` and can thus perform
 boolean operations:
 
 - `boolean`
@@ -171,6 +180,7 @@ boolean operations:
 ### Arithmetic operations
 
 Arithmetic operators are: `+`, `-`, `*`, `/`, `%` and `^`.
+The following operations are supported for the respective Storyscript type:
 
 Type       | Operations | Remarks
 -----------|------------|------
@@ -186,14 +196,14 @@ Type       | Operations | Remarks
 `any`      | varies     | The other type must support this operation, returns `any`
 
 If for the arithmetic operation `<left> <op> <right>`,
-`left` and `right` have mismatching, the compiler will try to implicitly cast
+`left` and `right` have mismatching types, the compiler will try to implicitly cast
 `left` to `right` and `right` to `left`. If both casts fail, the operation is
 disallowed. Otherwise the type system will check the operation on the up-casted
 type.
 
 ### Comparisons operations
 
-The following types are comparable:
+The following types support comparison operations:
 
 - `boolean`
 - `int`
@@ -201,6 +211,13 @@ The following types are comparable:
 - `time`
 - `string`
 - `any`
+
+Examples:
+
+```coffeescript
+2 < 3                  # OK
+{'a':'b'} < {'c': 'd'} # Always disallowed
+```
 
 Remarks: when comparing a type with `any`, this type must support comparisons too.
 
@@ -210,9 +227,9 @@ All real types can be checked for their equality with themselves.
 Only the virtual `none` type (e.g. from a function without a return type) can't
 check for its equality.
 
-### Object keys
+### Map keys
 
-The following types can be used as object keys:
+The following types can be used as map keys:
 
 - `boolean`
 - `int`
@@ -220,6 +237,13 @@ The following types can be used as object keys:
 - `time`
 - `string`
 - `any`
+
+Examples:
+
+```coffeescript
+a["a"]   # OK
+a[/foo/] # Always disallowed
+```
 
 ## Operator precedence
 
@@ -236,6 +260,20 @@ Storyscript has the following operator precedence (from higher precedence down t
 - `.`, (Dot expression) `[...]` (Index expression)
 - Literals (`1`, `1.2`, `[1, 2, 3]`, `{a: b}`, …)
 - `(...)` (Nested expression)
+
+Examples
+
+```coffeescript
+1 + 2 * 3    # 7
+(1 + 2) * 3  # 9
+
+true and false or true # true
+true or false and true # true
+
+1 - 1 or 0          # false
+1 - 1 or 2 > 3      # false
+1 - 1 or 2 + 2 > 3  # true
+```
 
 ## Application Information
 
