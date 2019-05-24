@@ -46,7 +46,11 @@ Download the appropriate installer:
 sudo snap install story
 ```
 
-<small><a href="https://snapcraft.io/">Snap is available on other Linux OS.</a></small>
+<a href="https://snapcraft.io/story">
+  <img alt="Get it from the Snap Store" src="https://snapcraft.io/static/images/badges/en/snap-store-white.svg" />
+</a>
+
+<small style="display:block; width: 100%"><a href="https://snapcraft.io/">Snap is available on other Linux OS.</a></small>
 
 </details>
 </td>
