@@ -1,3 +1,8 @@
+---
+prev: /storyscript/basic-types/
+next: /storyscript/flow/
+---
+
 # Functions
 
 Functions are single methods written in any programming language that are fully managed serverless functions.
