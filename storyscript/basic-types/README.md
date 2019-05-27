@@ -3,7 +3,7 @@ prev: /storyscript/services/
 next: /storyscript/functions/
 ---
 
-# Basic types
+# Types
 
 ## Comments
 
