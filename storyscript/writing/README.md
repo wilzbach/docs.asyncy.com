@@ -40,7 +40,7 @@ We will then use this client to instruct the server how to handle specific event
 ```
 This part of the code is the Storyscript logic of what to do during the request. In this instance, we're simply writing `Hello world!` to the response object.
 
-Pretty simple! We just harnessed an [OMG-compliant](https://microservice.guide/) microservice, written in another language & powered by Docker, to script a production-ready HTTP server.
+Pretty simple! We just harnessed an [OMG-compliant](https://microservice.guide/) microservice, written in another language & powered by Docker, to script a production-ready HTTP server, ready to deploy to Kubernetes.
 
 ## Next: Inter–Service Communication
 
@@ -76,4 +76,4 @@ Pretty nifty, eh?
 
 [`awesome`](https://hub.storyscript.io/service/awesome) is another microservice that we're talking to, written in… it doesn't matter! It's an [OMG Standard](https://microservice.guide/) microservice, on the [Storyscript Hub](https://hub.storyscript.io/), so we're able to simply use it as native code within Storyscript.
 
-When you deploy this story, both the `http` and `awesome` microservices will be spawned into the Kubernetes cluster for your application.
+When you deploy this story, both the [`http`](https://hub.storyscript.io/service/http) and [`awesome`](https://hub.storyscript.io/service/awesome) microservices will be spawned into the Kubernetes cluster for your application.
