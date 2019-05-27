@@ -19,13 +19,11 @@
   },
   "homepage": "https://storyscript.io",
   "devDependencies": {
-    "@storyscript/vue": "^2.6.2",
-    "esm": "^3.2.22",
-    "node-sass": "^4.11.0",
-    "perfect-scrollbar": "0.8.1",
+    "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0",
     "vuepress": "^0.14.11",
-    "vuepress-plugin-sitemap": "^2.1.2"
+    "vuepress-plugin-sitemap": "^2.1.2",
+    "vuepress-theme-story": "^0.0.2"
   },
   "dependencies": {}
 }

@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import Storyscript from '@storyscript/vue'
 
 export default ({
   Vue,
@@ -17,5 +16,4 @@ export default ({
       window.addEventListener('scroll', f);
     }
   });
-  Vue.use(Storyscript);
 };
