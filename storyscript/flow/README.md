@@ -3,7 +3,7 @@ prev: /storyscript/functions/
 next: /storyscript/advanced/
 ---
 
-# Control flow
+# Control Flow
 
 ## Conditions
 
