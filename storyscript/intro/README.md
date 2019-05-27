@@ -67,7 +67,7 @@ The goal of Storyscript is to be the thread that connects everything from a top-
 
 We believe a language that connects polyglot services provides the most inclusive and unified platform opposed to focusing on extending one language which further fractures the many tribes of developers.
 
-Storyscript *does not replace other languages*. It connects them— meanwhile freeing the developer to chose the correct language and tools for the task at hand.
+Storyscript *does not replace any other language*. It merely connects them together— freeing the developer to chose the correct language and tools for the task at hand.
 
 ## Use Cases
 
