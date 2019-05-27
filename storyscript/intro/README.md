@@ -71,12 +71,15 @@ Storyscript *does not replace other languages*. It connects them— meanwhile fr
 
 ## Use Cases
 
-All backend-oriented services can be easily spawned from Storyscript, often with one line of code. Here are a few examples of the types of use-cases Storyscript is empowered to fufill:
+All backend-oriented services can be easily spawned from Storyscript— often with a single line of code.
 
-| HTTP Requests and APIs        	| Websockets             	| Task Automation             	|
+Here are a few examples of the types of use-cases Storyscript is empowered to fufill:
+
+|                               	|                       	|                             	|
 |-------------------------------	|------------------------	|-----------------------------	|
+| HTTP Requests and APIs        	| Websockets             	| Task Automation             	|
 | Fully-Asyncronous Programming 	| Cron Jobs              	| Business Logic              	|
 | Machine Learning              	| Image/Video Processing 	| CI/CD Pipelines             	|
 | Microservices Orchestration   	| Functional Computing   	| Object Storage Interactions 	|
 
-Please refer to the [Storyscript Hub](https://hub.storyscript.io/) for a list of services that are pre–built and available today!
+To see a list of services that are available today, check out the [Storyscript Hub](https://hub.storyscript.io/)!
