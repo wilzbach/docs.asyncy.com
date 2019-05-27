@@ -74,6 +74,6 @@ awesome-sauce-4242
 
 Pretty nifty, eh?
 
-`awesome` is another microservice that we're talking to, written in… it doesn't matter! It's an [OMG Standard](https://microservice.guide/) microservice, on the [Storyscript Hub](https://hub.storyscript.io/), so we're able to simply use it native code within Storyscript.
+[`awesome`](https://hub.storyscript.io/service/awesome) is another microservice that we're talking to, written in… it doesn't matter! It's an [OMG Standard](https://microservice.guide/) microservice, on the [Storyscript Hub](https://hub.storyscript.io/), so we're able to simply use it as native code within Storyscript.
 
 When you deploy this story, both the `http` and `awesome` microservices will be spawned into the Kubernetes cluster for your application.
