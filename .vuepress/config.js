@@ -42,19 +42,20 @@ module.exports = {
     sidebar: [
       '/quick-start/',
       {
-         title: 'Storyscript',
-         collapsable: true,
-         children: [
-           '/storyscript/intro/',
-           '/storyscript/syntax/',
-           '/storyscript/execution/',
-           '/storyscript/services/',
-           '/storyscript/basic-types/',
-           '/storyscript/functions/',
-           '/storyscript/flow/',
-           '/storyscript/advanced/',
-         ]
-       },
+        title: 'Storyscript',
+        collapsable: true,
+        children: [
+          '/storyscript/intro/',
+          '/storyscript/writing/',
+          '/storyscript/syntax/',
+          '/storyscript/execution/',
+          '/storyscript/services/',
+          '/storyscript/basic-types/',
+          '/storyscript/functions/',
+          '/storyscript/flow/',
+          '/storyscript/advanced/',
+        ]
+      },
       '/services/',
       '/functions/',
       '/cli/',

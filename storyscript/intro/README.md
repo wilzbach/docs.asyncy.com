@@ -1,6 +1,6 @@
 ---
 prev: /quick-start/
-next: /storyscript/syntax/
+next: /storyscript/writing/
 ---
 
 # Intro to Storyscript
