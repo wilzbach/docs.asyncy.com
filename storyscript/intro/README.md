@@ -67,24 +67,19 @@ The goal of Storyscript is to be the thread that connects everything from a top-
 
 We believe a language that connects polyglot services provides the most inclusive and unified platform opposed to focusing on extending one language which further fractures the many tribes of developers.
 
-Storyscript *does not replace other languages*. It connects them— meanwhile freeing the developer to chose the correct language and tools for the task at hand.
+Storyscript *does not replace any other language*. It merely connects them together— freeing the developer to chose the correct language and tools for the task at hand.
 
 ## Use Cases
 
-All backend-oriented services can be easily spawned from Storyscript, often with one line of code. Here are a few examples of the types of use-cases Storyscript is empowered to fufill:
+All backend-oriented services can be easily spawned from Storyscript— often with a single line of code.
 
-- **HTTP Requests and APIs**
-- **Web-sockets**
-- **Cron**
-- **Event-driven**
-- **IoT Events**
-- **Social Media**
-- **Machine Learning**
-- **Microservices Orchestration**
-- **Functions Orchestration**
-- **CI/CD Pipelines**
-- **Video Manipulation**
-- **Image Manipulation**
-- **Fully-Asynchronous Programming**
+Here are a few examples of the types of use-cases Storyscript is empowered to fufill:
 
-Please refer to the [Storyscript Hub](https://hub.storyscript.io/) for a list of services that are pre-built and available today!
+|                               	|                       	|                             	|
+|-------------------------------	|------------------------	|-----------------------------	|
+| HTTP Requests and APIs        	| Websockets             	| Task Automation             	|
+| Fully-Asyncronous Programming 	| Cron Jobs              	| Business Logic              	|
+| Machine Learning              	| Image/Video Processing 	| CI/CD Pipelines             	|
+| Microservices Orchestration   	| Functional Computing   	| Object Storage Interactions 	|
+
+To see a list of services that are available today, check out the [Storyscript Hub](https://hub.storyscript.io/)!
