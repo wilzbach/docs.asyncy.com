@@ -5,7 +5,13 @@ next: /storyscript/intro/
 
 # Quick Start
 
-Our story begins with you, the developer. We believe in amplifying you to build and deploy applications at the speed of light. Our mission is to make development 10-100x easier by significantly reducing unnecessary complexity and focusing on what matters most: your story of data. Let's get started.
+The story of Storyscript begins with you — the developer. We seek to amplify your ability to build and deploy applications, doing so at lightning speed.
+
+Your mission — if you choose to accept it — is to make your development lifecycle 10-100x easier. How? By significantly reducing the boilerplate neccessary when working with microservices in a Bash–esque paradim.
+
+We remove the unnecessary complexity in order to allow you to focus on what matters most: the story of your data.
+
+Let's get started.
 
 ## Get started
 
@@ -98,7 +104,13 @@ story apps create
 We have created a few examples that can help you bootstrap your project: Let's start you off with a simple hello world serverless http endpoint:
 
 ```shell
-story write http > http.story && cat http.story
+story write http > http.story
+```
+
+Let's take a look:
+
+```shell
+cat http.story
 ```
 
 ```coffeescript
@@ -106,7 +118,7 @@ when http server listen method: 'get' path: '/' as request
     request write content: 'Hello world!'
 ```
 
-Let's deploy this story:
+Now, let's deploy your story:
 
 ```shell
 story deploy
@@ -121,9 +133,9 @@ Waiting for deployment to complete... |
 If your story listens to HTTP requests, visit https://competent-nash-82.storyscriptapp.com
 ```
 
-:sparkles::cake::sparkles: Congratulations! You have just deployed your first Story!
+Congratulations! You have just deployed your first Story! :sparkles::cake::sparkles:
 
-`story deploy` will deploy all the stories in your project at once.
+`story deploy` will deploy all the stories in your project, at once.
 
 ::: tip See it live!
 
@@ -136,11 +148,10 @@ It will indicate where your story was deployed.
 
 ## Deploy changes
 
-Ready to redeploy your application? We made it easy and intuitive.
-
-Just run the same `deploy` command again:
+Ready to redeploy your application? Simply run the same `deploy` command again:
 ```shell
 story deploy
 ```
 
-:sparkles::cake::sparkles: Your application is now live!
+Your application is now live!
+:sparkles::cake::sparkles:
