@@ -3,13 +3,13 @@ prev: /quick-start/
 next: /storyscript/writing/
 ---
 
-# Intro to Storyscript
-## Storyscript the Language
+# Introduction
 
-Storyscript strings together microservices and functions in a serverless way with Storyscript, the top-level programming language for **Application Storytelling**™ on [Storyscript Cloud](https://storyscript.io/).
+## Meet Storyscript
 
+Storyscript is the first top-level programming langauge that seamlessly connects microservices and functions together in a serverless way. We call this **Application Storytelling**™.
 
-The foundation of Storyscript is to **move data**, with no boilerplate code, in a declarative way.
+The design of Storyscript is to **move data**, with no boilerplate code, in a declarative and intuitive way.
 
 ::: tip Inspiration behind Storyscript
 Storyscript is inspired by many popular languages to be as natural and intuitive as possible. It is declarative, strong-typed, static-typed and focused on top-level data-flow.
@@ -24,9 +24,11 @@ In the example below we have two lines of code:
 2. The second line represents taking action on the incoming event data, harnessing another microservice.
 
 
-```story
-when service action event key:value as data
-  res = service action key:value
+```storyscript
+when service action event key:value as event  # Event-driven microservice
+  res = service action key:value              # HTTP/RPC microservice
+  result = someFunction(key:value)            # Any GPPL/Storyscript Function
+  someString.upper()                          # A type transformation
 ```
 
 Each service can be written in an independentent programming language, as they both adhere to the [OMG Standard](https://microservices.guide/), which Storyscript is built around.
