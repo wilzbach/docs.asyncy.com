@@ -54,6 +54,7 @@ module.exports = {
           '/storyscript/functions/',
           '/storyscript/flow/',
           '/storyscript/advanced/',
+           '/storyscript/secrets/',
         ]
       },
       '/services/',
