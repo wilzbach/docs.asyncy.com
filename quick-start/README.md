@@ -3,7 +3,7 @@ prev: false
 next: /storyscript/writing/
 ---
 
-# Storyscript Cloud
+# Quick start
 
 The story of Storyscript begins with you — the developer. We seek to amplify your ability to build and deploy applications, enabling you to doing so at lightning speed.
 
