@@ -1,11 +1,13 @@
-## Services
+# Services
+
+## Summary
 
 A service is a containerized microservice that is registered in the[Storyscript Hub](https://hub.storyscript.io). Discover hundreds of services in the Hub or build your own in any language, submit to the Storyscript Hub and call it in your Storyscript like this:
 
 ```coffeescript
 # Call a service with a command and all arguments named
 service cmd key:value foo:bar
-tean/service cmd key:value foo:bar
+team/service cmd key:value foo:bar
 
 # Service output assigned to variable
 foobar = service cmd key:value
@@ -15,32 +17,32 @@ service cmd key:value
             foo:bar
 ```
 
+### Syntax
+
 In Storyscript, the syntax to run a service appears natural and arguments are named for transparency.
-Variable shorthands can be used to reduce repeating terms, i.e. `data:data` or `name:name`.
 
 ```coffeescript
-message = "hello"
-twitter tweet :message
-# would result in ```twitter tweet message:"hello"```
+twitter tweet status:"hello"
 ```
 
 Service, actions and argument names are **static grammar** and **interpreted literally**.
-Hence, the following is allowed:
+However, argument values can be variables:
 
 ```coffeescript
-tweet = "Hello world"
-twitter tweet:tweet
+text = "Hello world"
+twitter tweet status:text
 ```
 
-As naming variables like their arguments is a frequent,
-Storyscript provides a shortcut (`:name`) to avoid the redundant names:
+### Argument shorthands
+
+As naming variables like their arguments is a frequent case (i.e. `data:data` or `name:name`), argument shorthands can be used to reduce repeating terms:
 
 ```coffeescript
-tweet = "Hello world"
-twitter :tweet
+status = "Hello world"
+twitter tweet :status
 ```
 
-In this case `tweet` must be the argument name and the variable name to use for this argument.
+In this example `status` must be the argument name and the variable name to use for the `status` argument. It is equivalent to `twitter tweet status:status`.
 
 ## Event-Based Services
 
@@ -79,27 +81,7 @@ Then machine learning will determine if the tone of the tweet's message is good 
 If no output is defined, it will be implicitly default to the name of the command. Furthermore, if only a command name is used in `when` blocks, it will use the `output` of its parent as subscribing service.
 This allows this to shorten the example from above:
 
-## Environment Variables (aka Secrets)
-
-Environment variables are stored in a restricted keyword `app.secrets`.
-
-Set secrets with the Storyscript CLI
-```bash
-story config set foo=bar
-```
-
-Then you may access them via `app.secrets` map, like this:
-```coffeescript
-if app.secrets.foo == 'bar'
-    ...
-```
-
-::: tip 💡Hint
-Secrets are case–insensitive. For example: `app.secrets.FOO` and `app.secrets.foo` reference the same variable.
-:::
-
-
-## Service Variables
+## Service Environment Variables
 
 Many services require environment variables, such as oauth tokens and client id/secret pairs.
 

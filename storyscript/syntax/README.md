@@ -3,7 +3,7 @@ prev: /storyscript/intro/
 next: /storyscript/execution/
 ---
 
-# Syntax Overview
+# Syntax
 
 The following is a brief overview of Storyscript's main features. Head to the next chapter for an in-depth explanation of the individual features.
 

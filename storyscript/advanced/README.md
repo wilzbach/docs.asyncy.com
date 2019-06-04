@@ -1,6 +1,6 @@
 ---
 prev: /storyscript/flow/
-next: false
+next: /storyscript/secrets/
 ---
 
 # Advanced
