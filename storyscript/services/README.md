@@ -5,7 +5,7 @@ A service is a containerized microservice that is registered in the[Storyscript 
 ```coffeescript
 # Call a service with a command and all arguments named
 service cmd key:value foo:bar
-tean/service cmd key:value foo:bar
+team/service cmd key:value foo:bar
 
 # Service output assigned to variable
 foobar = service cmd key:value
