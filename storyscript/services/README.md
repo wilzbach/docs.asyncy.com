@@ -4,7 +4,7 @@
 
 A service is a containerized microservice that is registered in the[Storyscript Hub](https://hub.storyscript.io). Discover hundreds of services in the Hub or build your own in any language, submit to the Storyscript Hub and call it in your Storyscript like this:
 
-```coffeescript
+```storyscript
 # Call a service with a command and all arguments named
 service cmd key:value foo:bar
 team/service cmd key:value foo:bar
@@ -21,14 +21,14 @@ service cmd key:value
 
 In Storyscript, the syntax to run a service appears natural and arguments are named for transparency.
 
-```coffeescript
+```storyscript
 twitter tweet status:"hello"
 ```
 
 Service, actions and argument names are **static grammar** and **interpreted literally**.
 However, argument values can be variables:
 
-```coffeescript
+```storyscript
 text = "Hello world"
 twitter tweet status:text
 ```
@@ -37,7 +37,7 @@ twitter tweet status:text
 
 As naming variables like their arguments is a frequent case (i.e. `data:data` or `name:name`), argument shorthands can be used to reduce repeating terms:
 
-```coffeescript
+```storyscript
 status = "Hello world"
 twitter tweet :status
 ```
@@ -48,7 +48,7 @@ In this example `status` must be the argument name and the variable name to use 
 
 Services may publish events which run a new block of logic.
 
-```coffeescript
+```storyscript
 # All three patterns below are equivalent
 when service action event key:value as output
     ...
@@ -66,7 +66,7 @@ service action
 
 A good example of this is streaming Tweets by hashtag.
 
-```coffeescript
+```storyscript
 when twitter stream tweets track:'programming' as tweet
     res = machinebox/textbox analyze input:tweet.message
     if res.sentiment == 'positive'
@@ -93,7 +93,7 @@ story config set twitter.client_id=abc123
 ```
 
 These variables ARE NOT accessible in Storyscript because they are for a service only.
-```coffeescript
+```storyscript
 token = app.secrets.twitter.client_id  # Error. Accessing service environment variables is prohibited.
 ```
 

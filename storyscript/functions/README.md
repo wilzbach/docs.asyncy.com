@@ -2,7 +2,7 @@
 
 Repeating code blocks can be grouped into functions for better reusability and modularity:
 
-```coffeescript
+```storyscript
 function get_user id:int returns map
     someone = (psql exec query:'select * from users where id={id} limit 1;')[0]
     someone['contact'] = fullcontact person email:someone['email']
@@ -18,7 +18,7 @@ Function must define their inputs and outputs which help with transparency, auto
 
 Functions **MAY** declare one output and identify it's type. If an output type is used the function **MUST** use `return` and return that type.
 
-```coffeescript
+```storyscript
 function add this:int that:int returns int
    return this + that
 ```
@@ -26,7 +26,7 @@ function add this:int that:int returns int
 Functions that do not have an output may not use `return` with an entity.
 An error is thrown if a return is used. An sole `return` statement is allowed.
 
-```coffeescript
+```storyscript
 function do_this
     # ...
 
@@ -42,7 +42,7 @@ E0110: Function has no return output defined. Only `return` is allowed.
 
 ## Nested functions
 
-```coffeescript
+```storyscript
 output = functionA(key:(functionB(key:(functionC(...)))))
 ```
 
@@ -58,7 +58,7 @@ Built-ins refer to running operations on the built-in data types, such as string
 
 ### Strings
 
-```coffeescript
+```storyscript
 # Note: None of the string operations below change the original string in any form
 str = ''
 str.length()  # returns the number of UTF-8 characters
@@ -77,7 +77,7 @@ arr.contains(pattern: /a/)  # returns true if the RegExp /a/ occurrs in the stri
 
 ### Numbers
 
-```coffeescript
+```storyscript
 num = 10
 num.is_odd()  # returns false
 num.is_even()  # returns true
@@ -88,7 +88,7 @@ num.decrement()  # returns 9. Note that num is not changed
 
 ### Lists
 
-```coffeescript
+```storyscript
 arr = [1, 2, 3, 4, 5]
 arr.index(of: 5)  # returns the index of an element, 4 in this case
 arr.length()  # returns the length of the list, 5 in this case
@@ -108,7 +108,7 @@ arr.replace(item: 3 by: 4)  # replaces all occurrences of the item '3' with '4'
 
 ### Maps
 
-```coffeescript
+```storyscript
 m = {'a': 1, 'b': 2}
 m.length()  # returns the size of the map, 2 in this case
 m.keys()  # returns a list of all keys
@@ -124,7 +124,7 @@ m.contains(value: 'c') # returns true if the value 'c' exists in the map, false 
 
 Built-ins can be chained to help reduce complexity.
 
-```coffeescript
+```storyscript
 'abc'.uppercase().split()
 # >>> ['A', 'B', 'C']
 ```
