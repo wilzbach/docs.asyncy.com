@@ -10,7 +10,7 @@ next: /storyscript/secrets/
 Functions do not have access to variables outside their scope.
 All variables must be provided as arguments.
 
-```coffeescript
+```storyscript
 n = 1
 
 function incr
@@ -21,7 +21,7 @@ function incr
 Loops (`foreach` and `while`), `try/catch`, `when` blocks and service blocks create their own nested scope.
 Variables created in this scope CANNOT be accessed from the outside:
 
-```coffeescript
+```storyscript
 foreach [1, 2, 3] as el
   …
 a = el # ERROR
@@ -29,7 +29,7 @@ a = el # ERROR
 
 However, access to outside variables is allowed in nested scopes:
 
-```coffeescript
+```storyscript
 last = 0
 foreach [1, 2, 3] as el
   last = el # OK
@@ -40,7 +40,7 @@ foreach [1, 2, 3] as el
 Storyscript provides a few special operations.
 One of the them is the `end` operation:
 
-```coffeescript
+```storyscript
 if something_went_wrong
     end story
 ```
@@ -50,7 +50,7 @@ This `end story` operation can be used to stop a story and exit immediately.
 
 ## Exception Handling
 
-```coffeescript
+```storyscript
 try
   # more stuff here
 catch as error
@@ -65,7 +65,7 @@ The `finally` block is **always** entered regardless of an exception being raise
 
 You may omit both the `catch` and `finally`.
 
-```coffeescript
+```storyscript
 try
   # more stuff here
 catch as error
@@ -77,7 +77,7 @@ Use the `throw` keyword to raise the exception, bubbling up to the next try bloc
 
 ## Types
 
-```coffeescript
+```storyscript
 1 type
 # int
 
@@ -120,7 +120,7 @@ foobar type
 
 Use the method `type` to get the type of a variable as a string.
 
-```coffeescript
+```storyscript
 (1 is int) and (true is bool) and ("" is string)
 # true
 
@@ -214,7 +214,7 @@ The following types support comparison operations:
 
 Examples:
 
-```coffeescript
+```storyscript
 2 < 3                  # OK
 {'a':'b'} < {'c': 'd'} # Always disallowed
 ```
@@ -240,7 +240,7 @@ The following types can be used as map keys:
 
 Examples:
 
-```coffeescript
+```storyscript
 a["a"]   # OK
 a[/foo/] # Always disallowed
 ```
@@ -263,7 +263,7 @@ Storyscript has the following operator precedence (from higher precedence down t
 
 Examples
 
-```coffeescript
+```storyscript
 1 + 2 * 3    # 7
 (1 + 2) * 3  # 9
 
@@ -279,7 +279,7 @@ true or false and true # true
 
 Storyscript has access to application level information under the keyword `app`, containing the following details:
 
-```coffeescript
+```storyscript
 app.secrets   # map of environment variables set via the CLI (more below)
 app.hostname  # the full http dns hostname where your application is located
               # e.g, "smart-einstein-1235.storyscriptapp.com"

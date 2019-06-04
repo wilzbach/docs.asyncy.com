@@ -113,7 +113,7 @@ Let's take a look:
 cat http.story
 ```
 
-```coffeescript
+```storyscript
 when http server listen method: 'get' path: '/' as request
     request write content: 'Hello world!'
 ```

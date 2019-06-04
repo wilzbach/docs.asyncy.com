@@ -7,7 +7,7 @@ next: /storyscript/advanced/
 
 ## Conditions
 
-```coffeescript
+```storyscript
 if foo == bar
   # more stuff here
 else if foo > bar
@@ -25,7 +25,7 @@ if (foo > 0 and cat == dog) or foobar contains item: /regexp/
 
 Looping through index and/or object keys.
 
-```coffeescript
+```storyscript
 foreach my_list as item
     # ...
 
@@ -51,7 +51,7 @@ foreach "a.b.c" split by: "." as item
 
 Loops have reserved keywords for ending (`break`) and continuing loops (`continue`).
 
-```coffeescript
+```storyscript
 foreach my_list as item
     if do_end_loop
         break

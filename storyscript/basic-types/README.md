@@ -7,7 +7,7 @@ next: /storyscript/functions/
 
 ## Comments
 
-```coffeescript
+```storyscript
 ###
 Large
   Comment
@@ -26,7 +26,7 @@ or from `###` to the end of the line of the next appearance of `###`.
 
 Truth values can be represented with the `boolean` type that has two possible values (`true` and `false`):
 
-```coffeescript
+```storyscript
 happy = true
 sad = false
 ```
@@ -34,7 +34,7 @@ sad = false
 
 Numbers in Storyscript can be whole numbers (`int`s) that can be positive, negative or zero:
 
-```coffeescript
+```storyscript
 i  = 1
 i2 = -2
 i3 = 0
@@ -44,7 +44,7 @@ Integers are unlimited in size and have no minimum or maximum value.
 
 Additionally, Storyscript can represent numbers with decimals as floating-point numbers (`float`):
 
-```coffeescript
+```storyscript
 f1 = 1.2
 f2 = -3.14
 ```
@@ -53,7 +53,7 @@ The engine uses IEEE-754 double precision floating point arithmetic.
 
 ## Strings
 
-```coffeescript
+```storyscript
 data = "foobar"
 
 long_string = "Hi Friend,
@@ -93,7 +93,7 @@ A string index is zero-based.
 A string index may be negative and will then start from the end. The absolute value
 of an index may not be equal or greater than the length of the string.
 
-```coffeescript
+```storyscript
 s = "abcd"
 s[0]  # a
 s[3]  # d
@@ -107,7 +107,7 @@ s[-4] # ERROR
 
 Storyscript supports `List`s as a generic container type:
 
-```coffeescript
+```storyscript
 list_inline = ["string", 1, 2]
 list_multiline = [
   1,
@@ -121,7 +121,7 @@ A list index is zero-based.
 A list index may be negative and will then start from the end. The absolute value
 of an index may not be equal or greater than the length of the list.
 
-```coffeescript
+```storyscript
 list = [1, 2, 3, 4]
 l[0]  # 1
 l[3]  # 4
@@ -135,7 +135,7 @@ l[-4] # ERROR
 
 Storyscript supports `Map`s as a generic container type:
 
-```coffeescript
+```storyscript
 map_inline = {'foo': 'bar', 'apples': 'oranges'}
 map_multiline = {
   'foo': 'bar',
@@ -148,7 +148,7 @@ In a map the same value may occur more than once, but the same key can only occu
 
 Maps can be destructured into its part with the destructuring assignments:
 
-```coffeescript
+```storyscript
 map = {'foo': 'bar', 'apples': 'oranges'}
 { foo } = map
 # foo = 'bar'
@@ -158,7 +158,7 @@ A destructuring assignment must contain one or more object keys.
 These keys **must** exist in the map and will be new variables names.
 Their value is the value of the respective key in the map (`map[key]`).
 
-```coffeescript
+```storyscript
 map = {'foo': 'bar', 'apples': 'oranges'}
 { foo, apples } = map
 # foo = 'bar', apples = 'oranges'
@@ -168,7 +168,7 @@ map = {'foo': 'bar', 'apples': 'oranges'}
 
 Time durations can be expressed natively.
 
-```coffeescript
+```storyscript
 timeout  = 30s
 duration = 5d10m
 ```
@@ -179,7 +179,7 @@ Time units must be used in this order and can't be repeated.
 
 ## Regular Expressions
 
-```coffeescript
+```storyscript
 pattern = /^foo/i
 ```
 
@@ -187,7 +187,7 @@ Regular expressions are supported without any special characters of escaping nec
 
 ### Regular Expressions Methods
 
-```coffeescript
+```storyscript
 pattern = /(?P<key>\w):(?P<value>\w)/
 ```
 
