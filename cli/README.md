@@ -10,7 +10,7 @@ To get started install the Storyscript CLI ([Contribute](https://github.com/stor
 <td style="text-align:center" width="50%" valign="top">
 <h1><img src="../assets/apple-logo.svg" width="24"> macOS</h1>
 
-```shell
+```bash
 brew install storyscript/brew/story
 ```
 
@@ -30,7 +30,7 @@ Download the appropriate installer:
 <td style="text-align:center" valign="top">
 <h1><img src="../assets/ubuntu-logo.svg" width="24"> Ubuntu 16+</h1>
 
-```shell
+```bash
 sudo snap install story
 ```
 
@@ -44,7 +44,7 @@ sudo snap install story
 <td style="text-align:center" valign="top">
 <h1>Python</h1>
 
-```shell
+```bash
 pip install --user story
 ```
 
@@ -59,7 +59,7 @@ The other installation methods listed are recommended.
 
 Get a fill list of CLI commands by calling `story`.
 
-```shell
+```bash
 story
 ```
 

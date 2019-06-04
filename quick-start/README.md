@@ -23,7 +23,7 @@ First, install our CLI:
 <details :open="$page.os === 'macos'">
 <summary><h4><img src="../assets/apple-logo.svg" width="15"> macOS</h4></summary>
 
-```shell
+```bash
 brew install storyscript/brew/story
 ```
 
@@ -48,7 +48,7 @@ Download the appropriate installer:
 <details :open="$page.os === 'unix' || $page.os === 'linux'">
 <summary><h4><img src="../assets/ubuntu-logo.svg" width="15"> Ubuntu 16+</h4></summary>
 
-```shell
+```bash
 sudo snap install story
 ```
 
@@ -64,7 +64,7 @@ sudo snap install story
 <details :open="$page.os === 'unknown'">
 <summary><h4>Direct from Python</h4></summary>
 
-```shell
+```bash
 pip install --user story
 ```
 
@@ -78,7 +78,7 @@ The other installation methods listed are recommended.
 
 Next, login with your GitHub account:
 
-```shell
+```bash
 story login
 ```
 
@@ -92,10 +92,10 @@ If you're having trouble logging in via GitHub, please [reach out to us](http://
 ## Write your first Story
 
 Let's create your first application, to be able to check out the samples which are bundled.
-```shell
+```bash
 mkdir first_app && cd first_app
 ```
-```shell
+```bash
 story apps create
 ```
 
@@ -103,13 +103,13 @@ story apps create
 
 We have created a few examples that can help you bootstrap your project: Let's start you off with a simple hello world serverless http endpoint:
 
-```shell
+```bash
 story write http > http.story
 ```
 
 Let's take a look:
 
-```shell
+```bash
 cat http.story
 ```
 
@@ -120,7 +120,7 @@ when http server listen method: 'get' path: '/' as request
 
 Now, let's deploy your story:
 
-```shell
+```bash
 story deploy
 ```
 ```text
@@ -149,7 +149,7 @@ It will indicate where your story was deployed.
 ## Deploy changes
 
 Ready to redeploy your application? Simply run the same `deploy` command again:
-```shell
+```bash
 story deploy
 ```
 

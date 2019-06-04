@@ -65,7 +65,7 @@ http server as client
 
 Now, instead of responding with `Hello, world!`, we're going to respond with the output of `awesome id`, which takes no parameters. It simply returns a modern uuid-esque string, which you can see in Storyscript Cloud as the app identifiers.
 
-```shell
+```bash
 curl https://….storyscriptapps.com/
 ```
 ```
