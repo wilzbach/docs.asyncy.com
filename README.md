@@ -9,12 +9,12 @@ features:
 
   - title: "Story Cloud"
     description: "The Storyscript Platform provides a production-ready, scalable microservice environment."
-    link: "https://storyscript.io"
+    link: "/quick-start/"
     icon: "landing"
 
   - title: "Private Beta"
     description: "We're currently in private beta. If you’re interested in joining you can request an invite by filling out a form."
-    link: "https://asyncy.click/beta-invite"
+    link: "https://storyscript.io"
     icon: "mail"
 
   - title: "Contributing"
