@@ -7,7 +7,8 @@ prev: /storyscript/advanced/
 Secrets (aka environment variables) are stored in a restricted keyword `app.secrets`.
 
 Set secrets with the Storyscript CLI
-```shell
+
+```bash
 story config set foo=bar
 ```
 
