@@ -1,11 +1,12 @@
 # Exposing a Service
 
-Often, it's desirable to interact with your services directly from the
-outside world. For example, if you're running a service which exposes
-it's own configuration web console on a certain path. We refer to this as
-an "expose" - something that is exposed directly to the internet.
+Often, it is desirable to interact with your services, directly from the
+outside world.
 
-**Note:** For this to work, the service you're trying to expose, must have
+For example, if you're running a service which exposes its own web console (for configuration)
+on a certain path. We refer to this as "forwards" — a path that is exposed directly to the internet, from the underlying container.
+
+**Note:** For this to work, the service you are trying to expose, must have
 declared an `expose` in its `microservice.yaml`. Read more about it [here](https://microservice.guide/schema/expose).
 
 To expose a service's expose to the internet, add an `expose` entry to your
@@ -21,7 +22,7 @@ forwards:
 ```
 
 ## Example
-Here's an example `asyncy.yml` which exposes Hasura's endpoints:
+Here's an example `story.yml` which exposes Hasura's endpoints:
 ```yaml
 app_name: xxx-xxx-xxx
 forwards:
@@ -57,8 +58,10 @@ Apr 09 14:25:33   INFO Exposed service hasura as https://xxx-xxx-xxx--hasura.asy
 ```
 
 ## What happens under the hood?
-When you run `$ asyncy deploy`, your project's `asyncy.yml` content is added alongside the
-stories which are found in your project. The Asyncy runtime, then inspects the `asyncy.yml`,
-fetches the services to be exposed, and matches the expose configuration with that of the
-service's `microservice.yml`. Once this is found, a Kubernetes Ingress is created on your
-behalf. This ensures that all requests are directly sent to the service you're using.
+When you run `$ story deploy`, your project's `story.yml` content is added alongside the
+stories which are found in your project.
+
+Then, the Asyncy runtime inspects the `story.yml`, fetches the services to be exposed, and matches the expose configuration with that of the
+service's `microservice.yml`. Once this is found, a Kubernetes Ingress is created on your behalf.
+
+This ensures that all requests are sent directly to the service you are using.
