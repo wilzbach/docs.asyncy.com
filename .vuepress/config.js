@@ -42,7 +42,7 @@ module.exports = {
     sidebar: [
       '/quick-start/',
       {
-        title: 'Storyscript',
+        title: 'Storyscript Language',
         collapsable: true,
         children: [
           '/storyscript/intro/',
@@ -54,7 +54,7 @@ module.exports = {
           '/storyscript/functions/',
           '/storyscript/flow/',
           '/storyscript/advanced/',
-           '/storyscript/secrets/',
+          '/storyscript/secrets/',
         ]
       },
       '/services/',
