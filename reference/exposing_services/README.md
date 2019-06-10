@@ -13,7 +13,7 @@ project's `asyncy.yml` file:
 
 ```yaml{2,3,4,5,6}
 app_name: your-app-name
-expose:
+forwards:
   - service: <the name of the service>
     name: <the name of the expose in that service>
     http:
@@ -24,7 +24,7 @@ expose:
 Here's an example `asyncy.yml` which exposes Hasura's endpoints:
 ```yaml
 app_name: xxx-xxx-xxx
-expose:
+forwards:
   - service: hasura
     name: console
     http:
@@ -55,11 +55,10 @@ Apr 09 14:25:33   INFO Exposed service hasura as https://xxx-xxx-xxx--hasura.asy
 Apr 09 14:25:33   INFO Exposing service hasura/v1_api on /v1
 Apr 09 14:25:33   INFO Exposed service hasura as https://xxx-xxx-xxx--hasura.asyncyapp.com/v1
 ```
- 
+
 ## What happens under the hood?
 When you run `$ asyncy deploy`, your project's `asyncy.yml` content is added alongside the
 stories which are found in your project. The Asyncy runtime, then inspects the `asyncy.yml`,
-fetches the services to be exposed, and matches the expose configuration with that of the 
+fetches the services to be exposed, and matches the expose configuration with that of the
 service's `microservice.yml`. Once this is found, a Kubernetes Ingress is created on your
 behalf. This ensures that all requests are directly sent to the service you're using.
-   
