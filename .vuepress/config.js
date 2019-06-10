@@ -68,8 +68,20 @@ module.exports = {
       //     '/graphql/',
       //   ]
       // },
+      {
+        title: 'Architecture',
+        children: [
+          '/architecture/diagrams/'
+        ]
+      },
+      {
+        title: 'Reference',
+        children: [
+          '/reference/exposing_services/'
+        ]
+      },
       '/faq/',
       '/support/'
     ]
   }
-}
+};

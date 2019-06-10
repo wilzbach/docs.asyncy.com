@@ -1,4 +1,5 @@
 *.DS_STORE
+*.iml
 .vuepress/dist/
 .idea/
 node_modules/
