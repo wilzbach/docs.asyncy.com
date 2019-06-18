@@ -20,7 +20,7 @@ Storyscript functions are useful for common procedures that you want to reuse in
 
 ####  Create your first Storyscript function
 
-```storyscript
+```coffeescript
 function spam_me text:string
     twitter tweet status:'@me {text}'
     twilio sms text:text to:'+310601010101'
@@ -29,7 +29,7 @@ function spam_me text:string
 
 Now, we can call our function like this:
 
-```storyscript
+```coffeescript
 spam_me(text: 'doorbell rang!')
 ```
 

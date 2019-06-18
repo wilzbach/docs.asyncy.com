@@ -34,7 +34,7 @@ A story may [execute in many ways](/faq/#how-are-storyscripts-started).
 1. When a service is called the Runtime will communicate with the service passing necessary data to and from the service back into the primary thread.
 1. Asynchronous commands may generate new threads and execute in the same pattern above.
 
-```storyscript
+```coffeescript
 translated = language_service translate from:my_string to:'spanish'
 words = translated split by:' '
 service_b action_b name:words[0]

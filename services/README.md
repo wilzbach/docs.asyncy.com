@@ -23,7 +23,7 @@ Containerized services is software wrapped in a Docker container. Commonly calle
 2. Submit your service to the [Storyscript Hub](https://hub.storyscript.io).
 3. Access your service via Storyscript, like this:
 
-```storyscript
+```coffeescript
 output = myTeam/myFirstMicroservice foobar key:value
 ```
 
@@ -40,7 +40,7 @@ Soon Storyscript Hub will support uploading your OpenAPI spec enabling developer
 1. Upload spec to Storyscript Hub.
 2. Interact with your OpenAPI REST API in the following way:
 
-```storyscript
+```coffeescript
 output = myTeam/myOpenAPI endpoint arg:value
 ```
 
@@ -58,7 +58,7 @@ Soon Storyscript Hub will support uploading your AsyncAPI spec enabling develope
 1. Upload spec to Storyscript Hub.
 2. Interact with your AsyncAPI event-driven service in the following way:
 
-```storyscript
+```coffeescript
 when myTeam/myOpenAPI action eventName arg:value as event
     ...
 ```
