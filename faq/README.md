@@ -62,7 +62,7 @@ services:
 
 In Storyscript you can call upon this service like this:
 
-```storyscript
+```coffeescript
 result = foobar action key:value
 ```
 
