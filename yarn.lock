@@ -7686,10 +7686,10 @@ vuepress-plugin-sitemap@^2.1.2:
   dependencies:
     sitemap "^2.0.1"
 
-vuepress-theme-story@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/vuepress-theme-story/-/vuepress-theme-story-0.0.5.tgz#48ffb8533a8d0bcc4592a7ca0d9dbc5e2f4d3c58"
-  integrity sha512-6+e0QlxEcaRlJLvA3WJQljAihkISQTzROq0wPH5UlqKyJFwwuGBf8CnY4va+DjRWV90tbK/Du/IZdCi3QGWmSg==
+vuepress-theme-story@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/vuepress-theme-story/-/vuepress-theme-story-0.0.6.tgz#4ca9c8fd50b1e20c823c1dae8c8d36c9a443c2a6"
+  integrity sha512-m52fJQBzvp68Icfi+MU6T/bhvnLw0eebQEjGeVJ355RDrpkou70/mUtSvwSF2JxhA5Ub4ssSqSXLTTCAHkc/zg==
   dependencies:
     "@storyscript/vue" "^2.7.10"
     esm "^3.2.22"
