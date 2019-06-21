@@ -12,7 +12,7 @@ Storyscript is the first top-level programming langauge that seamlessly connects
 The design of Storyscript is to **move data**, with no boilerplate code, in a declarative and intuitive way.
 
 ::: tip Inspiration behind Storyscript
-Storyscript is inspired by many popular languages to be as natural and intuitive as possible. It is declarative, strong-typed, static-typed and focused on top-level data-flow.
+Storyscript is inspired by many popular languages to be as natural and intuitive as possible. It is declarative, static-typed and focused on top-level data flow.
 :::
 
 
@@ -31,11 +31,11 @@ when service action event key:value as event  # Event-driven microservice
   someString.upper()                          # A type transformation
 ```
 
-Each service can be written in an independentent programming language, as they both adhere to the [OMG Standard](https://microservices.guide/), which Storyscript is built around.
+Each service can be written in an independent programming language. The [OMG Standard](https://microservices.guide/), which Storyscript is built around, serves as a unifying interface.
 
-Upon deployment, your **story** (the story of your data) gets compiled and translated into a production-ready Kubernetes data pipeline, ready to respond to incoming events, of any type. No configuration required. It's the best of all worlds — you get all the benefits of Kubernetes (open cloud, etc), without any of the headaches!
+Upon deployment, your **story** (the story of your data) gets compiled and translated into a production-ready Kubernetes data pipeline, ready to respond to incoming events of any type. No configuration required. It's the best of all worlds — you get all the benefits of Kubernetes (open cloud, etc), without any of the headaches!
 
-Many think of Storyscript as glue code for microservices, flow-code, or pure business-logic programming. We call this **top-level programming**. This diagram shows how the language focuses on the most important aspect of application development: the business-logic.
+Many think of Storyscript as glue code for microservices, flow code, or pure business logic programming. We call this **top-level programming**. This diagram shows how the language focuses on the most important aspect of application development: the business logic.
 
 
 ![abstraction](./abstraction.png)
@@ -45,7 +45,7 @@ Many think of Storyscript as glue code for microservices, flow-code, or pure bus
 1. **Transparency**.
   It looks like a monolith but is a full microservice/function serverless architecure.
 1. **Readability**.
-  The truth is in the code. Not only is Storyscript easy to read it's also easy to refactor, add features and traceback errors.
+  The truth is in the code. Not only is Storyscript easy to read it's also easy to refactor, add features, and traceback errors.
 1. **Polyglot**.
   Storyscript connects all existing languages together into one single cohesive story of data. This enables you to choose the right language for the job.
 1. **Zero-devops Deployments**.
@@ -73,9 +73,9 @@ Storyscript *does not replace any other language*. It merely connects them toget
 
 ## Use Cases
 
-All backend-oriented services can be easily spawned from Storyscript— often with a single line of code.
+All backend-oriented services can be easily spawned from Storyscript, often with a single line of code.
 
-Here are a few examples of the types of use-cases Storyscript is empowered to fufill:
+Here are a few examples of the types of use cases Storyscript is empowered to fufill:
 
 |                               	|                       	|                             	|
 |-------------------------------	|------------------------	|-----------------------------	|
