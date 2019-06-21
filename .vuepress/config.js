@@ -77,8 +77,7 @@ module.exports = {
       {
         title: 'Reference',
         children: [
-          '/reference/exposing_services/',
-          '/reference/registry_authentication/'
+          '/reference/exposing_services/'
         ]
       },
       '/faq/',
