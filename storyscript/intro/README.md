@@ -12,7 +12,7 @@ Storyscript is the first top-level programming langauge that seamlessly connects
 The design of Storyscript is to **move data**, with no boilerplate code, in a declarative and intuitive way.
 
 ::: tip Inspiration behind Storyscript
-Storyscript is inspired by many popular languages to be as natural and intuitive as possible. It is declarative, static-typed and focused on top-level data flow.
+Storyscript is inspired by many popular languages to be as natural and intuitive as possible. It is declarative, static-typed, and focused on top-level data flow.
 :::
 
 
