@@ -754,12 +754,12 @@
     "@shellscape/koa-send" "^4.1.0"
     debug "^2.6.8"
 
-"@storyscript/vue@^2.7.9":
-  version "2.7.9"
-  resolved "https://registry.yarnpkg.com/@storyscript/vue/-/vue-2.7.9.tgz#79d207b593f35d74c91884034969d2343b757741"
-  integrity sha512-7Ww5IlE3ZeLRiTy9HD43ei7fXHJ3KsoG/Qo6viWz2k2OuRnVPgReu+zMACThlITgyj7JkCQP+sDWYk0LQl/vXA==
+"@storyscript/vue@^2.7.10":
+  version "2.8.2"
+  resolved "https://registry.yarnpkg.com/@storyscript/vue/-/vue-2.8.2.tgz#6577e6efa0a11f9ac8592eb7dbe36c12edb4a2b2"
+  integrity sha512-G0jNTXWKhcod7eCB9AdqqEiHUFUknP89db16PFKHni+a8Ldws76u4D+mlEDr1gvndDeYacGilQLsyi8n3hGY1w==
   dependencies:
-    bulma "^0.7.4"
+    bulma "^0.7.5"
     vue "^2.6.10"
 
 "@vue/babel-preset-app@3.0.0-beta.11":
@@ -1597,7 +1597,7 @@ builtin-status-codes@^3.0.0:
   resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
   integrity sha1-hZgoeOIbmOHGZCXgPQF0eI9Wnug=
 
-bulma@^0.7.4:
+bulma@^0.7.5:
   version "0.7.5"
   resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.7.5.tgz#35066c37f82c088b68f94450be758fc00a967208"
   integrity sha512-cX98TIn0I6sKba/DhW0FBjtaDpxTelU166pf7ICXpCCuplHWyu6C9LYZmL5PEsnePIeJaiorsTEzzNk3Tsm1hw==
@@ -7686,12 +7686,12 @@ vuepress-plugin-sitemap@^2.1.2:
   dependencies:
     sitemap "^2.0.1"
 
-vuepress-theme-story@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/vuepress-theme-story/-/vuepress-theme-story-0.0.4.tgz#dbc215b9eac4344a0b1c6261b23af33897eb8ab2"
-  integrity sha512-/1vg6hW3pUc6XNe/Mz55Wx0F8AQF6TJUl23PGmMaUlYHoEWKHeuK3Kdr2XXbIz2dAzq2S0+n7bXrmiZix/mz8A==
+vuepress-theme-story@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/vuepress-theme-story/-/vuepress-theme-story-0.0.5.tgz#48ffb8533a8d0bcc4592a7ca0d9dbc5e2f4d3c58"
+  integrity sha512-6+e0QlxEcaRlJLvA3WJQljAihkISQTzROq0wPH5UlqKyJFwwuGBf8CnY4va+DjRWV90tbK/Du/IZdCi3QGWmSg==
   dependencies:
-    "@storyscript/vue" "^2.7.9"
+    "@storyscript/vue" "^2.7.10"
     esm "^3.2.22"
     node-sass "^4.12.0"
     perfect-scrollbar "0.8.1"

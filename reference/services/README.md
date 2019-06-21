@@ -4,8 +4,6 @@ Services are containerized software or API specifications. Written in any progra
 
 **Services should encompass the full domain of it's scope.** For example, the Twitter microservice should be the entire Twitter API, the GitHub microservice includes the REST API, GraphQL, webhook server and login server.
 
-[[toc]]
-
 ## Create
 
 There are three ways to create services for Storyscript Cloud.
