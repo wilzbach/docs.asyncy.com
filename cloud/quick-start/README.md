@@ -1,17 +1,4 @@
----
-prev: false
-next: /storyscript/writing/
----
-
-# Storyscript Cloud
-
-The story of Storyscript begins with you — the developer. We seek to amplify your ability to build and deploy applications, enabling you to doing so at lightning speed.
-
-Your mission — if you choose to accept it — is to make your development lifecycle 10-100x easier. How? By significantly reducing the boilerplate neccessary when working with microservices in a Bash–esque paradim.
-
-We remove the unnecessary complexity in order to allow you to focus on what matters most: the story of your data.
-
-Let's get started.
+# Quick Start
 
 ## Get started
 
@@ -21,7 +8,7 @@ First, install our CLI:
 <tr>
 <td style="text-align:center" width="100%" valign="top" colspan="2">
 <details :open="$page.os === 'macos'">
-<summary><h4><img src="../assets/apple-logo.svg" width="15"> macOS</h4></summary>
+<summary><h4><img src="../../assets/apple-logo.svg" width="15"> macOS</h4></summary>
 
 ```bash
 brew install storyscript/brew/story
@@ -46,7 +33,7 @@ Download the appropriate installer:
 <tr>
 <td style="text-align:center" width="50%" valign="top">
 <details :open="$page.os === 'unix' || $page.os === 'linux'">
-<summary><h4><img src="../assets/ubuntu-logo.svg" width="15"> Ubuntu 16+</h4></summary>
+<summary><h4><img src="../../assets/ubuntu-logo.svg" width="15"> Ubuntu 16+</h4></summary>
 
 ```bash
 sudo snap install story
@@ -113,7 +100,7 @@ Let's take a look:
 cat http.story
 ```
 
-```coffeescript
+```storyscript
 when http server listen method: 'get' path: '/' as request
     request write content: 'Hello world!'
 ```
