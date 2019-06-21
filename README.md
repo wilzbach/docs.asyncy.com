@@ -4,12 +4,12 @@ layout: 'Home'
 features:
   - title: "Getting Started"
     description: "Welcome! Have a look at our Platform below then proceed to Quick Start."
-    link: "/quick-start/"
+    link: "/cloud/quick-start/"
     icon: "rocket"
 
   - title: "Story Cloud"
     description: "The Storyscript Platform provides a production-ready, scalable microservice environment."
-    link: "/quick-start/"
+    link: "/cloud/quick-start/"
     icon: "landing"
 
   - title: "Private Beta"
