@@ -44,13 +44,12 @@ Download the appropriate installer:
 -->
 </tr>
 <tr>
+<!--
 <td style="text-align:center" width="50%" valign="top">
 <details :open="$page.os === 'unix' || $page.os === 'linux'">
 <summary><h4><img src="../assets/ubuntu-logo.svg" width="15"> Ubuntu 16+</h4></summary>
 
-```bash
-sudo snap install story
-```
+
 
 <a href="https://snapcraft.io/story">
   <img alt="Get it from the Snap Store" src="https://snapcraft.io/static/images/badges/en/snap-store-white.svg" />
@@ -60,6 +59,7 @@ sudo snap install story
 
 </details>
 </td>
+-->
 <td style="text-align:center" width="50%" valign="top">
 <details :open="$page.os === 'unknown'">
 <summary><h4>Direct from Python</h4></summary>
