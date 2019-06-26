@@ -23,7 +23,7 @@
     "sass-loader": "^7.1.0",
     "vuepress": "^0.14.11",
     "vuepress-plugin-sitemap": "^2.1.2",
-    "vuepress-theme-story": "^0.0.9"
+    "vuepress-theme-story": "^0.0.10"
   },
   "dependencies": {}
 }
