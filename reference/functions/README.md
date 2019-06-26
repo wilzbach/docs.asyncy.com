@@ -7,8 +7,6 @@ next: /storyscript/flow/
 
 Functions are single methods written in any programming language that are fully managed serverless functions.
 
-[[toc]]
-
 ## Create
 
 Creating your own functions is intuitive and powerful. Choose Storyscript for workflow and procedural functions. Choose another language for low and high-level logic and algorithms.

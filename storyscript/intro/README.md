@@ -1,5 +1,5 @@
 ---
-prev: /quick-start/
+prev: /cloud/quick-start/
 next: /storyscript/writing/
 ---
 
@@ -24,7 +24,7 @@ In the example below we have two lines of code:
 2. The second line represents taking action on the incoming event data, harnessing another microservice.
 
 
-```storyscript
+```coffeescript
 when service action event key:value as event  # Event-driven microservice
   res = service action key:value              # HTTP/RPC microservice
   result = someFunction(key:value)            # Any GPPL/Storyscript Function
