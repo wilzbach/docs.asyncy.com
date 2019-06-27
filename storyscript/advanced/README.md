@@ -75,70 +75,10 @@ catch as error
 
 Use the `throw` keyword to raise the exception, bubbling up to the next try block or stopping the story.
 
-## Types
-
-```coffeescript
-1 type
-# int
-
-true type
-# bool
-
-"" type
-# string
-
-[] type
-# list
-
-{} type
-# object
-
-null type
-# null
-
-30s type
-# time
-
-(date now) type
-# date
-
-(interval days:1) type
-# interval
-
-(range from:foo to:bar) type
-# range
-
-/^foobar/ type
-# regexp
-
-function foobar returns int
-    return 1
-
-foobar type
-# function
-```
-
-Use the method `type` to get the type of a variable as a string.
-
-```coffeescript
-(1 is int) and (true is bool) and ("" is string)
-# true
-
-([] is list) and ({} is object)
-# true
-
-(1 is number) and (1.2 is number)
-# true
-
-{} is string
-# false
-```
-
 ## Type checking
 
 Storyscript allows a few implicit type conversions:
 
-- `boolean` types are implicitly convertible to `int`
 - `int` types are implicitly convertible to `float`
 - all types are implicitly convertible to `any`
 
