@@ -104,18 +104,9 @@ a = "foo" # E0100: Can't assign `string` to `int`
 
 ### Boolean operations
 
-Boolean operators are: `and`, `or`, `!`.
-The following types are evaluable to a `boolean` and can thus perform
-boolean operations:
-
-- `boolean`
-- `int`
-- `float`
-- `time`
-- `string`
-- `List`
-- `Map`
-- `any`
+Boolean operators are: `and`, `or`, and `not`.
+All types need to be explicitly converted to a `boolean` with e.g.
+comparison operation (e.g. `a == b`) or a built-in (e.g. `a.empty()`).
 
 ### Arithmetic operations
 
