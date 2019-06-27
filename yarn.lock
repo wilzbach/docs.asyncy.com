@@ -754,10 +754,10 @@
     "@shellscape/koa-send" "^4.1.0"
     debug "^2.6.8"
 
-"@storyscript/vue@^2.8.5":
-  version "2.8.5"
-  resolved "https://registry.yarnpkg.com/@storyscript/vue/-/vue-2.8.5.tgz#e82b43b003fc02391348f40f7139e63714aacdcd"
-  integrity sha512-nxpmwtZQOdGo3a9jQRaIz7bwmbFW7g3v6rLfzOyJK2KJEBm1VRecVS0siSIj2nh6yFDCru0g0xim4LY17CI7zw==
+"@storyscript/vue@^2.8.9":
+  version "2.8.9"
+  resolved "https://registry.yarnpkg.com/@storyscript/vue/-/vue-2.8.9.tgz#e485183ac0a950e7076fd960335741b780d78ca1"
+  integrity sha512-ua07odo8qXGERBvnTMTgZYHfxDLTGXCS0Eq5Iuue43MkxfsyZSER7TiaezQSvnKDmJIShf/z2T1joy2HbDZqaw==
   dependencies:
     bulma "^0.7.5"
     vue "^2.6.10"
@@ -7660,12 +7660,12 @@ vuepress-plugin-sitemap@^2.1.2:
   dependencies:
     sitemap "^2.0.1"
 
-vuepress-theme-story@^0.0.10:
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/vuepress-theme-story/-/vuepress-theme-story-0.0.10.tgz#4d937988177e79dc035877bb3f578e90eb707f6e"
-  integrity sha512-7PEWzH60vRJRgFALQu9wvnUm9DKlDE15KhiFDdlUumbB/OIHA817l+POeV8gY4pBqVckfwP4BVd57dHGhkj7Pg==
+vuepress-theme-story@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/vuepress-theme-story/-/vuepress-theme-story-0.1.1.tgz#8f02df7574c7c55503c07cfd6a210ff9d55e3e28"
+  integrity sha512-5XydKZ3NbaVC+otpKpYk/3WfY6MxsbRXu9drsJ1eqD5OEao5rb6eiRnCZVG9lbKS3STQ1iMiktSIWnuyHKczmA==
   dependencies:
-    "@storyscript/vue" "^2.8.5"
+    "@storyscript/vue" "^2.8.9"
     esm "^3.2.22"
     node-sass "^4.12.0"
     perfect-scrollbar "0.8.1"
