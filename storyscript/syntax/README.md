@@ -23,7 +23,7 @@ output = function_name(key:value)
 # or another programming language
 
 # Call type methods
-output = variable mutation key:value
+output = variable.mutation(key:value)
 
 # Event streaming microservice
 when service action event key:value as output
