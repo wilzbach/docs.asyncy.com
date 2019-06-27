@@ -42,7 +42,7 @@ time = 1d35m
 
 # Destructuring
 { apple, banana } = map
-# apple = "red"
+# apple = "red", banana = "yellow"
 
 # Conditions
 if one > 1
