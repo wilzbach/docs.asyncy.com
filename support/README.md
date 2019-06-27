@@ -30,4 +30,4 @@ Open source contributors and developers may use GitHub Issues for bug tracking a
 
 ## Support
 
-For prompt response and support, users may contact us directly using the Intercom app at the bottom right corner of the page. For other inquiries around support, please email us at [support@storyscript.i](mailto:support@storyscript.io) with your GitHub username and concern.
+For prompt response and support, users may contact us directly using the Intercom app at the bottom right corner of the page. For other inquiries around support, please email us at [support@storyscript.io](mailto:support@storyscript.io) with your GitHub username and concern.
