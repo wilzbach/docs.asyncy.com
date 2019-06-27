@@ -200,10 +200,6 @@ Examples
 
 true and false or true # true
 true or false and true # true
-
-1 - 1 or 0          # false
-1 - 1 or 2 > 3      # false
-1 - 1 or 2 + 2 > 3  # true
 ```
 
 ## Application Information
