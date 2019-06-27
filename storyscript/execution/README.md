@@ -36,7 +36,7 @@ A story may [execute in many ways](/faq/#how-are-storyscripts-started).
 
 ```coffeescript
 translated = language_service translate from:my_string to:'spanish'
-words = translated split by:' '
+words = translated.split(by: ' ')
 service_b action_b name:words[0]
 ```
 
