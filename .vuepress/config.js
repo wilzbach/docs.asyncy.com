@@ -44,12 +44,9 @@ module.exports = {
       icon: 'home',
       path: '/'
     }, {
-      title: 'Storyscript Cloud',
+      title: 'Quick Start',
       icon: 'cloud',
-      children: [
-        '/cloud/intro/',
-        '/cloud/quick-start/'
-      ]
+      path: '/quick-start/',
     }, {
       title: 'Storyscript Language',
       icon: 'lang',
