@@ -34,7 +34,7 @@ spam_me(text: 'doorbell rang!')
 ### GPPL Functions
 
 ::: warning Coming soon
-Looking forward to this feature? [Click here](https://asyncy.nolt.io/8) to share your feedback.
+Looking forward to this feature? [Click here](https://storyscript.nolt.io/8) to share your feedback.
 :::
 
 Creating a function in a GPPL (like Python, Node, Go, Ruby, etc.) is very simple in Storyscript.

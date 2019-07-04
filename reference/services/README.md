@@ -28,7 +28,7 @@ output = myTeam/myFirstMicroservice foobar key:value
 ### OpenAPI
 
 ::: warning Coming soon
-Looking forward to this feature? [Click here](https://asyncy.nolt.io/6) to share your feedback.
+Looking forward to this feature? [Click here](https://storyscript.nolt.io/6) to share your feedback.
 :::
 
 The [OpenAPI](https://swagger.io/docs/specification/about/) spec (aka SwaggerAPI) is an API description format for REST APIs.
@@ -45,7 +45,7 @@ output = myTeam/myOpenAPI endpoint arg:value
 ### AsyncAPI
 
 ::: warning Coming soon
-Looking forward to this feature? [Click here](https://asyncy.nolt.io/7) to share your feedback.
+Looking forward to this feature? [Click here](https://storyscript.nolt.io/7) to share your feedback.
 :::
 
 
