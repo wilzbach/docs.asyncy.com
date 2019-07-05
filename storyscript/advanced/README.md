@@ -115,7 +115,7 @@ The following operations are supported for the respective Storyscript type:
 
 Type       | Operations | Remarks
 -----------|------------|------
-`boolean`  | all        | Operations between two `boolean`s are implicitly converted to `int`
+`boolean`  | all        | Arithmetic operations between two `boolean`s are implicitly converted to `int`
 `int`      | all        |
 `float`    | all        |
 `regexp`   | (none)     |
