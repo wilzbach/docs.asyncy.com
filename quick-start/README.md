@@ -17,7 +17,7 @@ export default {
 
 It started with questions any curious person should be asking: 
 - *Why is there so much complexity in development?* 
--*How can we lower the bar of development?* 
+- *How can we lower the bar of development?* 
 -*What is the future of programming?* 
 High-level languages enabled millions of people to call themselves developers while simultaneously making development exponentially easier. We believe it's time to think beyond high-level languages and look towards a new language built on the cloud, for the cloud, that transforms the industry like high-level languages once did.
 
