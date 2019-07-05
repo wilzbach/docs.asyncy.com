@@ -36,7 +36,7 @@ The goal of the Quick Start is to get a Storyscript application deployed to Kube
 
 <table width="100%">
 <tr>
-<td style="text-align:center" width="100%" valign="top" colspan="2">
+<td style="text-align:center" width="50%" valign="top" colspan="1">
 <h2><img src="../assets/apple-logo.svg" width="15"> macOS</h2>
 
 ```bash
@@ -44,25 +44,7 @@ brew install storyscript/brew/story
 ```
 
 </td>
-</tr>
 
-<tr>
-<td style="text-align:center" width="100%" valign="top" colspan="2">
-<h2><img src="../assets/windows-logo.svg" width="15"> Windows</h2>
-
-```bash
-pip install story
-```
-
-<!--
-<div><a href="https://github.com/asyncy/cli/releases/download/0.0.6/asyncy-x64.exe" class="button">64-bit installer</a></div>
-<div><a href="#" class="button">32-bit installer</a></div>
--->
-
-</td>
-</tr>
-
-<tr>
 <td style="text-align:center" width="100%" valign="top" colspan="2">
 <h2><img src="../assets/ubuntu-logo.svg" width="15"> Ubuntu 16+</h2>
 
@@ -77,13 +59,18 @@ pip install story
 
 <tr>
 <td style="text-align:center" width="100%" valign="top" colspan="2">
-<h2>Direct from Python</h2>
+<h2><img src="../assets/windows-logo.svg" width="15"> Windows or Direct from Python</h2>
 
 ```bash
 pip install --user story
 ```
 
-<small>Python 3.6 or higher is required, thus on Debian/Ubuntu use `pip3`.</small>
+<small>(Python 3.6 or higher is required, thus on Debian/Ubuntu use `pip3`.)</small>
+
+<!--
+<div><a href="https://github.com/asyncy/cli/releases/download/0.0.6/asyncy-x64.exe" class="button">64-bit installer</a></div>
+<div><a href="#" class="button">32-bit installer</a></div>
+-->
 
 </td>
 </tr>
