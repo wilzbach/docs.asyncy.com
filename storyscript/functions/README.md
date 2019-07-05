@@ -3,10 +3,10 @@
 Repeating code blocks can be grouped into functions for better reusability and modularity:
 
 ```coffeescript
-function get_user id:int returns map
+function get_user id:int returns Map[string, any]
     someone = (psql exec query:'select * from users where id={id} limit 1;')[0]
     someone['contact'] = fullcontact person email:someone['email']
-    return someone
+    return someone as Map[string, any]
 
 user_a = get_user(id:7)
 user_b = get_user(id:10)
@@ -19,8 +19,8 @@ Function must define their inputs and outputs which help with transparency, auto
 Functions **MAY** declare one output and identify it's type. If an output type is used the function **MUST** use `return` and return that type.
 
 ```coffeescript
-function add this:int that:int returns int
-   return this + that
+function add a:int b:int returns int
+   return a + b
 ```
 
 Functions that do not have an output may not use `return` with an entity.
