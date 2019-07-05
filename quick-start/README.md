@@ -159,4 +159,4 @@ Our documentation provides more details on the philosophy and components that, t
 
 🙋‍Storyscript is **open source** under Apache 2.0 license in [GitHub](https://github.com/storyscript). Your contributions are welcome and greatly respected as we are building this product for the greater good with passion and inclusiveness, **together**.<br>
 
-🇳🇱[Join our team in Amsterdam](https://angel.co/storyscript/jobs) to experience our loving culture and beautiful country of Netherlands.
+🇳🇱[Join our team in Amsterdam](https://jobs.lever.co/storyscript/) to experience our loving culture and beautiful country of Netherlands.
