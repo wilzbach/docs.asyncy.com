@@ -45,7 +45,7 @@ while foobar
 Similarly to conditions, loop blocks can use arbitrary expressions:
 
 ```
-foreach "a.b.c" split by: "." as item
+foreach "a.b.c".split(by: ".") as item
     # ...
 ```
 

@@ -4,8 +4,8 @@ Repeating code blocks can be grouped into functions for better reusability and m
 
 ```coffeescript
 function get_user id:int returns Map[string, any]
-    someone = (psql exec query:'select * from users where id={id} limit 1;')[0]
-    someone['contact'] = fullcontact person email:someone['email']
+    someone = (psql exec query:"select * from users where id={id} limit 1;")[0]
+    someone["contact"] = fullcontact person email:someone["email"]
     return someone as Map[string, any]
 
 user_a = get_user(id:7)
@@ -60,18 +60,18 @@ Built-ins refer to running operations on the built-in data types, such as string
 
 ```coffeescript
 # Note: None of the string operations below change the original string in any form
-str = ''
+str = ""
 str.length()  # returns the number of UTF-8 characters
-str.replace(item: 'ab' by: 'AB')  # returns a string by replacing 'ab' with 'AB'
-str.replace(pattern: /ab/ by: 'AB')  # replace all occurrences of the pattern RegExp /ab/ with 'ab'
-str.split(by: '.')  # returns a list by splitting the string with the delimiter
+str.replace(item: "ab" by: "AB")  # returns a string by replacing "ab" with "AB"
+str.replace(pattern: /ab/ by: "AB")  # replace all occurrences of the pattern RegExp /ab/ with "ab"
+str.split(by: ".")  # returns a list by splitting the string with the delimiter
 str.uppercase()  # returns a string where all characters are upper cased
 str.lowercase()  # returns a string where all characters are lower cased
-str.capitalize()  # returns a string where the first letter of each word is capitalized (eg: 'jane smith' becomes 'Jane Smith')
+str.capitalize()  # returns a string where the first letter of each word is capitalized (eg: "jane smith" becomes "Jane Smith")
 str.trim() # returns a string with any leading and trailing whitespace (including tabs) removed
-str.startswith(prefix: 'abc') # returns true if the string starts with the prefix 'abc'
-str.endswith(suffix: 'xyz') # returns true if the string ends with the suffix 'xyz'
-arr.contains(item: 'a')  # returns true if the item 'a' occurrs in the string, false otherwise
+str.startswith(prefix: "abc") # returns true if the string starts with the prefix "abc"
+str.endswith(suffix: "xyz") # returns true if the string ends with the suffix "xyz"
+arr.contains(item: "a")  # returns true if the item "a" occurrs in the string, false otherwise
 arr.contains(pattern: /a/)  # returns true if the RegExp /a/ occurrs in the string, false otherwise
 ```
 
@@ -103,21 +103,21 @@ arr.sum()  # returns the sum of all the elements in this list (if it contains nu
 arr.unique()  # reduces the list to contain only unique items
 arr.contains(item: 3)  # returns true if 3 is present, false otherwise
 arr.remove(item: 3)  # removes the item specified from the list
-arr.replace(item: 3 by: 4)  # replaces all occurrences of the item '3' with '4'
+arr.replace(item: 3 by: 4)  # replaces all occurrences of the item "3" with "4"
 ```
 
 ### Maps
 
 ```coffeescript
-m = {'a': 1, 'b': 2}
+m = {"a": 1, "b": 2}
 m.length()  # returns the size of the map, 2 in this case
 m.keys()  # returns a list of all keys
 m.values()  # returns a list of all values
-m.flatten()  # returns a list of key/value pairs (eg: [['a', 1], ['b', 2]])
-m.pop(key: 'a') # removes and returns the value for key 'a'
-m.get(key: 'b' default: '.' ) # returns the value for the key 'b' with a 'default' value if the 'key' doesn't exist
-m.contains(key: 'c') # returns true if the key 'c' exists in the map, false otherwise
-m.contains(value: 'c') # returns true if the value 'c' exists in the map, false otherwise
+m.flatten()  # returns a list of key/value pairs (eg: [["a", 1], ["b", 2]])
+m.pop(key: "a") # removes and returns the value for key "a"
+m.get(key: "b" default: "." ) # returns the value for the key "b" with a "default" value if the "key" doesn"t exist
+m.contains(key: "c") # returns true if the key "c" exists in the map, false otherwise
+m.contains(value: "c") # returns true if the value "c" exists in the map, false otherwise
 ```
 
 ### Chaining built-ins
@@ -125,6 +125,6 @@ m.contains(value: 'c') # returns true if the value 'c' exists in the map, false 
 Built-ins can be chained to help reduce complexity.
 
 ```coffeescript
-'abc'.uppercase().split()
-# >>> ['A', 'B', 'C']
+"abc".uppercase().split()
+# >>> ["A", "B", "C"]
 ```
