@@ -122,7 +122,9 @@ when http server listen method: "get" path: "/" as request
 
 > This http server is a great starting point to get *something* working. 
 
+<!--
 We have created a few examples that can help you bootstrap your project both Beginner-friendly and Advance. You can check them out [here](https://github.com/storyscript/examples)!
+-->
 
 ## Deploy to Storyscript Cloud
 
