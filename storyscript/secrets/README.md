@@ -14,7 +14,7 @@ story config set foo=bar
 
 Then you may access them via `app.secrets` map, like this:
 ```coffeescript
-if app.secrets.foo == 'bar'
+if app.secrets.foo == "bar"
     ...
 ```
 

@@ -115,7 +115,7 @@ m.keys()  # returns a list of all keys
 m.values()  # returns a list of all values
 m.flatten()  # returns a list of key/value pairs (eg: [["a", 1], ["b", 2]])
 m.pop(key: "a") # removes and returns the value for key "a"
-m.get(key: "b" default: "." ) # returns the value for the key "b" with a "default" value if the "key" doesn"t exist
+m.get(key: "b" default: "." ) # returns the value for the key "b" with a "default" value if the "key" doesn't exist
 m.contains(key: "c") # returns true if the key "c" exists in the map, false otherwise
 m.contains(value: "c") # returns true if the value "c" exists in the map, false otherwise
 ```

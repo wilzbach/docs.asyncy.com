@@ -147,7 +147,7 @@ Examples:
 
 ```coffeescript
 2 < 3                  # OK
-{'a':'b'} < {'c': 'd'} # Always disallowed
+{"a":"b:"} < {"c": "d"} # Always disallowed
 ```
 
 Remarks: when comparing a type with `any`, this type must support comparisons too.

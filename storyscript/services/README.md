@@ -67,10 +67,10 @@ service action
 A good example of this is streaming Tweets by hashtag.
 
 ```coffeescript
-when twitter stream tweets track:'programming' as tweet
+when twitter stream tweets track:"programming" as tweet
     res = machinebox/textbox analyze input:tweet.message
-    if res.sentiment == 'positive'
-        tweet reply message:'Thank you!'
+    if res.sentiment == "positive"
+        tweet reply message:"Thank you!"
         tweet retweet
         tweet like
 ```
