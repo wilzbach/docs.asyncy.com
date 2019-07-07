@@ -34,7 +34,7 @@ function do_that
     return 1
 >>> Error: syntax error in story at line 5, column 12
 
-5|        return 1
+5|  return 1
                  ^
 
 E0110: Function has no return output defined. Only `return` is allowed.

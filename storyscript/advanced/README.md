@@ -97,7 +97,7 @@ Examples:
 
 A type must be implicitly convertible to the assignment variable.
 
-```
+```coffeescript
 a = 1
 a = "foo" # E0100: Can't assign `string` to `int`
 ```
