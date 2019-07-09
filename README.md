@@ -20,5 +20,5 @@ features:
   - title: "Contributing"
     description: "Want to get involved with the Storyscript open source ecosystem? The entire platform is open source in GitHub."
     link: "https://github.com/storyscript"
-    icon: "github"
+    icon: "contribute"
 ---
