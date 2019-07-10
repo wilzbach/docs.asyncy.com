@@ -66,15 +66,10 @@ more_data = """
     jumps over the lazy dog.
 """
 # The quick brown fox\njumps over the lazy dog.
-
-where = "Earth"
-data_formatted = "Hello, {where}"
-# Hello, Earth
 ```
 
 ::: v-pre
 Like many traditional programming languages, Storyscript supports strings as delimited by the `"` quote characters.
-Storyscript also supports string interpolation within "-quoted strings, using `{ expression }`.
 :::
 
 Multi-line strings are allowed in Storyscript.
@@ -84,7 +79,32 @@ Indentation is ignored.
 Block strings, delimited by `"""`, can be used to hold formatted or indentation-sensitive text (or, if you just don’t feel like escaping quotes and apostrophes).
 The indentation level that begins the block is maintained throughout, so you can keep it all aligned with the body of your code.
 
-Double-quoted block strings, like other double-quoted strings, allow interpolation.
+### String templates
+
+Storyscript also supports string interpolation using `{ expression }`.
+
+```coffeescript
+where = "Earth"
+data_formatted = "Hello, {where}"
+# Hello, Earth
+```
+
+Inside string templates it is allowed to use single quotes for map access:
+
+```coffeescript
+tr = {"greeting": "Hello", "plant": "Sun"}
+reply = "{tr['greeting']}, {tr['plant']}"
+# Hello, Sun
+```
+
+In most cases it is more readable to use map destructuring assignments instead:
+
+```coffeescript
+tr = {"greeting": "Hello", "plant": "Mars"}
+{ greeting, plant } = tr
+reply = "{greeting}, {planet}"
+# Hello, Mars
+```
 
 ### String indexing
 
