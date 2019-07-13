@@ -186,6 +186,7 @@ Storyscript has the following operator precedence (from higher precedence down t
 - `<`, `<=`, `==`, `!=`, `>`, `>=` (Comparison expression)
 - `+`, `-` (Arithmetic expression)
 - `*`, `/`, `%` (Multiplicative expression)
+- `as` (As expression)
 - `!` (Unary expression)
 - `^^` (Pow expression)
 - `.`, (Dot expression) `[...]` (Index expression)
