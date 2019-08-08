@@ -35,6 +35,40 @@ foreach [1, 2, 3] as el
   last = el # OK
 ```
 
+Moreover, for if/else blocks the variable will be accessible in the parent scope
+if _all_ code blocks declare the respective variable.
+
+```coffeescript
+if weather == "sunny"
+  wind_kmh = 2
+else
+  wind_kmh = 10
+
+wind_ms = wind_kmh / 3.6 # OK
+```
+
+However, the following is not allowed as `wind_kmh` wasn't declared by
+all code paths:
+
+```coffeescript
+if weather == "sunny"
+  wind_kmh = 2
+else
+  storm_kmh = 10
+
+wind_ms = wind_kmh / 3.6 # ERROR
+```
+
+Analogous, if the `else` block is missing, it isn't possible
+to access `wind_kmh` in the parent scope either as it wasn't declared by all code paths:
+
+```coffeescript
+if weather == "sunny"
+  wind_kmh = 2
+
+wind_ms = wind_kmh / 3.6 # ERROR
+```
+
 ## Operations
 
 Storyscript provides a few special operations.
@@ -52,28 +86,57 @@ This `end story` operation can be used to stop a story and exit immediately.
 
 ```coffeescript
 try
-  # more stuff here
-catch as error
-  # more stuff here
+  a = "abc" as int
+catch
+  a = 42 # fallback
 finally
-  # more stuff here
+  submission_service send nr:a
 ```
 
-In Storyscript, the `try` expressions catch exceptions and pass the error to the `catch` block.
+In Storyscript `try` blocks catch exceptions and pass the error to the `catch` block.
 
-The `finally` block is **always** entered regardless of an exception being raised or not, use it for cleanup commands.
+A `finally` block is **always** entered regardless of an exception being raised or not.
+This is useful for cleanup commands.
 
 You may omit both the `catch` and `finally`.
 
 ```coffeescript
 try
-  # more stuff here
-catch as error
-  # more stuff here
-  throw
+  a = "abc" as int
+catch
+  a = 42 # fallback
 ```
 
-Use the `throw` keyword to raise the exception, bubbling up to the next try block or stopping the story.
+Custom exceptions can be raised with the `throw` keyword:
+
+```coffeescript
+if arr.contains("red")
+  throw "My Exception"
+```
+
+It is only allowed to `throw` `string` messages.
+
+New variables declared in a `try` block will only be accessible in the parent scope
+if the respective variable of the same type has also been declared in its `catch` block.
+The following is not possible:
+
+```coffeescript
+try
+  a = "abc" as int
+
+b = a # ERROR
+```
+
+However, variables declared in the `finally` block are part of the parent scope:
+
+```coffeescript
+try
+  a = "abc" as int
+finally
+  b = 1
+
+c = b # OK
+```
 
 ## Type checking
 
