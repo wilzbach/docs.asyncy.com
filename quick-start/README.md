@@ -155,7 +155,7 @@ The above would have mostly been manual work, typically in the form of Kubernete
 
 A quick introduction to how the Storyscript platform works.
 
-The **Stroyscript language** is a new language designed to focus on business-logic which describes the flow of data between services. It **does not replace any other language**; it unites all other languages in a polyglot development platform making it the most inclusive programming language. The language is inspired by several languages giving it a natural and intuitive familiarity. It's **strongly-typed** and compiled into the Storyscript Cloud-Native Runtime. We call this **top-level coding with a Cloud-Native programming language**.
+The **Storyscript language** is a new language designed to focus on business-logic which describes the flow of data between services. It **does not replace any other language**; it unites all other languages in a polyglot development platform making it the most inclusive programming language. The language is inspired by several languages giving it a natural and intuitive familiarity. It's **strongly-typed** and compiled into the Storyscript Cloud-Native Runtime. We call this **top-level coding with a Cloud-Native programming language**.
 
 The **Storyscript Runtime** is a Cloud-Native orchestrator that **uses Kubernetes under-the-hood** as a container scheduler framework. The Runtime transforms your Stories into a cached model of instructions that moves data between the services. Think of `IF this THAN that`, `WHEN this DO that`, `WAIT for this THEN that`, `WHILE this DO that` where all the `this that`s are services.
 
