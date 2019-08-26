@@ -125,6 +125,6 @@ m.contains(value: "c") # returns true if the value "c" exists in the map, false 
 Built-ins can be chained to help reduce complexity.
 
 ```coffeescript
-"abc".uppercase().split()
+"abc".uppercase().split(by: "")
 # >>> ["A", "B", "C"]
 ```
