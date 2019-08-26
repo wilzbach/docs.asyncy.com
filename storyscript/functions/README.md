@@ -71,8 +71,8 @@ str.capitalize()  # returns a string where the first letter of each word is capi
 str.trim() # returns a string with any leading and trailing whitespace (including tabs) removed
 str.startswith(prefix: "abc") # returns true if the string starts with the prefix "abc"
 str.endswith(suffix: "xyz") # returns true if the string ends with the suffix "xyz"
-arr.contains(item: "a")  # returns true if the item "a" occurrs in the string, false otherwise
-arr.contains(pattern: /a/)  # returns true if the RegExp /a/ occurrs in the string, false otherwise
+str.contains(item: "a")  # returns true if the item "a" occurrs in the string, false otherwise
+str.contains(pattern: /a/)  # returns true if the RegExp /a/ occurrs in the string, false otherwise
 ```
 
 ### Numbers
