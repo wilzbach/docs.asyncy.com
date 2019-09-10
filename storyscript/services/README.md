@@ -2,7 +2,7 @@
 
 ## Summary
 
-A service is a containerized microservice that is registered in the[Storyscript Hub](https://hub.storyscript.io). Discover hundreds of services in the Hub or build your own in any language, submit to the Storyscript Hub and call it in your Storyscript like this:
+A service is a containerized microservice that is registered in the [Storyscript Hub](https://hub.storyscript.io). Discover hundreds of services in the Hub or [build your own](/reference/services/#create) in any language, submit to the Storyscript Hub and call it in your Storyscript like this:
 
 ```coffeescript
 # Call a service with a command and all arguments named
