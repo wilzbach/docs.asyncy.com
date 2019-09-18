@@ -173,10 +173,10 @@ works with.
 
 ```coffeescript
 a = 4
-a *= 5  # Equivalent to saying a = a * 5
+a *= 5  # Equivalent to a = a * 5
 
 b = "foo"
-b += "bar"  # Equivalent to saying b = b + "bar"
+b += "bar"  # Equivalent to b = b + "bar"
 ```
 
 ### Boolean operations
