@@ -165,6 +165,20 @@ a = 1
 a = "foo" # E0100: Can't assign `string` to `int`
 ```
 
+Apart from the assignment operator `=`, Storyscript provides support for
+arithmetic assignment operators.
+Arithmetic assignment operators are: `+=`, `-=`, `*=`, `/=` and `%=`.
+These shorthands work with any data type the inherent arithmetic operator
+works with.
+
+```coffeescript
+a = 4
+a *= 5  # Equivalent to a = a * 5
+
+b = "foo"
+b += "bar"  # Equivalent to b = b + "bar"
+```
+
 ### Boolean operations
 
 Boolean operators are: `and`, `or`, and `not`.
