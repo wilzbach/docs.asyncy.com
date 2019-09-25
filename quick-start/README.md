@@ -106,7 +106,7 @@ story apps create
 ### 2. The classic hello-world app to start you off!
 
 ```bash
-story write http > http.story
+story template http > http.story
 ```
 
 Let's take a look:
