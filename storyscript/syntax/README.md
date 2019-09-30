@@ -5,7 +5,7 @@ next: /storyscript/execution/
 
 # Syntax
 
-The following is a brief overview of Storyscript's main features. Head to the next chapter for an in-depth explanation of the individual features.
+The following is a brief overview of Storyscript"s main features. Head to the next chapter for an in-depth explanation of the individual features.
 
 ```coffeescript
 ###
@@ -23,7 +23,7 @@ output = function_name(key:value)
 # or another programming language
 
 # Call type methods
-output = variable mutation key:value
+output = variable.mutation(key:value)
 
 # Event streaming microservice
 when service action event key:value as output
@@ -34,15 +34,15 @@ string = "Hello"
 integer = 1
 number = 1.3
 bool = true
-list = ['a', 'b', 'c']
-map = {'apple': 'red', 'banana': 'yellow'}
+list = ["a", "b", "c"]
+map = {"apple": "red", "banana": "yellow"}
 regexp = /^foobar/
 empty = null
 time = 1d35m
 
 # Destructuring
 { apple, banana } = map
-# apple = 'red'
+# apple = "red", banana = "yellow"
 
 # Conditions
 if one > 1

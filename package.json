@@ -2,7 +2,7 @@
   "name": "docs.storyscript.io",
   "version": "0.0.2",
   "description": "Docs for Storyscript",
-  "license": "AGPL v3",
+  "license": "Apache-2.0",
   "main": "index.js",
   "scripts": {
     "dev": "vuepress dev",
@@ -23,7 +23,9 @@
     "sass-loader": "^7.1.0",
     "vuepress": "^0.14.11",
     "vuepress-plugin-sitemap": "^2.1.2",
-    "vuepress-theme-story": "^0.0.4"
+    "vuepress-theme-story": "^0.2.6"
   },
-  "dependencies": {}
+  "dependencies": {
+    "vue-tweet-embed": "^2.3.0"
+  }
 }

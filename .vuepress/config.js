@@ -39,49 +39,58 @@ module.exports = {
         iconRight: 'github-face'
       }
     }],
-    sidebar: [
-      '/quick-start/',
-      {
-        title: 'Storyscript Language',
-        collapsable: true,
-        children: [
-          '/storyscript/intro/',
-          '/storyscript/writing/',
-          '/storyscript/syntax/',
-          '/storyscript/execution/',
-          '/storyscript/services/',
-          '/storyscript/basic-types/',
-          '/storyscript/functions/',
-          '/storyscript/flow/',
-          '/storyscript/advanced/',
-          '/storyscript/secrets/',
-        ]
-      },
-      '/services/',
-      '/functions/',
-      '/cli/',
-      // {
-      //   title: 'API',
-      //   collapsable: false,
-      //   children: [
-      //     '/rest-api/',
-      //     '/graphql/',
-      //   ]
-      // },
-      {
-        title: 'Architecture',
-        children: [
-          '/architecture/diagrams/'
-        ]
-      },
-      {
-        title: 'Reference',
-        children: [
-          '/reference/exposing_services/'
-        ]
-      },
-      '/faq/',
-      '/support/'
-    ]
+    sidebar: [{
+      title: 'Documentation',
+      icon: 'home',
+      path: '/'
+    }, {
+      title: 'Quick Start',
+      icon: 'cloud',
+      path: '/quick-start/',
+    }, {
+      title: 'Storyscript Language',
+      icon: 'lang',
+      collapsable: true,
+      children: [
+        '/storyscript/intro/',
+        '/storyscript/writing/',
+        '/storyscript/syntax/',
+        '/storyscript/execution/',
+        '/storyscript/services/',
+        '/storyscript/basic-types/',
+        '/storyscript/functions/',
+        '/storyscript/flow/',
+        '/storyscript/advanced/',
+        '/storyscript/secrets/'
+      ]
+    }, {
+      icon: 'dev',
+      title: 'Development',
+      children: [
+        // '/dev/learn/',
+        '/dev/cli/',
+        '/dev/architecture/',
+        // '/dev/plugins/'
+      ]
+    }, {
+      icon: 'refs',
+      title: 'References',
+      children: [
+        '/reference/services/',
+        '/reference/functions/',
+        '/reference/exposing_services/'
+      ]
+    }, {
+      icon: 'support',
+      path: '/support/'
+    }, {
+      icon: 'faq',
+      title: 'FAQ',
+      children: [
+        '/faq/general/',
+        '/faq/language/',
+        '/faq/cloud/'
+      ]
+    }]
   }
 };

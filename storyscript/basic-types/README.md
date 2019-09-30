@@ -66,26 +66,45 @@ more_data = """
     jumps over the lazy dog.
 """
 # The quick brown fox\njumps over the lazy dog.
-
-where = "Earth"
-data_formatted = "Hello, {where}"
-# Hello, Earth
 ```
 
 ::: v-pre
-Like many traditional programming languages, Storyscript supports strings as delimited by the `"` or `'` characters.
-Storyscript also supports string interpolation within "-quoted strings, using `{ expression }`.
-Single-quoted strings are literal. You may even use interpolation in object keys.
+Like many traditional programming languages, Storyscript supports strings as delimited by the `"` quote characters.
 :::
 
 Multi-line strings are allowed in Storyscript.
 Lines are joined by a single space unless they end with a backslash.
 Indentation is ignored.
 
-Block strings, delimited by `"""` or `'''`, can be used to hold formatted or indentation-sensitive text (or, if you just don’t feel like escaping quotes and apostrophes).
+Block strings, delimited by `"""`, can be used to hold formatted or indentation-sensitive text (or, if you just don’t feel like escaping quotes and apostrophes).
 The indentation level that begins the block is maintained throughout, so you can keep it all aligned with the body of your code.
 
-Double-quoted block strings, like other double-quoted strings, allow interpolation.
+### String templates
+
+Storyscript also supports string interpolation using `{ expression }`.
+
+```coffeescript
+where = "Earth"
+data_formatted = "Hello, {where}"
+# Hello, Earth
+```
+
+Inside string templates it is allowed to use single quotes for map access:
+
+```coffeescript
+tr = {"greeting": "Hello", "plant": "Sun"}
+reply = "{tr['greeting']}, {tr['plant']}"
+# Hello, Sun
+```
+
+In most cases it is more readable to use map destructuring assignments instead:
+
+```coffeescript
+tr = {"greeting": "Hello", "plant": "Mars"}
+{ greeting, plant } = tr
+reply = "{greeting}, {planet}"
+# Hello, Mars
+```
 
 ### String indexing
 
@@ -136,10 +155,10 @@ l[-4] # ERROR
 Storyscript supports `Map`s as a generic container type:
 
 ```coffeescript
-map_inline = {'foo': 'bar', 'apples': 'oranges'}
+map_inline = {"foo": "bar", "apples": "oranges"}
 map_multiline = {
-  'foo': 'bar',
-  'apples': 'oranges'
+  "foo": "bar",
+  "apples": "oranges"
 }
 object_int = {1: 11, 2: 22}
 ```
@@ -149,9 +168,9 @@ In a map the same value may occur more than once, but the same key can only occu
 Maps can be destructured into its part with the destructuring assignments:
 
 ```coffeescript
-map = {'foo': 'bar', 'apples': 'oranges'}
+map = {"foo": "bar", "apples": "oranges"}
 { foo } = map
-# foo = 'bar'
+# foo = "bar"
 ```
 
 A destructuring assignment must contain one or more object keys.
@@ -159,9 +178,9 @@ These keys **must** exist in the map and will be new variables names.
 Their value is the value of the respective key in the map (`map[key]`).
 
 ```coffeescript
-map = {'foo': 'bar', 'apples': 'oranges'}
+map = {"foo": "bar", "apples": "oranges"}
 { foo, apples } = map
-# foo = 'bar', apples = 'oranges'
+# foo = "bar", apples = "oranges"
 ```
 
 ## Time durations
@@ -175,7 +194,7 @@ duration = 5d10m
 
 Supported time units are `w` (weeks)`, `d` (days), `h` (hours)`, `m` (minutes), `s` (seconds) and `ms` (milliseconds).
 
-Time units must be used in this order and can't be repeated.
+Time units must be used in this order and can not be repeated.
 
 ## Regular Expressions
 

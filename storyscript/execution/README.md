@@ -35,8 +35,8 @@ A story may [execute in many ways](/faq/#how-are-storyscripts-started).
 1. Asynchronous commands may generate new threads and execute in the same pattern above.
 
 ```coffeescript
-translated = language_service translate from:my_string to:'spanish'
-words = translated split by:' '
+translated = language_service translate from:my_string to:"spanish"
+words = translated.split(by: " ")
 service_b action_b name:words[0]
 ```
 

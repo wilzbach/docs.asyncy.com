@@ -2,7 +2,7 @@
 
 ## Summary
 
-A service is a containerized microservice that is registered in the[Storyscript Hub](https://hub.storyscript.io). Discover hundreds of services in the Hub or build your own in any language, submit to the Storyscript Hub and call it in your Storyscript like this:
+A service is a containerized microservice that is registered in the [Storyscript Hub](https://hub.storyscript.io). Discover hundreds of services in the Hub or [build your own](/reference/services/#create) in any language, submit to the Storyscript Hub and call it in your Storyscript like this:
 
 ```coffeescript
 # Call a service with a command and all arguments named
@@ -67,10 +67,10 @@ service action
 A good example of this is streaming Tweets by hashtag.
 
 ```coffeescript
-when twitter stream tweets track:'programming' as tweet
+when twitter stream tweets track:"programming" as tweet
     res = machinebox/textbox analyze input:tweet.message
-    if res.sentiment == 'positive'
-        tweet reply message:'Thank you!'
+    if res.sentiment == "positive"
+        tweet reply message:"Thank you!"
         tweet retweet
         tweet like
 ```

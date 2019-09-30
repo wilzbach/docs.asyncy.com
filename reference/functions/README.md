@@ -7,8 +7,6 @@ next: /storyscript/flow/
 
 Functions are single methods written in any programming language that are fully managed serverless functions.
 
-[[toc]]
-
 ## Create
 
 Creating your own functions is intuitive and powerful. Choose Storyscript for workflow and procedural functions. Choose another language for low and high-level logic and algorithms.
@@ -22,21 +20,21 @@ Storyscript functions are useful for common procedures that you want to reuse in
 
 ```coffeescript
 function spam_me text:string
-    twitter tweet status:'@me {text}'
-    twilio sms text:text to:'+310601010101'
-    gmail send to:'me@gmail.com' subject:'Read me' body:text
+    twitter tweet status:"@me {text}"
+    twilio sms text:text to:"+310601010101"
+    gmail send to:"me@gmail.com" subject:"Read me" body:text
 ```
 
 Now, we can call our function like this:
 
 ```coffeescript
-spam_me(text: 'doorbell rang!')
+spam_me(text: "doorbell rang!")
 ```
 
 ### GPPL Functions
 
 ::: warning Coming soon
-Looking forward to this feature? [Click here](https://asyncy.nolt.io/8) to share your feedback.
+Looking forward to this feature? [Click here](https://storyscript.nolt.io/8) to share your feedback.
 :::
 
 Creating a function in a GPPL (like Python, Node, Go, Ruby, etc.) is very simple in Storyscript.

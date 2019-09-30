@@ -1,11 +1,8 @@
-# Diagrams
+# Architecture
 
+## Diagrams
 
-
-
-[[toc]]
-
-## How to read diagrams
+### How to read diagrams
 
 The diagrams are to be read from top-down, following the arrows which represent data flow.
 
@@ -34,10 +31,10 @@ Time  |          |                          |
 > <small>Designs are created using [http://asciiflow.com](http://asciiflow.com)</small> :thumbsup:
 
 
-## Asyncy Gateway
+### Storyscript Gateway
 
 When an application is deployed every story is started.
-If a story has one or more `http-endpoint` it will register with the Asyncy Gateway.
+If a story has one or more `http-endpoint` it will register with the Storyscript Gateway.
 This is a **serverless event http handler** which executes the proceeding code for each http client connection.
 
 ```

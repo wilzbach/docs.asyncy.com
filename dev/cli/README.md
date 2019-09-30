@@ -8,7 +8,7 @@ To get started install the Storyscript CLI ([Contribute](https://github.com/stor
 <table width="100%">
 <tr>
 <td style="text-align:center" width="50%" valign="top">
-<h1><img src="../assets/apple-logo.svg" width="24"> macOS</h1>
+<h1><img src="../../assets/apple-logo.svg" width="24"> macOS</h1>
 
 ```bash
 brew install storyscript/brew/story
@@ -28,7 +28,7 @@ Download the appropriate installer:
 </tr>
 <tr>
 <td style="text-align:center" valign="top">
-<h1><img src="../assets/ubuntu-logo.svg" width="24"> Ubuntu 16+</h1>
+<h1><img src="../../assets/ubuntu-logo.svg" width="24"> Ubuntu 16+</h1>
 
 ```bash
 sudo snap install story

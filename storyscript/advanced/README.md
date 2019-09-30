@@ -35,6 +35,40 @@ foreach [1, 2, 3] as el
   last = el # OK
 ```
 
+Moreover, for if/else blocks the variable will be accessible in the parent scope
+if _all_ code blocks declare the respective variable.
+
+```coffeescript
+if weather == "sunny"
+  wind_kmh = 2
+else
+  wind_kmh = 10
+
+wind_ms = wind_kmh / 3.6 # OK
+```
+
+However, the following is not allowed as `wind_kmh` wasn't declared by
+all code paths:
+
+```coffeescript
+if weather == "sunny"
+  wind_kmh = 2
+else
+  storm_kmh = 10
+
+wind_ms = wind_kmh / 3.6 # ERROR
+```
+
+Analogous, if the `else` block is missing, it isn't possible
+to access `wind_kmh` in the parent scope either as it wasn't declared by all code paths:
+
+```coffeescript
+if weather == "sunny"
+  wind_kmh = 2
+
+wind_ms = wind_kmh / 3.6 # ERROR
+```
+
 ## Operations
 
 Storyscript provides a few special operations.
@@ -52,93 +86,62 @@ This `end story` operation can be used to stop a story and exit immediately.
 
 ```coffeescript
 try
-  # more stuff here
-catch as error
-  # more stuff here
+  a = "abc" as int
+catch
+  a = 42 # fallback
 finally
-  # more stuff here
+  submission_service send nr:a
 ```
 
-In Storyscript, the `try` expressions catch exceptions and pass the error to the `catch` block.
+In Storyscript `try` blocks catch exceptions and pass the error to the `catch` block.
 
-The `finally` block is **always** entered regardless of an exception being raised or not, use it for cleanup commands.
+A `finally` block is **always** entered regardless of an exception being raised or not.
+This is useful for cleanup commands.
 
 You may omit both the `catch` and `finally`.
 
 ```coffeescript
 try
-  # more stuff here
-catch as error
-  # more stuff here
-  throw
+  a = "abc" as int
+catch
+  a = 42 # fallback
 ```
 
-Use the `throw` keyword to raise the exception, bubbling up to the next try block or stopping the story.
-
-## Types
+Custom exceptions can be raised with the `throw` keyword:
 
 ```coffeescript
-1 type
-# int
-
-true type
-# bool
-
-"" type
-# string
-
-[] type
-# list
-
-{} type
-# object
-
-null type
-# null
-
-30s type
-# time
-
-(date now) type
-# date
-
-(interval days:1) type
-# interval
-
-(range from:foo to:bar) type
-# range
-
-/^foobar/ type
-# regexp
-
-function foobar returns int
-    return 1
-
-foobar type
-# function
+if arr.contains("red")
+  throw "My Exception"
 ```
 
-Use the method `type` to get the type of a variable as a string.
+It is only allowed to `throw` `string` messages.
+
+New variables declared in a `try` block will only be accessible in the parent scope
+if the respective variable of the same type has also been declared in its `catch` block.
+The following is not possible:
 
 ```coffeescript
-(1 is int) and (true is bool) and ("" is string)
-# true
+try
+  a = "abc" as int
 
-([] is list) and ({} is object)
-# true
+b = a # ERROR
+```
 
-(1 is number) and (1.2 is number)
-# true
+However, variables declared in the `finally` block are part of the parent scope:
 
-{} is string
-# false
+```coffeescript
+try
+  a = "abc" as int
+finally
+  b = 1
+
+c = b # OK
 ```
 
 ## Type checking
 
 Storyscript allows a few implicit type conversions:
 
-- `boolean` types are implicitly convertible to `int`
 - `int` types are implicitly convertible to `float`
 - all types are implicitly convertible to `any`
 
@@ -157,25 +160,30 @@ Examples:
 
 A type must be implicitly convertible to the assignment variable.
 
-```
+```coffeescript
 a = 1
 a = "foo" # E0100: Can't assign `string` to `int`
 ```
 
+Apart from the assignment operator `=`, Storyscript provides support for
+arithmetic assignment operators.
+Arithmetic assignment operators are: `+=`, `-=`, `*=`, `/=` and `%=`.
+These shorthands work with any data type the inherent arithmetic operator
+works with.
+
+```coffeescript
+a = 4
+a *= 5  # Equivalent to a = a * 5
+
+b = "foo"
+b += "bar"  # Equivalent to b = b + "bar"
+```
+
 ### Boolean operations
 
-Boolean operators are: `and`, `or`, `!`.
-The following types are evaluable to a `boolean` and can thus perform
-boolean operations:
-
-- `boolean`
-- `int`
-- `float`
-- `time`
-- `string`
-- `List`
-- `Map`
-- `any`
+Boolean operators are: `and`, `or`, and `not`.
+All types need to be explicitly converted to a `boolean` with e.g.
+comparison operation (e.g. `a == b`) or a built-in (e.g. `a.empty()`).
 
 ### Arithmetic operations
 
@@ -184,7 +192,7 @@ The following operations are supported for the respective Storyscript type:
 
 Type       | Operations | Remarks
 -----------|------------|------
-`boolean`  | all        | Operations between two `boolean`s are implicitly converted to `int`
+`boolean`  | all        | Arithmetic operations between two `boolean`s are implicitly converted to `int`
 `int`      | all        |
 `float`    | all        |
 `regexp`   | (none)     |
@@ -216,7 +224,7 @@ Examples:
 
 ```coffeescript
 2 < 3                  # OK
-{'a':'b'} < {'c': 'd'} # Always disallowed
+{"a":"b:"} < {"c": "d"} # Always disallowed
 ```
 
 Remarks: when comparing a type with `any`, this type must support comparisons too.
@@ -255,6 +263,7 @@ Storyscript has the following operator precedence (from higher precedence down t
 - `<`, `<=`, `==`, `!=`, `>`, `>=` (Comparison expression)
 - `+`, `-` (Arithmetic expression)
 - `*`, `/`, `%` (Multiplicative expression)
+- `as` (As expression)
 - `!` (Unary expression)
 - `^^` (Pow expression)
 - `.`, (Dot expression) `[...]` (Index expression)
@@ -269,10 +278,6 @@ Examples
 
 true and false or true # true
 true or false and true # true
-
-1 - 1 or 0          # false
-1 - 1 or 2 > 3      # false
-1 - 1 or 2 + 2 > 3  # true
 ```
 
 ## Application Information

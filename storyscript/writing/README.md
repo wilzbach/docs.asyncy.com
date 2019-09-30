@@ -5,15 +5,15 @@ next: /storyscript/syntax/
 
 # Writing a Story
 
-Storyscript is built to allow you to focus on the *story* of your data, above all else.
+✨Storyscript is the top-level, polyglot programming language that seamlessly moves data between microservices and functions in a serverless way with zero-devops deployments.✨
 
 ## Basics: HTTP Responses
 Let's start with an HTTP server that responds with `Hello, world!` to an incoming request:
 
 ```coffee
 http server as client
-    when client listen method:'get' path:'/' as r
-        r write content:'Hello, world!'
+    when client listen method:"get" path:"/" as r
+        r write content:"Hello, world!"
 ```
 
 If you run `$ story deploy`, this application will be served on the public internet. Let's take a deeper look at the components that are being used here:
@@ -27,7 +27,7 @@ This line instructs Storyscript to use the [`http` microservice](https://hub.sto
 
 ```coffee
 …
-    when client listen method:'get' path:'/' as r
+    when client listen method:"get" path:"/" as r
         …
 ```
 
@@ -36,7 +36,7 @@ We will then use this client to instruct the server how to handle specific event
 ```coffee
 …
     …
-        r write content:'Hello world!'
+        r write content:"Hello world!"
 ```
 This part of the code is the Storyscript logic of what to do during the request. In this instance, we're simply writing `Hello world!` to the response object.
 
@@ -58,7 +58,7 @@ Here's an updated version of our story:
 
 ```coffee
 http server as client
-    when client listen method:'get' path:'/' as r
+    when client listen method:"get" path:"/" as r
         content = awesome id
         r write content:content
 ```
