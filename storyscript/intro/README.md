@@ -77,7 +77,7 @@ Now, with the OMG-compatible services, we can connect service-to-service without
 
 ## Use Cases
 
-All backend-oriented services can be easily spawned from Storyscript— often with a single line of code and deployed without any Kubernetes configuration.
+All backend-oriented services can be easily spawned from Storyscript, often with a single line of code and deployed without any Kubernetes configuration.
 
 Here are a few examples of Storyscript use-cases:
 
